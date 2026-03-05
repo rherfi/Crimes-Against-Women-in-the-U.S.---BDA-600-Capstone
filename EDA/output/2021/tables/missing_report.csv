@@ -1,0 +1,12 @@
+,missing_count,missing_pct,dtype
+age_range_high_num,6166,85.31,float64
+employee_rate,578,8.0,float64
+female_civilian,626,8.66,float64
+female_officer,626,8.66,float64
+injury_name,4217,58.34,str
+male_civilian,626,8.66,float64
+male_officer,626,8.66,float64
+officer_rate,578,8.0,float64
+relationship_name,37,0.51,str
+shr_flag,174,2.41,str
+weapon_name,663,9.17,str

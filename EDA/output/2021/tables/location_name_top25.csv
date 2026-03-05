@@ -1,0 +1,26 @@
+location_name,count,pct
+Residence/Home,2069,28.62
+Highway/Road/Alley/Street/Sidewalk,1696,23.46
+Jail/Prison/Penitentiary/Corrections Facility,773,10.69
+Parking/Drop Lot/Garage,578,8.0
+Drug Store/Doctor's Office/Hospital,281,3.89
+Hotel/Motel/Etc.,204,2.82
+Other/Unknown,198,2.74
+Government/Public Building,197,2.73
+School-Elementary/Secondary,173,2.39
+Convenience Store,146,2.02
+Bar/Nightclub,138,1.91
+Restaurant,91,1.26
+Air/Bus/Train Terminal,80,1.11
+Service/Gas Station,80,1.11
+Grocery/Supermarket,79,1.09
+Department/Discount Store,71,0.98
+Park/Playground,56,0.77
+Commercial/Office Building,46,0.64
+Field/Woods,41,0.57
+Specialty Store,36,0.5
+Gambling Facility/Casino/Race Track,29,0.4
+School/College,25,0.35
+Shelter-Mission/Homeless,24,0.33
+School-College/University,14,0.19
+Shopping Mall,14,0.19
