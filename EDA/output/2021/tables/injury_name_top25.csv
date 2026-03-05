@@ -1,0 +1,9 @@
+injury_name,count,pct
+MISSING,4217,58.34
+Minor Injury,2709,37.48
+Other Major Injury,143,1.98
+Possible Internal Injury,82,1.13
+Severe Laceration,36,0.5
+Apparent Broken Bones,33,0.46
+Unconscious,7,0.1
+Loss of Teeth,1,0.01
