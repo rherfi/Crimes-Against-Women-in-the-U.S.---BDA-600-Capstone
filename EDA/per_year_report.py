@@ -24,10 +24,10 @@ import matplotlib.pyplot as plt
 # =============================================================================
 CONFIG: Dict = {
     # Input file for a single year (relative to repo root by default)
-    "input_csv": "MASTER_2024.csv",
+    "input_csv": "MASTER_2022.csv",
 
     # Year label used in output paths and report title
-    "year_label": "2024",
+    "year_label": "2022",
 
     # Output base directory (per-year folders created beneath this)
     # relative to repo root
