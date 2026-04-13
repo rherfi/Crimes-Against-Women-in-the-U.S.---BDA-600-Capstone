@@ -18,6 +18,9 @@ This is a **victim-facing support + resource + plain-language VAWA info** chatbo
 
 ### 1) Backend (FastAPI)
 
+Important: the `cd` paths below assume you run them from the **repo root**.
+If your terminal prompt already ends in `.../chatbot %`, see the troubleshooting section at the bottom.
+
 ```bash
 cd "chatbot/victim-tool/backend"
 python -m venv .venv
@@ -59,4 +62,65 @@ Open:
   - Replace this file later with verified resources.
 - **Knowledge base docs**: `backend/app/kb/*.md`
   - Small plain-language documents with frontmatter metadata.
+
+## Troubleshooting (common issues)
+
+### If `cd "chatbot/victim-tool/backend"` says “no such file or directory”
+
+You are probably already inside the `chatbot/` folder.
+
+From a prompt like:
+
+- `.../Crimes-Against-Women.../chatbot %`
+
+Use these instead:
+
+```bash
+cd "victim-tool/backend"
+```
+
+And for the frontend:
+
+```bash
+cd "victim-tool/frontend"
+```
+
+### If `pip` or `uvicorn` says it’s trying to run from `victim-tool-bot/...`
+
+That means the Python virtual environment (`.venv`) was created before you renamed/moved folders, and its scripts still point to the old path.
+
+Fix by recreating the venv:
+
+```bash
+cd "chatbot/victim-tool/backend"
+rm -rf .venv
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+### If `uvicorn` says “Address already in use”
+
+Another process is already using that port.
+
+Option A (quick): use a different port:
+
+```bash
+uvicorn app.main:app --reload --port 8010
+```
+
+Then tell the frontend which port to use by creating `frontend/.env`:
+
+```bash
+cd "chatbot/victim-tool/frontend"
+echo 'VITE_API_BASE=http://127.0.0.1:8010' > .env
+npm run dev
+```
+
+Option B (clean): find and stop the process using the port:
+
+```bash
+lsof -nP -iTCP:8001 -sTCP:LISTEN
+kill <PID>
+```
 
