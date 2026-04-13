@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/Users/alisacrowe/Desktop/BDA 600/final project/Crimes-Against-Women-in-the-U.S.---BDA-600-Capstone/chatbot/victim-tool-bot/backend/.venv/bin/python" "$0" "$@"
+'''exec' "/Users/alisacrowe/Desktop/BDA 600/final project/Crimes-Against-Women-in-the-U.S.---BDA-600-Capstone/chatbot/victim-tool/backend/.venv/bin/python" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re

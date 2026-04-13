@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/alisacrowe/Desktop/BDA 600/final project/Crimes-Against-Women-in-the-U.S.---BDA-600-Capstone/chatbot/victim-tool-bot/backend/.venv"
+set -gx VIRTUAL_ENV "/Users/alisacrowe/Desktop/BDA 600/final project/Crimes-Against-Women-in-the-U.S.---BDA-600-Capstone/chatbot/victim-tool/backend/.venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
