@@ -1,0 +1,16 @@
+geo_id,geo_name,geo_type,state,county,tribal_area,year,quarter,month,dv_rate,sexual_assault_rate,firearm_share,dating_partner_share,minority_victim_share,native_american_victim_share,reporting_proxy,risk_index,data_quality_flag
+state:CA,California,state,CA,,,2021,Q4,12,3.20,1.10,0.22,0.18,0.55,0.02,0.70,0.62,ok
+state:CA,California,state,CA,,,2022,Q4,12,3.10,1.05,0.21,0.19,0.56,0.02,0.73,0.60,ok
+state:CA,California,state,CA,,,2023,Q4,12,3.05,1.00,0.20,0.20,0.57,0.02,0.74,0.59,ok
+state:CA,California,state,CA,,,2024,Q4,12,2.95,0.98,0.19,0.20,0.58,0.02,0.76,0.57,ok
+state:TX,Texas,state,TX,,,2021,Q4,12,4.10,1.30,0.30,0.17,0.52,0.01,0.66,0.70,ok
+state:TX,Texas,state,TX,,,2022,Q4,12,4.05,1.25,0.31,0.18,0.53,0.01,0.67,0.69,ok
+state:TX,Texas,state,TX,,,2023,Q4,12,3.95,1.20,0.29,0.19,0.54,0.01,0.68,0.67,ok
+state:TX,Texas,state,TX,,,2024,Q4,12,3.90,1.18,0.28,0.19,0.55,0.01,0.69,0.66,ok
+state:NM,New Mexico,state,NM,,,2021,Q4,12,3.80,1.40,0.26,0.16,0.60,0.08,0.62,0.75,ok
+state:NM,New Mexico,state,NM,,,2022,Q4,12,3.70,1.35,0.25,0.16,0.61,0.08,0.63,0.73,ok
+state:NM,New Mexico,state,NM,,,2023,Q4,12,3.65,1.30,0.24,0.17,0.62,0.08,0.64,0.72,ok
+state:NM,New Mexico,state,NM,,,2024,Q4,12,3.60,1.28,0.23,0.17,0.63,0.08,0.65,0.71,ok
+county:CA-001,Alameda County,county,CA,Alameda,,2024,Q4,12,3.10,1.05,0.18,0.21,0.60,0.02,0.80,0.58,low_sample
+tribal:NM-NAVAJO,Navajo Nation (NM),tribal,NM,,Navajo Nation (NM),2024,Q4,12,4.20,1.60,0.27,0.15,0.70,0.20,0.50,0.82,partial
+

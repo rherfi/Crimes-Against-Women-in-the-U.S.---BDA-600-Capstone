@@ -1,0 +1,10 @@
+geo_id,geo_name,year,component,value,note
+state:NM,New Mexico,2024,dv_rate,3.60,Scaled contribution (higher=more risk)
+state:NM,New Mexico,2024,sexual_assault_rate,1.28,Scaled contribution (higher=more risk)
+state:NM,New Mexico,2024,firearm_share,0.23,Share metric (higher=more risk)
+state:NM,New Mexico,2024,reporting_proxy,0.65,Proxy; interpret carefully
+state:CA,California,2024,dv_rate,2.95,Scaled contribution (higher=more risk)
+state:CA,California,2024,firearm_share,0.19,Share metric (higher=more risk)
+state:TX,Texas,2024,dv_rate,3.90,Scaled contribution (higher=more risk)
+state:TX,Texas,2024,firearm_share,0.28,Share metric (higher=more risk)
+
