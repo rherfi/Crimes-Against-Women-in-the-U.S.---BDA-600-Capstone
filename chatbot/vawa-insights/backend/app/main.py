@@ -12,7 +12,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.schemas import ChatRequest, ChatResponse
-from app.services.chat_orchestrator import answer_chat
+from app.logic import answer_chat
 
 
 app = FastAPI(title="VAWA Insights Bot API", version="0.1.0")
