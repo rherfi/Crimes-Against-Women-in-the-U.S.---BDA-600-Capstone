@@ -1,7 +1,15 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
+const QUICK_EXIT_URL = "https://www.google.com/";
 
 function getApiBase() {
   return import.meta.env.VITE_API_BASE || "http://127.0.0.1:8000";
+}
+
+function quickExit() {
+  window.location.replace(QUICK_EXIT_URL);
 }
 
 async function sendChat(apiBase, message, history) {
@@ -16,6 +24,77 @@ async function sendChat(apiBase, message, history) {
     throw new Error(`Backend error (${res.status}): ${text}`);
   }
   return res.json();
+}
+
+/**
+ * POST /api/chat/stream (SSE). Falls back to /api/chat if stream is unavailable.
+ */
+async function sendChatStream(apiBase, message, history, handlers) {
+  const streamRes = await fetch(`${apiBase}/api/chat/stream`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "text/event-stream",
+    },
+    body: JSON.stringify({ message, history }),
+  });
+
+  const ct = streamRes.headers.get("content-type") || "";
+  if (!streamRes.ok && streamRes.status === 404) {
+    handlers.onStart?.();
+    const json = await sendChat(apiBase, message, history);
+    const da = json?.answer?.direct_answer || "";
+    const step = 24;
+    for (let i = 0; i < da.length; i += step) {
+      handlers.onDelta?.(da.slice(i, i + step));
+    }
+    handlers.onDone?.({ answer: json.answer, debug: json.debug });
+    return;
+  }
+
+  if (!streamRes.ok) {
+    const text = await streamRes.text();
+    throw new Error(`Backend error (${streamRes.status}): ${text}`);
+  }
+
+  if (!streamRes.body || !ct.includes("text/event-stream")) {
+    handlers.onStart?.();
+    const json = await sendChat(apiBase, message, history);
+    const da = json?.answer?.direct_answer || "";
+    for (let i = 0; i < da.length; i += 24) {
+      handlers.onDelta?.(da.slice(i, i + 24));
+    }
+    handlers.onDone?.({ answer: json.answer, debug: json.debug });
+    return;
+  }
+
+  const reader = streamRes.body.getReader();
+  const dec = new TextDecoder();
+  let buffer = "";
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += dec.decode(value, { stream: true });
+    let sep;
+    while ((sep = buffer.indexOf("\n\n")) !== -1) {
+      const block = buffer.slice(0, sep);
+      buffer = buffer.slice(sep + 2);
+      for (const line of block.split("\n")) {
+        if (!line.startsWith("data: ")) continue;
+        let data;
+        try {
+          data = JSON.parse(line.slice(6));
+        } catch {
+          continue;
+        }
+        if (data.type === "start") handlers.onStart?.();
+        else if (data.type === "delta") handlers.onDelta?.(data.text || "");
+        else if (data.type === "done") handlers.onDone?.(data);
+        else if (data.type === "error") throw new Error(data.message || "Stream error");
+      }
+    }
+  }
 }
 
 function Section({ title, children }) {
@@ -46,13 +125,37 @@ function CitationList({ citations }) {
   );
 }
 
+const markdownComponents = {
+  a: (props) => <a {...props} target="_blank" rel="noopener noreferrer" />,
+};
+
+function MessageBody({ role, content, streaming }) {
+  if (role === "user") {
+    return <div className="msgContent msgPlain">{content}</div>;
+  }
+  if (streaming) {
+    return <div className="msgContent msgPlain">{content}</div>;
+  }
+  return (
+    <div className="msgContent msgMarkdown">
+      <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+        {content || ""}
+      </ReactMarkdown>
+    </div>
+  );
+}
+
 function SourcesAndLogicPanel({ answer, debug }) {
   if (!answer) return null;
 
   return (
     <div className="sourcesPanel" role="region" aria-label="Sources and reasoning">
       <Section title="Direct answer (full)">
-        <div style={{ whiteSpace: "pre-wrap" }}>{answer.direct_answer}</div>
+        <div className="msgMarkdown">
+          <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+            {answer.direct_answer || ""}
+          </ReactMarkdown>
+        </div>
       </Section>
 
       <Section title="Evidence">
@@ -70,7 +173,11 @@ function SourcesAndLogicPanel({ answer, debug }) {
       </Section>
 
       <Section title="Interpretation">
-        <div style={{ whiteSpace: "pre-wrap" }}>{answer.interpretation}</div>
+        <div className="msgMarkdown">
+          <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+            {answer.interpretation || ""}
+          </ReactMarkdown>
+        </div>
       </Section>
 
       <Section title="Caveats">
@@ -107,8 +214,9 @@ export default function App() {
     {
       id: "welcome",
       role: "assistant",
-      content:
-        "Ask me about 2021–2024 trends (sample data) or VAWA/methodology (sample knowledge base). Try: “Compare California and Texas in firearm involvement from 2021 to 2024.”",
+      content: `Ask me about trends in violent crimes, VAWA policies, or resources for victims.
+
+Example: *Compare California and Texas in firearm involvement from 2021 to 2024.*`,
     },
   ]);
 
@@ -116,6 +224,20 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [openDetailId, setOpenDetailId] = useState(null);
+
+  useEffect(() => {
+    function onKeyDown(e) {
+      if (e.key !== "Escape") return;
+      if (openDetailId) {
+        setOpenDetailId(null);
+        e.preventDefault();
+        return;
+      }
+      quickExit();
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [openDetailId]);
 
   async function onSubmit(e) {
     e.preventDefault();
@@ -127,26 +249,40 @@ export default function App() {
     setOpenDetailId(null);
 
     const userId = crypto.randomUUID();
+    const assistantId = crypto.randomUUID();
     const nextMessages = [...messages, { id: userId, role: "user", content: text }];
-    setMessages(nextMessages);
+    setMessages([
+      ...nextMessages,
+      { id: assistantId, role: "assistant", content: "", streaming: true },
+    ]);
     setInput("");
 
     try {
       const history = nextMessages.map((m) => ({ role: m.role, content: m.content }));
-      const json = await sendChat(apiBase, text, history);
-      const assistantId = crypto.randomUUID();
-      const direct = json?.answer?.direct_answer || "(no direct answer)";
-      setMessages((prev) => [
-        ...prev,
-        {
-          id: assistantId,
-          role: "assistant",
-          content: direct,
-          responseDetail: { answer: json?.answer, debug: json?.debug },
+      await sendChatStream(apiBase, text, history, {
+        onDelta: (chunk) => {
+          setMessages((prev) =>
+            prev.map((m) => (m.id === assistantId ? { ...m, content: m.content + chunk } : m))
+          );
         },
-      ]);
+        onDone: (data) => {
+          setMessages((prev) =>
+            prev.map((m) =>
+              m.id === assistantId
+                ? {
+                    ...m,
+                    content: data.answer?.direct_answer ?? m.content,
+                    streaming: false,
+                    responseDetail: { answer: data.answer, debug: data.debug },
+                  }
+                : m
+            )
+          );
+        },
+      });
     } catch (err) {
       setError(err?.message || String(err));
+      setMessages((prev) => prev.filter((m) => m.id !== assistantId));
     } finally {
       setLoading(false);
     }
@@ -159,8 +295,50 @@ export default function App() {
   return (
     <div className="page">
       <header className="header">
-        <div className="title">VAWA Insights Chatbot</div>
+        <div className="headerBrand">
+          <div className="title">VAWA Insights</div>
+          <div className="subtitle">A Policy-Aligned Data Analysis Tool</div>
+        </div>
+        <div className="headerActions">
+          <p id="quick-exit-hint" className="sr-only">
+            Press Escape to leave this site quickly for privacy. The same action is available as the
+            Quick exit button.
+          </p>
+          <button
+            type="button"
+            className="quickExit"
+            onClick={quickExit}
+            aria-describedby="quick-exit-hint"
+            aria-label="Quick exit: leave this site for privacy"
+            title="Leaves this site immediately (Escape does the same after any open panels are closed)"
+          >
+            Quick exit
+          </button>
+        </div>
       </header>
+
+      <aside
+        className="safetyDisclaimer"
+        role="region"
+        aria-label="Disclaimer and safety information"
+      >
+        <h2 className="safetyDisclaimerTitle">Disclaimer and safety</h2>
+        <p>
+          This chatbot is for <strong>informational and educational purposes only</strong>. It is{" "}
+          <strong>not</strong> a therapist, counselor, lawyer, or emergency service, and it does not
+          provide legal or clinical advice.
+        </p>
+        <p>
+          If you are in <strong>immediate danger</strong>, call <strong>911</strong> (or your local
+          emergency number).
+        </p>
+        <p>
+          <strong>Quick exit:</strong> use the Quick exit button in the header or press{" "}
+          <kbd className="kbd">Escape</kbd> (when no detail panel is open) to go to the Google
+          homepage. If you are worried about someone seeing your activity, also clear your browser
+          search and browsing history when it is safe to do so.
+        </p>
+      </aside>
 
       <main className="mainSingle">
         <div className="card cardChat">
@@ -169,7 +347,7 @@ export default function App() {
             {messages.map((m) => (
               <div key={m.id} className={`msg ${m.role === "user" ? "msgUser" : "msgAssistant"}`}>
                 <div className="msgRole">{m.role}</div>
-                <div className="msgContent">{m.content}</div>
+                <MessageBody role={m.role} content={m.content} streaming={Boolean(m.streaming)} />
                 {m.role === "assistant" && m.responseDetail ? (
                   <div className="msgActions">
                     <button
