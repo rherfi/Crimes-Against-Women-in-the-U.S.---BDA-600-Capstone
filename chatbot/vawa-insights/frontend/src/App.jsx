@@ -1,16 +1,6 @@
 import React, { useMemo, useState } from "react";
 
-/**
- * V1 UI goals:
- * - Simple, fast chat
- * - Clear response sections:
- *   Direct Answer / Evidence / Interpretation / Caveats / Citations
- * - Minimal styling, easy to modify later
- */
-
 function getApiBase() {
-  // You can override in a `.env` file:
-  // VITE_API_BASE=http://127.0.0.1:8000
   return import.meta.env.VITE_API_BASE || "http://127.0.0.1:8000";
 }
 
@@ -56,11 +46,66 @@ function CitationList({ citations }) {
   );
 }
 
+function SourcesAndLogicPanel({ answer, debug }) {
+  if (!answer) return null;
+
+  return (
+    <div className="sourcesPanel" role="region" aria-label="Sources and reasoning">
+      <Section title="Direct answer (full)">
+        <div style={{ whiteSpace: "pre-wrap" }}>{answer.direct_answer}</div>
+      </Section>
+
+      <Section title="Evidence">
+        {answer.evidence?.length ? (
+          <ul className="list">
+            {answer.evidence.map((x, i) => (
+              <li key={i} className="listItem mono">
+                {x}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className="muted">No evidence lines returned.</div>
+        )}
+      </Section>
+
+      <Section title="Interpretation">
+        <div style={{ whiteSpace: "pre-wrap" }}>{answer.interpretation}</div>
+      </Section>
+
+      <Section title="Caveats">
+        {answer.caveats?.length ? (
+          <ul className="list">
+            {answer.caveats.map((x, i) => (
+              <li key={i} className="listItem">
+                {x}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className="muted">No caveats returned.</div>
+        )}
+      </Section>
+
+      <Section title="Citations">
+        <CitationList citations={answer.citations} />
+      </Section>
+
+      <Section title="Logic & retrieval (debug)">
+        <div className="muted small mono" style={{ whiteSpace: "pre-wrap" }}>
+          {JSON.stringify(debug, null, 2)}
+        </div>
+      </Section>
+    </div>
+  );
+}
+
 export default function App() {
   const apiBase = useMemo(() => getApiBase(), []);
 
   const [messages, setMessages] = useState([
     {
+      id: "welcome",
       role: "assistant",
       content:
         "Ask me about 2021–2024 trends (sample data) or VAWA/methodology (sample knowledge base). Try: “Compare California and Texas in firearm involvement from 2021 to 2024.”",
@@ -69,8 +114,8 @@ export default function App() {
 
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [lastResponse, setLastResponse] = useState(null);
   const [error, setError] = useState("");
+  const [openDetailId, setOpenDetailId] = useState(null);
 
   async function onSubmit(e) {
     e.preventDefault();
@@ -79,18 +124,27 @@ export default function App() {
 
     setError("");
     setLoading(true);
-    setLastResponse(null);
+    setOpenDetailId(null);
 
-    const nextMessages = [...messages, { role: "user", content: text }];
+    const userId = crypto.randomUUID();
+    const nextMessages = [...messages, { id: userId, role: "user", content: text }];
     setMessages(nextMessages);
     setInput("");
 
     try {
-      // Backend accepts optional history; we pass a minimal history format.
       const history = nextMessages.map((m) => ({ role: m.role, content: m.content }));
       const json = await sendChat(apiBase, text, history);
-      setLastResponse(json);
-      setMessages((prev) => [...prev, { role: "assistant", content: json?.answer?.direct_answer || "(no direct answer)" }]);
+      const assistantId = crypto.randomUUID();
+      const direct = json?.answer?.direct_answer || "(no direct answer)";
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: assistantId,
+          role: "assistant",
+          content: direct,
+          responseDetail: { answer: json?.answer, debug: json?.debug },
+        },
+      ]);
     } catch (err) {
       setError(err?.message || String(err));
     } finally {
@@ -98,34 +152,45 @@ export default function App() {
     }
   }
 
-  const answer = lastResponse?.answer;
-  const debug = lastResponse?.debug;
+  function toggleDetail(id) {
+    setOpenDetailId((cur) => (cur === id ? null : id));
+  }
 
   return (
     <div className="page">
       <header className="header">
-        <div>
-          <div className="title">VAWA Insights Bot (V1 prototype)</div>
-          <div className="subtitle">
-            Frontend → FastAPI tools + lightweight document retrieval → structured answer with citations
-          </div>
-        </div>
-        <div className="muted small">
-          API: <span className="mono">{apiBase}</span>
-        </div>
+        <div className="title">VAWA Insights Chatbot</div>
       </header>
 
-      <main className="grid">
-        <div className="card">
+      <main className="mainSingle">
+        <div className="card cardChat">
           <div className="cardTitle">Chat</div>
           <div className="chatWindow" aria-label="Chat messages">
-            {messages.map((m, idx) => (
-              <div key={idx} className={`msg ${m.role === "user" ? "msgUser" : "msgAssistant"}`}>
+            {messages.map((m) => (
+              <div key={m.id} className={`msg ${m.role === "user" ? "msgUser" : "msgAssistant"}`}>
                 <div className="msgRole">{m.role}</div>
                 <div className="msgContent">{m.content}</div>
+                {m.role === "assistant" && m.responseDetail ? (
+                  <div className="msgActions">
+                    <button
+                      type="button"
+                      className="button buttonSecondary"
+                      onClick={() => toggleDetail(m.id)}
+                      aria-expanded={openDetailId === m.id}
+                    >
+                      {openDetailId === m.id ? "Hide sources & logic" : "Show sources & logic"}
+                    </button>
+                    {openDetailId === m.id ? (
+                      <SourcesAndLogicPanel
+                        answer={m.responseDetail.answer}
+                        debug={m.responseDetail.debug}
+                      />
+                    ) : null}
+                  </div>
+                ) : null}
               </div>
             ))}
-            {loading ? <div className="muted small">Thinking…</div> : null}
+            {loading ? <div className="muted small chatThinking">Thinking…</div> : null}
           </div>
 
           <form className="composer" onSubmit={onSubmit}>
@@ -134,6 +199,7 @@ export default function App() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type your question…"
+              aria-label="Message"
             />
             <button className="button" type="submit" disabled={loading}>
               Send
@@ -142,70 +208,7 @@ export default function App() {
 
           {error ? <div className="error">Error: {error}</div> : null}
         </div>
-
-        <div className="card">
-          <div className="cardTitle">Latest Response (structured)</div>
-
-          {!answer ? (
-            <div className="muted">
-              Ask a question to see the structured response sections here.
-            </div>
-          ) : (
-            <>
-              <Section title="Direct Answer">
-                <div style={{ whiteSpace: "pre-wrap" }}>{answer.direct_answer}</div>
-              </Section>
-
-              <Section title="Evidence">
-                {answer.evidence?.length ? (
-                  <ul className="list">
-                    {answer.evidence.map((x, i) => (
-                      <li key={i} className="listItem mono">
-                        {x}
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <div className="muted">No evidence lines returned.</div>
-                )}
-              </Section>
-
-              <Section title="Interpretation">
-                <div style={{ whiteSpace: "pre-wrap" }}>{answer.interpretation}</div>
-              </Section>
-
-              <Section title="Caveats">
-                {answer.caveats?.length ? (
-                  <ul className="list">
-                    {answer.caveats.map((x, i) => (
-                      <li key={i} className="listItem">
-                        {x}
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <div className="muted">No caveats returned.</div>
-                )}
-              </Section>
-
-              <Section title="Citations">
-                <CitationList citations={answer.citations} />
-              </Section>
-
-              <Section title="Debug (V1)">
-                <div className="muted small mono" style={{ whiteSpace: "pre-wrap" }}>
-                  {JSON.stringify(debug, null, 2)}
-                </div>
-              </Section>
-            </>
-          )}
-        </div>
       </main>
-
-      <footer className="footer muted small">
-        V1 note: this uses a small sample dataset + sample knowledge docs to prove the architecture.
-      </footer>
     </div>
   );
 }
-
