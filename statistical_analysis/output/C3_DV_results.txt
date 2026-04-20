@@ -1,0 +1,287 @@
+Share outliers:
+    state_name  data_year  share_nonmarried_dv
+196  Wisconsin       2021             0.728760
+197  Wisconsin       2022             0.714657
+198  Wisconsin       2023             0.697336
+130   New York       2023             0.379310
+38     Florida       2023             0.378928
+37     Florida       2022             0.359959
+131   New York       2024             0.357999
+
+Ratio outliers:
+               state_name  data_year  nonmarried_to_spouse_ratio
+35   District of Columbia       2024                    7.479592
+34   District of Columbia       2023                    6.910377
+196             Wisconsin       2021                    6.044539
+152          Pennsylvania       2021                    5.922956
+197             Wisconsin       2022                    5.609718
+33   District of Columbia       2022                    5.559846
+32   District of Columbia       2021                    5.384615
+198             Wisconsin       2023                    5.317540
+199             Wisconsin       2024                    5.289218
+129              New York       2022                    5.167611
+                             OLS Regression Results                            
+===============================================================================
+Dep. Variable:     share_nonmarried_dv   R-squared:                       0.915
+Model:                             OLS   Adj. R-squared:                  0.884
+Method:                  Least Squares   F-statistic:                     15.29
+Date:                 Mon, 20 Apr 2026   Prob (F-statistic):           3.45e-07
+Time:                         18:22:46   Log-Likelihood:                 535.39
+No. Observations:                  204   AIC:                            -962.8
+Df Residuals:                      150   BIC:                            -783.6
+Df Model:                           53                                         
+Covariance Type:               cluster                                         
+=========================================================================================================
+                                            coef    std err          z      P>|z|      [0.025      0.975]
+---------------------------------------------------------------------------------------------------------
+Intercept                                 0.4937      0.004    121.644      0.000       0.486       0.502
+C(state_name)[T.Alaska]                   0.0959   6.11e-16   1.57e+14      0.000       0.096       0.096
+C(state_name)[T.Arizona]                  0.0238   4.05e-16   5.88e+13      0.000       0.024       0.024
+C(state_name)[T.Arkansas]                 0.0906   6.51e-16   1.39e+14      0.000       0.091       0.091
+C(state_name)[T.California]               0.0928   4.18e-16   2.22e+14      0.000       0.093       0.093
+C(state_name)[T.Colorado]                 0.0744   5.31e-16    1.4e+14      0.000       0.074       0.074
+C(state_name)[T.Connecticut]              0.1081   7.69e-16   1.41e+14      0.000       0.108       0.108
+C(state_name)[T.Delaware]                 0.0281   4.69e-16   5.99e+13      0.000       0.028       0.028
+C(state_name)[T.District of Columbia]     0.1181   6.74e-16   1.75e+14      0.000       0.118       0.118
+C(state_name)[T.Florida]                 -0.0627    5.2e-16  -1.21e+14      0.000      -0.063      -0.063
+C(state_name)[T.Georgia]                  0.0122   5.65e-16   2.17e+13      0.000       0.012       0.012
+C(state_name)[T.Hawaii]                   0.1206   6.95e-16   1.74e+14      0.000       0.121       0.121
+C(state_name)[T.Idaho]                   -0.0200   5.64e-16  -3.55e+13      0.000      -0.020      -0.020
+C(state_name)[T.Illinois]                 0.0833   7.33e-16   1.14e+14      0.000       0.083       0.083
+C(state_name)[T.Indiana]                  0.0801   5.78e-16   1.39e+14      0.000       0.080       0.080
+C(state_name)[T.Iowa]                     0.1420   4.14e-16   3.43e+14      0.000       0.142       0.142
+C(state_name)[T.Kansas]                   0.0435   4.71e-16   9.24e+13      0.000       0.043       0.043
+C(state_name)[T.Kentucky]                 0.0893   4.48e-16   1.99e+14      0.000       0.089       0.089
+C(state_name)[T.Louisiana]                0.1072   5.37e-16      2e+14      0.000       0.107       0.107
+C(state_name)[T.Maine]                    0.0890   4.35e-16   2.05e+14      0.000       0.089       0.089
+C(state_name)[T.Maryland]                 0.0508   7.35e-16   6.91e+13      0.000       0.051       0.051
+C(state_name)[T.Massachusetts]            0.0769   4.52e-16    1.7e+14      0.000       0.077       0.077
+C(state_name)[T.Michigan]                 0.0084   3.95e-16   2.12e+13      0.000       0.008       0.008
+C(state_name)[T.Minnesota]                0.1235   5.09e-16   2.43e+14      0.000       0.124       0.124
+C(state_name)[T.Mississippi]              0.0989   4.88e-16   2.03e+14      0.000       0.099       0.099
+C(state_name)[T.Missouri]                 0.0681   4.55e-16    1.5e+14      0.000       0.068       0.068
+C(state_name)[T.Montana]                  0.0815    3.9e-16   2.09e+14      0.000       0.081       0.081
+C(state_name)[T.Nebraska]                 0.0873   4.13e-16   2.11e+14      0.000       0.087       0.087
+C(state_name)[T.Nevada]                   0.0802      4e-16      2e+14      0.000       0.080       0.080
+C(state_name)[T.New Hampshire]            0.0042   6.11e-16   6.81e+12      0.000       0.004       0.004
+C(state_name)[T.New Jersey]               0.1660   4.57e-16   3.63e+14      0.000       0.166       0.166
+C(state_name)[T.New Mexico]               0.0689   4.24e-16   1.62e+14      0.000       0.069       0.069
+C(state_name)[T.New York]                -0.0246   3.91e-16  -6.29e+13      0.000      -0.025      -0.025
+C(state_name)[T.North Carolina]           0.1424   9.08e-16   1.57e+14      0.000       0.142       0.142
+C(state_name)[T.North Dakota]             0.1167   5.76e-16   2.03e+14      0.000       0.117       0.117
+C(state_name)[T.Ohio]                     0.0740   4.25e-16   1.74e+14      0.000       0.074       0.074
+C(state_name)[T.Oklahoma]                 0.0427   4.22e-16   1.01e+14      0.000       0.043       0.043
+C(state_name)[T.Oregon]                   0.0911   4.39e-16   2.08e+14      0.000       0.091       0.091
+C(state_name)[T.Pennsylvania]             0.1470   3.92e-16   3.75e+14      0.000       0.147       0.147
+C(state_name)[T.Rhode Island]             0.1336   4.25e-16   3.14e+14      0.000       0.134       0.134
+C(state_name)[T.South Carolina]           0.1566   4.13e-16    3.8e+14      0.000       0.157       0.157
+C(state_name)[T.South Dakota]             0.1328   6.05e-16   2.19e+14      0.000       0.133       0.133
+C(state_name)[T.Tennessee]                0.0559   4.12e-16   1.36e+14      0.000       0.056       0.056
+C(state_name)[T.Texas]                    0.0112   3.91e-16   2.86e+13      0.000       0.011       0.011
+C(state_name)[T.Utah]                    -0.0054   4.03e-16  -1.33e+13      0.000      -0.005      -0.005
+C(state_name)[T.Vermont]                  0.0479   3.95e-16   1.21e+14      0.000       0.048       0.048
+C(state_name)[T.Virginia]                 0.0032    5.2e-16   6.14e+12      0.000       0.003       0.003
+C(state_name)[T.Washington]               0.0280    4.6e-16   6.09e+13      0.000       0.028       0.028
+C(state_name)[T.West Virginia]            0.0702   4.72e-16   1.49e+14      0.000       0.070       0.070
+C(state_name)[T.Wisconsin]                0.2332   4.22e-16   5.53e+14      0.000       0.233       0.233
+C(state_name)[T.Wyoming]                  0.0503   4.36e-16   1.15e+14      0.000       0.050       0.050
+C(data_year)[T.2022]                     -0.0216      0.005     -4.687      0.000      -0.031      -0.013
+C(data_year)[T.2023]                     -0.0082      0.002     -3.380      0.001      -0.013      -0.003
+C(data_year)[T.2024]                     -0.0149      0.002     -6.653      0.000      -0.019      -0.011
+post_2022                                -0.0231      0.004     -5.631      0.000      -0.031      -0.015
+==============================================================================
+Omnibus:                       41.750   Durbin-Watson:                   1.764
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              384.098
+Skew:                           0.357   Prob(JB):                     3.93e-84
+Kurtosis:                       9.684   Cond. No.                     3.47e+15
+==============================================================================
+
+Notes:
+[1] Standard Errors are robust to cluster correlation (cluster)
+[2] The smallest eigenvalue is 2.62e-29. This might indicate that there are
+strong multicollinearity problems or that the design matrix is singular.
+
+Q1 result:
+post_2022 coefficient: -0.023087
+p-value: 0.000000
+95% CI: [-0.031122, -0.015052]
+post_2022                    0         1  change_share
+state_name                                            
+California            0.535714  0.574003      0.038288
+Alabama               0.448367  0.477812      0.029445
+Hawaii                0.576869  0.605256      0.028387
+Alaska                0.554931  0.579016      0.024085
+Wyoming               0.518809  0.536358      0.017549
+District of Columbia  0.580645  0.588626      0.007980
+Maryland              0.517790  0.514745     -0.003045
+Arizona               0.498518  0.493436     -0.005082
+Louisiana             0.584795  0.575751     -0.009044
+Nebraska              0.571224  0.561263     -0.009961
+South Carolina        0.634487  0.624261     -0.010227
+Idaho                 0.462849  0.445761     -0.017088
+Kansas                0.521427  0.504137     -0.017290
+Arkansas              0.576758  0.556826     -0.019932
+South Dakota          0.614834  0.591957     -0.022877
+post_2022            0         1  change_share
+state_name                                    
+New York      0.566869  0.368655     -0.198214
+Vermont       0.600000  0.488872     -0.111128
+Florida       0.485294  0.393877     -0.091417
+Pennsylvania  0.673761  0.598339     -0.075423
+New Jersey    0.684293  0.612555     -0.071739
+Kentucky      0.601260  0.531762     -0.069498
+Delaware      0.540080  0.477495     -0.062586
+Maine         0.600989  0.538678     -0.062312
+Ohio          0.582636  0.521496     -0.061141
+Connecticut   0.611148  0.556649     -0.054499
+Tennessee     0.559892  0.507748     -0.052143
+Georgia       0.518973  0.466834     -0.052139
+Indiana       0.580020  0.532173     -0.047847
+Iowa          0.643620  0.596174     -0.047446
+Minnesota     0.625014  0.579058     -0.045956
+count    51.000000
+mean     -0.034630
+std       0.037624
+min      -0.198214
+25%      -0.047646
+50%      -0.032796
+75%      -0.018611
+max       0.038288
+Name: change_share, dtype: float64
+States with increase: 6
+States with decrease: 45
+Total states with usable data: 51
+Paired t-test: t = -6.5732, p = 0.0000
+                                OLS Regression Results                                
+======================================================================================
+Dep. Variable:     nonmarried_to_spouse_ratio   R-squared:                       0.899
+Model:                                    OLS   Adj. R-squared:                  0.863
+Method:                         Least Squares   F-statistic:                     11.04
+Date:                        Mon, 20 Apr 2026   Prob (F-statistic):           1.13e-05
+Time:                                18:22:46   Log-Likelihood:                -40.486
+No. Observations:                         203   AIC:                             189.0
+Df Residuals:                             149   BIC:                             367.9
+Df Model:                                  53                                         
+Covariance Type:                      cluster                                         
+=========================================================================================================
+                                            coef    std err          z      P>|z|      [0.025      0.975]
+---------------------------------------------------------------------------------------------------------
+Intercept                                 2.4413      0.056     43.472      0.000       2.331       2.551
+C(state_name)[T.Alaska]                   1.0653   8.77e-15   1.21e+14      0.000       1.065       1.065
+C(state_name)[T.Arizona]                  0.2510   9.67e-15   2.59e+13      0.000       0.251       0.251
+C(state_name)[T.Arkansas]                 0.6225   9.02e-15    6.9e+13      0.000       0.622       0.622
+C(state_name)[T.California]              -0.0253   8.43e-15  -2.99e+12      0.000      -0.025      -0.025
+C(state_name)[T.Colorado]                -0.1746   9.53e-15  -1.83e+13      0.000      -0.175      -0.175
+C(state_name)[T.Connecticut]              0.9878   7.08e-15    1.4e+14      0.000       0.988       0.988
+C(state_name)[T.Delaware]                 0.7622   9.76e-15   7.81e+13      0.000       0.762       0.762
+C(state_name)[T.District of Columbia]     4.0625   7.05e-15   5.76e+14      0.000       4.062       4.062
+C(state_name)[T.Florida]                 -0.7936   7.09e-15  -1.12e+14      0.000      -0.794      -0.794
+C(state_name)[T.Georgia]                 -0.0483   7.36e-15  -6.56e+12      0.000      -0.048      -0.048
+C(state_name)[T.Hawaii]                   0.4116   1.03e-14   4.02e+13      0.000       0.412       0.412
+C(state_name)[T.Idaho]                   -0.8064   9.79e-15  -8.24e+13      0.000      -0.806      -0.806
+C(state_name)[T.Illinois]                 1.0807   7.23e-15   1.49e+14      0.000       1.081       1.081
+C(state_name)[T.Indiana]                  0.4398   7.28e-15   6.04e+13      0.000       0.440       0.440
+C(state_name)[T.Iowa]                     1.0339   7.96e-15    1.3e+14      0.000       1.034       1.034
+C(state_name)[T.Kansas]                   0.1497   7.52e-15   1.99e+13      0.000       0.150       0.150
+C(state_name)[T.Kentucky]                 0.4383   7.71e-15   5.68e+13      0.000       0.438       0.438
+C(state_name)[T.Louisiana]                0.9256   7.32e-15   1.27e+14      0.000       0.926       0.926
+C(state_name)[T.Maine]                    0.4051   7.06e-15   5.74e+13      0.000       0.405       0.405
+C(state_name)[T.Maryland]                 0.3918   7.14e-15   5.49e+13      0.000       0.392       0.392
+C(state_name)[T.Massachusetts]            1.0130   7.18e-15   1.41e+14      0.000       1.013       1.013
+C(state_name)[T.Michigan]                 0.1480   7.27e-15   2.03e+13      0.000       0.148       0.148
+C(state_name)[T.Minnesota]                1.3152   9.52e-15   1.38e+14      0.000       1.315       1.315
+C(state_name)[T.Mississippi]              0.4299   7.12e-15   6.03e+13      0.000       0.430       0.430
+C(state_name)[T.Missouri]                 0.3831   7.66e-15      5e+13      0.000       0.383       0.383
+C(state_name)[T.Montana]                  0.6437   8.56e-15   7.52e+13      0.000       0.644       0.644
+C(state_name)[T.Nebraska]                 0.4707    7.9e-15   5.95e+13      0.000       0.471       0.471
+C(state_name)[T.Nevada]                   0.5677   7.36e-15   7.71e+13      0.000       0.568       0.568
+C(state_name)[T.New Hampshire]            0.0229   7.78e-15   2.95e+12      0.000       0.023       0.023
+C(state_name)[T.New Jersey]               1.2510   8.59e-15   1.46e+14      0.000       1.251       1.251
+C(state_name)[T.New Mexico]               1.1498   8.24e-15   1.39e+14      0.000       1.150       1.150
+C(state_name)[T.New York]                 1.1039      0.019     58.973      0.000       1.067       1.141
+C(state_name)[T.North Carolina]           1.4663   7.12e-15   2.06e+14      0.000       1.466       1.466
+C(state_name)[T.North Dakota]             0.9670   1.05e-14   9.19e+13      0.000       0.967       0.967
+C(state_name)[T.Ohio]                     1.1240   7.19e-15   1.56e+14      0.000       1.124       1.124
+C(state_name)[T.Oklahoma]                 0.0020   7.66e-15   2.59e+11      0.000       0.002       0.002
+C(state_name)[T.Oregon]                   0.7054   8.28e-15   8.52e+13      0.000       0.705       0.705
+C(state_name)[T.Pennsylvania]             2.1232   7.29e-15   2.91e+14      0.000       2.123       2.123
+C(state_name)[T.Rhode Island]             1.3612   7.11e-15   1.92e+14      0.000       1.361       1.361
+C(state_name)[T.South Carolina]           1.3858    7.6e-15   1.82e+14      0.000       1.386       1.386
+C(state_name)[T.South Dakota]             1.8749   9.57e-15   1.96e+14      0.000       1.875       1.875
+C(state_name)[T.Tennessee]                0.4207   7.75e-15   5.43e+13      0.000       0.421       0.421
+C(state_name)[T.Texas]                   -0.1993   7.76e-15  -2.57e+13      0.000      -0.199      -0.199
+C(state_name)[T.Utah]                    -0.5532   8.18e-15  -6.76e+13      0.000      -0.553      -0.553
+C(state_name)[T.Vermont]                  0.0440   7.52e-15   5.85e+12      0.000       0.044       0.044
+C(state_name)[T.Virginia]                -0.2478   7.28e-15   -3.4e+13      0.000      -0.248      -0.248
+C(state_name)[T.Washington]               0.1436    8.4e-15   1.71e+13      0.000       0.144       0.144
+C(state_name)[T.West Virginia]            0.4560   7.25e-15   6.29e+13      0.000       0.456       0.456
+C(state_name)[T.Wisconsin]                3.2941   7.39e-15   4.45e+14      0.000       3.294       3.294
+C(state_name)[T.Wyoming]                 -0.1074   7.79e-15  -1.38e+13      0.000      -0.107      -0.107
+C(data_year)[T.2022]                     -0.1920      0.080     -2.406      0.016      -0.348      -0.036
+C(data_year)[T.2023]                     -0.0710      0.034     -2.101      0.036      -0.137      -0.005
+C(data_year)[T.2024]                     -0.0918      0.035     -2.601      0.009      -0.161      -0.023
+post_2022                                -0.1629      0.058     -2.803      0.005      -0.277      -0.049
+==============================================================================
+Omnibus:                       90.562   Durbin-Watson:                   2.115
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             1075.518
+Skew:                           1.335   Prob(JB):                    2.85e-234
+Kurtosis:                      13.955   Cond. No.                     2.96e+15
+==============================================================================
+
+Notes:
+[1] Standard Errors are robust to cluster correlation (cluster)
+[2] The smallest eigenvalue is 3.59e-29. This might indicate that there are
+strong multicollinearity problems or that the design matrix is singular.
+
+Q3 ratio regression result:
+post_2022 coefficient: -0.162850
+p-value: 0.005055
+95% CI: [-0.276701, -0.048999]
+post_2022                    0         1  change_ratio
+state_name                                            
+District of Columbia  5.384615  7.194985      1.810369
+California            1.813187  2.394778      0.581591
+Alaska                3.184751  3.620028      0.435278
+Nebraska              2.578266  2.955854      0.377588
+Hawaii                2.534694  2.851452      0.316758
+Wyoming               2.088328  2.280104      0.191776
+Maryland              2.487265  2.642531      0.155265
+Louisiana             3.138318  3.278010      0.139691
+Florida               1.434783  1.566623      0.131840
+Missouri              2.610966  2.680559      0.069593
+Kansas                2.360681  2.382971      0.022290
+South Carolina        3.668640  3.682580      0.013939
+Arizona               2.522504  2.525676      0.003172
+Oklahoma              2.326935  2.278467     -0.048467
+Arkansas              2.969890  2.905627     -0.064263
+post_2022              0         1  change_ratio
+state_name                                      
+Pennsylvania    5.922956  3.942801     -1.980155
+Vermont         3.305732  2.002999     -1.302733
+Minnesota       4.153214  3.249103     -0.904110
+Wisconsin       6.044539  5.303379     -0.741159
+Ohio            3.791913  3.151495     -0.640417
+Iowa            3.776286  3.144732     -0.631554
+New Jersey      3.987400  3.359525     -0.627875
+Maine           3.082452  2.523457     -0.558995
+Connecticut     3.570328  3.014077     -0.556251
+Massachusetts   3.635100  3.115275     -0.519825
+Kentucky        2.997269  2.518421     -0.478848
+North Carolina  4.015230  3.572451     -0.442780
+North Dakota    3.621622  3.190088     -0.431534
+Rhode Island    3.883905  3.483474     -0.400431
+Tennessee       2.938763  2.550442     -0.388320
+count    50.000000
+mean     -0.226131
+std       0.512981
+min      -1.980155
+25%      -0.423758
+50%      -0.240315
+75%      -0.009738
+max       1.810369
+Name: change_ratio, dtype: float64
+States with ratio increase: 13
+States with ratio decrease: 37
+Total states with usable data: 50
+Paired t-test: t = -3.1170, p = 0.0031
+Wilcoxon signed-rank test: W = 245.0000, p = 0.0001
