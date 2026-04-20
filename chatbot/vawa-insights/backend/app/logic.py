@@ -7,6 +7,8 @@ Split into multiple files later only when this file grows hard to navigate.
 from __future__ import annotations
 
 import csv
+import json
+import os
 import re
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -617,6 +619,7 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
     tools_used: List[Dict[str, Any]] = []
     docs_retrieved: List[Dict[str, Any]] = []
     citations: List[Dict[str, Any]] = []
+    llm_debug: Dict[str, Any] = {"enabled": False}
 
     metric = detect_metric(message)
     years = extract_years(message)
@@ -750,6 +753,90 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
     if interpretation == "":
         interpretation = "Interpretation is limited in V1. If you want, ask for caveats/definitions and I’ll pull from the methodology documents."
 
+    # ---- Optional LLM writer step (minimal integration) ----
+    # If OPENAI_API_KEY is not set, we keep deterministic V1 behavior.
+    api_key = (os.environ.get("OPENAI_API_KEY") or "").strip()
+    if api_key:
+        try:
+            # Imported lazily so the backend still runs without the dependency
+            # if the user doesn't install it.
+            from openai import OpenAI  # type: ignore
+
+            client = OpenAI(api_key=api_key)
+            llm_debug = {"enabled": True, "model": "gpt-4o-mini", "used": False}
+
+            # Keep prompt small: we provide the user message, the computed evidence,
+            # and short excerpts from retrieved chunks.
+            excerpt_chunks: List[Dict[str, Any]] = []
+            if "chunks" in locals() and isinstance(locals().get("chunks"), list):
+                for ch in locals()["chunks"][:4]:
+                    txt = (ch.text or "").strip().replace("\n", " ")
+                    if len(txt) > 500:
+                        txt = txt[:500].rstrip() + "…"
+                    excerpt_chunks.append(
+                        {
+                            "chunk_id": ch.chunk_id,
+                            "citation_id": ch.metadata.get("citation_id", ch.chunk_id),
+                            "title": ch.metadata.get("title", ch.metadata.get("source_file", "")),
+                            "text_excerpt": txt,
+                        }
+                    )
+
+            writer_payload = {
+                "user_message": message,
+                "intent": intent,
+                "direct_answer_so_far": direct_answer,
+                "evidence_lines": evidence_lines,
+                "caveats": caveats,
+                "retrieved_chunks": excerpt_chunks,
+                "citations": citations,
+                "constraints": [
+                    "Do not invent numbers. If you include any numeric value, it must appear verbatim in evidence_lines or retrieved_chunks.",
+                    "Do not claim causation. Use associational language unless the retrieved text explicitly states causal identification (rare).",
+                    "If you reference a knowledge-base statement, include its citation_id in parentheses.",
+                    "Keep it concise (2–6 sentences).",
+                ],
+            }
+
+            system = (
+                "You are a careful analyst writing a short, grounded response for a VAWA insights prototype. "
+                "You must follow the constraints exactly."
+            )
+
+            resp = client.chat.completions.create(
+                model="gpt-4o-mini",
+                temperature=0,
+                messages=[
+                    {"role": "system", "content": system},
+                    {
+                        "role": "user",
+                        "content": "Write an improved direct answer + interpretation as JSON with keys "
+                        '"direct_answer" and "interpretation" only.\n\nINPUT:\n'
+                        + json.dumps(writer_payload, ensure_ascii=False),
+                    },
+                ],
+            )
+
+            content = (resp.choices[0].message.content or "").strip()
+            # Robust-ish JSON extraction (model should return pure JSON, but guard anyway)
+            start = content.find("{")
+            end = content.rfind("}")
+            if start != -1 and end != -1 and end > start:
+                content = content[start : end + 1]
+            out = json.loads(content)
+            if isinstance(out, dict):
+                da = out.get("direct_answer")
+                interp = out.get("interpretation")
+                if isinstance(da, str) and da.strip():
+                    direct_answer = da.strip()
+                    llm_debug["used"] = True
+                if isinstance(interp, str) and interp.strip():
+                    interpretation = interp.strip()
+                    llm_debug["used"] = True
+        except Exception:
+            # Fail closed: keep deterministic V1 output if the LLM step fails.
+            llm_debug = {"enabled": True, "model": "gpt-4o-mini", "used": False, "error": "llm_call_failed"}
+
     return ChatResponse(
         answer={
             "direct_answer": direct_answer,
@@ -762,5 +849,6 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
             "intent": intent,
             "tools_used": tools_used,
             "docs_retrieved": docs_retrieved,
+            "llm": llm_debug,
         },
     )

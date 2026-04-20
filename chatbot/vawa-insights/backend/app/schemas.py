@@ -23,6 +23,7 @@ class DebugPayload(BaseModel):
     intent: str
     tools_used: List[Dict[str, Any]] = Field(default_factory=list)
     docs_retrieved: List[Dict[str, Any]] = Field(default_factory=list)
+    llm: Dict[str, Any] = Field(default_factory=dict)
 
 
 class ChatResponse(BaseModel):
