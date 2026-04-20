@@ -9,6 +9,7 @@ from __future__ import annotations
 import csv
 import json
 import os
+import ast
 import re
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -24,6 +25,12 @@ DATA_DIR = Path(__file__).resolve().parent / "data"
 
 METRICS_FILE = DATA_DIR / "metrics_sample.csv"
 RISK_COMPONENTS_FILE = DATA_DIR / "risk_components_sample.csv"
+
+# EDA outputs (kept outside chatbot to keep backend small).
+REPO_ROOT = Path(__file__).resolve().parents[4]
+EDA_OUTPUT_DIR = REPO_ROOT / "EDA" / "output"
+POLICY_VARIABLE_LEVEL_FILE = EDA_OUTPUT_DIR / "policy_variable_level_summary.csv"
+POLICY_STATE_LEVEL_CHANGES_FILE = EDA_OUTPUT_DIR / "policy_state_level_changes.csv"
 
 METRIC_COLUMNS = [
     "dv_rate",
@@ -136,6 +143,169 @@ def load_risk_components_rows() -> List[RiskComponentRow]:
     _CACHE["risk_rows"] = rows
     return rows
 
+
+# ---------------------------------------------------------------------------
+# Policy stats tools (pre vs post 2022) from EDA/output
+# ---------------------------------------------------------------------------
+
+POLICY_VARIABLE_ALIASES: Dict[str, str] = {
+    "total incidents": "total_incidents",
+    "incidents": "total_incidents",
+    "domestic violence": "dv_total",
+    "dv total": "dv_total",
+    "sexual assaults": "sex_assaults",
+    "sexual assault": "sex_assaults",
+    "firearm involvement": "involving_firearm",
+    "gun involvement": "involving_firearm",
+    "nonmarried partner": "victim_offender_nonmarried_partner",
+    "unmarried partner": "victim_offender_nonmarried_partner",
+    "dating partner": "victim_offender_nonmarried_partner",
+    "spouse": "victim_offender_rel_spouse",
+    "near schools": "near_school",
+    "near school": "near_school",
+    "tribal lands": "on_tribal_lands",
+    "on tribal lands": "on_tribal_lands",
+}
+
+
+def _load_policy_rows(path: Path, cache_key: str) -> List[Dict[str, str]]:
+    if cache_key in _CACHE:
+        return _CACHE[cache_key]
+    if not path.exists():
+        _CACHE[cache_key] = []
+        return []
+    rows = _read_csv(path)
+    _CACHE[cache_key] = rows
+    return rows
+
+
+def list_policy_variables() -> List[str]:
+    rows = _load_policy_rows(POLICY_VARIABLE_LEVEL_FILE, "policy_variable_level_rows")
+    vars_ = sorted({(r.get("variable") or "").strip() for r in rows if (r.get("variable") or "").strip()})
+    return vars_
+
+
+def detect_policy_variable(text: str) -> Optional[str]:
+    t = (text or "").lower()
+    for phrase, var in POLICY_VARIABLE_ALIASES.items():
+        if phrase in t:
+            return var
+    for v in list_policy_variables():
+        if v.lower() in t:
+            return v
+    return None
+
+
+def _as_float(x: str) -> Optional[float]:
+    try:
+        return float((x or "").strip())
+    except Exception:
+        return None
+
+
+def _as_int(x: str) -> Optional[int]:
+    try:
+        return int(float((x or "").strip()))
+    except Exception:
+        return None
+
+
+def get_policy_variable_summary(variable: str) -> Dict[str, Any]:
+    v = (variable or "").strip()
+    if not v:
+        return {"ok": False, "error": "Missing variable.", "data": None}
+
+    rows = _load_policy_rows(POLICY_VARIABLE_LEVEL_FILE, "policy_variable_level_rows")
+    match = next((r for r in rows if (r.get("variable") or "").strip() == v), None)
+    if not match:
+        return {"ok": False, "error": f"No policy summary found for variable '{v}'.", "data": None}
+
+    def parse_top_list(s: str) -> List[Dict[str, Any]]:
+        s = (s or "").strip()
+        if not s:
+            return []
+        try:
+            val = ast.literal_eval(s)
+            return val if isinstance(val, list) else []
+        except Exception:
+            return []
+
+    data = {
+        "variable": v,
+        "variable_type": (match.get("variable_type") or "").strip(),
+        "states_with_valid_percent_change": _as_int(match.get("states_with_valid_percent_change", "")),
+        "mean_absolute_change": _as_float(match.get("mean_absolute_change", "")),
+        "median_absolute_change": _as_float(match.get("median_absolute_change", "")),
+        "mean_percent_change": _as_float(match.get("mean_percent_change", "")),
+        "median_percent_change": _as_float(match.get("median_percent_change", "")),
+        "states_increased": _as_int(match.get("states_increased", "")),
+        "states_decreased": _as_int(match.get("states_decreased", "")),
+        "states_no_change": _as_int(match.get("states_no_change", "")),
+        "top_5_largest_decreases": parse_top_list(match.get("top_5_largest_decreases", "")),
+        "top_5_largest_increases": parse_top_list(match.get("top_5_largest_increases", "")),
+        "source_file": POLICY_VARIABLE_LEVEL_FILE.name,
+    }
+
+    citation = {
+        "citation_type": "structured_data",
+        "source_table": POLICY_VARIABLE_LEVEL_FILE.name,
+        "variable": v,
+        "periods": ["pre_2022", "post_2022_avg"],
+    }
+
+    return {"ok": True, "data": data, "citation": citation}
+
+
+def rank_states_by_policy_change(variable: str, direction: Literal["increase", "decrease"], top_n: int = 5, *, min_pre_value: float) -> Dict[str, Any]:
+    v = (variable or "").strip()
+    if not v:
+        return {"ok": False, "error": "Missing variable.", "data": None}
+    top_n = max(1, min(int(top_n or 5), 20))
+
+    rows = _load_policy_rows(POLICY_STATE_LEVEL_CHANGES_FILE, "policy_state_level_changes_rows")
+    filtered = [r for r in rows if (r.get("variable") or "").strip() == v]
+    if not filtered:
+        return {"ok": False, "error": f"No rows found for variable '{v}'.", "data": None}
+
+    out = []
+    for r in filtered:
+        pc = _as_float(r.get("percent_change", ""))
+        if pc is None:
+            continue
+        pre = _as_float(r.get("pre_2022", ""))
+        if pre is not None and pre < float(min_pre_value):
+            continue
+        out.append(
+            {
+                "state": (r.get("state") or "").strip(),
+                "percent_change": pc,
+                "absolute_change": _as_float(r.get("absolute_change", "")),
+                "pre_2022": pre,
+                "post_2022_avg": _as_float(r.get("post_2022_avg", "")),
+                "direction": (r.get("direction") or "").strip(),
+            }
+        )
+
+    if not out:
+        return {"ok": False, "error": f"No numeric percent_change values found for variable '{v}'.", "data": None}
+
+    reverse = direction == "increase"
+    out.sort(key=lambda x: x["percent_change"], reverse=reverse)
+    ranked = out[:top_n]
+    for i, r in enumerate(ranked, start=1):
+        r["rank"] = i
+
+    citation = {
+        "citation_type": "structured_data",
+        "source_table": POLICY_STATE_LEVEL_CHANGES_FILE.name,
+        "variable": v,
+        "sort": f"percent_change_{direction}",
+        "top_n": top_n,
+        "filters": {"min_pre_value": min_pre_value},
+        "periods": ["pre_2022", "post_2022_avg"],
+    }
+
+    return {"ok": True, "data": {"variable": v, "direction": direction, "ranked": ranked}, "citation": citation}
 
 def find_geo_ids_by_name(name: str) -> List[Tuple[str, str, str]]:
     name_norm = (name or "").strip().lower()
@@ -496,41 +666,112 @@ def _chunk_markdown(body: str) -> List[str]:
 
 
 def retrieve(query: str, top_k: int = 4) -> List[RetrievedChunk]:
-    q_tokens = set(_tokenize(query))
-    if not q_tokens:
+    """
+    Retrieve KB chunks for a query.
+
+    Default: keyword-overlap ranking.
+    If OPENAI_API_KEY is set: semantic ranking using embeddings (more conversational).
+    """
+    query = (query or "").strip()
+    if not query:
         return []
 
-    results: List[RetrievedChunk] = []
+    api_key = (os.environ.get("OPENAI_API_KEY") or "").strip()
+    if api_key:
+        try:
+            return _retrieve_semantic(query, top_k=top_k, api_key=api_key)
+        except Exception:
+            # Fail closed to keyword retrieval
+            pass
+    return _retrieve_keyword(query, top_k=top_k)
+
+
+def _kb_all_chunks() -> List[RetrievedChunk]:
+    chunks_out: List[RetrievedChunk] = []
     for path in sorted(KB_DIR.glob("*.md")):
         md_text = path.read_text(encoding="utf-8")
         meta, body = _parse_frontmatter(md_text)
         chunks = _chunk_markdown(body)
         for idx, chunk_text in enumerate(chunks):
-            c_tokens = set(_tokenize(chunk_text))
-            overlap = q_tokens.intersection(c_tokens)
-            if not overlap:
-                continue
-            bonus = 0.0
-            tags = meta.get("metric_tags", [])
-            if isinstance(tags, list):
-                for t in tags:
-                    if str(t).lower() in q_tokens:
-                        bonus += 0.25
-            score = float(len(overlap)) + bonus
-            results.append(
+            chunks_out.append(
                 RetrievedChunk(
                     chunk_id=f"{path.stem}::p{idx+1}",
                     text=chunk_text,
-                    score=score,
-                    metadata={
-                        **meta,
-                        "source_file": path.name,
-                    },
+                    score=0.0,
+                    metadata={**meta, "source_file": path.name},
                 )
             )
+    return chunks_out
+
+
+def _retrieve_keyword(query: str, top_k: int = 4) -> List[RetrievedChunk]:
+    q_tokens = set(_tokenize(query))
+    if not q_tokens:
+        return []
+
+    results: List[RetrievedChunk] = []
+    for ch in _kb_all_chunks():
+        c_tokens = set(_tokenize(ch.text))
+        overlap = q_tokens.intersection(c_tokens)
+        if not overlap:
+            continue
+        bonus = 0.0
+        tags = ch.metadata.get("metric_tags", [])
+        if isinstance(tags, list):
+            for t in tags:
+                if str(t).lower() in q_tokens:
+                    bonus += 0.25
+        score = float(len(overlap)) + bonus
+        results.append(RetrievedChunk(chunk_id=ch.chunk_id, text=ch.text, score=score, metadata=ch.metadata))
 
     results.sort(key=lambda r: r.score, reverse=True)
     return results[: max(0, top_k)]
+
+
+def _embed_texts_openai(texts: List[str], *, api_key: str, model: str = "text-embedding-3-small") -> List[List[float]]:
+    from openai import OpenAI  # type: ignore
+
+    client = OpenAI(api_key=api_key)
+    resp = client.embeddings.create(model=model, input=texts)
+    return [d.embedding for d in resp.data]
+
+
+def _retrieve_semantic(query: str, top_k: int, api_key: str) -> List[RetrievedChunk]:
+    import numpy as np
+
+    cache_key = "kb_semantic_index_v1"
+    index = _CACHE.get(cache_key)
+    if not index:
+        chunks = _kb_all_chunks()
+        embs = _embed_texts_openai([c.text for c in chunks], api_key=api_key)
+        mat = np.array(embs, dtype=np.float32)
+        norms = np.linalg.norm(mat, axis=1, keepdims=True)
+        norms[norms == 0] = 1.0
+        mat = mat / norms
+        index = {"chunks": chunks, "mat": mat}
+        _CACHE[cache_key] = index
+
+    chunks = index["chunks"]
+    mat = index["mat"]
+
+    q_emb = _embed_texts_openai([query], api_key=api_key)[0]
+    q = np.array(q_emb, dtype=np.float32)
+    qn = np.linalg.norm(q)
+    if not np.isfinite(qn) or qn == 0:
+        return _retrieve_keyword(query, top_k=top_k)
+    q = q / qn
+
+    sims = mat @ q
+    k = max(0, int(top_k))
+    if k == 0 or len(chunks) == 0:
+        return []
+    idxs = np.argsort(-sims)[:k]
+
+    out: List[RetrievedChunk] = []
+    for i in idxs:
+        ch = chunks[int(i)]
+        out.append(RetrievedChunk(chunk_id=ch.chunk_id, text=ch.text, score=float(sims[int(i)]), metadata=ch.metadata))
+    return out
 
 
 # ---------------------------------------------------------------------------
@@ -631,9 +872,83 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
     direct_answer = ""
 
     descriptive_caveat = "These are descriptive patterns from observed data and do not, by themselves, establish causation."
+    policy_caveat = "Pre/post-2022 comparisons are descriptive; changes may reflect reporting/coverage shifts and do not, by themselves, establish policy effects."
+
+    policy_var = detect_policy_variable(message)
+    asks_policy_change = any(
+        k in message.lower()
+        for k in [
+            "post_2022",
+            "post-2022",
+            "pre_2022",
+            "pre-2022",
+            "percent change",
+            "% change",
+            "change after 2022",
+            "after 2022",
+            "before 2022",
+            "pre vs",
+            "pre/post",
+        ]
+    )
 
     if intent in {"data_only", "data_and_docs"}:
-        if "risk profile" in message.lower() or (metric == "risk_index" and "profile" in message.lower()):
+        policy_handled = False
+        if policy_var and asks_policy_change:
+            if any(k in message.lower() for k in ["highest", "top", "rank", "most"]) and "state" in message.lower():
+                dirn: Literal["increase", "decrease"] = "increase"
+                if any(k in message.lower() for k in ["decrease", "decline", "dropped", "lowest"]):
+                    dirn = "decrease"
+
+                # Baseline filter for counts to avoid extreme percent-change blowups.
+                vmeta = get_policy_variable_summary(policy_var)
+                vtype = ""
+                if vmeta.get("ok"):
+                    vtype = str(vmeta.get("data", {}).get("variable_type", "")).strip().lower()
+                min_pre = 500.0 if vtype == "count" else 0.01
+
+                tool_out = rank_states_by_policy_change(policy_var, dirn, top_n=5, min_pre_value=min_pre)
+                tools_used.append({"tool": "rank_states_by_policy_change", "args": {"variable": policy_var, "direction": dirn, "top_n": 5, "min_pre_value": min_pre}, "ok": tool_out.get("ok")})
+                if tool_out.get("ok"):
+                    ranked = tool_out["data"]["ranked"]
+                    direct_answer = (
+                        f"Top states by percent change in {policy_var} ({dirn}, pre vs post 2022). "
+                        f"(Filtered to stable baselines: pre_2022 ≥ {min_pre:g}): "
+                        + ", ".join([f"{r['state']} ({r['percent_change']:.2%})" for r in ranked])
+                    )
+                    evidence_lines.append(f"Variable: {policy_var} (pre_2022 vs post_2022_avg).")
+                    for r in ranked:
+                        evidence_lines.append(
+                            f"- #{r['rank']} {r['state']}: percent_change={r['percent_change']:.2%}, absolute_change={r.get('absolute_change')}, pre_2022={r.get('pre_2022')}, post_2022_avg={r.get('post_2022_avg')}"
+                        )
+                    citations.append(tool_out["citation"])
+                    caveats.append(policy_caveat)
+                else:
+                    direct_answer = f"I don’t have enough policy-summary data to rank that. ({tool_out.get('error')})"
+                policy_handled = True
+            else:
+                tool_out = get_policy_variable_summary(policy_var)
+                tools_used.append({"tool": "get_policy_variable_summary", "args": {"variable": policy_var}, "ok": tool_out.get("ok")})
+                if tool_out.get("ok"):
+                    d = tool_out["data"]
+                    mpc = d.get("mean_percent_change")
+                    medpc = d.get("median_percent_change")
+                    inc = d.get("states_increased")
+                    dec = d.get("states_decreased")
+                    direct_answer = f"Across states, {policy_var} changed post-2022 vs pre-2022 (summary)."
+                    if mpc is not None:
+                        evidence_lines.append(f"Mean percent change: {float(mpc):.2%}")
+                    if medpc is not None:
+                        evidence_lines.append(f"Median percent change: {float(medpc):.2%}")
+                    if inc is not None and dec is not None:
+                        evidence_lines.append(f"States increased: {inc}, decreased: {dec}")
+                    citations.append(tool_out["citation"])
+                    caveats.append(policy_caveat)
+                else:
+                    direct_answer = f"I don’t have a policy-summary entry for that variable yet. ({tool_out.get('error')})"
+                policy_handled = True
+
+        if not policy_handled and ("risk profile" in message.lower() or (metric == "risk_index" and "profile" in message.lower())):
             if not geo_names or not years:
                 direct_answer = "I need a geography and a year to generate a risk profile (e.g., “New Mexico in 2024”)."
             else:
@@ -654,7 +969,7 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
                 else:
                     direct_answer = f"I don’t have enough structured data to compute that risk profile. ({tool_out.get('error')})"
 
-        elif any(k in message.lower() for k in ["highest", "top", "rank"]) and ("state" in message.lower() or "states" in message.lower()):
+        elif not policy_handled and any(k in message.lower() for k in ["highest", "top", "rank"]) and ("state" in message.lower() or "states" in message.lower()):
             if metric is None:
                 direct_answer = "Which metric should I rank (e.g., dv_rate, firearm_share)?"
             else:
@@ -672,7 +987,7 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
                 else:
                     direct_answer = f"I don’t have enough structured data to rank that. ({tool_out.get('error')})"
 
-        elif "compare" in message.lower() and len(geo_names) >= 2 and metric is not None and len(years) >= 1:
+        elif not policy_handled and "compare" in message.lower() and len(geo_names) >= 2 and metric is not None and len(years) >= 1:
             geo_a = resolve_geo(geo_names[0])
             geo_b = resolve_geo(geo_names[1])
             start_year = str(min(years))
@@ -694,7 +1009,7 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
             else:
                 direct_answer = f"I don’t have enough structured data to compare those geographies. ({tool_out.get('error')})"
 
-        elif metric is not None and geo_names:
+        elif not policy_handled and metric is not None and geo_names:
             geo = resolve_geo(geo_names[0])
             tool_out = get_metric_timeseries(geo or {}, metric, frequency="year")
             tools_used.append({"tool": "get_metric_timeseries", "args": {"geo": geo, "metric": metric, "frequency": "year"}, "ok": tool_out.get("ok")})
@@ -708,7 +1023,8 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
                 direct_answer = f"I don’t have enough structured data for that request. ({tool_out.get('error')})"
 
         else:
-            direct_answer = "I couldn’t identify a supported metric and geography to answer with numbers. Try including a metric (e.g., dv_rate) and a place (e.g., California)."
+            if not policy_handled:
+                direct_answer = "I couldn’t identify a supported metric and geography to answer with numbers. Try including a metric (e.g., dv_rate) and a place (e.g., California)."
 
     if intent in {"docs_only", "data_and_docs"}:
         chunks = retrieve(message, top_k=4)
