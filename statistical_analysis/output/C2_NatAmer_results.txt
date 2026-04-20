@@ -1,0 +1,132 @@
+50
+[np.int64(2021), np.int64(2023), np.int64(2024)]
+   nat_amer_victim_share  nat_amer_pop  nat_amer_overrepresentation_ratio
+0               0.000861      0.003179                           0.270871
+2               0.001885      0.002565                           0.734988
+3               0.001277      0.003164                           0.403597
+4               0.608191      0.134611                           4.518127
+6               0.592499      0.130187                           4.551137
+Q1 overall means:
+post_2022
+0    0.047816
+1    0.045486
+Name: nat_amer_victim_share, dtype: float64
+
+Q1 paired t-test:
+TtestResult(statistic=np.float64(-1.4142813892470503), pvalue=np.float64(0.16360221409611775), df=np.int64(49))
+
+Q1 state-level change summary:
+count    50.000000
+mean     -0.002330
+std       0.011651
+min      -0.053380
+25%      -0.000383
+50%       0.000099
+75%       0.000544
+max       0.024642
+Name: change, dtype: float64
+States with increase: 30/50
+Q2 binomial test:
+BinomTestResult(k=30, n=50, alternative='two-sided', statistic=0.6, pvalue=0.20263875106454066)
+
+Largest increases:
+state_name
+Wyoming           0.024642
+Alaska            0.007012
+Kansas            0.004065
+Idaho             0.003094
+Maine             0.001997
+North Carolina    0.001573
+Connecticut       0.001366
+Vermont           0.001300
+Alabama           0.000720
+Mississippi       0.000679
+Name: change, dtype: float64
+
+Largest decreases:
+state_name
+Arizona        -0.053380
+New Mexico     -0.047193
+Montana        -0.027558
+South Dakota   -0.017743
+Utah           -0.004896
+Nebraska       -0.004877
+Colorado       -0.004432
+Minnesota      -0.002277
+Michigan       -0.001354
+Washington     -0.001053
+Name: change, dtype: float64
+Q3 overall means:
+post_2022
+0    2.377153
+1    2.488088
+Name: nat_amer_overrepresentation_ratio, dtype: float64
+
+Q3 paired t-test:
+TtestResult(statistic=np.float64(1.0751705313230966), pvalue=np.float64(0.287564180261737), df=np.int64(49))
+
+Q3 state-level change summary:
+count    50.000000
+mean      0.110934
+std       0.729581
+min      -1.529876
+25%      -0.327063
+50%       0.160759
+75%       0.347745
+max       2.453587
+Name: change, dtype: float64
+  state_name  data_year  on_tribal_lands  total_incidents  tribal_incident_rate
+0    Alabama       2021                1            36000              0.000028
+2    Alabama       2023                0            42442              0.000000
+3    Alabama       2024                4            43856              0.000091
+4     Alaska       2021                2             3443              0.000581
+6     Alaska       2023                0             3573              0.000000
+Q4 overall means:
+post_2022
+0    0.000983
+1    0.000699
+Name: tribal_incident_rate, dtype: float64
+
+Q4 paired t-test:
+TtestResult(statistic=np.float64(-0.9692919400796308), pvalue=np.float64(0.3370651370423712), df=np.int64(50))
+
+States with decrease: 19/51
+Q4 direction binomial test:
+BinomTestResult(k=19, n=51, alternative='two-sided', statistic=0.37254901960784315, pvalue=0.09191454981585423)
+
+Q4 state-level change summary:
+count    51.000000
+mean     -0.000283
+std       0.002088
+min      -0.014662
+25%      -0.000063
+50%       0.000000
+75%       0.000031
+max       0.002248
+Name: change, dtype: float64
+=== Q1 ===
+post_2022
+0    0.047816
+1    0.045486
+Name: nat_amer_victim_share, dtype: float64
+TtestResult(statistic=np.float64(-1.4142813892470503), pvalue=np.float64(0.16360221409611775), df=np.int64(49))
+
+=== Q2 ===
+States with increase: 30/50
+BinomTestResult(k=30, n=50, alternative='two-sided', statistic=0.6, pvalue=0.20263875106454066)
+
+=== Q3 ===
+post_2022
+0    2.377153
+1    2.488088
+Name: nat_amer_overrepresentation_ratio, dtype: float64
+TtestResult(statistic=np.float64(1.0751705313230966), pvalue=np.float64(0.287564180261737), df=np.int64(49))
+
+=== Q4 ===
+post_2022
+0    0.000983
+1    0.000699
+Name: tribal_incident_rate, dtype: float64
+TtestResult(statistic=np.float64(-0.9692919400796308), pvalue=np.float64(0.3370651370423712), df=np.int64(50))
+States with decrease: 19/51
+BinomTestResult(k=19, n=51, alternative='two-sided', statistic=0.37254901960784315, pvalue=0.09191454981585423)

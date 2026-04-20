@@ -1,0 +1,39 @@
+Top 10 states (composite score):
+                      improvement_count  composite_score
+state_name                                              
+New York                              3         1.034769
+South Dakota                          2         0.941648
+California                            2         0.693937
+Pennsylvania                          3         0.617779
+Nevada                                2         0.498386
+Vermont                               4         0.485312
+District of Columbia                  2         0.465205
+Utah                                  3         0.440723
+Wisconsin                             3         0.418613
+North Dakota                          2         0.413334
+
+Bottom 10 states:
+                improvement_count  composite_score
+state_name                                        
+Florida                         2        -0.078154
+Maryland                        2        -0.091876
+Idaho                           2        -0.094048
+Alaska                          2        -0.094840
+Kansas                          3        -0.100935
+North Carolina                  2        -0.107861
+South Carolina                  3        -0.121445
+West Virginia                   3        -0.193534
+Hawaii                          2        -0.251499
+Mississippi                     2        -0.259651
+
+Binary improvement metrics used:
+['sa_rate', 'unmarried_dv_share', 'firearm_dv_share', 'reporting_rate']
+
+Non-directional composite-only metrics used:
+['nat_amer_victim_rate', 'tribal_land_rate']
+state_type
+Broad Improvement          23
+Targeted Improvement       11
+Deterioration              11
+Superficial Improvement     6
+Name: count, dtype: int64
