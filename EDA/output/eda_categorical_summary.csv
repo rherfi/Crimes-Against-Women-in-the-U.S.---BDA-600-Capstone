@@ -1,0 +1,2 @@
+column,variable_type,count,missing_count,missing_pct,unique_values,top_values
+state_name,categorical,204,0,0.0,51,"{'Alabama': 4, 'Alaska': 4, 'Arizona': 4, 'Arkansas': 4, 'California': 4, 'Colorado': 4, 'Connecticut': 4, 'Delaware': 4, 'District of Columbia': 4, 'Florida': 4}"
