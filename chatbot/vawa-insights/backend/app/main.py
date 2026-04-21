@@ -1,11 +1,11 @@
 """
-FastAPI entrypoint for the VAWA Insights Bot (V1 prototype).
+FastAPI entrypoint for the VAWA Insights Bot.
 
-Design goals for V1:
+Design goals:
 - Keep dependencies minimal (no vector DB, no heavy LLM framework)
 - Never hallucinate numeric values: numbers come only from structured tools
 - Always return citations
-- Keep code modular so we can swap in stronger RAG later
+- Keep code modular so we can upgrade retrieval later
 """
 
 import asyncio

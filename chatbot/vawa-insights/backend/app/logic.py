@@ -1,5 +1,5 @@
 """
-VAWA Insights Bot — non-API logic in one module (V1).
+VAWA Insights Bot — non-API logic in one module.
 
 Split into multiple files later only when this file grows hard to navigate.
 """
@@ -15,7 +15,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Literal, Optional, Tuple
 
-from app.schemas import ChatRequest, ChatResponse
+from app.schemas import ChatRequest, ChatResponse, MapEmbedPayload
 
 # ---------------------------------------------------------------------------
 # Data loader (CSV under app/data/)
@@ -23,8 +23,24 @@ from app.schemas import ChatRequest, ChatResponse
 
 DATA_DIR = Path(__file__).resolve().parent / "data"
 
-METRICS_FILE = DATA_DIR / "metrics_sample.csv"
-RISK_COMPONENTS_FILE = DATA_DIR / "risk_components_sample.csv"
+# Public ArcGIS Dashboard (override with ARCGIS_DASHBOARD_URL for staging/production).
+DEFAULT_ARCGIS_DASHBOARD_URL = (
+    "https://sdsugeo.maps.arcgis.com/apps/dashboards/7fa98d321eb94e9baaffc43fe65b973e"
+)
+
+_METRIC_LABELS: Dict[str, str] = {
+    "dv_rate": "Domestic violence rate",
+    "sexual_assault_rate": "Sexual assault rate",
+    "firearm_share": "Firearm involvement share",
+    "dating_partner_share": "Dating partner share",
+    "minority_victim_share": "Minority victim share",
+    "native_american_victim_share": "Native American victim share",
+    "reporting_proxy": "Reporting proxy",
+    "risk_index": "Risk index",
+}
+
+METRICS_FILE = DATA_DIR / "metrics.csv"
+RISK_COMPONENTS_FILE = DATA_DIR / "risk_components.csv"
 
 # EDA outputs (kept outside chatbot to keep backend small).
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -446,7 +462,7 @@ def get_metric_timeseries(geo: Dict[str, str], metric: str, frequency: Frequency
     first = rows[0]
     citation = {
         "citation_type": "structured_data",
-        "source_table": "metrics_sample.csv",
+        "source_table": "metrics.csv",
         "geo_id": first.geo_id,
         "geo_name": first.geo_name,
         "geo_type": first.geo_type,
@@ -472,7 +488,7 @@ def compare_geos(
         start_year = int(start_period)
         end_year = int(end_period)
     except ValueError:
-        return {"ok": False, "error": "V1 compare_geos supports year periods like '2021'..'2024'.", "data": None}
+        return {"ok": False, "error": "compare_geos supports year periods like '2021'..'2024'.", "data": None}
 
     rows = load_metrics_rows()
     a_rows = [r for r in _filter_rows_by_geo(rows, geo_a) if start_year <= r.year <= end_year and r.metrics.get(metric) is not None]
@@ -494,7 +510,7 @@ def compare_geos(
     b0 = b_rows[0]
     citation = {
         "citation_type": "structured_data",
-        "source_table": "metrics_sample.csv",
+        "source_table": "metrics.csv",
         "metric": metric,
         "start_year": start_year,
         "end_year": end_year,
@@ -545,7 +561,7 @@ def rank_geos(metric: str, year: int, geo_level: GeoLevel, top_n: int, sort_dire
 
     citation = {
         "citation_type": "structured_data",
-        "source_table": "metrics_sample.csv",
+        "source_table": "metrics.csv",
         "metric": metric,
         "year": year,
         "geo_level": geo_level,
@@ -572,7 +588,7 @@ def get_risk_profile(geo: Dict[str, str], year: int) -> Dict[str, Any]:
     citations = [
         {
             "citation_type": "structured_data",
-            "source_table": "metrics_sample.csv",
+            "source_table": "metrics.csv",
             "geo_id": r0.geo_id,
             "geo_name": r0.geo_name,
             "geo_type": r0.geo_type,
@@ -581,7 +597,7 @@ def get_risk_profile(geo: Dict[str, str], year: int) -> Dict[str, Any]:
         },
         {
             "citation_type": "structured_data",
-            "source_table": "risk_components_sample.csv",
+            "source_table": "risk_components.csv",
             "geo_id": r0.geo_id,
             "geo_name": r0.geo_name,
             "year": year,
@@ -833,6 +849,70 @@ def classify_intent(message: str) -> Intent:
     return "docs_only"
 
 
+def _arcgis_dashboard_url() -> str:
+    u = (os.environ.get("ARCGIS_DASHBOARD_URL") or "").strip()
+    return u or DEFAULT_ARCGIS_DASHBOARD_URL
+
+
+def _should_attach_arcgis_map(
+    message: str,
+    metric: Optional[str],
+    geo_names: List[str],
+    tools_used: List[Dict[str, Any]],
+) -> bool:
+    t = (message or "").lower()
+    if re.search(r"\bmap\b|\bgis\b|\bgeographic\b|\bchoropleth\b", t):
+        return True
+    tool_names = {x.get("tool") for x in tools_used if isinstance(x, dict)}
+    geo_tools = {
+        "compare_geos",
+        "rank_geos",
+        "get_metric_timeseries",
+        "get_risk_profile",
+        "rank_states_by_policy_change",
+        "get_policy_variable_summary",
+    }
+    if tool_names & geo_tools:
+        return True
+    if len(geo_names) >= 2 and metric is not None and "compare" in t:
+        return True
+    return False
+
+
+def _build_map_embed(
+    message: str,
+    metric: Optional[str],
+    geo_names: List[str],
+    tools_used: List[Dict[str, Any]],
+) -> Optional[MapEmbedPayload]:
+    if not _should_attach_arcgis_map(message, metric, geo_names, tools_used):
+        return None
+    url = _arcgis_dashboard_url()
+    states = geo_names[:8]
+    m_label = _METRIC_LABELS.get(metric or "", None) or (
+        metric.replace("_", " ") if metric else None
+    )
+    bits: List[str] = []
+    if m_label:
+        bits.append(f"In the dashboard, select a layer that matches: {m_label}.")
+    if states:
+        bits.append(f"Your question references: {', '.join(states)}.")
+    bits.append(
+        "The embed shows the full dashboard; use its map and layer list to focus areas of interest. "
+        "Auto-zoom to specific states needs URL parameters enabled on the dashboard (ArcGIS Dashboards)."
+    )
+    return MapEmbedPayload(
+        show=True,
+        title="Related ArcGIS dashboard",
+        embed_url=url,
+        open_url=url,
+        caption=" ".join(bits),
+        states=states,
+        metric=metric,
+        metric_label=m_label,
+    )
+
+
 # ---------------------------------------------------------------------------
 # Chat entrypoint
 # ---------------------------------------------------------------------------
@@ -1041,7 +1121,7 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
 
         if chunks:
             if direct_answer == "":
-                direct_answer = "Here’s what the knowledge base says (V1 prototype):"
+                direct_answer = "Here’s what the knowledge base says:"
             interpretation_bits = []
             for ch in chunks[:2]:
                 snippet = ch.text.strip().replace("\n", " ")
@@ -1051,26 +1131,26 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
             interpretation = "\n".join(interpretation_bits)
         else:
             if intent == "docs_only":
-                direct_answer = "I don’t have enough knowledge-base content to answer that yet (V1)."
-            caveats.append("Knowledge base retrieval returned no matching documents for this query in V1.")
+                direct_answer = "I don’t have enough knowledge-base content to answer that yet."
+            caveats.append("Knowledge base retrieval returned no matching documents for this query.")
 
     if any(w in message.lower() for w in ["cause", "caused", "because", "led to", "impact", "effect"]):
-        caveats.append("This bot can describe trends/associations in the available data, but V1 does not establish causal effects.")
+        caveats.append("This bot can describe trends/associations in the available data, but it does not establish causal effects.")
 
     if not citations:
         citations.append(
             {
                 "citation_type": "system",
-                "citation_id": "V1-NO-SOURCE",
+                "citation_id": "NO-SOURCE",
                 "title": "No matching structured rows or KB chunks found",
             }
         )
 
     if interpretation == "":
-        interpretation = "Interpretation is limited in V1. If you want, ask for caveats/definitions and I’ll pull from the methodology documents."
+        interpretation = "Interpretation is limited. If you want, ask for caveats/definitions and I’ll pull from the methodology documents."
 
     # ---- Optional LLM writer step (minimal integration) ----
-    # If OPENAI_API_KEY is not set, we keep deterministic V1 behavior.
+    # If OPENAI_API_KEY is not set, we keep deterministic behavior.
     api_key = (os.environ.get("OPENAI_API_KEY") or "").strip()
     if api_key:
         try:
@@ -1115,7 +1195,7 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
             }
 
             system = (
-                "You are a careful analyst writing a short, grounded response for a VAWA insights prototype. "
+                "You are a careful analyst writing a short, grounded response for a VAWA insights system. "
                 "You must follow the constraints exactly."
             )
 
@@ -1150,8 +1230,10 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
                     interpretation = interp.strip()
                     llm_debug["used"] = True
         except Exception:
-            # Fail closed: keep deterministic V1 output if the LLM step fails.
+            # Fail closed: keep deterministic output if the LLM step fails.
             llm_debug = {"enabled": True, "model": "gpt-4o-mini", "used": False, "error": "llm_call_failed"}
+
+    map_embed = _build_map_embed(message, metric, geo_names, tools_used)
 
     return ChatResponse(
         answer={
@@ -1160,6 +1242,7 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
             "interpretation": interpretation,
             "caveats": caveats,
             "citations": citations,
+            "map_embed": map_embed,
         },
         debug={
             "intent": intent,

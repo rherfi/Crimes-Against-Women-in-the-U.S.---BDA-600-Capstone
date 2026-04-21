@@ -106,6 +106,36 @@ function Section({ title, children }) {
   );
 }
 
+function MapEmbed({ mapEmbed }) {
+  if (!mapEmbed?.show || !mapEmbed.embed_url) return null;
+
+  return (
+    <div className="mapEmbed" role="region" aria-label="ArcGIS dashboard map">
+      <div className="mapEmbedTitle">{mapEmbed.title || "Map"}</div>
+      {mapEmbed.caption ? <p className="mapEmbedCaption muted small">{mapEmbed.caption}</p> : null}
+      <div className="mapEmbedFrameWrap">
+        <iframe
+          title={mapEmbed.title || "ArcGIS dashboard"}
+          src={mapEmbed.embed_url}
+          loading="lazy"
+          className="mapEmbedIframe"
+          referrerPolicy="strict-origin-when-cross-origin"
+        />
+      </div>
+      {mapEmbed.open_url ? (
+        <a
+          className="mapEmbedOpen"
+          href={mapEmbed.open_url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open dashboard in a new tab
+        </a>
+      ) : null}
+    </div>
+  );
+}
+
 function CitationList({ citations }) {
   if (!citations || citations.length === 0) return <div>No citations returned.</div>;
 
@@ -348,6 +378,9 @@ Example: *Compare California and Texas in firearm involvement from 2021 to 2024.
               <div key={m.id} className={`msg ${m.role === "user" ? "msgUser" : "msgAssistant"}`}>
                 <div className="msgRole">{m.role}</div>
                 <MessageBody role={m.role} content={m.content} streaming={Boolean(m.streaming)} />
+                {m.role === "assistant" && m.responseDetail?.answer?.map_embed ? (
+                  <MapEmbed mapEmbed={m.responseDetail.answer.map_embed} />
+                ) : null}
                 {m.role === "assistant" && m.responseDetail ? (
                   <div className="msgActions">
                     <button

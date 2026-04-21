@@ -1,8 +1,8 @@
 # VAWA Insights Bot (Backend) — FastAPI
 
-This is a **local prototype** backend for the first “VAWA Insights Bot”.
+This folder contains the backend API for the VAWA Insights Bot.
 
-## What it does (V1)
+## What it does
 - Accepts chat questions at `POST /api/chat`
 - Routes intent to:
   - **structured data tools** (for exact numbers), and/or

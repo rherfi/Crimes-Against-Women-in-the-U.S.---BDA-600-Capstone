@@ -4,13 +4,13 @@ title: Limitations and Scope of the VAWA Insights Bot and Knowledge Base
 citation_id: KB-LIMITATIONS-SCOPE-001
 years_covered: varies_by_dataset
 geo_level: state, county, tribal (where available)
-metric_tags: limitations, scope, methodology, nibrs, vawa, disclaimer, prototype
+metric_tags: limitations, scope, methodology, nibrs, vawa, disclaimer
 source: internal_kb
 ---
 
 ## Purpose
 
-This document states what the **VAWA Insights** prototype is for, what it is **not**, and how to interpret outputs when combining **structured metrics**, **knowledge-base text**, and **internal analysis summaries**.
+This document states what the **VAWA Insights** system is for, what it is **not**, and how to interpret outputs when combining **structured metrics**, **knowledge-base text**, and **internal analysis summaries**.
 
 ---
 
@@ -39,7 +39,7 @@ This document states what the **VAWA Insights** prototype is for, what it is **n
 
 ## Knowledge Base Limitations
 
-- Retrieval uses **keyword overlap** on chunked markdown (V1). Relevant passages may be missed or lightly ranked; upgrade path is embedding-based RAG.
+- Retrieval uses **keyword overlap** on chunked markdown. Relevant passages may be missed or lightly ranked; an upgrade path is embedding-based RAG.
 - Documents are **summaries and student/project framing**, not a substitute for statutes, regulations, or agency guidance.
 - **Sources** are cited in individual KB files; links may change over time.
 

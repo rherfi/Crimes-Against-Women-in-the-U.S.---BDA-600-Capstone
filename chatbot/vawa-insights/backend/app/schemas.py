@@ -11,12 +11,31 @@ from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field
 
 
+class MapEmbedPayload(BaseModel):
+    """
+    Optional ArcGIS Dashboard embed. The chat UI renders `embed_url` in an iframe when show=True.
+
+    Note: Most dashboards cannot auto-zoom to arbitrary states via URL unless the author enabled
+    Dashboard URL parameters; `states` / `metric_label` are hints for the user and future deep links.
+    """
+
+    show: bool = False
+    title: str = ""
+    embed_url: str = ""
+    open_url: str = ""
+    caption: str = ""
+    states: List[str] = Field(default_factory=list)
+    metric: Optional[str] = None
+    metric_label: Optional[str] = None
+
+
 class AnswerPayload(BaseModel):
     direct_answer: str
     evidence: List[str] = Field(default_factory=list)
     interpretation: str = ""
     caveats: List[str] = Field(default_factory=list)
     citations: List[Dict[str, Any]] = Field(default_factory=list)
+    map_embed: Optional[MapEmbedPayload] = None
 
 
 class DebugPayload(BaseModel):
