@@ -10,6 +10,7 @@ Design goals:
 
 import asyncio
 import json
+import os
 from functools import partial
 
 from fastapi import FastAPI
@@ -22,16 +23,20 @@ from app.logic import answer_chat
 
 app = FastAPI(title="VAWA Insights Bot API", version="0.1.0")
 
-# Local dev convenience: allow the React dev server to call the API.
-# For production, lock this down.
+# CORS: local dev origins + optional production origins from CORS_ORIGINS (comma-separated).
+# Example: CORS_ORIGINS=https://your-frontend.vercel.app
+_cors_extra = [o.strip() for o in (os.environ.get("CORS_ORIGINS") or "").split(",") if o.strip()]
+_cors_origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    *_cors_extra,
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-    ],
+    allow_origins=_cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
