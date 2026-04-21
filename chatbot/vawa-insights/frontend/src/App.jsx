@@ -298,7 +298,10 @@ Example: *Compare California and Texas in firearm involvement from 2021 to 2024.
         onDone: (data) => {
           const da = data.answer?.direct_answer ?? "";
           const interp = data.answer?.interpretation ?? "";
-          const combined = `${da}${interp ? `\n\n${interp}` : ""}`.trim() || m.content;
+          const interpClean = String(interp || "").trim();
+          const isInterpPlaceholder =
+            interpClean === "" || interpClean.toLowerCase().startsWith("interpretation is limited");
+          const combined = `${da}${!isInterpPlaceholder ? `\n\n${interpClean}` : ""}`.trim() || m.content;
           setMessages((prev) =>
             prev.map((m) =>
               m.id === assistantId
