@@ -28,6 +28,20 @@ DEFAULT_ARCGIS_DASHBOARD_URL = (
     "https://sdsugeo.maps.arcgis.com/apps/dashboards/7fa98d321eb94e9baaffc43fe65b973e"
 )
 
+_ARCGIS_TAB_WEBMAP_IDS: Dict[str, str] = {
+    # Derived from the dashboard configuration (mapWidget itemIds).
+    "Master": "e5e41a3c32084b33958bce654395327f",
+    "Sexual Assault": "a0b8ad4cf3094db285b4733ce3f6c8b7",
+    "Violent Crimes": "b4c812bc8b894c09977cd77fe2a18072",
+    "Tribal": "58e315d44c1e422c99dd0f1044645c9f",
+    "Domestic Violence": "21e1d8d284ff49758fe767aa6cfe0a57",
+    "Firearm": "7f647a063be04721bf95603e31b6a26c",
+    "Shelter Locations": "c7557b6ffa9049938605cba6c8d28b14",
+    "Rural Locations": "5c2eda65c42242d9a2c31fa78ef967f2",
+    "College": "45148dd88ee740f8b5cad9a2b12709c7",
+    "Race": "b71d1048a8b84ad0b9b441471f1b85dc",
+}
+
 _METRIC_LABELS: Dict[str, str] = {
     "dv_rate": "Domestic violence rate",
     "sexual_assault_rate": "Sexual assault rate",
@@ -38,6 +52,68 @@ _METRIC_LABELS: Dict[str, str] = {
     "reporting_proxy": "Reporting proxy",
     "risk_index": "Risk index",
 }
+
+_METRIC_DEFINITIONS: Dict[str, str] = {
+    "dv_rate": "Project-defined domestic violence rate for the selected geography and period.",
+    "sexual_assault_rate": "Project-defined sexual assault rate for the selected geography and period.",
+    "firearm_share": "The share of incidents involving a firearm (a proportion from 0 to 1).",
+    "dating_partner_share": "The share of incidents involving a dating/nonmarried partner (a proportion from 0 to 1).",
+    "minority_victim_share": "The share of victims identified as a racial/ethnic minority (a proportion from 0 to 1).",
+    "native_american_victim_share": "The share of victims identified as Native American (a proportion from 0 to 1).",
+    "reporting_proxy": "A project-defined proxy indicating reporting/coverage intensity; interpret cautiously.",
+    "risk_index": "A composite index summarizing multiple risk-related components (project-defined).",
+}
+
+_METRIC_UNITS: Dict[str, str] = {
+    "dv_rate": "rate per 100,000 female population",
+    "sexual_assault_rate": "rate per 100,000 female population",
+    "firearm_share": "proportion (0–1)",
+    "dating_partner_share": "proportion (0–1)",
+    "minority_victim_share": "proportion (0–1)",
+    "native_american_victim_share": "proportion (0–1)",
+    "reporting_proxy": "rate per 100,000 female population (proxy)",
+    "risk_index": "standardized index (unitless; higher means higher relative risk)",
+}
+
+
+def _metric_definition(metric: Optional[str]) -> str:
+    m = (metric or "").strip()
+    if not m:
+        return ""
+    return _METRIC_DEFINITIONS.get(m, "")
+
+
+def _metric_units(metric: Optional[str]) -> str:
+    m = (metric or "").strip()
+    if not m:
+        return ""
+    return _METRIC_UNITS.get(m, "")
+
+
+def _metric_explain_sentence(metric: Optional[str]) -> str:
+    """
+    Short suffix used in direct answers whenever we display numbers.
+    """
+    m = (metric or "").strip()
+    if not m:
+        return ""
+    units = _metric_units(m)
+    definition = _metric_definition(m)
+    bits: List[str] = []
+    if units:
+        bits.append(f"Units are {units}.")
+    if definition:
+        bits.append(definition)
+    if not bits:
+        return ""
+    return " " + " ".join(bits)
+
+
+def _metric_display_name(metric: Optional[str]) -> str:
+    m = (metric or "").strip()
+    if not m:
+        return ""
+    return _METRIC_LABELS.get(m, m.replace("_", " "))
 
 METRICS_FILE = DATA_DIR / "metrics.csv"
 RISK_COMPONENTS_FILE = DATA_DIR / "risk_components.csv"
@@ -854,6 +930,38 @@ def _arcgis_dashboard_url() -> str:
     return u or DEFAULT_ARCGIS_DASHBOARD_URL
 
 
+def _arcgis_embed_url_for_webmap(webmap_id: str) -> str:
+    # ArcGIS "Embed" app for web maps (simple iframe-friendly viewer).
+    return f"https://www.arcgis.com/apps/Embed/index.html?webmap={webmap_id}"
+
+
+def _arcgis_pick_tab(message: str, metric: Optional[str]) -> str:
+    t = (message or "").lower()
+    m = (metric or "").strip().lower()
+
+    if "shelter" in t:
+        return "Shelter Locations"
+    if "rural" in t:
+        return "Rural Locations"
+    if "college" in t or "campus" in t:
+        return "College"
+    if "tribal" in t:
+        return "Tribal"
+    if "race" in t or "minority" in t or "native" in t:
+        return "Race"
+    if "violent" in t:
+        return "Violent Crimes"
+
+    if m == "sexual_assault_rate" or "sexual assault" in t:
+        return "Sexual Assault"
+    if m == "dv_rate" or "domestic violence" in t:
+        return "Domestic Violence"
+    if m == "firearm_share" or "firearm" in t or "gun" in t:
+        return "Firearm"
+
+    return "Master"
+
+
 def _should_attach_arcgis_map(
     message: str,
     metric: Optional[str],
@@ -887,25 +995,22 @@ def _build_map_embed(
 ) -> Optional[MapEmbedPayload]:
     if not _should_attach_arcgis_map(message, metric, geo_names, tools_used):
         return None
-    url = _arcgis_dashboard_url()
+    dashboard_url = _arcgis_dashboard_url()
+    tab = _arcgis_pick_tab(message, metric)
+    embed_url = dashboard_url
     states = geo_names[:8]
-    m_label = _METRIC_LABELS.get(metric or "", None) or (
-        metric.replace("_", " ") if metric else None
-    )
+    m_label = _METRIC_LABELS.get(metric or "", None) or (metric.replace("_", " ") if metric else None)
     bits: List[str] = []
-    if m_label:
-        bits.append(f"In the dashboard, select a layer that matches: {m_label}.")
+    bits.append(f"In the dashboard, open the “{tab}” tab to see the relevant layer.")
     if states:
         bits.append(f"Your question references: {', '.join(states)}.")
-    bits.append(
-        "The embed shows the full dashboard; use its map and layer list to focus areas of interest. "
-        "Auto-zoom to specific states needs URL parameters enabled on the dashboard (ArcGIS Dashboards)."
-    )
+    if m_label and tab == "Master":
+        bits.append(f"Suggested layer: {m_label}.")
     return MapEmbedPayload(
         show=True,
         title="Related ArcGIS dashboard",
-        embed_url=url,
-        open_url=url,
+        embed_url=embed_url,
+        open_url=dashboard_url,
         caption=" ".join(bits),
         states=states,
         metric=metric,
@@ -1038,7 +1143,10 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
                 tools_used.append({"tool": "get_risk_profile", "args": {"geo": geo, "year": yr}, "ok": tool_out.get("ok")})
                 if tool_out.get("ok"):
                     data = tool_out["data"]
-                    direct_answer = f"Risk profile for {data['geo_name']} ({yr}): risk_index = {data['risk_index']:.2f}."
+                    direct_answer = (
+                        f"Risk profile for {data['geo_name']} ({yr}): risk_index = {data['risk_index']:.2f}."
+                        + _metric_explain_sentence("risk_index")
+                    )
                     evidence_lines.append(f"risk_index ({yr}): {data['risk_index']:.2f} (data_quality_flag={data['data_quality_flag']})")
                     if data.get("components"):
                         evidence_lines.append("Component breakdown:")
@@ -1058,7 +1166,12 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
                 tools_used.append({"tool": "rank_geos", "args": {"metric": metric, "year": yr, "geo_level": "state", "top_n": 5, "sort_direction": "desc"}, "ok": tool_out.get("ok")})
                 if tool_out.get("ok"):
                     ranked = tool_out["data"]["ranked"]
-                    direct_answer = f"Top states for {metric} in {yr} (sample data): " + ", ".join([f"{r['geo_name']} ({r['value']:.2f})" for r in ranked])
+                    mname = _metric_display_name(metric)
+                    direct_answer = (
+                        f"Top states for {mname} in {yr}: "
+                        + ", ".join([f"{r['geo_name']} ({r['value']:.2f})" for r in ranked])
+                        + _metric_explain_sentence(metric)
+                    )
                     evidence_lines.append(f"Ranking: {metric} in {yr} (top {len(ranked)} states).")
                     for r in ranked:
                         evidence_lines.append(f"- #{r['rank']} {r['geo_name']}: {r['value']:.2f} (flag={r['data_quality_flag']})")
@@ -1078,12 +1191,17 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
                 d = tool_out["data"]
                 a = d["geo_a"]
                 b = d["geo_b"]
+                a_disp = round(float(a["avg_value"]), 2)
+                b_disp = round(float(b["avg_value"]), 2)
+                diff_disp = round(a_disp - b_disp, 2)
+                mname = _metric_display_name(metric)
                 direct_answer = (
-                    f"From {d['start_year']}–{d['end_year']}, {a['geo_name']} averaged {a['avg_value']:.2f} for {metric}, "
-                    f"vs {b['geo_name']} at {b['avg_value']:.2f} (difference {d['difference']:.2f})."
+                    f"From {d['start_year']}–{d['end_year']}, {a['geo_name']} averaged {a_disp:.2f} for {mname}, "
+                    f"vs {b['geo_name']} at {b_disp:.2f} (difference {diff_disp:.2f})."
+                    + _metric_explain_sentence(metric)
                 )
-                evidence_lines.append(f"{a['geo_name']} average ({d['start_year']}–{d['end_year']}): {a['avg_value']:.2f}")
-                evidence_lines.append(f"{b['geo_name']} average ({d['start_year']}–{d['end_year']}): {b['avg_value']:.2f}")
+                evidence_lines.append(f"{a['geo_name']} average ({d['start_year']}–{d['end_year']}): {float(a['avg_value']):.4f}")
+                evidence_lines.append(f"{b['geo_name']} average ({d['start_year']}–{d['end_year']}): {float(b['avg_value']):.4f}")
                 citations.append(tool_out["citation"])
                 caveats.append(descriptive_caveat)
             else:
@@ -1095,7 +1213,8 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
             tools_used.append({"tool": "get_metric_timeseries", "args": {"geo": geo, "metric": metric, "frequency": "year"}, "ok": tool_out.get("ok")})
             if tool_out.get("ok"):
                 pts = tool_out["data"]["points"]
-                direct_answer = f"{metric} over time for {tool_out['data']['geo']['geo_name']} (sample data)."
+                mname = _metric_display_name(metric)
+                direct_answer = f"{mname} over time for {tool_out['data']['geo']['geo_name']}." + _metric_explain_sentence(metric)
                 evidence_lines.extend([f"- {p['period']}: {p['value']:.2f} (flag={p['data_quality_flag']})" for p in pts])
                 citations.append(tool_out["citation"])
                 caveats.append(descriptive_caveat)
