@@ -757,6 +757,157 @@ def _chunk_markdown(body: str) -> List[str]:
     return chunks
 
 
+def _kb_strip_inline_markdown(s: str) -> str:
+    s = re.sub(r"\*\*([^*]+)\*\*", r"\1", s)
+    s = s.replace("**", "")
+    s = s.replace("`", "")
+    s = re.sub(r"\s+", " ", s)
+    return s.strip()
+
+
+def _kb_chunk_to_prose(text: str, *, max_chars: int = 1600) -> str:
+    """
+    Turn a KB markdown excerpt into plain, speakable sentences (no ## / --- / bullet markup).
+    """
+    t = (text or "").strip()
+    if not t:
+        return ""
+    parts: List[str] = []
+
+    for block in re.split(r"\n\s*\n+", t):
+        lines_in = [
+            ln.strip()
+            for ln in block.splitlines()
+            if ln.strip() and ln.strip() != "---" and not ln.strip().startswith("---")
+        ]
+        bullets: List[str] = []
+
+        def flush_bullets() -> None:
+            nonlocal bullets
+            if not bullets:
+                return
+            clause = "; ".join(b.rstrip(".") for b in bullets if b)
+            if clause:
+                if not clause[0].isupper():
+                    clause = clause[0].upper() + clause[1:] if len(clause) > 1 else clause.upper()
+                parts.append(clause + ".")
+            bullets = []
+
+        for ln in lines_in:
+            if ln.startswith("#"):
+                flush_bullets()
+                s = _kb_strip_inline_markdown(re.sub(r"^#+\s*", "", ln).strip())
+                # Drop short section labels that read oddly as standalone “sentences.”
+                if s and len(s) <= 48 and not re.search(r"\bvawa\b|\breauthorization\b|\bfederal\b|\bgrant\b", s, re.I):
+                    low = s.lower().rstrip(".")
+                    if low in {
+                        "summary",
+                        "source",
+                        "purpose",
+                        "overview",
+                        "interpretation notes",
+                        "related documents",
+                        "key updates in 2022",
+                        "core areas covered",
+                    }:
+                        s = ""
+                if s:
+                    parts.append(s if s.endswith((".", "?", "!")) else s + ".")
+            elif re.match(r"^[\*\-]\s+", ln):
+                bullets.append(_kb_strip_inline_markdown(re.sub(r"^[\*\-]\s+", "", ln).strip()))
+            else:
+                flush_bullets()
+                if ln:
+                    ln2 = _kb_strip_inline_markdown(ln)
+                    parts.append(ln2 if ln2.endswith((".", "?", "!")) else ln2 + ".")
+        flush_bullets()
+
+    out = " ".join(parts)
+    out = re.sub(r"\s+", " ", out).strip()
+    out = re.sub(r":\s*\.\s*", ": ", out)
+    out = re.sub(r"\s+\.\s+", ". ", out)
+    if len(out) > max_chars:
+        cut = out[: max_chars - 1]
+        out = cut.rsplit(" ", 1)[0].rstrip(",;") + "…"
+    return out
+
+
+def _kb_chunk_para_index(ch: RetrievedChunk) -> int:
+    m = re.search(r"::p(\d+)$", ch.chunk_id or "")
+    return int(m.group(1)) if m else 999
+
+
+def _synthesize_docs_answer(message: str, chunks: List[RetrievedChunk]) -> Tuple[str, List[str]]:
+    """
+    One main-bubble answer in natural language plus optional evidence lines (titles + short quotes).
+    """
+    if not chunks:
+        return "", []
+    ql = (message or "").lower()
+    ordered = list(chunks)
+
+    if "reauthorization" in ql or ("vawa" in ql and "2022" in ql and any(w in ql for w in ["what did", "what does", "reauthorize", "reauthorization"])):
+        policy = [
+            c
+            for c in ordered
+            if "vawa_2022_reauthorization" in str(c.metadata.get("source_file", "")).lower()
+        ]
+        if policy:
+            ordered = sorted(policy, key=_kb_chunk_para_index)
+
+    prose_bits: List[str] = []
+    deferred_caveats: List[str] = []
+    evidence: List[str] = []
+    used_ids: set[str] = set()
+
+    for ch in ordered[:5]:
+        if ch.chunk_id in used_ids:
+            continue
+        raw = ch.text or ""
+        lead_raw, main_raw = "", raw.strip()
+        if "## Summary" in raw:
+            lead_raw, sep, rest = raw.partition("## Summary")
+            main_raw = (sep + rest).strip() if sep else raw.strip()
+
+        main_p = _kb_chunk_to_prose(main_raw, max_chars=900) if main_raw else ""
+        if lead_raw.strip():
+            lead_p = _kb_chunk_to_prose(lead_raw.strip(), max_chars=420)
+            if len(lead_p) > 30:
+                deferred_caveats.append(lead_p)
+
+        p = main_p
+        if len(p) < 40:
+            continue
+        title = str(ch.metadata.get("title") or ch.metadata.get("source_file") or "Source").strip()
+        used_ids.add(ch.chunk_id)
+        prose_bits.append(p)
+        evidence.append(f"{title} ({ch.chunk_id}): {p[:320]}{'…' if len(p) > 320 else ''}")
+
+    body = " ".join(prose_bits).strip()
+    if ("reauthorization" in ql or ("vawa" in ql and "2022" in ql)) and len(body) > 1180:
+        cut = body[:1179]
+        if "." in cut:
+            body = cut.rsplit(".", 1)[0].rstrip() + "."
+        else:
+            body = cut.rstrip() + "…"
+    if deferred_caveats:
+        tail = " ".join(deferred_caveats).strip()
+        body = (body + " " + tail).strip() if body else tail
+
+    if len(body) > 1700:
+        body = body[:1699].rsplit(" ", 1)[0].rstrip(",;") + "…"
+
+    if not body:
+        return "", evidence
+
+    if "reauthorization" in ql or ("vawa" in ql and "2022" in ql):
+        lead = "According to the project’s VAWA 2022 overview document:"
+    else:
+        lead = "In plain language, based on the closest matching knowledge-base excerpts:"
+
+    return f"{lead} {body}", evidence
+
+
 def retrieve(query: str, top_k: int = 4) -> List[RetrievedChunk]:
     """
     Retrieve KB chunks for a query.
@@ -801,6 +952,7 @@ def _retrieve_keyword(query: str, top_k: int = 4) -> List[RetrievedChunk]:
     if not q_tokens:
         return []
 
+    ql = (query or "").lower()
     results: List[RetrievedChunk] = []
     for ch in _kb_all_chunks():
         c_tokens = set(_tokenize(ch.text))
@@ -813,6 +965,12 @@ def _retrieve_keyword(query: str, top_k: int = 4) -> List[RetrievedChunk]:
             for t in tags:
                 if str(t).lower() in q_tokens:
                     bonus += 0.25
+        sf = str(ch.metadata.get("source_file", "")).lower()
+        # Prefer the dedicated policy doc when users ask about the 2022 reauthorization (limits_scope also mentions VAWA).
+        if "reauthorization" in ql and "vawa_2022_reauthorization" in sf:
+            bonus += 12.0
+        if "reauthorization" in ql and "limitations_scope" in sf:
+            bonus -= 5.0
         score = float(len(overlap)) + bonus
         results.append(RetrievedChunk(chunk_id=ch.chunk_id, text=ch.text, score=score, metadata=ch.metadata))
 
@@ -1055,6 +1213,7 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
     caveats: List[str] = []
     interpretation = ""
     direct_answer = ""
+    skip_default_interpretation = False
 
     descriptive_caveat = "These are descriptive patterns from observed data and do not, by themselves, establish causation."
     policy_caveat = "Pre/post-2022 comparisons are descriptive; changes may reflect reporting/coverage shifts and do not, by themselves, establish policy effects."
@@ -1214,7 +1373,32 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
             if tool_out.get("ok"):
                 pts = tool_out["data"]["points"]
                 mname = _metric_display_name(metric)
-                direct_answer = f"{mname} over time for {tool_out['data']['geo']['geo_name']}." + _metric_explain_sentence(metric)
+                # Put the key numbers in the main answer (not only in evidence_lines).
+                series: Dict[int, float] = {}
+                for p in pts:
+                    try:
+                        yr = int(str(p.get("period", "")).strip())
+                    except ValueError:
+                        continue
+                    val = p.get("value")
+                    if val is None:
+                        continue
+                    series[yr] = float(val)
+
+                geo_nm = tool_out["data"]["geo"]["geo_name"]
+                if series:
+                    yrs_sorted = sorted(series.keys())
+                    parts = [f"{y}: {series[y]:.2f}" for y in yrs_sorted]
+                    lo_y, hi_y = min(series, key=lambda y: series[y]), max(series, key=lambda y: series[y])
+                    summary = (
+                        f"{mname} over time for {geo_nm}: "
+                        + "; ".join(parts)
+                        + f". Lowest in {lo_y} ({series[lo_y]:.2f}); highest in {hi_y} ({series[hi_y]:.2f})."
+                    )
+                else:
+                    summary = f"{mname} over time for {geo_nm}: no numeric points were available for the requested years."
+
+                direct_answer = summary + _metric_explain_sentence(metric)
                 evidence_lines.extend([f"- {p['period']}: {p['value']:.2f} (flag={p['data_quality_flag']})" for p in pts])
                 citations.append(tool_out["citation"])
                 caveats.append(descriptive_caveat)
@@ -1239,15 +1423,22 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
             citations.append(_doc_citation_from_chunk(ch))
 
         if chunks:
-            if direct_answer == "":
-                direct_answer = "Here’s what the knowledge base says:"
-            interpretation_bits = []
-            for ch in chunks[:2]:
-                snippet = ch.text.strip().replace("\n", " ")
-                if len(snippet) > 280:
-                    snippet = snippet[:280].rstrip() + "…"
-                interpretation_bits.append(f"- {snippet}")
-            interpretation = "\n".join(interpretation_bits)
+            da_stripped = (direct_answer or "").strip()
+            kb_is_primary = da_stripped == "" or da_stripped.startswith("I couldn’t identify")
+            if kb_is_primary:
+                synthesized, kb_evidence = _synthesize_docs_answer(message, chunks)
+                if synthesized:
+                    direct_answer = synthesized
+                    evidence_lines.extend(kb_evidence)
+                    interpretation = ""
+                    skip_default_interpretation = True
+                else:
+                    direct_answer = "I don’t have enough on-point knowledge-base excerpts to summarize that yet."
+                    interpretation = ""
+                    skip_default_interpretation = True
+            else:
+                # Already answered with structured data; keep the main bubble clean (no raw KB markdown).
+                interpretation = ""
         else:
             if intent == "docs_only":
                 direct_answer = "I don’t have enough knowledge-base content to answer that yet."
@@ -1265,7 +1456,7 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
             }
         )
 
-    if interpretation == "":
+    if interpretation == "" and not skip_default_interpretation:
         interpretation = "Interpretation is limited. If you want, ask for caveats/definitions and I’ll pull from the methodology documents."
 
     # ---- Optional LLM writer step (minimal integration) ----
