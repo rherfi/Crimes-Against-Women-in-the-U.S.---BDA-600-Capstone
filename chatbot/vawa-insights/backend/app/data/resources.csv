@@ -1,0 +1,47 @@
+resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
+NAT-988-1,988 Suicide & Crisis Lifeline,mental_health,hotline,"24/7 crisis support; phone; chat",,,,"",US,988,https://988lifeline.org/,,,"National hotline (US). For emergencies, call 911.",https://988lifeline.org/
+NAT-NDVH-1,National Domestic Violence Hotline,domestic_violence,hotline,"24/7 support; safety planning; referrals",,,,"",US,1-800-799-7233,https://www.thehotline.org/,,,"National hotline (US).",https://www.thehotline.org/
+
+CA-SD-CCS-HVH,Center for Community Solutions (Hidden Valley House),housing_shelter,"Shelter | Domestic Violence & Sexual Assault","Emergency shelter; counseling; legal advocacy; court accompaniment; sexual assault services","4508 Mission Bay Dr",San Diego,CA,92109,US,888-385-4657,https://www.ccssd.org/,,,"Serves men, youth; Spanish + interpreters",official_site
+CA-SD-WRC,Women's Resource Center (WRC),housing_shelter,"Shelter | Domestic Violence","Shelter; counseling; hotline; education","1963 Apple St",Oceanside,CA,92054,US,760-757-3500,https://www.wrcsd.org/,,,"North County focus",official_site
+CA-SD-CCS,other,"Advocacy | Sexual Assault & DV Services","Rape crisis center; shelter; legal services; counseling","4508 Mission Bay Dr",San Diego,CA,92109,US,888-385-4657,https://www.ccssd.org/,,,,official_site
+CA-SD-FJC,other,"Multi-Service | Family Violence Support","Legal help; advocacy; counseling; safety planning","1122 Broadway, 2nd Floor",San Diego,CA,92101,US,619-533-6000,https://www.sandiego.gov/sandiegofamilyjusticecenter,,,"Multi-language services",official_site
+CA-SD-YWCA-BH,housing_shelter,"Shelter | Domestic Violence Shelter","Emergency shelter; transitional housing; counseling; legal services",,San Diego,CA,,US,619-234-3164,https://www.ywcasandiego.org/,,,"Confidential shelter",user_provided
+CA-SD-CRC-CH,housing_shelter,"Shelter | Domestic Violence Shelter","Emergency housing; counseling; legal advocacy",,Encinitas,CA,,US,760-633-1111,https://crcncc.org/,,,,user_provided
+CA-SD-SDVLP,legal_aid,"Legal | Legal Aid","Restraining orders; family law; pro bono legal help","110 W A Street, Suite 1100",San Diego,CA,92101,US,619-235-5656,https://www.sdvlp.org/,,,,official_site
+CA-SD-RCH-CHAD,mental_health,"Healthcare | Child Trauma Services","Child abuse treatment; trauma counseling","3020 Children's Way, MC 5016",San Diego,CA,92123,US,858-966-4011,https://www.rchsd.org/,,,,official_site
+CA-SD-JFS-SARAH,domestic_violence,"Counseling | Domestic Violence Support","Counseling; safety planning","8804 Balboa Ave",San Diego,CA,92123,US,858-637-3210,https://www.jfssd.org/,,,,official_site
+CA-SD-YOUTH,housing_shelter,"Shelter | Youth Services","Shelter; housing; mental health support","3255 Wing St",San Diego,CA,92110,US,619-241-0608,https://sdyouthservices.org/,,,,official_site
+CA-SD-LGBT,mental_health,"Counseling | LGBTQ+ Services","Counseling; DV programs; youth services","3909 Centre St",San Diego,CA,92103,US,619-692-2077,https://thecentersd.org/,,,"LGBTQ+ focus",official_site
+CA-SD-CASA-CORN,legal_aid,"Legal | Immigration Legal Aid","Immigration legal services; DV advocacy","525 B Street, Suite 1800",San Diego,CA,92101,US,619-231-7788,https://www.casacornelia.org/,,,"Supports undocumented survivors",official_site
+CA-SD-ICWC,legal_aid,"Legal | Immigration Services","Immigration legal services","600 B St, Suite 2040",San Diego,CA,92101,US,619-515-2200,https://www.icwclaw.org/,,,,official_site
+
+CA-LA-GNU,housing_shelter,"Shelter | Domestic Violence","Shelter; rental assistance; community support","131 North Tustin Ave, Suite 204",Tustin,CA,92780,US,323-763-2865,https://goodneighbors.us,,,,official_site
+CA-SB-OPTION,housing_shelter,"Shelter | Domestic Violence","Shelter; prevention; intervention",,San Bernardino,CA,,US,909-381-3471,https://optionhouseinc.org,,,,user_provided
+CA-OC-LAURAS,housing_shelter,"Shelter | Domestic Violence","Emergency shelter; transitional housing; counseling; legal advocacy",,Orange County,CA,,US,949-498-1511,https://www.laurashouse.org,,,"Public office address not confirmed from snippet",official_site
+CA-LA-LPFW,legal_aid,"Legal | Legal Assistance","Restraining order paperwork assistance; referrals",,Los Angeles,CA,,US,323-721-9882,,,"directory_only",user_provided
+CA-LA-ELAWC,housing_shelter,"Shelter | Sexual Assault & DV","Crisis intervention; counseling; court accompaniment; housing","1431 S Atlantic Blvd",Los Angeles,CA,90022,US,800-585-6231,https://www.elawc.org,,,,official_site
+CA-RIV-NORA,sexual_assault,"Advocacy | Sexual Assault Services","Hotline; legal advocacy; hospital accompaniment",,Riverside,CA,,US,866-686-7273,,,"Spanish available",user_provided
+CA-RIV-LAID,legal_aid,"Legal | Legal Aid","Family law; restraining orders; legal services",,Riverside,CA,,US,951-682-7968,,,,user_provided
+CA-OC-INTERVAL-SB,housing_shelter,"Shelter | Domestic Violence","Shelter; housing; counseling; youth programs","6326 E Pacific Coast Hwy, Suite B",Long Beach,CA,90803,US,562-594-4555,https://intervalhouse.org,,,"Mailing/admin address; shelter locations not public",official_site
+CA-OC-HUMANOPT,housing_shelter,"Shelter | Domestic Violence","Shelter; housing; support services","5540 Trabuco Rd, Suite 100",Irvine,CA,92620,US,877-854-3594,https://humanoptions.org,,,,official_site
+CA-LA-WCCS,housing_shelter,"Shelter | Domestic Violence","Shelter; support services",,Whittier,CA,,US,562-945-3939,,,,user_provided
+CA-OC-RADIANT,housing_shelter,"Shelter | Domestic Violence & Trafficking","Housing; counseling; legal services",,Irvine,CA,,US,877-531-5522,https://radiantfutures.org,,,,user_provided
+CA-SGV-YWCA,housing_shelter,"Shelter | Domestic Violence","Shelter; counseling; legal advocacy",,San Gabriel Valley,CA,,US,626-967-0658,https://ywcaglobal.org,,,,user_provided
+CA-POM-PROJ-SIS,sexual_assault,"Counseling | Sexual Assault Services","Counseling for assault survivors",,Pomona,CA,,US,909-626-4357,,,,user_provided
+CA-POM-FAMCTR,other,"Counseling | Batterer Intervention","Intervention programs",,Pomona,CA,,US,626-966-1577,,,,user_provided
+CA-OC-WAYMAK,other,"Advocacy | Victim Services","Legal support; crisis intervention; shelter referrals",,Orange County,CA,,US,714-935-6175,https://waymakersoc.org,,,"Main office address not confirmed from snippet",official_site
+CA-OC-INTERVAL-GG,housing_shelter,"Shelter | Domestic Violence","Shelter; housing; counseling","6326 E Pacific Coast Hwy, Suite B",Long Beach,CA,90803,US,714-891-8121,https://intervalhouse.org,,,"Mailing/admin address; program location label was Garden Grove",official_site
+CA-LB-INTERVAL,housing_shelter,"Shelter | Domestic Violence","Shelter; housing; counseling","6326 E Pacific Coast Hwy, Suite B",Long Beach,CA,90803,US,562-594-4555,https://intervalhouse.org,,,"Mailing/admin address",official_site
+CA-LB-INTERVAL-LB,housing_shelter,"Shelter | Domestic Violence","Shelter; housing; counseling","6326 E Pacific Coast Hwy, Suite B",Long Beach,CA,90803,US,714-891-8121,https://intervalhouse.org,,,"Mailing/admin address; hotline differs",official_site
+CA-HB-INTERVAL,housing_shelter,"Shelter | Domestic Violence","Shelter; housing; counseling","6326 E Pacific Coast Hwy, Suite B",Long Beach,CA,90803,US,562-594-4555,https://intervalhouse.org,,,"Mailing/admin address; program location label was Huntington Beach",official_site
+CA-WEST-INTERVAL,housing_shelter,"Shelter | Domestic Violence","Shelter; housing; counseling","6326 E Pacific Coast Hwy, Suite B",Long Beach,CA,90803,US,562-594-4555,https://intervalhouse.org,,,"Mailing/admin address; program location label was Westminster",official_site
+CA-LAKE-SUCASA,housing_shelter,"Shelter | Domestic Violence","Emergency shelter; transitional housing; hotline; legal advocacy",,Lakewood,CA,,US,562-402-4888,https://sucasadv.org,,,"Confidential location",official_site
+CA-RC-FOOTHILLS,mental_health,"Counseling | Mental Health","Therapy; counseling",,Rancho Cucamonga,CA,,US,909-980-3567,,,,user_provided
+CA-RIV-ALT-DV,housing_shelter,"Shelter | Domestic Violence","Shelter; counseling; legal advocacy",,Riverside,CA,,US,951-683-0829,,,,user_provided
+CA-LA-CASA-YOUTH,housing_shelter,"Shelter | Youth Services","Youth shelter; counseling; family support",,Los Alamitos,CA,,US,800-914-2272,https://casayouthshelter.org,,,,user_provided
+CA-SB-INLAND-NVR,other,"Counseling | Batterer Programs","Anger management; prevention programs",,San Bernardino,CA,,US,909-556-0366,,,,user_provided
+CA-OC-SHEEPFOLD,other,"Shelter | Transitional Housing","Transitional housing for mothers and children",,Orange County,CA,,US,714-237-1444,https://thesheepfold.org,,,,user_provided
+CA-COV-FOOTHILL-FAM,mental_health,"Counseling | Family Services","Family counseling; youth services","530 W Badillo St",Covina,CA,91722,US,626-993-3000,https://foothillfamily.org,,,,official_site
+CA-LB-HELPLINE,mental_health,"Counseling | Youth & Family Services","Counseling; substance abuse; DV programs",,Long Beach,CA,,US,562-273-0722,https://helplineyouthcounseling.org,,,"Sliding scale",user_provided
+CA-LB-SAHARA,housing_shelter,"Shelter | Domestic Violence","Shelter; culturally specific DV services",,Long Beach,CA,,US,562-402-4132,https://saharacares.org,,,"Multilingual support",user_provided

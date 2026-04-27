@@ -11,6 +11,8 @@ import json
 import os
 import ast
 import re
+import math
+import time
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Literal, Optional, Tuple
@@ -117,6 +119,7 @@ def _metric_display_name(metric: Optional[str]) -> str:
 
 METRICS_FILE = DATA_DIR / "metrics.csv"
 RISK_COMPONENTS_FILE = DATA_DIR / "risk_components.csv"
+RESOURCES_FILE = DATA_DIR / "resources.csv"
 
 # EDA outputs (kept outside chatbot to keep backend small).
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -159,6 +162,26 @@ class RiskComponentRow:
     component: str
     value: float
     note: str
+
+
+@dataclass(frozen=True)
+class ResourceRow:
+    resource_id: str
+    name: str
+    category: str
+    subcategory: str
+    services: str
+    address: str
+    city: str
+    state: str
+    postal_code: str
+    country: str
+    phone: str
+    website: str
+    latitude: Optional[float]
+    longitude: Optional[float]
+    notes: str
+    source: str
 
 
 _CACHE: Dict[str, Any] = {}
@@ -234,6 +257,286 @@ def load_risk_components_rows() -> List[RiskComponentRow]:
 
     _CACHE["risk_rows"] = rows
     return rows
+
+
+def _to_float_or_none2(x: str) -> Optional[float]:
+    x = (x or "").strip()
+    if x == "" or x.lower() in {"na", "nan", "none"}:
+        return None
+    try:
+        return float(x)
+    except Exception:
+        return None
+
+
+def load_resource_rows() -> List[ResourceRow]:
+    if "resource_rows" in _CACHE:
+        return _CACHE["resource_rows"]
+
+    if not RESOURCES_FILE.exists():
+        _CACHE["resource_rows"] = []
+        return []
+
+    raw = _read_csv(RESOURCES_FILE)
+    rows: List[ResourceRow] = []
+    for r in raw:
+        rows.append(
+            ResourceRow(
+                resource_id=(r.get("resource_id") or "").strip(),
+                name=(r.get("name") or "").strip(),
+                category=(r.get("category") or "").strip(),
+                subcategory=(r.get("subcategory") or "").strip(),
+                services=(r.get("services") or "").strip(),
+                address=(r.get("address") or "").strip(),
+                city=(r.get("city") or "").strip(),
+                state=(r.get("state") or "").strip(),
+                postal_code=(r.get("postal_code") or "").strip(),
+                country=(r.get("country") or "").strip(),
+                phone=(r.get("phone") or "").strip(),
+                website=(r.get("website") or "").strip(),
+                latitude=_to_float_or_none2(r.get("latitude", "")),
+                longitude=_to_float_or_none2(r.get("longitude", "")),
+                notes=(r.get("notes") or "").strip(),
+                source=(r.get("source") or "").strip(),
+            )
+        )
+
+    _CACHE["resource_rows"] = rows
+    return rows
+
+
+# ---------------------------------------------------------------------------
+# Victim resources lookup (geocoding + distance search)
+# ---------------------------------------------------------------------------
+
+
+def _haversine_miles(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    r = 3958.7613  # Earth radius in miles
+    p1 = math.radians(lat1)
+    p2 = math.radians(lat2)
+    dp = math.radians(lat2 - lat1)
+    dl = math.radians(lon2 - lon1)
+    a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    return r * c
+
+
+def _extract_lat_lon(text: str) -> Tuple[Optional[float], Optional[float]]:
+    """
+    Extract a (lat, lon) pair from text like:
+    - "32.7157, -117.1611"
+    - "lat 32.7157 lon -117.1611"
+    """
+    t = (text or "").strip()
+    m = re.search(r"(-?\d{1,2}\.\d+)\s*,\s*(-?\d{1,3}\.\d+)", t)
+    if m:
+        try:
+            return float(m.group(1)), float(m.group(2))
+        except Exception:
+            return None, None
+    m = re.search(r"\blat(?:itude)?\s*[:=]?\s*(-?\d{1,2}\.\d+)\b.*\blon(?:gitude)?\s*[:=]?\s*(-?\d{1,3}\.\d+)\b", t, re.I)
+    if m:
+        try:
+            return float(m.group(1)), float(m.group(2))
+        except Exception:
+            return None, None
+    return None, None
+
+
+def _extract_location_phrase(message: str) -> str:
+    """
+    Best-effort extraction of a location phrase from a natural-language query.
+    """
+    t = (message or "").strip()
+    if not t:
+        return ""
+
+    m = re.search(r"\bnear\s+(.+)$", t, re.I)
+    if m:
+        loc = m.group(1).strip()
+        loc = re.split(r"[?.!]", loc)[0].strip()
+        return loc
+
+    m = re.search(r"\bin\s+([A-Za-z][^?.!]+)$", t, re.I)
+    if m and len(m.group(1).strip()) <= 80:
+        loc = m.group(1).strip()
+        loc = re.split(r"[?.!]", loc)[0].strip()
+        return loc
+
+    return ""
+
+
+def _geocode_location(location: str) -> Dict[str, Any]:
+    """
+    Free geocoding via OpenStreetMap Nominatim.
+    - Respects a tiny in-memory cache.
+    - Requires network access at runtime.
+    """
+    loc = (location or "").strip()
+    if not loc:
+        return {"ok": False, "error": "Missing location.", "data": None}
+
+    cache_key = f"geocode::{loc.lower()}"
+    if cache_key in _CACHE:
+        return _CACHE[cache_key]
+
+    try:
+        import requests  # type: ignore
+
+        # Small throttle to avoid accidental rapid-fire calls during dev refresh loops.
+        now = time.time()
+        last = float(_CACHE.get("_geocode_last_ts", 0.0) or 0.0)
+        if now - last < 1.0:
+            time.sleep(1.0 - (now - last))
+
+        url = "https://nominatim.openstreetmap.org/search"
+        params = {"q": loc, "format": "json", "limit": 1, "addressdetails": 1}
+        headers = {"User-Agent": "vawa-insights-bot/0.1 (educational project)"}
+        resp = requests.get(url, params=params, headers=headers, timeout=10)
+        _CACHE["_geocode_last_ts"] = time.time()
+        if resp.status_code != 200:
+            out = {"ok": False, "error": f"Geocoding failed (status {resp.status_code}).", "data": None}
+            _CACHE[cache_key] = out
+            return out
+
+        data = resp.json()
+        if not isinstance(data, list) or not data:
+            out = {"ok": False, "error": "No geocoding results found for that location.", "data": None}
+            _CACHE[cache_key] = out
+            return out
+
+        hit = data[0]
+        lat = _to_float_or_none2(str(hit.get("lat", "")))
+        lon = _to_float_or_none2(str(hit.get("lon", "")))
+        disp = str(hit.get("display_name") or loc).strip()
+        if lat is None or lon is None:
+            out = {"ok": False, "error": "Geocoding returned no usable coordinates.", "data": None}
+            _CACHE[cache_key] = out
+            return out
+
+        out = {"ok": True, "data": {"display_name": disp, "latitude": lat, "longitude": lon}, "citation": {"citation_type": "geocoding", "provider": "OpenStreetMap Nominatim", "query": loc}}
+        _CACHE[cache_key] = out
+        return out
+    except Exception:
+        out = {"ok": False, "error": "Geocoding request failed.", "data": None}
+        _CACHE[cache_key] = out
+        return out
+
+
+def find_victim_resources(
+    *,
+    query: str = "",
+    location: str = "",
+    latitude: Optional[float] = None,
+    longitude: Optional[float] = None,
+    radius_miles: float = 25.0,
+    limit: int = 8,
+    categories: Optional[List[str]] = None,
+) -> Dict[str, Any]:
+    rows = load_resource_rows()
+    if not rows:
+        return {"ok": False, "error": f"No resources dataset found at {RESOURCES_FILE.name}.", "data": None}
+
+    radius_miles = float(radius_miles or 25.0)
+    radius_miles = max(1.0, min(radius_miles, 250.0))
+    limit = int(limit or 8)
+    limit = max(1, min(limit, 25))
+
+    q = (query or "").lower()
+    cats = [c.strip().lower() for c in (categories or []) if c and c.strip()]
+
+    # Resolve coordinates
+    resolved_location = (location or "").strip()
+    lat = latitude
+    lon = longitude
+    citations: List[Dict[str, Any]] = [
+        {"citation_type": "structured_data", "source_table": RESOURCES_FILE.name}
+    ]
+
+    if lat is None or lon is None:
+        # Try to pull coords directly from free text
+        lat2, lon2 = _extract_lat_lon(location or query or "")
+        lat = lat if lat is not None else lat2
+        lon = lon if lon is not None else lon2
+
+    if (lat is None or lon is None) and resolved_location:
+        geo = _geocode_location(resolved_location)
+        if geo.get("ok"):
+            lat = geo["data"]["latitude"]
+            lon = geo["data"]["longitude"]
+            resolved_location = geo["data"]["display_name"]
+            if geo.get("citation"):
+                citations.append(geo["citation"])
+        else:
+            # Still allow "national-only" results even if geocoding fails
+            citations.append({"citation_type": "geocoding", "provider": "OpenStreetMap Nominatim", "query": resolved_location, "error": geo.get("error")})
+
+    def row_matches_text(r: ResourceRow) -> bool:
+        if not q:
+            return True
+        blob = " ".join([r.name, r.category, r.subcategory, r.services, r.city, r.state, r.notes]).lower()
+        toks = [t for t in re.findall(r"[a-z0-9]+", q) if t not in {"find", "a", "an", "the", "near", "in", "for", "me", "please"}]
+        if not toks:
+            return True
+        return any(tok in blob for tok in toks)
+
+    def row_matches_category(r: ResourceRow) -> bool:
+        if not cats:
+            return True
+        return (r.category or "").strip().lower() in cats
+
+    out_rows: List[Dict[str, Any]] = []
+    for r in rows:
+        if not r.resource_id or not r.name:
+            continue
+        if not row_matches_category(r):
+            continue
+        if not row_matches_text(r):
+            continue
+
+        dist = None
+        if lat is not None and lon is not None and r.latitude is not None and r.longitude is not None:
+            dist = _haversine_miles(lat, lon, r.latitude, r.longitude)
+            if dist > radius_miles:
+                continue
+
+        out_rows.append(
+            {
+                "resource_id": r.resource_id,
+                "name": r.name,
+                "category": r.category,
+                "subcategory": r.subcategory,
+                "services": r.services,
+                "address": r.address,
+                "city": r.city,
+                "state": r.state,
+                "postal_code": r.postal_code,
+                "phone": r.phone,
+                "website": r.website,
+                "distance_miles": (round(dist, 2) if dist is not None else None),
+                "notes": r.notes,
+            }
+        )
+
+    if lat is not None and lon is not None:
+        out_rows.sort(key=lambda x: (x["distance_miles"] is None, x["distance_miles"] or 9e9))
+    else:
+        # Without coordinates: show hotline-like/national resources first
+        out_rows.sort(key=lambda x: (x.get("state") != "", x.get("city") != "", x.get("name", "")))
+
+    out_rows = out_rows[:limit]
+
+    return {
+        "ok": True,
+        "data": {
+            "resolved_location": resolved_location,
+            "latitude": lat,
+            "longitude": lon,
+            "radius_miles": radius_miles,
+            "results": out_rows,
+        },
+        "citations": citations,
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -987,7 +1290,7 @@ def _embed_texts_openai(texts: List[str], *, api_key: str, model: str = "text-em
 
 
 def _retrieve_semantic(query: str, top_k: int, api_key: str) -> List[RetrievedChunk]:
-    import numpy as np
+    import numpy as np  # type: ignore
 
     cache_key = "kb_semantic_index_v1"
     index = _CACHE.get(cache_key)
@@ -1028,7 +1331,7 @@ def _retrieve_semantic(query: str, top_k: int, api_key: str) -> List[RetrievedCh
 # Intent
 # ---------------------------------------------------------------------------
 
-Intent = Literal["data_only", "docs_only", "data_and_docs"]
+Intent = Literal["data_only", "docs_only", "data_and_docs", "resources"]
 
 _METRIC_HINTS = {
     "dv_rate",
@@ -1067,6 +1370,8 @@ _DOCS_HINTS = {
 
 def classify_intent(message: str) -> Intent:
     text = (message or "").lower()
+    if any(k in text for k in ["find a shelter", "shelter near", "shelters near", "resources near", "domestic violence shelter", "dv shelter", "mental health near", "counseling near", "therapy near", "hotline", "crisis line"]):
+        return "resources"
     has_metric = any(h in text for h in _METRIC_HINTS)
     has_docs = any(h in text for h in _DOCS_HINTS)
 
@@ -1235,6 +1540,109 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
             "pre/post",
         ]
     )
+
+    # -------------------------------------------------------------------
+    # Victim resources intent (location-based)
+    # -------------------------------------------------------------------
+    if intent == "resources":
+        loc_phrase = _extract_location_phrase(message)
+        lat0, lon0 = _extract_lat_lon(message)
+        if not loc_phrase and (lat0 is None or lon0 is None):
+            direct_answer = "Tell me a location to search near (e.g., “near Sacramento, CA” or “32.7157, -117.1611”)."
+            citations.append({"citation_type": "structured_data", "source_table": RESOURCES_FILE.name})
+            return ChatResponse(
+                answer={
+                    "direct_answer": direct_answer,
+                    "evidence": evidence_lines,
+                    "interpretation": "",
+                    "caveats": ["If you are in immediate danger, call 911."],
+                    "citations": citations,
+                    "map_embed": None,
+                },
+                debug={"intent": intent, "tools_used": tools_used, "docs_retrieved": docs_retrieved, "llm": llm_debug},
+            )
+
+        # Heuristics: “shelter” implies housing_shelter unless user asks broader.
+        cats: List[str] = []
+        tl = message.lower()
+        query_hint = ""
+        if "shelter" in tl:
+            cats.append("housing_shelter")
+            query_hint = "shelter"
+        if any(x in tl for x in ["therapy", "counsel", "mental health", "psychiat", "988"]):
+            cats.append("mental_health")
+            query_hint = query_hint or "mental health"
+        if any(x in tl for x in ["legal", "lawyer", "restraining order", "protective order"]):
+            cats.append("legal_aid")
+            query_hint = query_hint or "legal aid"
+        if any(x in tl for x in ["hotline", "crisis line"]):
+            cats.append("hotline")
+            query_hint = query_hint or "hotline"
+        if any(x in tl for x in ["domestic violence", "intimate partner"]):
+            cats.append("domestic_violence")
+            query_hint = query_hint or "domestic violence"
+        if any(x in tl for x in ["sexual assault", "rape"]):
+            cats.append("sexual_assault")
+            query_hint = query_hint or "sexual assault"
+        cats = sorted({c for c in cats if c})
+
+        tool_out = find_victim_resources(
+            query=query_hint or "",
+            location=loc_phrase,
+            latitude=lat0,
+            longitude=lon0,
+            radius_miles=25.0,
+            limit=8,
+            categories=cats,
+        )
+        tools_used.append(
+            {
+                "tool": "find_victim_resources",
+                "args": {"query": message, "location": loc_phrase, "latitude": lat0, "longitude": lon0, "radius_miles": 25.0, "limit": 8, "categories": cats},
+                "ok": tool_out.get("ok"),
+            }
+        )
+
+        if not tool_out.get("ok"):
+            direct_answer = f"I couldn’t search resources right now. ({tool_out.get('error')})"
+            citations.append({"citation_type": "structured_data", "source_table": RESOURCES_FILE.name})
+        else:
+            d = tool_out["data"]
+            results = d.get("results", [])
+            citations.extend(tool_out.get("citations", []))
+            resolved = (d.get("resolved_location") or loc_phrase or "").strip()
+            if results:
+                lines: List[str] = []
+                lines.append(f"Here are {len(results)} resource(s) near {resolved or 'your location'}:")
+                for r in results:
+                    bits = [r.get("name", "")]
+                    if r.get("city") or r.get("state"):
+                        bits.append(", ".join([x for x in [r.get("city"), r.get("state")] if x]))
+                    if r.get("distance_miles") is not None:
+                        bits.append(f"{r['distance_miles']} miles")
+                    if r.get("phone"):
+                        bits.append(f"phone {r['phone']}")
+                    if r.get("website"):
+                        bits.append(f"website {r['website']}")
+                    bullet = "- " + " — ".join([b for b in bits if b])
+                    evidence_lines.append(bullet)
+                    lines.append(bullet)
+                direct_answer = "\n".join(lines).strip()
+            else:
+                direct_answer = f"I didn’t find any entries within {d.get('radius_miles')} miles of {resolved or 'that location'} in the current resources dataset."
+
+        caveats.append("If you are in immediate danger, call 911. If you can’t safely call, consider texting a trusted person or using a safe device.")
+        return ChatResponse(
+            answer={
+                "direct_answer": direct_answer,
+                "evidence": evidence_lines,
+                "interpretation": "",
+                "caveats": caveats,
+                "citations": citations,
+                "map_embed": None,
+            },
+            debug={"intent": intent, "tools_used": tools_used, "docs_retrieved": docs_retrieved, "llm": llm_debug},
+        )
 
     if intent in {"data_only", "data_and_docs"}:
         policy_handled = False
