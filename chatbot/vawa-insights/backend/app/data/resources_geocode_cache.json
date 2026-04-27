@@ -1,0 +1,3340 @@
+{
+  "1 bergen county plaza 2nd floor, hackensack, nj, 07601": {
+    "error": "no_results",
+    "ts": "1777320026"
+  },
+  "1 bethany rd, hazlet, nj, 07730": {
+    "display_name": "1, Bethany Road, Hazlet Township, Monmouth County, New Jersey, 07730, United States",
+    "lat": "40.4155390",
+    "lon": "-74.1788900",
+    "ts": "1777319518"
+  },
+  "1 n dearborn st, chicago, il, 60602": {
+    "display_name": "State-Madison Building, 1, North Dearborn Street, Theatre District, Loop, Chicago, South Chicago Township, Cook County, Illinois, 60602, United States",
+    "lat": "41.8823362",
+    "lon": "-87.6286726",
+    "ts": "1777321114"
+  },
+  "1 william h welch way, framingham, ma, 01702": {
+    "display_name": "Framingham Police Department, 1, William H. Welch Way, Framingham, Middlesex County, Massachusetts, 01702, United States",
+    "lat": "42.2805668",
+    "lon": "-71.4175674",
+    "ts": "1777320633"
+  },
+  "100 w 10th st ste 801, wilmington, de, 19801": {
+    "error": "no_results",
+    "ts": "1777320416"
+  },
+  "100 w 10th st ste 907, wilmington, de, 19801": {
+    "error": "no_results",
+    "ts": "1777320481"
+  },
+  "100 w 13th ave, anchorage, ak, 99501": {
+    "display_name": "100, West 13th Avenue, South Addition, Anchorage, Alaska, 99501, United States",
+    "lat": "61.2095990",
+    "lon": "-149.8834430",
+    "ts": "1777319635"
+  },
+  "100 washington st ne, suite 200, huntsville, al, 35801": {
+    "error": "no_results",
+    "ts": "1777321017"
+  },
+  "1000 howard ave ste 200, new orleans, la, 70113": {
+    "error": "no_results",
+    "ts": "1777321552"
+  },
+  "1000 w 80th st, bloomington, mn, 55420": {
+    "display_name": "1000, West 80th Street, Bloomington, Hennepin County, Minnesota, 55420, United States",
+    "lat": "44.8588435",
+    "lon": "-93.2919451",
+    "ts": "1777320454"
+  },
+  "1001 bishop st ste 970, honolulu, hi, 96813": {
+    "error": "no_results",
+    "ts": "1777321512"
+  },
+  "101 callan ave, suite 400, san leandro, ca, 94577": {
+    "error": "no_results",
+    "ts": "1777320929"
+  },
+  "1010 n hudson ave, oklahoma city, ok, 73102": {
+    "display_name": "1010, North Hudson Avenue, Midtown Oklahoma City, Oklahoma City, Oklahoma County, Oklahoma, 73102, United States",
+    "lat": "35.4774427",
+    "lon": "-97.5191081",
+    "ts": "1777321510"
+  },
+  "1020 dekalb ave ne ste 4, atlanta, ga, 30307": {
+    "error": "no_results",
+    "ts": "1777321086"
+  },
+  "1020 w international airport rd, anchorage, ak, 99518": {
+    "display_name": "1020, West International Airport Road, Campbell, Anchorage, Alaska, 99518, United States",
+    "lat": "61.1735069",
+    "lon": "-149.9031596",
+    "ts": "1777321081"
+  },
+  "1075 arcade st, st paul, mn, 55106": {
+    "display_name": "1075, Arcade Street, Payne - Phalen, Saint Paul, Ramsey County, Minnesota, 55106, United States",
+    "lat": "44.9737810",
+    "lon": "-93.0660800",
+    "ts": "1777320712"
+  },
+  "10801 town square dr ne, blaine, mn, 55449": {
+    "display_name": "10801, Town Square Drive Northeast, Blaine, Anoka County, Minnesota, 55449, United States",
+    "lat": "45.1653720",
+    "lon": "-93.2096790",
+    "ts": "1777320987"
+  },
+  "1100 s 9th st, noblesville, in, 46060": {
+    "display_name": "1100, South 9th Street, Noblesville, Hamilton County, Indiana, 46060, United States",
+    "lat": "40.0363150",
+    "lon": "-86.0132680",
+    "ts": "1777321546"
+  },
+  "1104 w fort st, boise, id, 83702": {
+    "display_name": "1104, West Fort Street, Hyde Park, North End, Boise, Ada County, Idaho, 83702, United States",
+    "lat": "43.6236832",
+    "lon": "-116.2012478",
+    "ts": "1777320828"
+  },
+  "1111 9th st ste 230, des moines, ia, 50314": {
+    "error": "no_results",
+    "ts": "1777320886"
+  },
+  "1111 university ave, des moines, ia, 50314": {
+    "display_name": "Children & Families of Iowa, 1111, University Avenue, Cheatom Park, Des Moines, Polk County, Iowa, 50314, United States",
+    "lat": "41.6007040",
+    "lon": "-93.6323917",
+    "ts": "1777320382"
+  },
+  "1112 e buckeye rd, phoenix, az, 85034": {
+    "display_name": "1112, East Buckeye Road, Central City, Phoenix, Maricopa County, Arizona, 85034, United States",
+    "lat": "33.4368896",
+    "lon": "-112.0583013",
+    "ts": "1777320372"
+  },
+  "1121 mission st, san francisco, ca, 94103": {
+    "display_name": "1119;1121, Mission Street, West SoMa, Civic Center, South of Market, San Francisco, California, 94103, United States",
+    "lat": "37.7786593",
+    "lon": "-122.4112402",
+    "ts": "1777319814"
+  },
+  "113 w sherman st, phoenix, az, 85003": {
+    "display_name": "113, West Sherman Street, Central City South, Central City, Phoenix, Maricopa County, Arizona, 85003, United States",
+    "lat": "33.4400189",
+    "lon": "-112.0753244",
+    "ts": "1777320640"
+  },
+  "1130 e mcdowell rd, phoenix, az, 85006": {
+    "display_name": "Fresh Start Women's Foundation, 1130, East McDowell Road, Encanto, Phoenix, Maricopa County, Arizona, 85006, United States",
+    "lat": "33.4660739",
+    "lon": "-112.0571393",
+    "ts": "1777320637"
+  },
+  "116 nassau st 3rd floor, new york, ny, 10038": {
+    "error": "no_results",
+    "ts": "1777321475"
+  },
+  "120 e baltimore st, baltimore, md, 21202": {
+    "display_name": "120, East Baltimore Street, Chinatown, Downtown, Baltimore, Maryland, 21202, United States",
+    "lat": "39.2897267",
+    "lon": "-76.6128680",
+    "ts": "1777320508"
+  },
+  "120 s lasalle st ste 900, chicago, il, 60603": {
+    "error": "no_results",
+    "ts": "1777320994"
+  },
+  "1200 university ave ste 105, des moines, ia, 50314": {
+    "error": "no_results",
+    "ts": "1777321135"
+  },
+  "1216 arch st 4th floor, philadelphia, pa, 19107": {
+    "error": "no_results",
+    "ts": "1777321183"
+  },
+  "1254 market st, 3rd floor, san francisco, ca, 94102": {
+    "error": "no_results",
+    "ts": "1777320843"
+  },
+  "1255 post st, suite 500, san francisco, ca, 94109": {
+    "error": "no_results",
+    "ts": "1777319794"
+  },
+  "126 w adams st, jacksonville, fl, 32202": {
+    "display_name": "126, West Adams Street, South Jacksonville, Jacksonville, Duval County, Florida, 32202, United States",
+    "lat": "30.3281120",
+    "lon": "-81.6597541",
+    "ts": "1777320892"
+  },
+  "1305 3rd st s, nampa, id, 83651": {
+    "display_name": "1305, 3rd Street South, Nampa, Canyon County, Idaho, 83651, United States",
+    "lat": "43.5764310",
+    "lon": "-116.5605924",
+    "ts": "1777321171"
+  },
+  "1340 boylston st, boston, ma, 02215": {
+    "display_name": "Fenway Health Pharmacy, 1340, Boylston Street, Audubon Circle, Fenway, Boston, Suffolk County, Massachusetts, 02115, United States",
+    "lat": "42.3440411",
+    "lon": "-71.0989704",
+    "ts": "1777320618"
+  },
+  "1340 frankford ave, philadelphia, pa, 19125": {
+    "display_name": "Lutheran Settlement House, 1340, Frankford Avenue, North Philadelphia, Philadelphia, Philadelphia County, Pennsylvania, 19125, United States",
+    "lat": "39.9714117",
+    "lon": "-75.1346558",
+    "ts": "1777321067"
+  },
+  "1366 e thomas rd, suite 108, phoenix, az, 85014": {
+    "error": "no_results",
+    "ts": "1777320544"
+  },
+  "1394 cleophus pkwy, lincoln park, mi, 48146": {
+    "display_name": "1394, Cleophus Parkway, Lincoln Park, Wayne County, Michigan, 48146, United States",
+    "lat": "42.2505689",
+    "lon": "-83.1800450",
+    "ts": "1777320630"
+  },
+  "1401 los gamos dr, suite 200, san rafael, ca, 94903": {
+    "error": "no_results",
+    "ts": "1777320580"
+  },
+  "1411 e 31st st, oakland, ca, 94602": {
+    "display_name": "Highland Hospital, 1411, East 31st Street, Highland Park, Oakland, Alameda County, California, 94602, United States",
+    "lat": "37.7982246",
+    "lon": "-122.2314388",
+    "ts": "1777320709"
+  },
+  "1430 main st, waltham, ma, 02451": {
+    "display_name": "1430, Main Street, Waltham, Middlesex County, Massachusetts, 02451, United States",
+    "lat": "42.3759046",
+    "lon": "-71.2719349",
+    "ts": "1777320911"
+  },
+  "1501 n classen blvd, oklahoma city, ok, 73106": {
+    "display_name": "1501, North Classen Boulevard, Oklahoma City, Oklahoma County, Oklahoma, 73106, United States",
+    "lat": "35.4838548",
+    "lon": "-97.5298009",
+    "ts": "1777320072"
+  },
+  "151 n delaware st ste 1800, indianapolis, in, 46204": {
+    "error": "no_results",
+    "ts": "1777320848"
+  },
+  "1525 e park pl blvd ste 100, stone mountain, ga, 30087": {
+    "error": "no_results",
+    "ts": "1777320039"
+  },
+  "1531 e 10th st, indianapolis, in, 46201": {
+    "display_name": "1531, East 10th Street, Windsor Park, Near Eastside, Indianapolis, Marion County, Indiana, 46201, United States",
+    "lat": "39.7813576",
+    "lon": "-86.1324825",
+    "ts": "1777320626"
+  },
+  "1600 n main st ste 201, newton, ks, 67114": {
+    "error": "no_results",
+    "ts": "1777321504"
+  },
+  "1663 mission st, suite 225, san francisco, ca, 94103": {
+    "error": "no_results",
+    "ts": "1777320936"
+  },
+  "17 n state st ste 1710, chicago, il, 60602": {
+    "error": "no_results",
+    "ts": "1777320656"
+  },
+  "1700 2nd st ne, minneapolis, mn, 55413": {
+    "display_name": "Eastside Neighborhood Services, 1700, Northeast 2nd Street, Sheridan, Northeast, Minneapolis, Hennepin County, Minnesota, 55413, United States",
+    "lat": "45.0056981",
+    "lon": "-93.2665550",
+    "ts": "1777320549"
+  },
+  "1730 s amphlett blvd, suite 120, san mateo, ca, 94402": {
+    "error": "no_results",
+    "ts": "1777319790"
+  },
+  "18 main st, brockton, ma, 02301": {
+    "display_name": "18, Main Street, Brockton, Plymouth County, Massachusetts, 02301, United States",
+    "lat": "42.0849450",
+    "lon": "-71.0199676",
+    "ts": "1777320584"
+  },
+  "180 turning lives around inc., 1 bethany rd, hazlet, nj, 07730, usa": {
+    "error": "no_results",
+    "ts": "1777319517"
+  },
+  "1809 palmetto ave, pacifica, ca, 94044": {
+    "display_name": "1809, Palmetto Avenue, Hilton Heights, Pacifica, San Mateo County, California, 94044, United States",
+    "lat": "37.6351124",
+    "lon": "-122.4919390",
+    "ts": "1777321507"
+  },
+  "1810 capitol st, vallejo, ca, 94590": {
+    "display_name": "1810, Capitol Street, Vallejo, Solano County, California, 94590, United States",
+    "lat": "38.1029103",
+    "lon": "-122.2379500",
+    "ts": "1777321026"
+  },
+  "1822 keeaumoku st, honolulu, hi, 96822": {
+    "display_name": "First Presbyterian Church, 1822, Keeaumoku Street, Makiki, East Honolulu, Honolulu, Honolulu County, Hawaii, 96822, United States",
+    "lat": "21.3078740",
+    "lon": "-157.8337985",
+    "ts": "1777320086"
+  },
+  "1840 fairway dr, san leandro, ca, 94577": {
+    "display_name": "Fairway Drive, San Leandro, Alameda County, California, 95477, United States",
+    "lat": "37.7057984",
+    "lon": "-122.1627950",
+    "ts": "1777320049"
+  },
+  "1900 fruitvale ave, suite 2a, oakland, ca, 94601": {
+    "error": "no_results",
+    "ts": "1777320864"
+  },
+  "1924 nw 84th ave, doral, fl, 33126": {
+    "display_name": "1924, Northwest 84th Avenue, Doral, Miami-Dade County, Florida, 33126, United States",
+    "lat": "25.7913360",
+    "lon": "-80.3324391",
+    "ts": "1777320390"
+  },
+  "197 friend st, boston, ma, 02114": {
+    "display_name": "197, Friend Street, West End, Boston, Suffolk County, Massachusetts, 02222, United States",
+    "lat": "42.3641700",
+    "lon": "-71.0604864",
+    "ts": "1777320653"
+  },
+  "200 derbigny st, gretna, la, 70053": {
+    "display_name": "200, Derbigny Street, Gretna, Jefferson Parish, Louisiana, 70053, United States",
+    "lat": "29.9160450",
+    "lon": "-90.0675370",
+    "ts": "1777320901"
+  },
+  "2011 n meridian st, indianapolis, in, 46202": {
+    "display_name": "2011, North Meridian Street, Herron Morton, Indianapolis, Marion County, Indiana, 46202, United States",
+    "lat": "39.7935403",
+    "lon": "-86.1572304",
+    "ts": "1777320914"
+  },
+  "204 w franklin ave, minneapolis, mn, 55404": {
+    "display_name": "CARE Counseling, 204, West Franklin Avenue, Stevens Square, Phillips, Minneapolis, Hennepin County, Minnesota, 55404, United States",
+    "lat": "44.9629855",
+    "lon": "-93.2811329",
+    "ts": "1777320488"
+  },
+  "205 w randolph st ste 925, chicago, il, 60606": {
+    "error": "no_results",
+    "ts": "1777319801"
+  },
+  "2055 w university dr, suite 6, mesa, az, 85201": {
+    "error": "no_results",
+    "ts": "1777320387"
+  },
+  "2060 centre pointe blvd, eagan, mn, 55121": {
+    "error": "no_results",
+    "ts": "1777321524"
+  },
+  "208 s lasalle st ste 1300, chicago, il, 60604": {
+    "error": "no_results",
+    "ts": "1777320700"
+  },
+  "2101 van ness st, suite 302, san pablo, ca, 94806": {
+    "error": "no_results",
+    "ts": "1777320423"
+  },
+  "2120 n central ave, suite 250, phoenix, az, 85004": {
+    "error": "no_results",
+    "ts": "1777321530"
+  },
+  "2124 w 21st pl, chicago, il, 60608": {
+    "display_name": "2124, West 21st Place, Pilsen, Lower West Side, Chicago, West Chicago Township, Cook County, Illinois, 60608, United States",
+    "lat": "41.8533112",
+    "lon": "-87.6794173",
+    "ts": "1777321148"
+  },
+  "2150 post st, san francisco, ca, 94115": {
+    "display_name": "2150, Post Street, Lower Pacific Heights, Western Addition, San Francisco, California, 94115, United States",
+    "lat": "37.7847128",
+    "lon": "-122.4372237",
+    "ts": "1777320904"
+  },
+  "2151 salvio st, suite 201, concord, ca, 94520": {
+    "error": "no_results",
+    "ts": "1777320443"
+  },
+  "216 w somerset st, philadelphia, pa, 19133": {
+    "display_name": "Congreso de Latinos Unidos, 216, West Somerset Street, North Philadelphia, Philadelphia, Philadelphia County, Pennsylvania, 19133, United States",
+    "lat": "39.9929301",
+    "lon": "-75.1354293",
+    "ts": "1777320431"
+  },
+  "217 harbour way, richmond, ca, 94801": {
+    "display_name": "217, Harbour Way, Iron Triangle, Richmond, Contra Costa County, California, 94801, United States",
+    "lat": "37.9344208",
+    "lon": "-122.3601019",
+    "ts": "1777320082"
+  },
+  "2211 palm ave, san mateo, ca, 94403": {
+    "display_name": "2211, Palm Avenue, Hayward Park, San Mateo, San Mateo County, California, 94403, United States",
+    "lat": "37.5474057",
+    "lon": "-122.3066106",
+    "ts": "1777320452"
+  },
+  "222 e javelina ave, mesa, az, 85210": {
+    "display_name": "Southeast Regional Public Service Facility, 222, East Javelina Avenue, McQueen, Mesa, Maricopa County, Arizona, 85210, United States",
+    "lat": "33.3809193",
+    "lon": "-111.8271220",
+    "ts": "1777321105"
+  },
+  "222 n 17th st, philadelphia, pa, 19103": {
+    "display_name": "Archdiocese Office Building, 222, North 17th Street, Logan Square, Center City, Philadelphia, Philadelphia County, Pennsylvania, 19130, United States",
+    "lat": "39.9575756",
+    "lon": "-75.1677369",
+    "ts": "1777320091"
+  },
+  "222 n church st, west chester, pa, 19380": {
+    "display_name": "222, North Church Street, West Chester, Chester County, Pennsylvania, 19380, United States",
+    "lat": "39.9614500",
+    "lon": "-75.6077180",
+    "ts": "1777321000"
+  },
+  "222 w 39th ave, san mateo, ca, 94403": {
+    "display_name": "San Mateo Medical Center, 222, West 39th Avenue, Laurel, San Mateo, San Mateo County, California, 94403, United States",
+    "lat": "37.5309039",
+    "lon": "-122.3002086",
+    "ts": "1777320921"
+  },
+  "230 e bay st, jacksonville, fl, 32202": {
+    "display_name": "230, East Bay Street, Jacksonville, Duval County, Florida, 32202, United States",
+    "lat": "30.3255342",
+    "lon": "-81.6551624",
+    "ts": "1777320396"
+  },
+  "2300 henderson mill rd ne ste 110, atlanta, ga, 30345": {
+    "error": "no_results",
+    "ts": "1777321467"
+  },
+  "2309 euclid ave, des moines, ia, 50310": {
+    "display_name": "Polk County River Place, 2309, Euclid Avenue, River Plaza, Des Moines, Polk County, Iowa, 50310, United States",
+    "lat": "41.6294825",
+    "lon": "-93.6477563",
+    "ts": "1777321540"
+  },
+  "2320 monument blvd, concord, ca, 94520": {
+    "display_name": "2320, Monument Boulevard, Monument Plaza, Concord, Contra Costa County, California, 94520, United States",
+    "lat": "37.9587039",
+    "lon": "-122.0354469",
+    "ts": "1777320077"
+  },
+  "235 peachtree st ne ste 1750, atlanta, ga, 30303": {
+    "error": "no_results",
+    "ts": "1777319836"
+  },
+  "238 green st, cambridge, ma, 02139": {
+    "display_name": "238, Green Street, Central Square, Cambridgeport, Cambridge, Middlesex County, Massachusetts, 02139, United States",
+    "lat": "42.3639471",
+    "lon": "-71.1029743",
+    "ts": "1777320553"
+  },
+  "2401 lake park dr se, smyrna, ga, 30080": {
+    "display_name": "2401, Lake Park Drive Southeast, Smyrna, Cobb County, Georgia, 30080, United States",
+    "lat": "33.8967178",
+    "lon": "-84.4820569",
+    "ts": "1777320094"
+  },
+  "2445 n meridian st, indianapolis, in, 46208": {
+    "display_name": "2445, North Meridian Street, Meridian Highlands, Indianapolis, Marion County, Indiana, 46208, United States",
+    "lat": "39.8024393",
+    "lon": "-86.1563992",
+    "ts": "1777320963"
+  },
+  "2450 riverside ave, minneapolis, mn, 55454": {
+    "display_name": "University of Minnesota Masonic Children's Hospital, 2450, Riverside Avenue, Cedar-Riverside, Minneapolis, Hennepin County, Minnesota, 55454, United States",
+    "lat": "44.9667326",
+    "lon": "-93.2372484",
+    "ts": "1777320571"
+  },
+  "25 w 7th st, st paul, mn, 55102": {
+    "display_name": "25, 7th Street West, Downtown, Saint Paul, Ramsey County, Minnesota, 55102, United States",
+    "lat": "44.9477910",
+    "lon": "-93.0980100",
+    "ts": "1777320043"
+  },
+  "2500 n tyler st, little rock, ar, 72207": {
+    "display_name": "North Tyler Street, Little Rock, Big Rock Township, Pulaski County, Arkansas, 72297, United States",
+    "lat": "34.7722442",
+    "lon": "-92.3333843",
+    "ts": "1777320074"
+  },
+  "2505 n arlington ave, indianapolis, in, 46218": {
+    "display_name": "2505, North Arlington Avenue, Indianapolis, Marion County, Indiana, 46218, United States",
+    "lat": "39.8044080",
+    "lon": "-86.0644510",
+    "ts": "1777320991"
+  },
+  "256 24th st, richmond, ca, 94804": {
+    "display_name": "256, 24th Street, Richmond, Contra Costa County, California, 94804, United States",
+    "lat": "37.9350480",
+    "lon": "-122.3461804",
+    "ts": "1777320447"
+  },
+  "26081 mocine ave, hayward, ca, 94544": {
+    "display_name": "26081, Mocine Avenue, Sorenson, Hayward, Alameda County, California, 25426, United States",
+    "lat": "37.6479750",
+    "lon": "-122.0761518",
+    "ts": "1777320941"
+  },
+  "2701 n oklahoma ave, oklahoma city, ok, 73105": {
+    "display_name": "2701, North Oklahoma Avenue, Oklahoma City, Oklahoma County, Oklahoma, 73105, United States",
+    "lat": "35.4970300",
+    "lon": "-97.5100890",
+    "ts": "1777320449"
+  },
+  "275 w broadway, boston, ma, 02127": {
+    "display_name": "275, West Broadway, Dorchester Heights, South Boston, Boston, Suffolk County, Massachusetts, 02127, United States",
+    "lat": "42.3388189",
+    "lon": "-71.0513548",
+    "ts": "1777320089"
+  },
+  "2750 buford hwy ne, atlanta, ga, 30324": {
+    "error": "no_results",
+    "ts": "1777320948"
+  },
+  "2755 w armitage ave, chicago, il, 60647": {
+    "display_name": "2755, West Armitage Avenue, West Bucktown, Logan Square, Chicago, West Chicago Township, Cook County, Illinois, 60647, United States",
+    "lat": "41.9174110",
+    "lon": "-87.6968220",
+    "ts": "1777320697"
+  },
+  "27936 e 12th st, suite 210, hayward, ca, 94544": {
+    "error": "no_results",
+    "ts": "1777319830"
+  },
+  "3 barker ave, white plains, ny, 10601": {
+    "display_name": "3, Barker Avenue, City of White Plains, Westchester County, New York, 10601, United States",
+    "lat": "41.0350214",
+    "lon": "-73.7702926",
+    "ts": "1777321168"
+  },
+  "300 s 6th st, minneapolis, mn, 55487": {
+    "display_name": "Hennepin County Government Center, 300, South 6th Street, Minneapolis, Hennepin County, Minnesota, 55402, United States",
+    "lat": "44.9758533",
+    "lon": "-93.2666616",
+    "ts": "1777320705"
+  },
+  "30200 telegraph rd ste 300, bingham farms, mi, 48025": {
+    "error": "no_results",
+    "ts": "1777320408"
+  },
+  "3030 n shadeland ave ste 110, indianapolis, in, 46226": {
+    "error": "no_results",
+    "ts": "1777320575"
+  },
+  "310 e 38th st ste 209, minneapolis, mn, 55409": {
+    "error": "no_results",
+    "ts": "1777321500"
+  },
+  "3101 kingsbridge ter, bronx, ny, 10463": {
+    "display_name": "3101, Kingsbridge Terrace, Kingsbridge Heights, The Bronx, Bronx County, New York, 10463, United States",
+    "lat": "40.8776013",
+    "lon": "-73.9006293",
+    "ts": "1777320925"
+  },
+  "32 arsenal st, watertown, ma, 02472": {
+    "display_name": "32, Arsenal Street, Watertown, Middlesex County, Massachusetts, 02472, United States",
+    "lat": "42.3650652",
+    "lon": "-71.1817531",
+    "ts": "1777320384"
+  },
+  "32401 w eight mile rd, livonia, mi, 48152": {
+    "error": "no_results",
+    "ts": "1777321070"
+  },
+  "33 e main st ste 500, new albany, in, 47150": {
+    "error": "no_results",
+    "ts": "1777320854"
+  },
+  "3510 shallowford rd ne, atlanta, ga, 30341": {
+    "error": "no_results",
+    "ts": "1777320114"
+  },
+  "3543 18th st, #19, san francisco, ca, 94110": {
+    "error": "no_results",
+    "ts": "1777319825"
+  },
+  "360 communities lewis house, p.o. box 141, eagan, mn, 55121, usa": {
+    "error": "no_results",
+    "ts": "1777319519"
+  },
+  "3834 n cicero ave, chicago, il, 60641": {
+    "display_name": "Polish American Association, 3834, North Cicero Avenue, Grayland, Portage Park, Chicago, Jefferson Township, Cook County, Illinois, 60641, United States",
+    "lat": "41.9508219",
+    "lon": "-87.7474711",
+    "ts": "1777321538"
+  },
+  "39155 liberty st, suite a110, fremont, ca, 94538": {
+    "error": "no_results",
+    "ts": "1777320860"
+  },
+  "39155 liberty st, suite e500, fremont, ca, 94538": {
+    "error": "no_results",
+    "ts": "1777320393"
+  },
+  "40 exchange pl ste 510, new york, ny, 10005": {
+    "error": "no_results",
+    "ts": "1777320459"
+  },
+  "403 n van buren st, wilmington, de, 19805": {
+    "display_name": "403, North Van Buren Street, Cool Spring, Wilmington, New Castle County, Delaware, 19805, United States",
+    "lat": "39.7450560",
+    "lon": "-75.5618040",
+    "ts": "1777320954"
+  },
+  "406 pratt ave ne, huntsville, al, 35801": {
+    "display_name": "406, Pratt Avenue Northeast, Old Town Historic District, Dallas Mill Village Historic District, Five Points, Huntsville, Madison County, Alabama, 35801, United States",
+    "lat": "34.7387375",
+    "lon": "-86.5800608",
+    "ts": "1777320470"
+  },
+  "4088 n lincoln ave, chicago, il, 60618": {
+    "display_name": "4088, North Lincoln Avenue, St. Bens, North Center, Chicago, Lake View Township, Cook County, Illinois, 60618, United States",
+    "lat": "41.9557254",
+    "lon": "-87.6799814",
+    "ts": "1777319781"
+  },
+  "4092 memorial pkwy sw, suite 205, huntsville, al, 35802": {
+    "error": "no_results",
+    "ts": "1777320602"
+  },
+  "420 15th ave s, minneapolis, mn, 55454": {
+    "display_name": "Brian Coyle Center, 420, 15th Avenue South, Cedar-Riverside, Phillips, Minneapolis, Hennepin County, Minnesota, 55454, United States",
+    "lat": "44.9706425",
+    "lon": "-93.2506520",
+    "ts": "1777320839"
+  },
+  "420 sw 10th st, oklahoma city, ok, 73109": {
+    "display_name": "420, Southwest 10th Street, Oklahoma City, Oklahoma County, Oklahoma, 73109, United States",
+    "lat": "35.4548246",
+    "lon": "-97.5198266",
+    "ts": "1777320968"
+  },
+  "4236 w roosevelt rd, chicago, il, 60624": {
+    "display_name": "4236, West Roosevelt Road, North Lawndale, Chicago, West Chicago Township, Cook County, Illinois, 60624, United States",
+    "lat": "41.8661691",
+    "lon": "-87.7310357",
+    "ts": "1777321193"
+  },
+  "427 s van ness ave, san francisco, ca, 94103": {
+    "display_name": "423;425;427;429;431;433, South Van Ness Avenue, Mission, San Francisco, California, 94103, United States",
+    "lat": "37.7663515",
+    "lon": "-122.4173166",
+    "ts": "1777320419"
+  },
+  "430 s broadway, baltimore, md, 21231": {
+    "display_name": "430, South Broadway, Fell's Point, Washington Hill, Baltimore, Maryland, 21231, United States",
+    "lat": "39.2857448",
+    "lon": "-76.5937708",
+    "ts": "1777320556"
+  },
+  "431 w 7th ave, suite 208, anchorage, ak, 99501": {
+    "error": "no_results",
+    "ts": "1777319649"
+  },
+  "433 jefferson st, oakland, ca, 94607": {
+    "display_name": "Bauer Porsche Repair, 433, Jefferson Street, Old Oakland Historic District, Downtown Oakland, Oakland, Alameda County, California, 94607, United States",
+    "lat": "37.7994675",
+    "lon": "-122.2791579",
+    "ts": "1777320079"
+  },
+  "4340 redwood hwy, suite f154, san rafael, ca, 94903": {
+    "error": "no_results",
+    "ts": "1777320427"
+  },
+  "437 n topeka st, wichita, ks, 67202": {
+    "display_name": "North Topeka Street, Wichita, Sedgwick County, Kansas, 67202, United States",
+    "lat": "37.6888620",
+    "lon": "-97.3342794",
+    "ts": "1777320084"
+  },
+  "45-350 kamehameha hwy, kaneohe, hi, 96744": {
+    "error": "no_results",
+    "ts": "1777321013"
+  },
+  "450 n syndicate st ste 285, st paul, mn, 55104": {
+    "error": "no_results",
+    "ts": "1777320835"
+  },
+  "4508 mission bay dr, san diego, ca, 92109": {
+    "display_name": "4508, Mission Bay Drive, San Diego, San Diego County, California, 92109, United States",
+    "lat": "32.8032620",
+    "lon": "-117.2170060",
+    "ts": "1777319551"
+  },
+  "470 27th st, oakland, ca, 94612": {
+    "display_name": "Alameda County Family Justice Center (ACFJC), 470, 27th Street, Koreatown Northgate, Downtown Oakland, Oakland, Alameda County, California, 94612, United States",
+    "lat": "37.8163848",
+    "lon": "-122.2663597",
+    "ts": "1777320478"
+  },
+  "4707 st antoine st ste m-167, detroit, mi, 48201": {
+    "error": "no_results",
+    "ts": "1777320483"
+  },
+  "4740 n clark st, chicago, il, 60640": {
+    "display_name": "4740, North Clark Street, Sheridan Park, Uptown, Chicago, Lake View Township, Cook County, Illinois, 60640, United States",
+    "lat": "41.9683132",
+    "lon": "-87.6677441",
+    "ts": "1777320051"
+  },
+  "4747 n 7th ave, phoenix, az, 85013": {
+    "display_name": "4747, North 7th Avenue, Alhambra, Phoenix, Maricopa County, Arizona, 85013, United States",
+    "lat": "33.5072386",
+    "lon": "-112.0821860",
+    "ts": "1777320907"
+  },
+  "4775 w denton st, boise, id, 83706": {
+    "display_name": "4775, West Denton Street, Scott's First, Boise, Ada County, Idaho, 83706, United States",
+    "lat": "43.6097042",
+    "lon": "-116.2405604",
+    "ts": "1777320831"
+  },
+  "491 n state rd 7, plantation, fl, 33317": {
+    "display_name": "State Road 7, Westgate Lake Manor, Plantation, Broward County, Florida, 33317, United States",
+    "lat": "26.1251621",
+    "lon": "-80.2020291",
+    "ts": "1777320402"
+  },
+  "507 philadelphia pike, wilmington, de, 19809": {
+    "error": "no_results",
+    "ts": "1777320378"
+  },
+  "510 l st, suite 100, anchorage, ak, 99501": {
+    "error": "no_results",
+    "ts": "1777319658"
+  },
+  "55 fruit st, boston, ma, 02114": {
+    "display_name": "Massachusetts General Hospital, 55, Fruit Street, West End, Boston, Suffolk County, Massachusetts, 02114, United States",
+    "lat": "42.3628605",
+    "lon": "-71.0687530",
+    "ts": "1777320684"
+  },
+  "5635 w fort st, detroit, mi, 48209": {
+    "display_name": "CHASS Center, 5635, West Fort Street, Southwest Detroit, Detroit, Wayne County, Michigan, 48209, United States",
+    "lat": "42.3087570",
+    "lon": "-83.0969844",
+    "ts": "1777320945"
+  },
+  "5850 w glendale ave, glendale, az, 85301": {
+    "display_name": "Glendale Municipal Office Complex, 5850, West Glendale Avenue, Glendale, Maricopa County, Arizona, 85301, United States",
+    "lat": "33.5392799",
+    "lon": "-112.1853812",
+    "ts": "1777319629"
+  },
+  "5890 s pine island rd ste 201, davie, fl, 33328": {
+    "error": "no_results",
+    "ts": "1777320648"
+  },
+  "60 gore st, cambridge, ma, 02141": {
+    "display_name": "60;62, Gore Street, East Cambridge, Cambridge, Middlesex County, Massachusetts, 02141, United States",
+    "lat": "42.3715926",
+    "lon": "-71.0803325",
+    "ts": "1777320057"
+  },
+  "600 n jackson st ste 104, media, pa, 19063": {
+    "error": "no_results",
+    "ts": "1777321005"
+  },
+  "611 n rampart st, new orleans, la, 70112": {
+    "display_name": "611, North Rampart Street, French Quarter, New Orleans, Orleans Parish, Louisiana, 70112, United States",
+    "lat": "29.9599290",
+    "lon": "-90.0691432",
+    "ts": "1777320457"
+  },
+  "619 s white st, new orleans, la, 70119": {
+    "display_name": "619, South White Street, Mid-City, New Orleans, Orleans Parish, Louisiana, 70119, United States",
+    "lat": "29.9623091",
+    "lon": "-90.0929808",
+    "ts": "1777321488"
+  },
+  "628 w broadway st, suite 300, north little rock, ar, 72114": {
+    "error": "no_results",
+    "ts": "1777320597"
+  },
+  "63 fountain st ste 304, framingham, ma, 01702": {
+    "error": "no_results",
+    "ts": "1777321118"
+  },
+  "6355 nw 36th st ste 220, miami, fl, 33166": {
+    "error": "no_results",
+    "ts": "1777319783"
+  },
+  "643 bair island rd, suite 403, redwood city, ca, 94063": {
+    "error": "no_results",
+    "ts": "1777319637"
+  },
+  "650 bloomfield ave ste 209, bloomfield, nj, 07003": {
+    "error": "no_results",
+    "ts": "1777321517"
+  },
+  "657 mission st, suite 201, san francisco, ca, 94105": {
+    "error": "no_results",
+    "ts": "1777320869"
+  },
+  "6925b willow st nw, washington, dc, 20012": {
+    "error": "no_results",
+    "ts": "1777319847"
+  },
+  "700 morse rd ste 101, columbus, oh, 43214": {
+    "error": "no_results",
+    "ts": "1777319812"
+  },
+  "701 nw 1st ct, miami, fl, 33136": {
+    "display_name": "Overtown Transit Village North, 701, Northwest 1st Court, Overtown, Miami, Miami-Dade County, Florida, 33136, United States",
+    "lat": "25.7814103",
+    "lon": "-80.1966597",
+    "ts": "1777321123"
+  },
+  "718 arch st ste 300n, philadelphia, pa, 19106": {
+    "error": "no_results",
+    "ts": "1777321527"
+  },
+  "7310 woodward ave ste 301, detroit, mi, 48202": {
+    "error": "no_results",
+    "ts": "1777321188"
+  },
+  "734 a st, san rafael, ca, 94901": {
+    "display_name": "734, A Street, San Rafael, Marin County, California, 94901, United States",
+    "lat": "37.9708260",
+    "lon": "-122.5284807",
+    "ts": "1777320097"
+  },
+  "74-5599 pawai pl, kailua-kona, hi, 96740": {
+    "display_name": "HiCO Hawaiian Coffee, 74-5599, Pawai Place, Kailua, Hawaiʻi County, Hawaii, 96740, United States",
+    "lat": "19.6440038",
+    "lon": "-155.9984069",
+    "ts": "1777321009"
+  },
+  "75 marietta st nw ste 310, atlanta, ga, 30303": {
+    "error": "no_results",
+    "ts": "1777320644"
+  },
+  "760 kinnear rd, columbus, oh, 43212": {
+    "display_name": "760, Kinnear Road, Lennox Town Center, Columbus, Sharon, Franklin County, Ohio, 43212, United States",
+    "lat": "39.9975840",
+    "lon": "-83.0281320",
+    "ts": "1777320476"
+  },
+  "815 n madison ave, greenwood, in, 46142": {
+    "display_name": "815, North Madison Avenue, Greenwood, Johnson County, Indiana, 46142, United States",
+    "lat": "39.6261866",
+    "lon": "-86.1137822",
+    "ts": "1777321040"
+  },
+  "816 n krome ave ste 204, homestead, fl, 33030": {
+    "error": "no_results",
+    "ts": "1777320405"
+  },
+  "823 s park st, little rock, ar, 72202": {
+    "display_name": "823, South Park Street, Little Rock, Big Rock Township, Pulaski County, Arkansas, 72202, United States",
+    "lat": "34.7434589",
+    "lon": "-92.2973847",
+    "ts": "1777320520"
+  },
+  "840 k st, suite 200, anchorage, ak, 99501": {
+    "error": "no_results",
+    "ts": "1777319654"
+  },
+  "868 e university dr, mesa, az, 85203": {
+    "display_name": "A New Leaf | Administrative Office, 868, East University Drive, Mesa, Maricopa County, Arizona, 85203, United States",
+    "lat": "33.4227158",
+    "lon": "-111.8119731",
+    "ts": "1777319526"
+  },
+  "8975 guilford rd ste 170, columbia, md, 21046": {
+    "error": "no_results",
+    "ts": "1777321064"
+  },
+  "90 maple ave, white plains, ny, 10601": {
+    "display_name": "90, Maple Avenue, City of White Plains, Westchester County, New York, 10601, United States",
+    "lat": "41.0270330",
+    "lon": "-73.7667058",
+    "ts": "1777321023"
+  },
+  "91 larkspur st, san rafael, ca, 94901": {
+    "display_name": "91, Larkspur Street, Canal, San Rafael, Marin County, California, 94901, United States",
+    "lat": "37.9639386",
+    "lon": "-122.5047747",
+    "ts": "1777320063"
+  },
+  "91-1841 fort weaver rd, ewa beach, hi, 96706": {
+    "error": "no_results",
+    "ts": "1777320375"
+  },
+  "920 sacramento st, san francisco, ca, 94108": {
+    "display_name": "920, Sacramento Street, Chinatown, South of Market, San Francisco, California, 94108, United States",
+    "lat": "37.7931750",
+    "lon": "-122.4084080",
+    "ts": "1777320516"
+  },
+  "927 s 2nd st, louisville, ky, 40203": {
+    "display_name": "The Center for Women and Families, 927, South 2nd Street, Louisville, Jefferson County, Kentucky, 40203, United States",
+    "lat": "38.2401502",
+    "lon": "-85.7558227",
+    "ts": "1777320120"
+  },
+  "942 w chestnut st, brockton, ma, 02301": {
+    "display_name": "920;928;934;942;950, West Chestnut Street, Marshall Corner, Brockton, Plymouth County, Massachusetts, 02357, United States",
+    "lat": "42.0546931",
+    "lon": "-71.0543639",
+    "ts": "1777320694"
+  },
+  "9770 patuxent woods dr ste 300, columbia, md, 21046": {
+    "error": "no_results",
+    "ts": "1777320728"
+  },
+  "988 suicide & crisis lifeline, us": {
+    "error": "no_results",
+    "ts": "1777319522"
+  },
+  "99 bishop allen dr, cambridge, ma, 02139": {
+    "display_name": "99, Bishop Allen Drive, Mid-Cambridge, Cambridge, Middlesex County, Massachusetts, 02139, United States",
+    "lat": "42.3672970",
+    "lon": "-71.1034070",
+    "ts": "1777320033"
+  },
+  "a new leaf - autumn house, 868 e university dr, mesa, az, 85203, us": {
+    "error": "no_results",
+    "ts": "1777319525"
+  },
+  "a new leaf - faith house, 868 e university dr, mesa, az, 85203, us": {
+    "error": "no_results",
+    "ts": "1777319527"
+  },
+  "a new leaf court advocacy (glendale), 5850 w glendale ave, glendale, az, 85301, us": {
+    "error": "no_results",
+    "ts": "1777319627"
+  },
+  "a safe place, p.o. box 23006, oakland, ca, 94623, us": {
+    "error": "no_results",
+    "ts": "1777319630"
+  },
+  "abused women's aid in crisis (awaic), 100 w 13th ave, anchorage, ak, 99501, us": {
+    "error": "no_results",
+    "ts": "1777319633"
+  },
+  "adolescent counseling services, 643 bair island rd, suite 403, redwood city, ca, 94063, us": {
+    "error": "no_results",
+    "ts": "1777319636"
+  },
+  "against abuse, shelter; advocacy; community education, p.o. box 603, maricopa, az, 85139": {
+    "error": "no_results",
+    "ts": "1777321455"
+  },
+  "alameda county family justice center, 470 27th st, oakland, ca, 94612, us": {
+    "display_name": "Alameda County Family Justice Center (ACFJC), 470, 27th Street, Koreatown Northgate, Downtown Oakland, Oakland, Alameda County, California, 94612, United States",
+    "lat": "37.8163848",
+    "lon": "-122.2663597",
+    "ts": "1777319426"
+  },
+  "alaska institute for justice, 431 w 7th ave, suite 208, anchorage, ak, 99501, us": {
+    "error": "no_results",
+    "ts": "1777319646"
+  },
+  "alaska legal services corporation, 840 k st, suite 200, anchorage, ak, 99501, us": {
+    "error": "no_results",
+    "ts": "1777319651"
+  },
+  "alaska office of victims' rights, 510 l st, suite 100, anchorage, ak, 99501, us": {
+    "error": "no_results",
+    "ts": "1777319656"
+  },
+  "alexandra house, p.o. box 490309, blaine, mn, 55449, usa": {
+    "error": "no_results",
+    "ts": "1777319659"
+  },
+  "allen women's resource center, po box 340316, jamaica, ny, 11434, usa": {
+    "error": "no_results",
+    "ts": "1777319664"
+  },
+  "alternative house, p.o. box 2100, littleton, ma, 01460, usa": {
+    "error": "no_results",
+    "ts": "1777319668"
+  },
+  "alternatives incorporated, p.o. box 1303, anderson, in, 46015, usa": {
+    "error": "no_results",
+    "ts": "1777321459"
+  },
+  "american indian health service of chicago, 4088 n lincoln ave, chicago, il, 60618, usa": {
+    "error": "no_results",
+    "ts": "1777319779"
+  },
+  "americans for immigrant justice, 6355 nw 36th st ste 220, miami, fl, 33166, usa": {
+    "error": "no_results",
+    "ts": "1777319782"
+  },
+  "anchorage, ak, 99501, us": {
+    "display_name": "Anchorage, Alaska, United States",
+    "lat": "61.2163129",
+    "lon": "-149.8948520",
+    "ts": "1777319650"
+  },
+  "anderson, in, 46015, usa": {
+    "error": "no_results",
+    "ts": "1777321461"
+  },
+  "anew building beyond violence and abuse, p.o. box 572, lyons, il, 60534, usa": {
+    "error": "no_results",
+    "ts": "1777319785"
+  },
+  "anger management & dv therapy center, 1730 s amphlett blvd, suite 120, san mateo, ca, 94402, us": {
+    "error": "no_results",
+    "ts": "1777319789"
+  },
+  "apa family support services, 1255 post st, suite 500, san francisco, ca, 94109, us": {
+    "error": "no_results",
+    "ts": "1777319793"
+  },
+  "apna ghar inc., p.o. box 250250, chicago, il, 60625, usa": {
+    "error": "no_results",
+    "ts": "1777319796"
+  },
+  "ascend justice, 205 w randolph st ste 925, chicago, il, 60606, usa": {
+    "error": "no_results",
+    "ts": "1777319800"
+  },
+  "asha-ray of hope, po box 14035, columbus, oh, 43214, usa": {
+    "error": "no_results",
+    "ts": "1777319804"
+  },
+  "ashakiran, p.o. box 3682, huntsville, al, 35810, us": {
+    "error": "no_results",
+    "ts": "1777319807"
+  },
+  "asian american community services, 700 morse rd ste 101, columbus, oh, 43214, usa": {
+    "error": "no_results",
+    "ts": "1777319811"
+  },
+  "asian pacific islander legal outreach, 1121 mission st, san francisco, ca, 94103, us": {
+    "error": "no_results",
+    "ts": "1777319813"
+  },
+  "asian task force against domestic violence, p.o. box 120108, boston, ma, 02112, usa": {
+    "error": "no_results",
+    "ts": "1777319816"
+  },
+  "asian women united of minnesota, p.o. box 14506, minneapolis, mn, 55414, usa": {
+    "error": "no_results",
+    "ts": "1777319819"
+  },
+  "asian women's shelter, 3543 18th st, #19, san francisco, ca, 94110, us": {
+    "error": "no_results",
+    "ts": "1777319823"
+  },
+  "associated counseling services, 27936 e 12th st, suite 210, hayward, ca, 94544, us": {
+    "error": "no_results",
+    "ts": "1777319828"
+  },
+  "atlanta volunteer lawyers foundation, 235 peachtree st ne ste 1750, atlanta, ga, 30303, usa": {
+    "error": "no_results",
+    "ts": "1777319834"
+  },
+  "atlanta, ga, 30303, usa": {
+    "display_name": "Atlanta, Fulton County, Georgia, United States",
+    "lat": "33.7544657",
+    "lon": "-84.3898151",
+    "ts": "1777319838"
+  },
+  "atlanta, ga, 30307, usa": {
+    "display_name": "Atlanta, Fulton County, Georgia, United States",
+    "lat": "33.7544657",
+    "lon": "-84.3898151",
+    "ts": "1777321088"
+  },
+  "atlanta, ga, 30317, usa": {
+    "display_name": "Atlanta, Fulton County, Georgia, United States",
+    "lat": "33.7544657",
+    "lon": "-84.3898151",
+    "ts": "1777321522"
+  },
+  "atlanta, ga, 30324, usa": {
+    "display_name": "Atlanta, Fulton County, Georgia, United States",
+    "lat": "33.7544657",
+    "lon": "-84.3898151",
+    "ts": "1777320950"
+  },
+  "atlanta, ga, 30333, usa": {
+    "display_name": "Argos USA, 885, Atlanta, Fulton County, Georgia, 30316, United States",
+    "lat": "33.7387430",
+    "lon": "-84.3589885",
+    "ts": "1777320736"
+  },
+  "atlanta, ga, 30341, usa": {
+    "display_name": "Atlanta, Fulton County, Georgia, United States",
+    "lat": "33.7544657",
+    "lon": "-84.3898151",
+    "ts": "1777320116"
+  },
+  "atlanta, ga, 30345, usa": {
+    "display_name": "Atlanta, Fulton County, Georgia, United States",
+    "lat": "33.7544657",
+    "lon": "-84.3898151",
+    "ts": "1777321469"
+  },
+  "atlanta, ga, 30377, usa": {
+    "display_name": "Argos USA, 885, Atlanta, Fulton County, Georgia, 30316, United States",
+    "lat": "33.7387430",
+    "lon": "-84.3589885",
+    "ts": "1777320061"
+  },
+  "awaken voices domestic violence services inc., p.o. box 768126, roswell, ga, 30076, usa": {
+    "error": "no_results",
+    "ts": "1777319841"
+  },
+  "ayuda, 6925b willow st nw, washington, dc, 20012, usa": {
+    "error": "no_results",
+    "ts": "1777319845"
+  },
+  "baitul salaam network inc., p.o. box 1964, buford, ga, 30515, usa": {
+    "error": "no_results",
+    "ts": "1777319850"
+  },
+  "baltimore, md, 21203, usa": {
+    "display_name": "Baltimore, Maryland, United States",
+    "lat": "39.2908816",
+    "lon": "-76.6107590",
+    "ts": "1777320741"
+  },
+  "baltimore, md, 21209, usa": {
+    "display_name": "Baltimore, Maryland, United States",
+    "lat": "39.2908816",
+    "lon": "-76.6107590",
+    "ts": "1777321153"
+  },
+  "baltimore, md, 21228, usa": {
+    "display_name": "Baltimore, Maryland, United States",
+    "lat": "39.2908816",
+    "lon": "-76.6107590",
+    "ts": "1777320125"
+  },
+  "baltimore, md, 21281, usa": {
+    "display_name": "Baltimore, Maryland, United States",
+    "lat": "39.2908816",
+    "lon": "-76.6107590",
+    "ts": "1777321486"
+  },
+  "bay area legal aid, 1735 telegraph ave, oakland, ca, 94612, us": {
+    "display_name": "Bay Area Legal Aid, 1735, Telegraph Avenue, Uptown, Downtown Oakland, Oakland, Alameda County, California, 94612, United States",
+    "lat": "37.8073840",
+    "lon": "-122.2703102",
+    "ts": "1777320023"
+  },
+  "bedford, in, 47421, usa": {
+    "display_name": "Bedford, Lawrence County, Indiana, 47421, United States",
+    "lat": "38.8611619",
+    "lon": "-86.4872149",
+    "ts": "1777320725"
+  },
+  "bergen county alternatives to domestic violence, 1 bergen county plaza 2nd floor, hackensack, nj, 07601, usa": {
+    "error": "no_results",
+    "ts": "1777320025"
+  },
+  "berkeley, ca, 94712, us": {
+    "display_name": "Berkeley, Alameda County, California, United States",
+    "lat": "37.8708393",
+    "lon": "-122.2728630",
+    "ts": "1777321177"
+  },
+  "between friends, p.o. box 608548, chicago, il, 60660, usa": {
+    "error": "no_results",
+    "ts": "1777320028"
+  },
+  "bingham farms, mi, 48025, usa": {
+    "display_name": "Bingham Farms, Southfield Township, Oakland County, Michigan, United States",
+    "lat": "42.5158680",
+    "lon": "-83.2732643",
+    "ts": "1777320410"
+  },
+  "blaine, mn, 55449, usa": {
+    "display_name": "Blaine, Anoka County, Minnesota, United States",
+    "lat": "45.1607987",
+    "lon": "-93.2349489",
+    "ts": "1777319662"
+  },
+  "bloomfield, nj, 07003, usa": {
+    "display_name": "Bloomfield, Essex County, New Jersey, 07003, United States",
+    "lat": "40.7934789",
+    "lon": "-74.1979277",
+    "ts": "1777321518"
+  },
+  "boston area rape crisis center, 99 bishop allen dr, cambridge, ma, 02139, usa": {
+    "error": "no_results",
+    "ts": "1777320032"
+  },
+  "boston, ma, 02112, usa": {
+    "display_name": "Boston, Suffolk County, Massachusetts, United States",
+    "lat": "42.3588336",
+    "lon": "-71.0578303",
+    "ts": "1777319818"
+  },
+  "breaking free, p.o. box 5263, st paul, mn, 55105, usa": {
+    "error": "no_results",
+    "ts": "1777320034"
+  },
+  "bridges program, 1525 e park pl blvd ste 100, stone mountain, ga, 30087, usa": {
+    "error": "no_results",
+    "ts": "1777320038"
+  },
+  "bridges to safety, 25 w 7th st, st paul, mn, 55102, usa": {
+    "error": "no_results",
+    "ts": "1777320042"
+  },
+  "buckeye region anti-violence organization (bravo), po box 368, columbus, oh, 43216, usa": {
+    "error": "no_results",
+    "ts": "1777320044"
+  },
+  "buford, ga, 30515, usa": {
+    "display_name": "Buford, Gwinnett County, Georgia, United States",
+    "lat": "34.1206564",
+    "lon": "-84.0043513",
+    "ts": "1777319854"
+  },
+  "building futures, 1840 fairway dr, san leandro, ca, 94577, us": {
+    "error": "no_results",
+    "ts": "1777320048"
+  },
+  "c4 community counseling centers of chicago, 4740 n clark st, chicago, il, 60640, usa": {
+    "error": "no_results",
+    "ts": "1777320050"
+  },
+  "cabot, ar, 72023, us": {
+    "display_name": "Cabot, Lonoke County, Arkansas, United States",
+    "lat": "34.9745320",
+    "lon": "-92.0165336",
+    "ts": "1777321055"
+  },
+  "calli house youth shelter, p.o. box 1273, concord, ca, 94522, us": {
+    "error": "no_results",
+    "ts": "1777320052"
+  },
+  "cambridge and somerville legal services, 60 gore st, cambridge, ma, 02141, usa": {
+    "error": "no_results",
+    "ts": "1777320056"
+  },
+  "caminar latino, p.o. box 93524, atlanta, ga, 30377, usa": {
+    "error": "no_results",
+    "ts": "1777320058"
+  },
+  "canal alliance, 91 larkspur st, san rafael, ca, 94901, us": {
+    "error": "no_results",
+    "ts": "1777320062"
+  },
+  "care healing center, p.o. box 216, westminster, md, 21158, usa": {
+    "error": "no_results",
+    "ts": "1777320065"
+  },
+  "casa myrna vazquez inc., p.o. box 120108, boston, ma, 02112, usa": {
+    "error": "no_results",
+    "ts": "1777320068"
+  },
+  "catholic charities archdiocese of oklahoma city, 1501 n classen blvd, oklahoma city, ok, 73106, usa": {
+    "error": "no_results",
+    "ts": "1777320071"
+  },
+  "catholic charities diocese of little rock - immigration services, 2500 n tyler st, little rock, ar, 72207, us": {
+    "error": "no_results",
+    "ts": "1777320073"
+  },
+  "catholic charities east bay - concord, 2320 monument blvd, concord, ca, 94520, us": {
+    "error": "no_results",
+    "ts": "1777320075"
+  },
+  "catholic charities east bay - oakland, 433 jefferson st, oakland, ca, 94607, us": {
+    "error": "no_results",
+    "ts": "1777320078"
+  },
+  "catholic charities east bay - richmond, 217 harbour way, richmond, ca, 94801, us": {
+    "error": "no_results",
+    "ts": "1777320080"
+  },
+  "catholic charities harbor house, 437 n topeka st, wichita, ks, 67202, usa": {
+    "error": "no_results",
+    "ts": "1777320083"
+  },
+  "catholic charities hawaii, 1822 keeaumoku st, honolulu, hi, 96822, usa": {
+    "error": "no_results",
+    "ts": "1777320085"
+  },
+  "catholic charities refugee immigration services, 275 w broadway, boston, ma, 02127, usa": {
+    "error": "no_results",
+    "ts": "1777320088"
+  },
+  "catholic social services immigration program, 222 n 17th st, philadelphia, pa, 19103, usa": {
+    "error": "no_results",
+    "ts": "1777320090"
+  },
+  "catholic social services inc., 2401 lake park dr se, smyrna, ga, 30080, usa": {
+    "error": "no_results",
+    "ts": "1777320092"
+  },
+  "center for community solutions (hidden valley house), 4508 mission bay dr, san diego, ca, 92109, us": {
+    "error": "no_results",
+    "ts": "1777319549"
+  },
+  "center for domestic peace, 734 a st, san rafael, ca, 94901, us": {
+    "error": "no_results",
+    "ts": "1777320095"
+  },
+  "center for hope & safety, po box 217, hackensack, nj, 07602, usa": {
+    "error": "no_results",
+    "ts": "1777320098"
+  },
+  "center for hope and healing inc., p.o. box 57, lowell, ma, 01853, usa": {
+    "error": "no_results",
+    "ts": "1777320105"
+  },
+  "center for pan asian community services, 3510 shallowford rd ne, atlanta, ga, 30341, usa": {
+    "error": "no_results",
+    "ts": "1777320112"
+  },
+  "center for women and families louisville, 927 s 2nd st, louisville, ky, 40203, usa": {
+    "error": "no_results",
+    "ts": "1777320117"
+  },
+  "chalmette, la, 70044, usa": {
+    "display_name": "Chalmette, Saint Bernard Parish, Louisiana, 70043, United States",
+    "lat": "29.9427892",
+    "lon": "-89.9629372",
+    "ts": "1777320611"
+  },
+  "chana, p.o. box 3391, baltimore, md, 21228, usa": {
+    "error": "no_results",
+    "ts": "1777320122"
+  },
+  "chelsea, ma, 02150, usa": {
+    "display_name": "Chelsea, Suffolk County, Massachusetts, 02150, United States",
+    "lat": "42.3912241",
+    "lon": "-71.0369301",
+    "ts": "1777320664"
+  },
+  "chicago, il, 60602, usa": {
+    "display_name": "Chicago, South Chicago Township, Cook County, Illinois, United States",
+    "lat": "41.8755616",
+    "lon": "-87.6244212",
+    "ts": "1777320657"
+  },
+  "chicago, il, 60603, usa": {
+    "display_name": "Chicago, South Chicago Township, Cook County, Illinois, United States",
+    "lat": "41.8755616",
+    "lon": "-87.6244212",
+    "ts": "1777320996"
+  },
+  "chicago, il, 60604, usa": {
+    "display_name": "Chicago, South Chicago Township, Cook County, Illinois, United States",
+    "lat": "41.8755616",
+    "lon": "-87.6244212",
+    "ts": "1777320702"
+  },
+  "chicago, il, 60606, usa": {
+    "display_name": "Chicago, South Chicago Township, Cook County, Illinois, United States",
+    "lat": "41.8755616",
+    "lon": "-87.6244212",
+    "ts": "1777319802"
+  },
+  "chicago, il, 60625, usa": {
+    "display_name": "Chicago, South Chicago Township, Cook County, Illinois, United States",
+    "lat": "41.8755616",
+    "lon": "-87.6244212",
+    "ts": "1777319799"
+  },
+  "chicago, il, 60659, usa": {
+    "display_name": "Chicago, South Chicago Township, Cook County, Illinois, United States",
+    "lat": "41.8755616",
+    "lon": "-87.6244212",
+    "ts": "1777320593"
+  },
+  "chicago, il, 60660, usa": {
+    "display_name": "Chicago, South Chicago Township, Cook County, Illinois, United States",
+    "lat": "41.8755616",
+    "lon": "-87.6244212",
+    "ts": "1777320031"
+  },
+  "chicago, il, 60690, usa": {
+    "display_name": "Chicago, South Chicago Township, Cook County, Illinois, United States",
+    "lat": "41.8755616",
+    "lon": "-87.6244212",
+    "ts": "1777320435"
+  },
+  "chicanos por la causa - de colores, 1112 e buckeye rd, phoenix, az, 85034, us": {
+    "error": "no_results",
+    "ts": "1777320371"
+  },
+  "child & family service - o'ahu, 91-1841 fort weaver rd, ewa beach, hi, 96706, usa": {
+    "error": "no_results",
+    "ts": "1777320373"
+  },
+  "child inc., 507 philadelphia pike, wilmington, de, 19809, usa": {
+    "error": "no_results",
+    "ts": "1777320377"
+  },
+  "children & families of iowa domestic violence services, 1111 university ave, des moines, ia, 50314, usa": {
+    "error": "no_results",
+    "ts": "1777320381"
+  },
+  "children's charter key program, 32 arsenal st, watertown, ma, 02472, usa": {
+    "error": "no_results",
+    "ts": "1777320383"
+  },
+  "chrysalis, 2055 w university dr, suite 6, mesa, az, 85201, us": {
+    "error": "no_results",
+    "ts": "1777320386"
+  },
+  "church world service miami, 1924 nw 84th ave, doral, fl, 33126, usa": {
+    "error": "no_results",
+    "ts": "1777320389"
+  },
+  "city of fremont youth & family services, 39155 liberty st, suite e500, fremont, ca, 94538, us": {
+    "error": "no_results",
+    "ts": "1777320392"
+  },
+  "city of jacksonville crime victim services, 230 e bay st, jacksonville, fl, 32202, usa": {
+    "error": "no_results",
+    "ts": "1777320395"
+  },
+  "clayton county association against family violence, p.o. box 1312, jonesboro, ga, 30237, usa": {
+    "error": "no_results",
+    "ts": "1777320398"
+  },
+  "coast to coast legal aid of south florida inc., 491 n state rd 7, plantation, fl, 33317, usa": {
+    "error": "no_results",
+    "ts": "1777320401"
+  },
+  "coffo immigration project, 816 n krome ave ste 204, homestead, fl, 33030, usa": {
+    "error": "no_results",
+    "ts": "1777320404"
+  },
+  "columbia, md, 21046, usa": {
+    "display_name": "Columbia, Howard County, Maryland, 21044, United States",
+    "lat": "39.2156213",
+    "lon": "-76.8582049",
+    "ts": "1777320731"
+  },
+  "columbus, oh, 43206, usa": {
+    "display_name": "Columbus, Sharon, Franklin County, Ohio, United States",
+    "lat": "39.9622601",
+    "lon": "-83.0007065",
+    "ts": "1777321060"
+  },
+  "columbus, oh, 43214, usa": {
+    "display_name": "Columbus, Franklin County, Ohio, United States",
+    "lat": "39.9622601",
+    "lon": "-83.0007065",
+    "ts": "1777319806"
+  },
+  "columbus, oh, 43216, usa": {
+    "display_name": "Columbus, Sharon, Franklin County, Ohio, United States",
+    "lat": "39.9622601",
+    "lon": "-83.0007065",
+    "ts": "1777320046"
+  },
+  "common ground, 30200 telegraph rd ste 300, bingham farms, mi, 48025, usa": {
+    "error": "no_results",
+    "ts": "1777320407"
+  },
+  "community crisis services inc., p.o. box 1955, hyattsville, md, 20788, usa": {
+    "error": "no_results",
+    "ts": "1777320411"
+  },
+  "community legal aid society inc., 100 w 10th st ste 801, wilmington, de, 19801, usa": {
+    "error": "no_results",
+    "ts": "1777320414"
+  },
+  "community united against violence (cuav), 427 s van ness ave, san francisco, ca, 94103, us": {
+    "error": "no_results",
+    "ts": "1777320418"
+  },
+  "community university health care center, 2001 bloomington ave, minneapolis, mn, 55404, usa": {
+    "display_name": "Community-University Health Care Center, 2001, Bloomington Avenue South, Phillips, Minneapolis, Hennepin County, Minnesota, 55404, United States",
+    "lat": "44.9620056",
+    "lon": "-93.2518758",
+    "ts": "1777320420"
+  },
+  "community violence solutions - san pablo, 2101 van ness st, suite 302, san pablo, ca, 94806, us": {
+    "error": "no_results",
+    "ts": "1777320422"
+  },
+  "community violence solutions - san rafael, 4340 redwood hwy, suite f154, san rafael, ca, 94903, us": {
+    "error": "no_results",
+    "ts": "1777320425"
+  },
+  "community youth center sf, 1038 post st, san francisco, ca, 94109, us": {
+    "display_name": "Community Youth Center, 1038;1044, Post Street, Lower Nob Hill, Tenderloin, South of Market, San Francisco, California, 94164, United States",
+    "lat": "37.7871975",
+    "lon": "-122.4191214",
+    "ts": "1777320429"
+  },
+  "concord, ca, 94520, us": {
+    "display_name": "Concord, Contra Costa County, California, United States",
+    "lat": "37.9768525",
+    "lon": "-122.0335624",
+    "ts": "1777320445"
+  },
+  "concord, ca, 94522, us": {
+    "display_name": "Concord, Contra Costa County, California, United States",
+    "lat": "37.9768525",
+    "lon": "-122.0335624",
+    "ts": "1777320055"
+  },
+  "congreso de latinos unidos latina dv program, 216 w somerset st, philadelphia, pa, 19133, usa": {
+    "error": "no_results",
+    "ts": "1777320430"
+  },
+  "connections for abused women and their children, p.o. box 1515, chicago, il, 60690, usa": {
+    "error": "no_results",
+    "ts": "1777320433"
+  },
+  "constructing our future inc., po box 441542, indianapolis, in, 46244, usa": {
+    "error": "no_results",
+    "ts": "1777320436"
+  },
+  "contact lifeline inc wilmington, p.o. box 9525, wilmington, de, 19809, usa": {
+    "error": "no_results",
+    "ts": "1777320440"
+  },
+  "contra costa family justice center (concord), 2151 salvio st, suite 201, concord, ca, 94520, us": {
+    "error": "no_results",
+    "ts": "1777320442"
+  },
+  "contra costa family justice center (richmond), 256 24th st, richmond, ca, 94804, us": {
+    "error": "no_results",
+    "ts": "1777320446"
+  },
+  "conyers, ga, 30012, usa": {
+    "display_name": "Conyers, Rockdale County, Georgia, United States",
+    "lat": "33.6676103",
+    "lon": "-84.0176904",
+    "ts": "1777321550"
+  },
+  "cope inc., 2701 n oklahoma ave, oklahoma city, ok, 73105, usa": {
+    "error": "no_results",
+    "ts": "1777320448"
+  },
+  "cora (community overcoming relationship abuse), 2211 palm ave, san mateo, ca, 94403, us": {
+    "error": "no_results",
+    "ts": "1777320451"
+  },
+  "cornerstone advocacy service, 1000 w 80th st, bloomington, mn, 55420, usa": {
+    "error": "no_results",
+    "ts": "1777320453"
+  },
+  "covenant house new orleans, 611 n rampart st, new orleans, la, 70112, usa": {
+    "error": "no_results",
+    "ts": "1777320456"
+  },
+  "covina, ca, 91722, us": {
+    "display_name": "Covina, Los Angeles County, California, United States",
+    "lat": "34.0877926",
+    "lon": "-117.8891164",
+    "ts": "1777321095"
+  },
+  "crime victims treatment center, 40 exchange pl ste 510, new york, ny, 10005, usa": {
+    "error": "no_results",
+    "ts": "1777320458"
+  },
+  "crisis center for south suburbia, p.o. box 39, tinley park, il, 60477, usa": {
+    "error": "no_results",
+    "ts": "1777320462"
+  },
+  "crisis intervention & advocacy center, p.o. box 446, ottumwa, ia, 52501, usa": {
+    "error": "no_results",
+    "ts": "1777320465"
+  },
+  "crisis services of north alabama, 406 pratt ave ne, huntsville, al, 35801, us": {
+    "error": "no_results",
+    "ts": "1777320469"
+  },
+  "davie, fl, 33328, usa": {
+    "display_name": "Davie, Broward County, Florida, United States",
+    "lat": "26.0628665",
+    "lon": "-80.2331038",
+    "ts": "1777320649"
+  },
+  "deaf abused women's network, p.o. box 71035, washington, dc, 20024, usa": {
+    "error": "no_results",
+    "ts": "1777320471"
+  },
+  "deaf world against violence everywhere (dwave), 760 kinnear rd, columbus, oh, 43212, usa": {
+    "error": "no_results",
+    "ts": "1777320475"
+  },
+  "deafhope, 470 27th st, oakland, ca, 94612, us": {
+    "error": "no_results",
+    "ts": "1777320477"
+  },
+  "decatur, ga, 30031, usa": {
+    "display_name": "Decatur, DeKalb County, Georgia, United States",
+    "lat": "33.7737582",
+    "lon": "-84.2960690",
+    "ts": "1777320876"
+  },
+  "delaware volunteer legal services inc., 100 w 10th st ste 907, wilmington, de, 19801, usa": {
+    "error": "no_results",
+    "ts": "1777320480"
+  },
+  "des moines, ia, 50314, usa": {
+    "display_name": "Des Moines, Polk County, Iowa, United States",
+    "lat": "41.5868654",
+    "lon": "-93.6249494",
+    "ts": "1777320888"
+  },
+  "des moines, ia, 50365, usa": {
+    "display_name": "Siegwork USA Company, Des Moines, Polk County, Iowa, United States",
+    "lat": "41.5878406",
+    "lon": "-93.5858691",
+    "ts": "1777320960"
+  },
+  "des plaines, il, 60017, usa": {
+    "display_name": "Des Plaines, Maine Township, Cook County, Illinois, 60016, United States",
+    "lat": "42.0415823",
+    "lon": "-87.8873916",
+    "ts": "1777321045"
+  },
+  "detroit police victim assistance, 4707 st antoine st ste m-167, detroit, mi, 48201, usa": {
+    "error": "no_results",
+    "ts": "1777320482"
+  },
+  "detroit, mi, 48201, usa": {
+    "display_name": "Detroit, Wayne County, Michigan, United States",
+    "lat": "42.3315509",
+    "lon": "-83.0466403",
+    "ts": "1777320485"
+  },
+  "detroit, mi, 48202, usa": {
+    "display_name": "Detroit, Wayne County, Michigan, United States",
+    "lat": "42.3315509",
+    "lon": "-83.0466403",
+    "ts": "1777321190"
+  },
+  "domestic abuse project of delaware county inc., p.o. box 211, media, pa, 19063, usa": {
+    "error": "no_results",
+    "ts": "1777320490"
+  },
+  "domestic abuse project, 204 w franklin ave, minneapolis, mn, 55404, usa": {
+    "error": "no_results",
+    "ts": "1777320487"
+  },
+  "domestic violence action center, 1001 bishop st ste 970, honolulu, hi, 96813, usa": {
+    "error": "no_results",
+    "ts": "1777320495"
+  },
+  "domestic violence center of chester county, p.o. box 832, west chester, pa, 19381, usa": {
+    "error": "no_results",
+    "ts": "1777320501"
+  },
+  "domestic violence unit baltimore, 120 e baltimore st, baltimore, md, 21202, usa": {
+    "error": "no_results",
+    "ts": "1777320506"
+  },
+  "domestic_violence, san diego, ca, 92123, us, 858-637-3210": {
+    "error": "no_results",
+    "ts": "1777320510"
+  },
+  "donaldina cameron house, 920 sacramento st, san francisco, ca, 94108, us": {
+    "error": "no_results",
+    "ts": "1777320514"
+  },
+  "dorcas house, 823 s park st, little rock, ar, 72202, us": {
+    "error": "no_results",
+    "ts": "1777320518"
+  },
+  "dorchester, ma, 02130, usa": {
+    "display_name": "Dorchester, Boston, Suffolk County, Massachusetts, United States",
+    "lat": "42.2973205",
+    "lon": "-71.0744952",
+    "ts": "1777320623"
+  },
+  "dove inc., p.o. box 690267, quincy, ma, 02269, usa": {
+    "error": "no_results",
+    "ts": "1777320537"
+  },
+  "doves program (area agency on aging), 1366 e thomas rd, suite 108, phoenix, az, 85014, us": {
+    "error": "no_results",
+    "ts": "1777320542"
+  },
+  "eagan, mn, 55121, usa": {
+    "display_name": "Eagan, Dakota County, Minnesota, United States",
+    "lat": "44.8181730",
+    "lon": "-93.1659179",
+    "ts": "1777319521"
+  },
+  "east chicago, in, 46312, usa": {
+    "display_name": "East Chicago, North Township, Lake County, Indiana, 46312, United States",
+    "lat": "41.6397857",
+    "lon": "-87.4548466",
+    "ts": "1777320675"
+  },
+  "east side neighborhood service, 1700 2nd st ne, minneapolis, mn, 55413, usa": {
+    "error": "no_results",
+    "ts": "1777320547"
+  },
+  "el reno, ok, 73036, usa": {
+    "display_name": "El Reno, Canadian County, Oklahoma, United States",
+    "lat": "35.5321980",
+    "lon": "-97.9550578",
+    "ts": "1777320882"
+  },
+  "emerge counseling and education, 238 green st, cambridge, ma, 02139, usa": {
+    "error": "no_results",
+    "ts": "1777320551"
+  },
+  "encinitas, ca, us": {
+    "display_name": "Encinitas, San Diego County, California, United States",
+    "lat": "33.0369867",
+    "lon": "-117.2919818",
+    "ts": "1777320799"
+  },
+  "esperanza center immigration legal services, 430 s broadway, baltimore, md, 21231, usa": {
+    "error": "no_results",
+    "ts": "1777320554"
+  },
+  "esperanza united, p.o. box 40115, st paul, mn, 55104, usa": {
+    "error": "no_results",
+    "ts": "1777320559"
+  },
+  "eve's place, p.o. box 2366, surprise, az, 85378, us": {
+    "error": "no_results",
+    "ts": "1777320564"
+  },
+  "ewa beach, hi, 96706, usa": {
+    "display_name": "Ewa Beach, Honolulu County, Hawaii, 96706, United States",
+    "lat": "21.3156030",
+    "lon": "-158.0088040",
+    "ts": "1777320376"
+  },
+  "fairview counseling center, 2450 riverside ave, minneapolis, mn, 55454, usa": {
+    "error": "no_results",
+    "ts": "1777320569"
+  },
+  "fall creek counseling, 3030 n shadeland ave ste 110, indianapolis, in, 46226, usa": {
+    "error": "no_results",
+    "ts": "1777320573"
+  },
+  "family & children's law center, 1401 los gamos dr, suite 200, san rafael, ca, 94903, us": {
+    "error": "no_results",
+    "ts": "1777320579"
+  },
+  "family and community resources inc., 18 main st, brockton, ma, 02301, usa": {
+    "error": "no_results",
+    "ts": "1777320582"
+  },
+  "family crisis center of baltimore county, p.o. box 390, towson, md, 21204, usa": {
+    "error": "no_results",
+    "ts": "1777320586"
+  },
+  "family rescue, p.o. box 597673, chicago, il, 60659, usa": {
+    "error": "no_results",
+    "ts": "1777320590"
+  },
+  "family service agency, 628 w broadway st, suite 300, north little rock, ar, 72114, us": {
+    "error": "no_results",
+    "ts": "1777320596"
+  },
+  "family services center, 4092 memorial pkwy sw, suite 205, huntsville, al, 35802, us": {
+    "error": "no_results",
+    "ts": "1777320600"
+  },
+  "family violence law center, 470 27th st, oakland, ca, 94612, us": {
+    "error": "no_results",
+    "ts": "1777320606"
+  },
+  "family violence program of st bernard, p.o. box 46, chalmette, la, 70044, usa": {
+    "error": "no_results",
+    "ts": "1777320608"
+  },
+  "felton institute, 1500 franklin st, san francisco, ca, 94109, us": {
+    "display_name": "Felton Institute Innovation Social Services, 1500, Franklin Street, Western Addition, San Francisco, California, 94164, United States",
+    "lat": "37.7884265",
+    "lon": "-122.4234489",
+    "ts": "1777320614"
+  },
+  "fenway health violence recovery program, 1340 boylston st, boston, ma, 02215, usa": {
+    "error": "no_results",
+    "ts": "1777320616"
+  },
+  "fernandina beach, fl, 32035, usa": {
+    "display_name": "Fernandina Beach, Nassau County, Florida, 32035, United States",
+    "lat": "30.6712285",
+    "lon": "-81.4630025",
+    "ts": "1777321129"
+  },
+  "finex house, p.o. box 300764, dorchester, ma, 02130, usa": {
+    "error": "no_results",
+    "ts": "1777320620"
+  },
+  "firefly children and family alliance, 1531 e 10th st, indianapolis, in, 46201, usa": {
+    "error": "no_results",
+    "ts": "1777320625"
+  },
+  "first step, 1394 cleophus pkwy, lincoln park, mi, 48146, usa": {
+    "error": "no_results",
+    "ts": "1777320628"
+  },
+  "framingham police domestic violence unit, 1 william h welch way, framingham, ma, 01702, usa": {
+    "error": "no_results",
+    "ts": "1777320631"
+  },
+  "framingham, ma, 01702, usa": {
+    "display_name": "Framingham, Middlesex County, Massachusetts, United States",
+    "lat": "42.2773177",
+    "lon": "-71.4165905",
+    "ts": "1777321120"
+  },
+  "fremont, ca, 94538, us": {
+    "display_name": "Fremont, Alameda County, California, United States",
+    "lat": "37.5482697",
+    "lon": "-121.9885710",
+    "ts": "1777320394"
+  },
+  "fresh start women's resource center, 1130 e mcdowell rd, phoenix, az, 85006, us": {
+    "error": "no_results",
+    "ts": "1777320635"
+  },
+  "friendly house, 113 w sherman st, phoenix, az, 85003, us": {
+    "error": "no_results",
+    "ts": "1777320639"
+  },
+  "georgia asylum & immigration network, 75 marietta st nw ste 310, atlanta, ga, 30303, usa": {
+    "error": "no_results",
+    "ts": "1777320642"
+  },
+  "goodman jewish family services, 5890 s pine island rd ste 201, davie, fl, 33328, usa": {
+    "error": "no_results",
+    "ts": "1777320646"
+  },
+  "goodyear, az, 85338, us": {
+    "display_name": "Goodyear, Maricopa County, Arizona, United States",
+    "lat": "33.4672279",
+    "lon": "-112.3853489",
+    "ts": "1777321472"
+  },
+  "greater boston legal services, 197 friend st, boston, ma, 02114, usa": {
+    "error": "no_results",
+    "ts": "1777320651"
+  },
+  "greater chicago legal clinic, 17 n state st ste 1710, chicago, il, 60602, usa": {
+    "error": "no_results",
+    "ts": "1777320654"
+  },
+  "hackensack, nj, 07601, usa": {
+    "display_name": "Hackensack, Bergen County, New Jersey, 07601, United States",
+    "lat": "40.8870781",
+    "lon": "-74.0410667",
+    "ts": "1777320027"
+  },
+  "hackensack, nj, 07602, usa": {
+    "display_name": "Hackensack, Bergen County, New Jersey, 07601, United States",
+    "lat": "40.8870781",
+    "lon": "-74.0410667",
+    "ts": "1777320103"
+  },
+  "harbor cov, p.o. box 505, chelsea, ma, 02150, usa": {
+    "error": "no_results",
+    "ts": "1777320659"
+  },
+  "haven - oakland, p.o. box 431045, pontiac, mi, 48343, usa": {
+    "error": "no_results",
+    "ts": "1777320666"
+  },
+  "haven house inc., p.o. box 508, east chicago, in, 46312, usa": {
+    "error": "no_results",
+    "ts": "1777320672"
+  },
+  "haven house mcdonough, p.o. box 1207, mcdonough, ga, 30253, usa": {
+    "error": "no_results",
+    "ts": "1777320677"
+  },
+  "haven ma general hospital, 55 fruit st, boston, ma, 02114, usa": {
+    "error": "no_results",
+    "ts": "1777320683"
+  },
+  "hayward, ca, 94544, us": {
+    "display_name": "Hayward, Alameda County, California, United States",
+    "lat": "37.6688205",
+    "lon": "-122.0807960",
+    "ts": "1777319832"
+  },
+  "healing abuse working for change, p.o. box 725, salem, ma, 01970, usa": {
+    "error": "no_results",
+    "ts": "1777320687"
+  },
+  "health imperatives, 942 w chestnut st, brockton, ma, 02301, usa": {
+    "error": "no_results",
+    "ts": "1777320692"
+  },
+  "healthcare alternative systems basta dv program, 2755 w armitage ave, chicago, il, 60647, usa": {
+    "error": "no_results",
+    "ts": "1777320695"
+  },
+  "heartland human care services, 208 s lasalle st ste 1300, chicago, il, 60604, usa": {
+    "error": "no_results",
+    "ts": "1777320698"
+  },
+  "hennepin county attorney domestic abuse service center, 300 s 6th st, minneapolis, mn, 55487, usa": {
+    "error": "no_results",
+    "ts": "1777320704"
+  },
+  "highland hospital dv & sexual assault center, 1411 e 31st st, oakland, ca, 94602, us": {
+    "error": "no_results",
+    "ts": "1777320707"
+  },
+  "hmong american partnership, 1075 arcade st, st paul, mn, 55106, usa": {
+    "error": "no_results",
+    "ts": "1777320710"
+  },
+  "home free community program missions inc., p.o. box 139, plymouth, mn, 55447, usa": {
+    "error": "no_results",
+    "ts": "1777320714"
+  },
+  "home free shelter missions inc., p.o. box 139, plymouth, mn, 55447, usa": {
+    "error": "no_results",
+    "ts": "1777320719"
+  },
+  "homestead, fl, 33030, usa": {
+    "display_name": "Homestead, Miami-Dade County, Florida, United States",
+    "lat": "25.4718946",
+    "lon": "-80.4759905",
+    "ts": "1777320406"
+  },
+  "honolulu, hi, 96813, usa": {
+    "display_name": "Honolulu, Honolulu County, Hawaii, United States",
+    "lat": "21.3045470",
+    "lon": "-157.8556760",
+    "ts": "1777320499"
+  },
+  "hoosier hills pact dv shelter, p.o. box 416, bedford, in, 47421, usa": {
+    "error": "no_results",
+    "ts": "1777320722"
+  },
+  "hopeworks of howard county inc., 9770 patuxent woods dr ste 300, columbia, md, 21046, usa": {
+    "error": "no_results",
+    "ts": "1777320727"
+  },
+  "house of cherith, p.o. box 15096, atlanta, ga, 30333, usa": {
+    "error": "no_results",
+    "ts": "1777320732"
+  },
+  "house of ruth maryland montgomery pg office, p.o. box 459, baltimore, md, 21203, usa": {
+    "error": "no_results",
+    "ts": "1777320760"
+  },
+  "house of ruth maryland, p.o. box 459, baltimore, md, 21203, usa": {
+    "error": "no_results",
+    "ts": "1777320738"
+  },
+  "housing_shelter, encinitas, ca, us, 760-633-1111": {
+    "error": "no_results",
+    "ts": "1777320797"
+  },
+  "housing_shelter, irvine, ca, 92620, us, 877-854-3594": {
+    "error": "no_results",
+    "ts": "1777320815"
+  },
+  "housing_shelter, irvine, ca, us, 877-531-5522": {
+    "error": "no_results",
+    "ts": "1777320789"
+  },
+  "housing_shelter, lakewood, ca, us, 562-402-4888": {
+    "error": "no_results",
+    "ts": "1777320778"
+  },
+  "housing_shelter, long beach, ca, 90803, us, 562-594-4555": {
+    "error": "no_results",
+    "ts": "1777320808"
+  },
+  "housing_shelter, long beach, ca, us, 562-402-4132": {
+    "error": "no_results",
+    "ts": "1777320786"
+  },
+  "housing_shelter, los alamitos, ca, us, 800-914-2272": {
+    "error": "no_results",
+    "ts": "1777320801"
+  },
+  "housing_shelter, los angeles, ca, 90022, us, 800-585-6231": {
+    "error": "no_results",
+    "ts": "1777320804"
+  },
+  "housing_shelter, orange county, ca, us, 949-498-1511": {
+    "error": "no_results",
+    "ts": "1777320767"
+  },
+  "housing_shelter, riverside, ca, us, 951-683-0829": {
+    "error": "no_results",
+    "ts": "1777320782"
+  },
+  "housing_shelter, san bernardino, ca, us, 909-381-3471": {
+    "error": "no_results",
+    "ts": "1777320763"
+  },
+  "housing_shelter, san diego, ca, 92110, us, 619-241-0608": {
+    "error": "no_results",
+    "ts": "1777320811"
+  },
+  "housing_shelter, san diego, ca, us, 619-234-3164": {
+    "error": "no_results",
+    "ts": "1777320793"
+  },
+  "housing_shelter, san gabriel valley, ca, us, 626-967-0658": {
+    "error": "no_results",
+    "ts": "1777320773"
+  },
+  "housing_shelter, tustin, ca, 92780, us, 323-763-2865": {
+    "error": "no_results",
+    "ts": "1777320818"
+  },
+  "housing_shelter, whittier, ca, us, 562-945-3939": {
+    "error": "no_results",
+    "ts": "1777320770"
+  },
+  "houston, tx, 77292, us": {
+    "display_name": "Houston, Harris County, Texas, United States",
+    "lat": "29.7589382",
+    "lon": "-95.3676974",
+    "ts": "1777321480"
+  },
+  "hubbard house inc., p.o. box 4909, jacksonville, fl, 32201, usa": {
+    "error": "no_results",
+    "ts": "1777320822"
+  },
+  "huntsville, al, 35801, us": {
+    "display_name": "Huntsville, Madison County, Alabama, United States",
+    "lat": "34.7298470",
+    "lon": "-86.5859011",
+    "ts": "1777321019"
+  },
+  "huntsville, al, 35802, us": {
+    "display_name": "Huntsville, Madison County, Alabama, United States",
+    "lat": "34.7298470",
+    "lon": "-86.5859011",
+    "ts": "1777320605"
+  },
+  "huntsville, al, 35810, us": {
+    "display_name": "Huntsville, Madison County, Alabama, United States",
+    "lat": "34.7298470",
+    "lon": "-86.5859011",
+    "ts": "1777319810"
+  },
+  "hyattsville, md, 20788, usa": {
+    "display_name": "Hyattsville, Prince George's County, Maryland, 20782, United States",
+    "lat": "38.9529442",
+    "lon": "-76.9408647",
+    "ts": "1777320413"
+  },
+  "idaho legal aid services boise, 1104 w fort st, boise, id, 83702, usa": {
+    "error": "no_results",
+    "ts": "1777320827"
+  },
+  "idaho youth ranch hays shelter home, 4775 w denton st, boise, id, 83706, usa": {
+    "error": "no_results",
+    "ts": "1777320830"
+  },
+  "immigrant law center of minnesota, 450 n syndicate st ste 285, st paul, mn, 55104, usa": {
+    "error": "no_results",
+    "ts": "1777320834"
+  },
+  "immigrant women's advocacy project brian coyle center, 420 15th ave s, minneapolis, mn, 55454, usa": {
+    "error": "no_results",
+    "ts": "1777320837"
+  },
+  "immigration center for women & children - san francisco, 1254 market st, 3rd floor, san francisco, ca, 94102, us": {
+    "error": "no_results",
+    "ts": "1777320841"
+  },
+  "indiana legal services indianapolis, 151 n delaware st ste 1800, indianapolis, in, 46204, usa": {
+    "error": "no_results",
+    "ts": "1777320847"
+  },
+  "indiana legal services new albany, 33 e main st ste 500, new albany, in, 47150, usa": {
+    "error": "no_results",
+    "ts": "1777320852"
+  },
+  "indianapolis, in, 46204, usa": {
+    "display_name": "Indianapolis, Marion County, Indiana, United States",
+    "lat": "39.7683331",
+    "lon": "-86.1583502",
+    "ts": "1777320850"
+  },
+  "indianapolis, in, 46226, usa": {
+    "display_name": "Indianapolis, Marion County, Indiana, United States",
+    "lat": "39.7683331",
+    "lon": "-86.1583502",
+    "ts": "1777320577"
+  },
+  "indianapolis, in, 46244, usa": {
+    "display_name": "Indianapolis, Marion County, Indiana, United States",
+    "lat": "39.7683331",
+    "lon": "-86.1583502",
+    "ts": "1777320439"
+  },
+  "international institute of the bay area - fremont, 39155 liberty st, suite a110, fremont, ca, 94538, us": {
+    "error": "no_results",
+    "ts": "1777320858"
+  },
+  "international institute of the bay area - oakland, 1900 fruitvale ave, suite 2a, oakland, ca, 94601, us": {
+    "error": "no_results",
+    "ts": "1777320862"
+  },
+  "international institute of the bay area - san francisco, 657 mission st, suite 201, san francisco, ca, 94105, us": {
+    "error": "no_results",
+    "ts": "1777320867"
+  },
+  "international women's house inc., p.o. box 503, decatur, ga, 30031, usa": {
+    "error": "no_results",
+    "ts": "1777320873"
+  },
+  "intervention & crisis advocacy network (ican!), po box 517, el reno, ok, 73036, usa": {
+    "error": "no_results",
+    "ts": "1777320878"
+  },
+  "iowa legal aid, 1111 9th st ste 230, des moines, ia, 50314, usa": {
+    "error": "no_results",
+    "ts": "1777320884"
+  },
+  "irvine, ca, 92620, us": {
+    "display_name": "Irvine, Orange County, California, United States",
+    "lat": "33.6856969",
+    "lon": "-117.8259810",
+    "ts": "1777320817"
+  },
+  "irvine, ca, us": {
+    "display_name": "Irvine, Orange County, California, United States",
+    "lat": "33.6856969",
+    "lon": "-117.8259810",
+    "ts": "1777320791"
+  },
+  "jacksonville area legal aid inc., 126 w adams st, jacksonville, fl, 32202, usa": {
+    "error": "no_results",
+    "ts": "1777320890"
+  },
+  "jacksonville, fl, 32201, usa": {
+    "display_name": "Metals USA, Jacksonville, Duval County, Florida, United States",
+    "lat": "30.3646523",
+    "lon": "-81.7040914",
+    "ts": "1777320825"
+  },
+  "jamaica, ny, 11434, usa": {
+    "display_name": "Jamaica, Sutphin Boulevard, Queens, Queens County, New York, 11435, United States",
+    "lat": "40.6998350",
+    "lon": "-73.8077023",
+    "ts": "1777319667"
+  },
+  "jbws, po box 1437, morristown, nj, 07962, usa": {
+    "error": "no_results",
+    "ts": "1777320893"
+  },
+  "jefferson parish district attorney office victim witness program, 200 derbigny st, gretna, la, 70053, usa": {
+    "error": "no_results",
+    "ts": "1777320899"
+  },
+  "jewish family & children services, 2150 post st, san francisco, ca, 94115, us": {
+    "error": "no_results",
+    "ts": "1777320902"
+  },
+  "jewish family & children's service - shelter without walls, 4747 n 7th ave, phoenix, az, 85013, us": {
+    "error": "no_results",
+    "ts": "1777320905"
+  },
+  "jonesboro, ga, 30237, usa": {
+    "display_name": "Jonesboro, Craighead County, Arkansas, United States",
+    "lat": "35.8348088",
+    "lon": "-90.7045297",
+    "ts": "1777320400"
+  },
+  "journey to safety jfcs, 1430 main st, waltham, ma, 02451, usa": {
+    "error": "no_results",
+    "ts": "1777320909"
+  },
+  "julian center inc., 2011 n meridian st, indianapolis, in, 46202, usa": {
+    "error": "no_results",
+    "ts": "1777320913"
+  },
+  "kan-win, p.o. box 315, chicago, il, 60690, usa": {
+    "error": "no_results",
+    "ts": "1777320916"
+  },
+  "kaneohe, hi, 96744, usa": {
+    "display_name": "Kaneohe, Honolulu County, Hawaii, 96744, United States",
+    "lat": "21.4185550",
+    "lon": "-157.8041840",
+    "ts": "1777321014"
+  },
+  "keller center for family violence intervention, 222 w 39th ave, san mateo, ca, 94403, us": {
+    "error": "no_results",
+    "ts": "1777320920"
+  },
+  "kingsbridge heights community center, 3101 kingsbridge ter, bronx, ny, 10463, usa": {
+    "error": "no_results",
+    "ts": "1777320923"
+  },
+  "korean community center east bay, 101 callan ave, suite 400, san leandro, ca, 94577, us": {
+    "error": "no_results",
+    "ts": "1777320927"
+  },
+  "la casa de las madres, 1663 mission st, suite 225, san francisco, ca, 94103, us": {
+    "error": "no_results",
+    "ts": "1777320934"
+  },
+  "la familia counseling service, 26081 mocine ave, hayward, ca, 94544, us": {
+    "error": "no_results",
+    "ts": "1777320939"
+  },
+  "la grange, il, 60525, usa": {
+    "display_name": "La Grange, Lyons Township, Cook County, Illinois, 60525, United States",
+    "lat": "41.8148300",
+    "lon": "-87.8735662",
+    "ts": "1777321535"
+  },
+  "la plaza, 8902 e 38th st, indianapolis, in, 46226, usa": {
+    "display_name": "La Plaza Inc, 8902, East 38th Street, Indianapolis, Marion County, Indiana, 46226, United States",
+    "lat": "39.8276560",
+    "lon": "-86.0114092",
+    "ts": "1777320942"
+  },
+  "la vida, 5635 w fort st, detroit, mi, 48209, usa": {
+    "error": "no_results",
+    "ts": "1777320944"
+  },
+  "lakewood, ca, us": {
+    "display_name": "Lakewood, Los Angeles County, California, United States",
+    "lat": "33.8503463",
+    "lon": "-118.1171910",
+    "ts": "1777320780"
+  },
+  "latin american association, 2750 buford hwy ne, atlanta, ga, 30324, usa": {
+    "error": "no_results",
+    "ts": "1777320947"
+  },
+  "latin american community center, 403 n van buren st, wilmington, de, 19805, usa": {
+    "error": "no_results",
+    "ts": "1777320952"
+  },
+  "latinas unidas por un nuevo amanecer (luna), p.o. box 65234, des moines, ia, 50365, usa": {
+    "error": "no_results",
+    "ts": "1777320956"
+  },
+  "latino coalition against domestic and sexual violence inc., 2445 n meridian st, indianapolis, in, 46208, usa": {
+    "error": "no_results",
+    "ts": "1777320962"
+  },
+  "latino community development agency, 420 sw 10th st, oklahoma city, ok, 73109, usa": {
+    "error": "no_results",
+    "ts": "1777320966"
+  },
+  "lee carlson center, 10801 town square dr ne, blaine, mn, 55449, usa": {
+    "error": "no_results",
+    "ts": "1777320985"
+  },
+  "legacy house, 2505 n arlington ave, indianapolis, in, 46218, usa": {
+    "error": "no_results",
+    "ts": "1777320989"
+  },
+  "legal aid chicago, 120 s lasalle st ste 900, chicago, il, 60603, usa": {
+    "error": "no_results",
+    "ts": "1777320993"
+  },
+  "legal aid of southeastern pennsylvania - chester county, 222 n church st, west chester, pa, 19380, usa": {
+    "error": "no_results",
+    "ts": "1777320998"
+  },
+  "legal aid of southeastern pennsylvania - delaware county, 600 n jackson st ste 104, media, pa, 19063, usa": {
+    "error": "no_results",
+    "ts": "1777321002"
+  },
+  "legal aid society of hawaii kona, 74-5599 pawai pl, kailua-kona, hi, 96740, usa": {
+    "error": "no_results",
+    "ts": "1777321008"
+  },
+  "legal aid society of hawaii oahu windward, 45-350 kamehameha hwy, kaneohe, hi, 96744, usa": {
+    "error": "no_results",
+    "ts": "1777321011"
+  },
+  "legal services of alabama - huntsville office, 100 washington st ne, suite 200, huntsville, al, 35801, us": {
+    "error": "no_results",
+    "ts": "1777321016"
+  },
+  "legal services of hudson valley, 90 maple ave, white plains, ny, 10601, usa": {
+    "error": "no_results",
+    "ts": "1777321021"
+  },
+  "legal services of northern california - solano, 1810 capitol st, vallejo, ca, 94590, us": {
+    "error": "no_results",
+    "ts": "1777321025"
+  },
+  "legal_aid, riverside, ca, us, 951-682-7968": {
+    "error": "no_results",
+    "ts": "1777321028"
+  },
+  "legal_aid, san diego, ca, 92101, us, 619-231-7788": {
+    "error": "no_results",
+    "ts": "1777321030"
+  },
+  "legal_aid, san diego, ca, 92101, us, 619-235-5656": {
+    "error": "no_results",
+    "ts": "1777321036"
+  },
+  "legal_aid, san diego, ca, 92101, us, 619-515-2200": {
+    "error": "no_results",
+    "ts": "1777321034"
+  },
+  "life recovery center first program, 815 n madison ave, greenwood, in, 46142, usa": {
+    "error": "no_results",
+    "ts": "1777321038"
+  },
+  "life span des plaines office, p.o. box 123, des plaines, il, 60017, usa": {
+    "error": "no_results",
+    "ts": "1777321042"
+  },
+  "littleton, ma, 01460, usa": {
+    "display_name": "Littleton, Middlesex County, Massachusetts, United States",
+    "lat": "42.5375917",
+    "lon": "-71.5120096",
+    "ts": "1777319672"
+  },
+  "livesafe resources inc., p.o. box 1717, marietta, ga, 30061, usa": {
+    "error": "no_results",
+    "ts": "1777321046"
+  },
+  "livonia, mi, 48152, usa": {
+    "display_name": "Livonia, Wayne County, Michigan, United States",
+    "lat": "42.3683700",
+    "lon": "-83.3527097",
+    "ts": "1777321072"
+  },
+  "long beach, ca, 90803, us": {
+    "display_name": "California State University, Long Beach, East 7th Street, Belmont Shore, Long Beach, Los Angeles County, California, 90822, United States",
+    "lat": "33.7817709",
+    "lon": "-118.1152001",
+    "ts": "1777320809"
+  },
+  "long beach, ca, us": {
+    "display_name": "Long Beach, Los Angeles County, California, United States",
+    "lat": "33.7690164",
+    "lon": "-118.1916040",
+    "ts": "1777320787"
+  },
+  "lonoke county safe haven, p.o. box 1053, cabot, ar, 72023, us": {
+    "error": "no_results",
+    "ts": "1777321051"
+  },
+  "los alamitos, ca, us": {
+    "display_name": "Los Alamitos, Orange County, California, 90702, United States",
+    "lat": "33.8038865",
+    "lon": "-118.0772433",
+    "ts": "1777320803"
+  },
+  "los angeles, ca, 90022, us": {
+    "display_name": "Los Angeles, Los Angeles County, California, United States",
+    "lat": "34.0536909",
+    "lon": "-118.2427660",
+    "ts": "1777320806"
+  },
+  "lowell, ma, 01853, usa": {
+    "display_name": "Lowell, Middlesex County, Massachusetts, United States",
+    "lat": "42.6414437",
+    "lon": "-71.3085329",
+    "ts": "1777320110"
+  },
+  "lss choices for victims of domestic violence, po box 06157, columbus, oh, 43206, usa": {
+    "error": "no_results",
+    "ts": "1777321057"
+  },
+  "luminus network inc., 8975 guilford rd ste 170, columbia, md, 21046, usa": {
+    "error": "no_results",
+    "ts": "1777321062"
+  },
+  "lutheran settlement house bilingual domestic violence program, 1340 frankford ave, philadelphia, pa, 19125, usa": {
+    "error": "no_results",
+    "ts": "1777321065"
+  },
+  "lyons, il, 60534, usa": {
+    "display_name": "Lyons, Lyons Township, Cook County, Illinois, 60534, United States",
+    "lat": "41.8111080",
+    "lon": "-87.8232695",
+    "ts": "1777319788"
+  },
+  "mai family services, 32401 w eight mile rd, livonia, mi, 48152, usa": {
+    "error": "no_results",
+    "ts": "1777321068"
+  },
+  "marietta, ga, 30061, usa": {
+    "display_name": "Marietta, Cobb County, Georgia, United States",
+    "lat": "33.9528472",
+    "lon": "-84.5496148",
+    "ts": "1777321050"
+  },
+  "mary claire's place, p.o. box 56106, new orleans, la, 70156, usa": {
+    "error": "no_results",
+    "ts": "1777321074"
+  },
+  "mcdonough, ga, 30253, usa": {
+    "display_name": "McDonough, Henry County, Georgia, 30253, United States",
+    "lat": "33.4473361",
+    "lon": "-84.1468616",
+    "ts": "1777320681"
+  },
+  "medford, ma, 02155, usa": {
+    "display_name": "Medford, Middlesex County, Massachusetts, 02155, United States",
+    "lat": "42.4184296",
+    "lon": "-71.1061639",
+    "ts": "1777321544"
+  },
+  "media, pa, 19063, usa": {
+    "display_name": "Media, 301, Media Station Road, Moylan, Media, Delaware County, Pennsylvania, 19063, United States",
+    "lat": "39.9141268",
+    "lon": "-75.3946984",
+    "ts": "1777320494"
+  },
+  "men and women center (mwc), 1020 w international airport rd, anchorage, ak, 99518, us": {
+    "error": "no_results",
+    "ts": "1777321079"
+  },
+  "men stopping violence inc., 1020 dekalb ave ne ste 4, atlanta, ga, 30307, usa": {
+    "error": "no_results",
+    "ts": "1777321084"
+  },
+  "mental_health, covina, ca, 91722, us, 626-993-3000": {
+    "error": "no_results",
+    "ts": "1777321094"
+  },
+  "mental_health, long beach, ca, us, 562-273-0722": {
+    "error": "no_results",
+    "ts": "1777321092"
+  },
+  "mental_health, rancho cucamonga, ca, us, 909-980-3567": {
+    "error": "no_results",
+    "ts": "1777321089"
+  },
+  "mental_health, san diego, ca, 92103, us, 619-692-2077": {
+    "error": "no_results",
+    "ts": "1777321097"
+  },
+  "mental_health, san diego, ca, 92123, us, 858-966-4011": {
+    "error": "no_results",
+    "ts": "1777321102"
+  },
+  "mesa family advocacy center, 222 e javelina ave, mesa, az, 85210, us": {
+    "error": "no_results",
+    "ts": "1777321103"
+  },
+  "mesa, az, 85201, us": {
+    "display_name": "Mesa, Maricopa County, Arizona, United States",
+    "lat": "33.4151005",
+    "lon": "-111.8314550",
+    "ts": "1777320388"
+  },
+  "mesa, az, 85211, us": {
+    "error": "no_results",
+    "ts": "1777321465"
+  },
+  "metairie, la, 70004, usa": {
+    "display_name": "Metairie, Jefferson Parish, Louisiana, United States",
+    "lat": "29.9899926",
+    "lon": "-90.1505426",
+    "ts": "1777321110"
+  },
+  "metro centers for community advocacy, p.o. box 2332, metairie, la, 70004, usa": {
+    "error": "no_results",
+    "ts": "1777321107"
+  },
+  "metropolitan family services cook county, 1 n dearborn st, chicago, il, 60602, usa": {
+    "error": "no_results",
+    "ts": "1777321112"
+  },
+  "metrowest legal services, 63 fountain st ste 304, framingham, ma, 01702, usa": {
+    "error": "no_results",
+    "ts": "1777321116"
+  },
+  "miami, fl, 33135, usa": {
+    "display_name": "Miami, Miami-Dade County, Florida, United States",
+    "lat": "25.7741566",
+    "lon": "-80.1935973",
+    "ts": "1777321145"
+  },
+  "miami, fl, 33166, usa": {
+    "display_name": "Miami, Miami-Dade County, Florida, United States",
+    "lat": "25.7741566",
+    "lon": "-80.1935973",
+    "ts": "1777319784"
+  },
+  "miami-dade community action safespace, 701 nw 1st ct, miami, fl, 33136, usa": {
+    "error": "no_results",
+    "ts": "1777321122"
+  },
+  "micah's place inc., p.o. box 572, fernandina beach, fl, 32035, usa": {
+    "error": "no_results",
+    "ts": "1777321125"
+  },
+  "minneapolis, mn, 55409, usa": {
+    "display_name": "Minneapolis, Hennepin County, Minnesota, United States",
+    "lat": "44.9772995",
+    "lon": "-93.2654692",
+    "ts": "1777321501"
+  },
+  "minneapolis, mn, 55414, usa": {
+    "display_name": "Minneapolis, Hennepin County, Minnesota, United States",
+    "lat": "44.9772995",
+    "lon": "-93.2654692",
+    "ts": "1777319822"
+  },
+  "minnesota indian women's resource center, 2300 15th ave s, minneapolis, mn, 55404, usa": {
+    "display_name": "Minnesota Indian Women's Resource Center, 2300, 15th Avenue South, Phillips, Minneapolis, Hennepin County, Minnesota, 55404, United States",
+    "lat": "44.9598232",
+    "lon": "-93.2540702",
+    "ts": "1777321130"
+  },
+  "monsoon asians and pacific islanders in solidarity, 1200 university ave ste 105, des moines, ia, 50314, usa": {
+    "error": "no_results",
+    "ts": "1777321133"
+  },
+  "morristown, nj, 07962, usa": {
+    "display_name": "Morristown, Morris County, New Jersey, United States",
+    "lat": "40.7970382",
+    "lon": "-74.4809868",
+    "ts": "1777320897"
+  },
+  "mosaic georgia, p.o. box 132, decatur, ga, 30031, usa": {
+    "error": "no_results",
+    "ts": "1777321137"
+  },
+  "mujer inc., p.o. box 350033, miami, fl, 33135, usa": {
+    "error": "no_results",
+    "ts": "1777321141"
+  },
+  "mujeres latinas en accion, 2124 w 21st pl, chicago, il, 60608, usa": {
+    "error": "no_results",
+    "ts": "1777321147"
+  },
+  "muslimat al-nissa, p.o. box 10546, baltimore, md, 21209, usa": {
+    "error": "no_results",
+    "ts": "1777321150"
+  },
+  "my sister's place dc, p.o. box 29596, washington, dc, 20017, usa": {
+    "error": "no_results",
+    "ts": "1777321155"
+  },
+  "my sisters' place, 3 barker ave, white plains, ny, 10601, usa": {
+    "error": "no_results",
+    "ts": "1777321167"
+  },
+  "my sisters' place, p.o. box 1252, mesa, az, 85211, us": {
+    "error": "no_results",
+    "ts": "1777321463"
+  },
+  "nampa family justice center, 1305 3rd st s, nampa, id, 83651, usa": {
+    "error": "no_results",
+    "ts": "1777321170"
+  },
+  "narika, p.o. box 14014, berkeley, ca, 94712, us": {
+    "error": "no_results",
+    "ts": "1777321173"
+  },
+  "national domestic violence hotline, us": {
+    "error": "no_results",
+    "ts": "1777321179"
+  },
+  "nationalities service center, 1216 arch st 4th floor, philadelphia, pa, 19107, usa": {
+    "error": "no_results",
+    "ts": "1777321181"
+  },
+  "neighborhood legal services michigan, 7310 woodward ave ste 301, detroit, mi, 48202, usa": {
+    "error": "no_results",
+    "ts": "1777321186"
+  },
+  "neopolitan lighthouse, 4236 w roosevelt rd, chicago, il, 60624, usa": {
+    "error": "no_results",
+    "ts": "1777321192"
+  },
+  "new albany, in, 47150, usa": {
+    "display_name": "New Albany, Floyd County, Indiana, 47150, United States",
+    "lat": "38.2856247",
+    "lon": "-85.8241312",
+    "ts": "1777320856"
+  },
+  "new american pathways women's empowerment program, 2300 henderson mill rd ne ste 110, atlanta, ga, 30345, usa": {
+    "error": "no_results",
+    "ts": "1777321466"
+  },
+  "new life center, p.o. box 5005, goodyear, az, 85338, us": {
+    "error": "no_results",
+    "ts": "1777321470"
+  },
+  "new orleans, la, 70113, usa": {
+    "display_name": "New Orleans, Orleans Parish, Louisiana, United States",
+    "lat": "29.9561422",
+    "lon": "-90.0733934",
+    "ts": "1777321553"
+  },
+  "new orleans, la, 70156, usa": {
+    "display_name": "New Orleans, Orleans Parish, Louisiana, United States",
+    "lat": "29.9561422",
+    "lon": "-90.0733934",
+    "ts": "1777321078"
+  },
+  "new york city anti-violence project, 116 nassau st 3rd floor, new york, ny, 10038, usa": {
+    "error": "no_results",
+    "ts": "1777321474"
+  },
+  "new york, ny, 10005, usa": {
+    "display_name": "New York, United States",
+    "lat": "40.7127281",
+    "lon": "-74.0060152",
+    "ts": "1777320460"
+  },
+  "new york, ny, 10038, usa": {
+    "display_name": "New York, United States",
+    "lat": "40.7127281",
+    "lon": "-74.0060152",
+    "ts": "1777321476"
+  },
+  "newton, ks, 67114, usa": {
+    "display_name": "Newton, Harvey County, Kansas, 67114, United States",
+    "lat": "38.0469166",
+    "lon": "-97.3447244",
+    "ts": "1777321505"
+  },
+  "north american islamic shelter for the abused, p.o. box 926174, houston, tx, 77292, us": {
+    "error": "no_results",
+    "ts": "1777321477"
+  },
+  "north little rock, ar, 72114, us": {
+    "display_name": "North Little Rock, Hill Township, Pulaski County, Arkansas, United States",
+    "lat": "34.7695360",
+    "lon": "-92.2670941",
+    "ts": "1777320599"
+  },
+  "northwest center against sexual assault, p.o. box 76, arlington heights, il, 60006, usa": {
+    "error": "no_results",
+    "ts": "1777321481"
+  },
+  "oakland, ca, 94601, us": {
+    "display_name": "Oakland, Alameda County, California, United States",
+    "lat": "37.8044557",
+    "lon": "-122.2713560",
+    "ts": "1777320865"
+  },
+  "oakland, ca, 94623, us": {
+    "display_name": "Oakland, Alameda County, California, United States",
+    "lat": "37.8044557",
+    "lon": "-122.2713560",
+    "ts": "1777319632"
+  },
+  "operation safe escape, p.o. box 12062, baltimore, md, 21281, usa": {
+    "error": "no_results",
+    "ts": "1777321483"
+  },
+  "orange county, ca, us": {
+    "display_name": "Orange County, California, United States",
+    "lat": "33.7506310",
+    "lon": "-117.8722311",
+    "ts": "1777320768"
+  },
+  "orleans parish district attorney office victim assistance, 619 s white st, new orleans, la, 70119, usa": {
+    "error": "no_results",
+    "ts": "1777321487"
+  },
+  "other, orange county, ca, us, 714-237-1444": {
+    "error": "no_results",
+    "ts": "1777321494"
+  },
+  "other, orange county, ca, us, 714-935-6175": {
+    "error": "no_results",
+    "ts": "1777321489"
+  },
+  "other, pomona, ca, us, 626-966-1577": {
+    "error": "no_results",
+    "ts": "1777321491"
+  },
+  "other, san bernardino, ca, us, 909-556-0366": {
+    "error": "no_results",
+    "ts": "1777321493"
+  },
+  "other, san diego, ca, 92101, us, 619-533-6000": {
+    "error": "no_results",
+    "ts": "1777321495"
+  },
+  "other, san diego, ca, 92109, us, 888-385-4657": {
+    "error": "no_results",
+    "ts": "1777321497"
+  },
+  "ottumwa, ia, 52501, usa": {
+    "display_name": "Ottumwa, Wapello County, Iowa, 52501, United States",
+    "lat": "41.0195659",
+    "lon": "-92.4116886",
+    "ts": "1777320468"
+  },
+  "outfront minnesota, 310 e 38th st ste 209, minneapolis, mn, 55409, usa": {
+    "error": "no_results",
+    "ts": "1777321499"
+  },
+  "ovm inc batterers intervention program, 1600 n main st ste 201, newton, ks, 67114, usa": {
+    "error": "no_results",
+    "ts": "1777321503"
+  },
+  "p.o. box 1053, cabot, ar, 72023": {
+    "error": "no_results",
+    "ts": "1777321054"
+  },
+  "p.o. box 10546, baltimore, md, 21209": {
+    "error": "no_results",
+    "ts": "1777321152"
+  },
+  "p.o. box 1154, medford, ma, 02155": {
+    "error": "no_results",
+    "ts": "1777321542"
+  },
+  "p.o. box 120108, boston, ma, 02112": {
+    "error": "no_results",
+    "ts": "1777320069"
+  },
+  "p.o. box 12062, baltimore, md, 21281": {
+    "error": "no_results",
+    "ts": "1777321484"
+  },
+  "p.o. box 1207, mcdonough, ga, 30253": {
+    "error": "no_results",
+    "ts": "1777320679"
+  },
+  "p.o. box 123, des plaines, il, 60017": {
+    "error": "no_results",
+    "ts": "1777321043"
+  },
+  "p.o. box 1252, mesa, az, 85211": {
+    "error": "no_results",
+    "ts": "1777321464"
+  },
+  "p.o. box 1273, concord, ca, 94522": {
+    "error": "no_results",
+    "ts": "1777320054"
+  },
+  "p.o. box 1303, anderson, in, 46015": {
+    "error": "no_results",
+    "ts": "1777321460"
+  },
+  "p.o. box 1312, jonesboro, ga, 30237": {
+    "error": "no_results",
+    "ts": "1777320399"
+  },
+  "p.o. box 132, decatur, ga, 30031": {
+    "error": "no_results",
+    "ts": "1777321140"
+  },
+  "p.o. box 139, plymouth, mn, 55447": {
+    "error": "no_results",
+    "ts": "1777320720"
+  },
+  "p.o. box 14014, berkeley, ca, 94712": {
+    "error": "no_results",
+    "ts": "1777321175"
+  },
+  "p.o. box 141, eagan, mn, 55121": {
+    "error": "no_results",
+    "ts": "1777319520"
+  },
+  "p.o. box 14506, minneapolis, mn, 55414": {
+    "error": "no_results",
+    "ts": "1777319821"
+  },
+  "p.o. box 1482, conyers, ga, 30012": {
+    "error": "no_results",
+    "ts": "1777321548"
+  },
+  "p.o. box 15096, atlanta, ga, 30333": {
+    "error": "no_results",
+    "ts": "1777320734"
+  },
+  "p.o. box 1515, chicago, il, 60690": {
+    "error": "no_results",
+    "ts": "1777320434"
+  },
+  "p.o. box 170225, atlanta, ga, 30317": {
+    "error": "no_results",
+    "ts": "1777321521"
+  },
+  "p.o. box 1717, marietta, ga, 30061": {
+    "error": "no_results",
+    "ts": "1777321048"
+  },
+  "p.o. box 1955, hyattsville, md, 20788": {
+    "error": "no_results",
+    "ts": "1777320412"
+  },
+  "p.o. box 1964, buford, ga, 30515": {
+    "error": "no_results",
+    "ts": "1777319852"
+  },
+  "p.o. box 2100, littleton, ma, 01460": {
+    "error": "no_results",
+    "ts": "1777319670"
+  },
+  "p.o. box 211, media, pa, 19063": {
+    "error": "no_results",
+    "ts": "1777320492"
+  },
+  "p.o. box 216, westminster, md, 21158": {
+    "error": "no_results",
+    "ts": "1777320066"
+  },
+  "p.o. box 23006, oakland, ca, 94623": {
+    "error": "no_results",
+    "ts": "1777319631"
+  },
+  "p.o. box 2332, metairie, la, 70004": {
+    "error": "no_results",
+    "ts": "1777321108"
+  },
+  "p.o. box 2366, surprise, az, 85378": {
+    "error": "no_results",
+    "ts": "1777320566"
+  },
+  "p.o. box 250250, chicago, il, 60625": {
+    "error": "no_results",
+    "ts": "1777319798"
+  },
+  "p.o. box 29596, washington, dc, 20017": {
+    "error": "no_results",
+    "ts": "1777321157"
+  },
+  "p.o. box 300764, dorchester, ma, 02130": {
+    "error": "no_results",
+    "ts": "1777320621"
+  },
+  "p.o. box 315, chicago, il, 60690": {
+    "error": "no_results",
+    "ts": "1777320918"
+  },
+  "p.o. box 3391, baltimore, md, 21228": {
+    "error": "no_results",
+    "ts": "1777320123"
+  },
+  "p.o. box 350033, miami, fl, 33135": {
+    "error": "no_results",
+    "ts": "1777321143"
+  },
+  "p.o. box 3682, huntsville, al, 35810": {
+    "error": "no_results",
+    "ts": "1777319808"
+  },
+  "p.o. box 39, tinley park, il, 60477": {
+    "error": "no_results",
+    "ts": "1777320463"
+  },
+  "p.o. box 390, towson, md, 21204": {
+    "error": "no_results",
+    "ts": "1777320587"
+  },
+  "p.o. box 40115, st paul, mn, 55104": {
+    "error": "no_results",
+    "ts": "1777320560"
+  },
+  "p.o. box 416, bedford, in, 47421": {
+    "error": "no_results",
+    "ts": "1777320724"
+  },
+  "p.o. box 431045, pontiac, mi, 48343": {
+    "error": "no_results",
+    "ts": "1777320668"
+  },
+  "p.o. box 446, ottumwa, ia, 52501": {
+    "error": "no_results",
+    "ts": "1777320466"
+  },
+  "p.o. box 459, baltimore, md, 21203": {
+    "error": "no_results",
+    "ts": "1777320761"
+  },
+  "p.o. box 46, chalmette, la, 70044": {
+    "error": "no_results",
+    "ts": "1777320610"
+  },
+  "p.o. box 490309, blaine, mn, 55449": {
+    "error": "no_results",
+    "ts": "1777319661"
+  },
+  "p.o. box 4909, jacksonville, fl, 32201": {
+    "error": "no_results",
+    "ts": "1777320823"
+  },
+  "p.o. box 5005, goodyear, az, 85338": {
+    "error": "no_results",
+    "ts": "1777321471"
+  },
+  "p.o. box 503, decatur, ga, 30031": {
+    "error": "no_results",
+    "ts": "1777320874"
+  },
+  "p.o. box 505, chelsea, ma, 02150": {
+    "error": "no_results",
+    "ts": "1777320662"
+  },
+  "p.o. box 508, east chicago, in, 46312": {
+    "error": "no_results",
+    "ts": "1777320673"
+  },
+  "p.o. box 5263, st paul, mn, 55105": {
+    "error": "no_results",
+    "ts": "1777320036"
+  },
+  "p.o. box 561, honolulu, hi, 96808": {
+    "display_name": "Honolulu, Honolulu County, Hawaii, United States",
+    "lat": "21.3045470",
+    "lon": "-157.8556760",
+    "ts": "1777321515"
+  },
+  "p.o. box 56106, new orleans, la, 70156": {
+    "error": "no_results",
+    "ts": "1777321076"
+  },
+  "p.o. box 57, lowell, ma, 01853": {
+    "error": "no_results",
+    "ts": "1777320107"
+  },
+  "p.o. box 572, fernandina beach, fl, 32035": {
+    "error": "no_results",
+    "ts": "1777321127"
+  },
+  "p.o. box 572, lyons, il, 60534": {
+    "error": "no_results",
+    "ts": "1777319787"
+  },
+  "p.o. box 597673, chicago, il, 60659": {
+    "error": "no_results",
+    "ts": "1777320592"
+  },
+  "p.o. box 603, maricopa, az, 85139": {
+    "error": "no_results",
+    "ts": "1777321458"
+  },
+  "p.o. box 608548, chicago, il, 60660": {
+    "error": "no_results",
+    "ts": "1777320030"
+  },
+  "p.o. box 65234, des moines, ia, 50365": {
+    "error": "no_results",
+    "ts": "1777320958"
+  },
+  "p.o. box 690267, quincy, ma, 02269": {
+    "error": "no_results",
+    "ts": "1777320538"
+  },
+  "p.o. box 71035, washington, dc, 20024": {
+    "error": "no_results",
+    "ts": "1777320472"
+  },
+  "p.o. box 725, salem, ma, 01970": {
+    "error": "no_results",
+    "ts": "1777320689"
+  },
+  "p.o. box 76, arlington heights, il, 60006": {
+    "display_name": "Arlington Heights, Wheeling Township, Cook County, Illinois, United States",
+    "lat": "42.0811563",
+    "lon": "-87.9802164",
+    "ts": "1777321482"
+  },
+  "p.o. box 768126, roswell, ga, 30076": {
+    "error": "no_results",
+    "ts": "1777319842"
+  },
+  "p.o. box 832, west chester, pa, 19381": {
+    "error": "no_results",
+    "ts": "1777320503"
+  },
+  "p.o. box 926174, houston, tx, 77292": {
+    "error": "no_results",
+    "ts": "1777321478"
+  },
+  "p.o. box 93524, atlanta, ga, 30377": {
+    "error": "no_results",
+    "ts": "1777320060"
+  },
+  "p.o. box 937, la grange, il, 60525": {
+    "error": "no_results",
+    "ts": "1777321534"
+  },
+  "p.o. box 9525, wilmington, de, 19809": {
+    "error": "no_results",
+    "ts": "1777320441"
+  },
+  "pacifica resource center / tides center, 1809 palmetto ave, pacifica, ca, 94044, us": {
+    "error": "no_results",
+    "ts": "1777321506"
+  },
+  "palomar okc family justice center, 1010 n hudson ave, oklahoma city, ok, 73102, usa": {
+    "error": "no_results",
+    "ts": "1777321509"
+  },
+  "parents and children together family peace center oahu, 1001 bishop st ste 970, honolulu, hi, 96813, usa": {
+    "error": "no_results",
+    "ts": "1777321511"
+  },
+  "parents and children together ohia domestic violence shelter, p.o. box 561, honolulu, hi, 96808, usa": {
+    "error": "no_results",
+    "ts": "1777321513"
+  },
+  "partners for women and justice, 650 bloomfield ave ste 209, bloomfield, nj, 07003, usa": {
+    "error": "no_results",
+    "ts": "1777321516"
+  },
+  "partnership against domestic violence atlanta, p.o. box 170225, atlanta, ga, 30317, usa": {
+    "error": "no_results",
+    "ts": "1777321519"
+  },
+  "people incorporated, 2060 centre pointe blvd, eagan, mn, 55121, usa": {
+    "error": "no_results",
+    "ts": "1777321523"
+  },
+  "philadelphia legal assistance, 718 arch st ste 300n, philadelphia, pa, 19106, usa": {
+    "error": "no_results",
+    "ts": "1777321526"
+  },
+  "philadelphia, pa, 19106, usa": {
+    "display_name": "Philadelphia, Philadelphia County, Pennsylvania, United States",
+    "lat": "39.9527237",
+    "lon": "-75.1635262",
+    "ts": "1777321528"
+  },
+  "philadelphia, pa, 19107, usa": {
+    "display_name": "Philadelphia, Philadelphia County, Pennsylvania, United States",
+    "lat": "39.9527237",
+    "lon": "-75.1635262",
+    "ts": "1777321184"
+  },
+  "phoenix family advocacy center, 2120 n central ave, suite 250, phoenix, az, 85004, us": {
+    "error": "no_results",
+    "ts": "1777321529"
+  },
+  "phoenix, az, 85004, us": {
+    "display_name": "Phoenix, Maricopa County, Arizona, United States",
+    "lat": "33.4484367",
+    "lon": "-112.0741410",
+    "ts": "1777321532"
+  },
+  "phoenix, az, 85014, us": {
+    "display_name": "Phoenix Art Museum, 1625, North Central Avenue, Encanto, Phoenix, Maricopa County, Arizona, 85004, United States",
+    "lat": "33.4667444",
+    "lon": "-112.0721030",
+    "ts": "1777320545"
+  },
+  "pillars community health, p.o. box 937, la grange, il, 60525, usa": {
+    "error": "no_results",
+    "ts": "1777321533"
+  },
+  "plymouth, mn, 55447, usa": {
+    "display_name": "Plymouth, Hennepin County, Minnesota, United States",
+    "lat": "45.0065149",
+    "lon": "-93.4665100",
+    "ts": "1777320717"
+  },
+  "po box 06157, columbus, oh, 43206": {
+    "error": "no_results",
+    "ts": "1777321058"
+  },
+  "po box 14035, columbus, oh, 43214": {
+    "error": "no_results",
+    "ts": "1777319805"
+  },
+  "po box 1437, morristown, nj, 07962": {
+    "error": "no_results",
+    "ts": "1777320895"
+  },
+  "po box 217, hackensack, nj, 07602": {
+    "error": "no_results",
+    "ts": "1777320101"
+  },
+  "po box 340316, jamaica, ny, 11434": {
+    "error": "no_results",
+    "ts": "1777319665"
+  },
+  "po box 368, columbus, oh, 43216": {
+    "error": "no_results",
+    "ts": "1777320045"
+  },
+  "po box 441542, indianapolis, in, 46244": {
+    "error": "no_results",
+    "ts": "1777320437"
+  },
+  "po box 517, el reno, ok, 73036": {
+    "error": "no_results",
+    "ts": "1777320880"
+  },
+  "polish american association domestic violence program, 3834 n cicero ave, chicago, il, 60641, usa": {
+    "error": "no_results",
+    "ts": "1777321536"
+  },
+  "polk county crisis and advocacy services, 2309 euclid ave, des moines, ia, 50310, usa": {
+    "error": "no_results",
+    "ts": "1777321539"
+  },
+  "pomona, ca, us": {
+    "display_name": "Pomona, Los Angeles County, California, United States",
+    "lat": "34.0553813",
+    "lon": "-117.7517496",
+    "ts": "1777321492"
+  },
+  "pontiac, mi, 48343, usa": {
+    "display_name": "Pontiac, Oakland County, Michigan, United States",
+    "lat": "42.6389216",
+    "lon": "-83.2910468",
+    "ts": "1777320670"
+  },
+  "portal to hope, p.o. box 1154, medford, ma, 02155, usa": {
+    "error": "no_results",
+    "ts": "1777321541"
+  },
+  "prevail inc., 1100 s 9th st, noblesville, in, 46060, usa": {
+    "error": "no_results",
+    "ts": "1777321545"
+  },
+  "project renewal domestic violence intervention program, p.o. box 1482, conyers, ga, 30012, usa": {
+    "error": "no_results",
+    "ts": "1777321547"
+  },
+  "project save catholic charities new orleans, 1000 howard ave ste 200, new orleans, la, 70113, usa": {
+    "error": "no_results",
+    "ts": "1777321551"
+  },
+  "quincy, ma, 02269, usa": {
+    "display_name": "Quincy, Norfolk County, Massachusetts, United States",
+    "lat": "42.2509914",
+    "lon": "-71.0037374",
+    "ts": "1777320540"
+  },
+  "rancho cucamonga, ca, us": {
+    "display_name": "Rancho Cucamonga, San Bernardino County, California, United States",
+    "lat": "34.1033192",
+    "lon": "-117.5751730",
+    "ts": "1777321090"
+  },
+  "redwood city, ca, 94063, us": {
+    "display_name": "Redwood City, San Mateo County, California, United States",
+    "lat": "37.4863239",
+    "lon": "-122.2325230",
+    "ts": "1777319639"
+  },
+  "riverside, ca, us": {
+    "display_name": "Riverside, Riverside County, California, United States",
+    "lat": "33.9824949",
+    "lon": "-117.3742380",
+    "ts": "1777320783"
+  },
+  "roswell, ga, 30076, usa": {
+    "display_name": "Roswell, Fulton County, Georgia, United States",
+    "lat": "34.0233200",
+    "lon": "-84.3600220",
+    "ts": "1777319844"
+  },
+  "salem, ma, 01970, usa": {
+    "display_name": "Salem, Essex County, Massachusetts, 01970, United States",
+    "lat": "42.5195292",
+    "lon": "-70.8967226",
+    "ts": "1777320691"
+  },
+  "san bernardino, ca, us": {
+    "display_name": "San Bernardino County, California, United States",
+    "lat": "34.8253019",
+    "lon": "-116.0833144",
+    "ts": "1777320765"
+  },
+  "san diego, ca, 92101, us": {
+    "display_name": "San Diego, San Diego County, California, United States",
+    "lat": "32.7174202",
+    "lon": "-117.1627720",
+    "ts": "1777321031"
+  },
+  "san diego, ca, 92103, us": {
+    "display_name": "San Diego, San Diego County, California, United States",
+    "lat": "32.7174202",
+    "lon": "-117.1627720",
+    "ts": "1777321100"
+  },
+  "san diego, ca, 92109, us": {
+    "display_name": "San Diego, San Diego County, California, United States",
+    "lat": "32.7174202",
+    "lon": "-117.1627720",
+    "ts": "1777321498"
+  },
+  "san diego, ca, 92110, us": {
+    "display_name": "San Diego, San Diego County, California, United States",
+    "lat": "32.7174202",
+    "lon": "-117.1627720",
+    "ts": "1777320813"
+  },
+  "san diego, ca, 92123, us": {
+    "display_name": "San Diego, San Diego County, California, United States",
+    "lat": "32.7174202",
+    "lon": "-117.1627720",
+    "ts": "1777320512"
+  },
+  "san diego, ca, us": {
+    "display_name": "San Diego, San Diego County, California, United States",
+    "lat": "32.7174202",
+    "lon": "-117.1627720",
+    "ts": "1777320795"
+  },
+  "san francisco, ca, 94102, us": {
+    "display_name": "San Francisco, California, United States",
+    "lat": "37.7879363",
+    "lon": "-122.4075201",
+    "ts": "1777320845"
+  },
+  "san francisco, ca, 94103, us": {
+    "display_name": "San Francisco, California, United States",
+    "lat": "37.7879363",
+    "lon": "-122.4075201",
+    "ts": "1777320937"
+  },
+  "san francisco, ca, 94105, us": {
+    "display_name": "San Francisco, California, United States",
+    "lat": "37.7879363",
+    "lon": "-122.4075201",
+    "ts": "1777320871"
+  },
+  "san francisco, ca, 94109, us": {
+    "display_name": "San Francisco, California, United States",
+    "lat": "37.7879363",
+    "lon": "-122.4075201",
+    "ts": "1777319795"
+  },
+  "san francisco, ca, 94110, us": {
+    "display_name": "San Francisco, California, United States",
+    "lat": "37.7879363",
+    "lon": "-122.4075201",
+    "ts": "1777319826"
+  },
+  "san gabriel valley, ca, us": {
+    "display_name": "San Gabriel Street, Fountain Valley, Orange County, California, 92708, United States",
+    "lat": "33.7263142",
+    "lon": "-117.9256426",
+    "ts": "1777320776"
+  },
+  "san leandro, ca, 94577, us": {
+    "display_name": "San Leandro, Alameda County, California, United States",
+    "lat": "37.7249296",
+    "lon": "-122.1560768",
+    "ts": "1777320931"
+  },
+  "san mateo, ca, 94402, us": {
+    "display_name": "San Mateo, San Mateo County, California, United States",
+    "lat": "37.5629997",
+    "lon": "-122.3253265",
+    "ts": "1777319791"
+  },
+  "san pablo, ca, 94806, us": {
+    "display_name": "San Pablo, Contra Costa County, California, United States",
+    "lat": "37.9621457",
+    "lon": "-122.3455263",
+    "ts": "1777320424"
+  },
+  "san rafael, ca, 94903, us": {
+    "display_name": "San Rafael, Marin County, California, United States",
+    "lat": "37.9747795",
+    "lon": "-122.5316686",
+    "ts": "1777320428"
+  },
+  "shelter; advocacy; community education, p.o. box 603, maricopa, az": {
+    "error": "no_results",
+    "ts": "1777321457"
+  },
+  "st paul, mn, 55104, usa": {
+    "display_name": "Saint Paul, Ramsey County, Minnesota, United States",
+    "lat": "44.9497487",
+    "lon": "-93.0931028",
+    "ts": "1777320562"
+  },
+  "st paul, mn, 55105, usa": {
+    "display_name": "Saint Paul, Sam Morgan Regional Trail, Highland, Saint Paul, Ramsey County, Minnesota, 55116, United States",
+    "lat": "44.8961710",
+    "lon": "-93.1795807",
+    "ts": "1777320037"
+  },
+  "stone mountain, ga, 30087, usa": {
+    "display_name": "Stone Mountain, DeKalb County, Georgia, 80083, United States",
+    "lat": "33.8080924",
+    "lon": "-84.1706273",
+    "ts": "1777320040"
+  },
+  "surprise, az, 85378, us": {
+    "display_name": "Surprise, Maricopa County, Arizona, United States",
+    "lat": "33.6292470",
+    "lon": "-112.3681428",
+    "ts": "1777320567"
+  },
+  "tinley park, il, 60477, usa": {
+    "display_name": "Tinley Park, Bremen Township, Cook County, Illinois, United States",
+    "lat": "41.5733669",
+    "lon": "-87.7844944",
+    "ts": "1777320464"
+  },
+  "towson, md, 21204, usa": {
+    "display_name": "Towson, Baltimore County, Maryland, 21252, United States",
+    "lat": "39.4018513",
+    "lon": "-76.6023803",
+    "ts": "1777320589"
+  },
+  "tustin, ca, 92780, us": {
+    "display_name": "Tustin, Orange County, California, United States",
+    "lat": "33.7458511",
+    "lon": "-117.8261660",
+    "ts": "1777320820"
+  },
+  "us": {
+    "display_name": "United States",
+    "lat": "39.7837304",
+    "lon": "-100.4458820",
+    "ts": "1777319523"
+  },
+  "washington, dc, 20012, usa": {
+    "display_name": "Washington, District of Columbia, United States",
+    "lat": "38.8950982",
+    "lon": "-77.0363849",
+    "ts": "1777319848"
+  },
+  "washington, dc, 20017, usa": {
+    "display_name": "Washington, District of Columbia, United States",
+    "lat": "38.8950982",
+    "lon": "-77.0363849",
+    "ts": "1777321159"
+  },
+  "washington, dc, 20024, usa": {
+    "display_name": "Washington, District of Columbia, United States",
+    "lat": "38.8950982",
+    "lon": "-77.0363849",
+    "ts": "1777320474"
+  },
+  "west chester, pa, 19381, usa": {
+    "display_name": "West Chester, Chester County, Pennsylvania, 19383, United States",
+    "lat": "39.9597389",
+    "lon": "-75.6044609",
+    "ts": "1777320505"
+  },
+  "westminster, md, 21158, usa": {
+    "display_name": "Westminster, Carroll County, Maryland, 21157, United States",
+    "lat": "39.5751717",
+    "lon": "-76.9959168",
+    "ts": "1777320067"
+  },
+  "whittier, ca, us": {
+    "display_name": "Whittier, Los Angeles County, California, United States",
+    "lat": "33.9749136",
+    "lon": "-118.0338664",
+    "ts": "1777320772"
+  },
+  "wilmington, de, 19801, usa": {
+    "display_name": "Wilmington, New Castle County, Delaware, United States",
+    "lat": "39.7459468",
+    "lon": "-75.5465890",
+    "ts": "1777320417"
+  },
+  "wilmington, de, 19809, usa": {
+    "display_name": "Wilmington, New Castle County, Delaware, United States",
+    "lat": "39.7459468",
+    "lon": "-75.5465890",
+    "ts": "1777320380"
+  }
+}

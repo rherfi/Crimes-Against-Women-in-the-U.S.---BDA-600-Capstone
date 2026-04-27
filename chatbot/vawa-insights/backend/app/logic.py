@@ -499,6 +499,11 @@ def find_victim_resources(
             dist = _haversine_miles(lat, lon, r.latitude, r.longitude)
             if dist > radius_miles:
                 continue
+        elif lat is not None and lon is not None:
+            # If the user gave a "near X" style query (coords resolved),
+            # skip rows that can't be distance-checked unless they look national.
+            if (r.city or r.state or r.address or r.postal_code) and not (r.category or "").lower().endswith("hotline"):
+                continue
 
         out_rows.append(
             {
@@ -1370,7 +1375,27 @@ _DOCS_HINTS = {
 
 def classify_intent(message: str) -> Intent:
     text = (message or "").lower()
-    if any(k in text for k in ["find a shelter", "shelter near", "shelters near", "resources near", "domestic violence shelter", "dv shelter", "mental health near", "counseling near", "therapy near", "hotline", "crisis line"]):
+    if any(
+        k in text
+        for k in [
+            "find a shelter",
+            "shelter near",
+            "shelters near",
+            "resources near",
+            "domestic violence shelter",
+            "dv shelter",
+            "mental health near",
+            "counseling near",
+            "therapy near",
+            "legal aid near",
+            "legal help near",
+            "immigration legal aid near",
+            "lawyer near",
+            "attorney near",
+            "hotline",
+            "crisis line",
+        ]
+    ):
         return "resources"
     has_metric = any(h in text for h in _METRIC_HINTS)
     has_docs = any(h in text for h in _DOCS_HINTS)
