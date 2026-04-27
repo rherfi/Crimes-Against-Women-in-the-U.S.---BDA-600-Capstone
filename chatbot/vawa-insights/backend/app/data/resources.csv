@@ -38,228 +38,113 @@ CA-OC-HUMANOPT,housing_shelter,Shelter | Domestic Violence,Shelter; housing; sup
 CA-LA-GNU,housing_shelter,Shelter | Domestic Violence,Shelter; rental assistance; community support,"131 North Tustin Ave, Suite 204",Tustin,CA,92780,US,323-763-2865,https://goodneighbors.us,,,,official_site,
 CA-SD-WRC,Women's Resource Center (WRC),housing_shelter,Shelter | Domestic Violence,Shelter; counseling; hotline; education,1963 Apple St,Oceanside,CA,92054,US,760-757-3500,https://www.wrcsd.org/,,,North County focus,official_site
 CA-SD-CCS-HVH,Center for Community Solutions (Hidden Valley House),housing_shelter,Shelter | Domestic Violence & Sexual Assault,Emergency shelter; counseling; legal advocacy; court accompaniment; sexual assault services,4508 Mission Bay Dr,San Diego,CA,92109,US,888-385-4657,https://www.ccssd.org/,,,"Serves men, youth; Spanish + interpreters",official_site
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
-
 AL-HSV-FSC,Family Services Center,other,"Counseling | Batterer Intervention","Counseling for perpetrators; pre-trial intervention; EAP evaluations; referrals for victims","4092 Memorial Pkwy SW, Suite 205",Huntsville,AL,35802,US,256-551-1610,https://familyservicescenter.org/,,,"Focus on perpetrators; victims referred to crisis line",verified_web
-
 AL-HSV-CSNA,Crisis Services of North Alabama,domestic_violence,"Shelter | Crisis Services","Shelter; court advocacy; counseling (adult & child); case management; referrals; education","406 Pratt Ave NE",Huntsville,AL,35801,US,256-716-1000,https://csna.org/,,,"Shelter location confidential; office listed",verified_web
-
 AL-HSV-LSA,Legal Services of Alabama - Huntsville Office,legal_aid,"Legal | Civil Legal Aid","Legal advice; mediation; representation; appeals; self-help resources","100 Washington St NE, Suite 200",Huntsville,AL,35801,US,866-456-4995,https://legalservicesalabama.org/,,,"Free/low-cost legal services",verified_web
-
 AL-HSV-ASHA,AshaKiran,domestic_violence,"Shelter | DV/SA/Trafficking","Shelter; culturally specific DV/SA/trafficking services; education","P.O. Box 3682",Huntsville,AL,35810,US,256-698-4446,https://ashakiranonline.org/,,,"Confidential shelter; mailing address listed",verified_web
-
 AK-ANC-STAR,Standing Together Against Rape (STAR),sexual_assault,"Advocacy | Sexual Assault Services","Crisis intervention; advocacy; support services; prevention education","1057 W Fireweed Ln, Suite 101",Anchorage,AK,99503,US,907-276-7273,https://staralaska.com/,,,"Statewide sexual violence support",verified_web
-
 AK-STATE-ALSC,Alaska Legal Services Corporation,legal_aid,"Legal | Legal Aid","Legal help for DV survivors; access to benefits; housing; family safety","840 K St, Suite 200",Anchorage,AK,99501,US,888-478-2572,https://alsc-law.org/,,,"Statewide services",verified_web
-
 AK-ANC-AWAIC,Abused Women's Aid in Crisis (AWAIC),housing_shelter,"Shelter | Domestic Violence","Emergency shelter; 24/7 crisis line","100 W 13th Ave",Anchorage,AK,99501,US,907-272-0100,https://awaic.org/,,,"Shelter capacity 67 beds",verified_web
-
 AK-ANC-VFJ,Victims For Justice (VFJ),other,"Advocacy | Victim Support","Emotional support; case guidance; support for violent crime victims","1008 W Northern Lights Blvd",Anchorage,AK,99503,US,907-278-0977,https://victimsforjustice.org/,,,"Covers multiple crime types",verified_web
-
 AK-STATE-OVR,Alaska Office of Victims' Rights,legal_aid,"Legal | Victim Advocacy","Legal advocacy for victims; rights enforcement","510 L St, Suite 100",Anchorage,AK,99501,US,907-754-3460,https://ovr.akleg.gov/,,,"Free legal advocacy",verified_web
-
 AK-ANC-MWC,Men and Women Center (MWC),other,"Counseling | Batterer Intervention","Batterer intervention; anger management","1020 W International Airport Rd",Anchorage,AK,99518,US,907-272-4822,,,"Focus on offenders",verified_web
-
 AK-ANC-AIJ,Alaska Institute for Justice,legal_aid,"Legal | Immigration Legal Aid","Immigration services; VAWA; U/T visas; asylum; interpretation services","431 W 7th Ave, Suite 208",Anchorage,AK,99501,US,907-279-2457,https://aijustice.org/,,,"100+ languages available",verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
-
 AZ-MAR-AGAINST-ABUSE,Against Abuse, Inc.,housing_shelter,"Shelter | Domestic Violence","Shelter; advocacy; community education","P.O. Box 603",Maricopa,AZ,85139,US,520-836-0858,https://against-abuse.org/,,,"Confidential shelter; mailing address listed",verified_web
-
 AZ-MESA-CHRYSALIS,Chrysalis,housing_shelter,"Shelter | Domestic Violence","Counseling; shelter; transitional housing; advocacy","2055 W University Dr, Suite 6",Mesa,AZ,85201,US,480-890-3039,https://noabuse.org/,,,"Comprehensive DV services",verified_web
-
 AZ-PHX-CPLC,Chicanos Por La Causa - De Colores,housing_shelter,"Shelter | Domestic Violence & Trafficking","Shelter; DV/SA services; trafficking support","1112 E Buckeye Rd",Phoenix,AZ,85034,US,602-269-1515,https://cplc.org/,,,"Culturally specific services",verified_web
-
 AZ-PHX-SOJOURNER,Sojourner Center,housing_shelter,"Shelter | Domestic Violence","Shelter; counseling; child services; advocacy","2330 E Fillmore St",Phoenix,AZ,85006,US,602-244-0089,https://sojournercenter.org/,,,"Large DV shelter provider",verified_web
-
 AZ-PHX-JFCS,Jewish Family & Children's Service - Shelter Without Walls,domestic_violence,"Counseling | Non-Residential DV Services","Safety planning; counseling; referrals; mentorship","4747 N 7th Ave",Phoenix,AZ,85013,US,602-452-4640,https://jfcsaz.org/,,,"Non-residential DV support",verified_web
-
 AZ-MESA-FAITHHOUSE,A New Leaf - Faith House,housing_shelter,"Shelter | Domestic Violence","Emergency shelter; safety; advocacy","868 E University Dr",Mesa,AZ,85203,US,480-890-3039,https://turnanewleaf.org/,,,"Shelter location confidential; admin office listed",verified_web
-
 AZ-SURPRISE-NEWLIFE,New Life Center,housing_shelter,"Shelter | Domestic Violence","Emergency shelter; DV/SA services","P.O. Box 5005",Goodyear,AZ,85338,US,623-932-4404,https://newlifectr.org/,,,"Confidential shelter",verified_web
-
 AZ-MESA-AUTUMN,A New Leaf - Autumn House,housing_shelter,"Shelter | Domestic Violence","Shelter; advocacy; support services","868 E University Dr",Mesa,AZ,85203,US,480-890-3039,https://turnanewleaf.org/,,,"Confidential shelter; admin office listed",verified_web
-
 AZ-GLENDALE-WJS,Western Judicial Services,other,"Counseling | Batterer Intervention","26-week DV offender program","7150 N 57th Dr",Glendale,AZ,85301,US,623-936-8828,,,"Follows Duluth Model",verified_web
-
 AZ-PHX-FRESHSTART,Fresh Start Women's Resource Center,other,"Advocacy | Women's Services","Career services; legal support; financial empowerment","1130 E McDowell Rd",Phoenix,AZ,85006,US,602-252-8494,https://freshstartwomen.org/,,,"Workforce & empowerment focus",verified_web
-
 AZ-PHX-FAC,Phoenix Family Advocacy Center,other,"Multi-Service | Family Violence Support","Safety planning; legal help; advocacy","2120 N Central Ave, Suite 250",Phoenix,AZ,85004,US,888-246-0303,https://phoenix.gov/humanservices/familyadvocacycenter,,,"City-operated center",verified_web
-
 AZ-MESA-MSP,My Sisters' Place,housing_shelter,"Shelter | Domestic Violence","Shelter; case management; life skills","P.O. Box 1252",Mesa,AZ,85211,US,480-821-1024,https://aNewLeaf.org/,,,"Confidential shelter",verified_web
-
 AZ-PHX-FRIENDLY,Friendly House,legal_aid,"Legal | Immigration & Victim Services","Immigration legal aid; victim advocacy; relocation support","113 W Sherman St",Phoenix,AZ,85003,US,602-257-1870,https://friendlyhouse.org/,,,"VAWA, U-visa support",verified_web
-
 AZ-MESA-FAC,Mesa Family Advocacy Center,other,"Multi-Service | Family Violence Support","Forensic exams; advocacy; counseling","222 E Javelina Ave",Mesa,AZ,85210,US,480-644-4075,https://mesaaz.gov/residents/mesa-family-advocacy-center,,,"Multi-agency collaboration",verified_web
-
 AZ-SURPRISE-EVES,Eve's Place,domestic_violence,"Advocacy | Domestic Violence Services","Safety planning; advocacy; counseling","P.O. Box 2366",Surprise,AZ,85378,US,623-537-5380,https://evesplace.org/,,,"Community-based services",verified_web
-
 AZ-PHX-DOVES,DOVES Program (Area Agency on Aging),domestic_violence,"Advocacy | Older Adult DV Services","Support for victims age 50+","1366 E Thomas Rd, Suite 108",Phoenix,AZ,85014,US,602-264-4357,https://aaaphx.org/,,,"Focus on elder DV victims",verified_web
-
 AZ-AVONDALE-SWAC,Southwest Family Advocacy Center,other,"Multi-Service | Family Violence Support","Advocacy; coordinated services","11440 W Civic Center Dr, Suite 200",Avondale,AZ,85323,US,623-333-7900,https://avondaleaz.gov/our-city/departments/human-services/southwest-family-advocacy-center,,,"City-operated center",verified_web
-
 AZ-GLENDALE-COURT,A New Leaf Court Advocacy (Glendale),legal_aid,"Legal | Court Advocacy","Protective orders; court accompaniment","5850 W Glendale Ave",Glendale,AZ,85301,US,623-930-2004,https://turnanewleaf.org/,,,"Bilingual advocates",verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
-
 AZ-PHX-CPLC-ALT,Chicanos Por La Causa - De Colores (Alt Entry),housing_shelter,"Shelter | Domestic Violence","Shelter; DV/SA services; trafficking support","1112 E Buckeye Rd",Phoenix,AZ,85034,US,602-269-1515,https://cplc.org/,,,"Duplicate service area; kept for completeness",verified_web
-
 AZ-PHX-SOJOURNER-ALT,Sojourner Center (Alt Entry),housing_shelter,"Shelter | Domestic Violence","Shelter; counseling; child services; advocacy","2330 E Fillmore St",Phoenix,AZ,85006,US,602-244-0089,https://sojournercenter.org/,,,"Duplicate entry cleaned",verified_web
-
 AZ-PHX-NEWLEAF,New Life Center,housing_shelter,"Shelter | Domestic Violence","Emergency shelter for men, women, children","P.O. Box 5005",Goodyear,AZ,85338,US,623-932-4404,https://newlifectr.org/,,,"Confidential shelter",verified_web
-
 AZ-PHX-AUTUMN,A New Leaf - Autumn House,housing_shelter,"Shelter | Domestic Violence","Shelter; advocacy; support services","868 E University Dr",Mesa,AZ,85203,US,480-890-3039,https://turnanewleaf.org/,,,"Admin address; shelter confidential",verified_web
-
 AZ-PHX-WJS,Western Judicial Services,other,"Counseling | Batterer Intervention","26-week DV offender program","7150 N 57th Dr",Glendale,AZ,85301,US,623-936-8828,,,"Duluth Model",verified_web
-
 AZ-PHX-FRESHSTART,Fresh Start Women's Resource Center,other,"Advocacy | Women's Services","Career support; legal resources; financial empowerment","1130 E McDowell Rd",Phoenix,AZ,85006,US,602-252-8494,https://freshstartwomen.org/,,,"Empowerment programs",verified_web
-
 AZ-PHX-FAC-ALT,Phoenix Family Advocacy Center,other,"Multi-Service | Family Violence Support","Safety planning; advocacy; legal help","2120 N Central Ave, Suite 250",Phoenix,AZ,85004,US,888-246-0303,https://phoenix.gov/humanservices/familyadvocacycenter,,,"Duplicate cleaned",verified_web
-
 AZ-MESA-MSP-ALT,My Sisters' Place,housing_shelter,"Shelter | Domestic Violence","Shelter; case management; life skills","P.O. Box 1252",Mesa,AZ,85211,US,480-821-1024,https://turnanewleaf.org/,,,"Confidential shelter",verified_web
-
 AZ-PHX-FRIENDLY-ALT,Friendly House,legal_aid,"Legal | Immigration & Victim Services","Immigration legal aid; victim advocacy","113 W Sherman St",Phoenix,AZ,85003,US,602-257-1870,https://friendlyhouse.org/,,,"Duplicate cleaned",verified_web
-
 AZ-MESA-FAC-ALT,Mesa Family Advocacy Center,other,"Multi-Service | Family Violence Support","Forensic exams; counseling; advocacy","222 E Javelina Ave",Mesa,AZ,85210,US,480-644-4075,https://mesaaz.gov/,,,"Duplicate cleaned",verified_web
-
 AZ-SURPRISE-EVES-ALT,Eve's Place,domestic_violence,"Advocacy | Domestic Violence Services","Safety planning; counseling","P.O. Box 2366",Surprise,AZ,85378,US,623-537-5380,https://evesplace.org/,,,"Duplicate cleaned",verified_web
-
 AZ-PHX-DOVES-ALT,DOVES Program,domestic_violence,"Advocacy | Older Adult DV Services","Support for victims 50+","1366 E Thomas Rd, Suite 108",Phoenix,AZ,85014,US,602-264-4357,https://aaaphx.org/,,,"Duplicate cleaned",verified_web
-
 AZ-AVONDALE-SWAC-ALT,Southwest Family Advocacy Center,other,"Multi-Service | Family Violence Support","Advocacy; coordinated services","11440 W Civic Center Dr, Suite 200",Avondale,AZ,85323,US,623-333-7900,https://avondaleaz.gov/,,,"Duplicate cleaned",verified_web
-
 AZ-GLENDALE-COURT-ALT,A New Leaf Court Advocacy,legal_aid,"Legal | Court Advocacy","Protective orders; court accompaniment","5850 W Glendale Ave",Glendale,AZ,85301,US,623-930-2004,https://turnanewleaf.org/,,,"Duplicate cleaned",verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
-
 AR-LR-WCF,Women & Children First,housing_shelter,"Shelter | Domestic Violence","Crisis intervention; shelter; legal advocacy; support services","P.O. Box 1954",Little Rock,AR,72203,US,501-376-3219,https://wcfarkansas.org/,,,"Confidential shelter location",verified_web
-
 AR-STATE-RISE,Rise,housing_shelter,"Shelter | Domestic Violence & Sexual Assault","Shelter; sexual assault recovery; advocacy; support groups","P.O. Box 5661",Jonesboro,AR,72403,US,866-358-2265,https://riseadvocacycenter.org/,,,"Regional service provider",verified_web
-
 AR-LR-FSA,Family Service Agency,domestic_violence,"Counseling | Family Services","Family counseling; economic support; DV prevention","628 W Broadway St, Suite 300",North Little Rock,AR,72114,US,501-372-4242,https://fsalr.org/,,,"Long-standing nonprofit",verified_web
-
 AR-LR-DORCAS,Dorcas House,housing_shelter,"Shelter | Domestic Violence Recovery","Long-term recovery program; shelter; therapy","823 S Park St",Little Rock,AR,72202,US,501-374-4022,https://unionrescuemissionlr.org/,,,"9–12 month recovery program",verified_web
-
 AR-BENTON-SAFEHAVEN,Saline County Safe Haven,housing_shelter,"Shelter | Domestic Violence & Trafficking","Emergency shelter; advocacy; resource hub","P.O. Box 235",Benton,AR,72018,US,501-315-7233,https://salinecountysafehaven.org/,,,"Confidential shelter",verified_web
-
 AR-LONOKE-SAFEHAVEN,Lonoke County Safe Haven,housing_shelter,"Shelter | Domestic Violence & Sexual Assault","Emergency shelter; court advocacy; outreach services","P.O. Box 1053",Cabot,AR,72023,US,501-941-4357,https://lonokecountysafehaven.org/,,,"Includes thrift/outreach center",verified_web
-
 AR-LR-CATHOLIC,Catholic Charities Diocese of Little Rock - Immigration Services,legal_aid,"Legal | Immigration Legal Aid","VAWA petitions; immigration services","2500 N Tyler St",Little Rock,AR,72207,US,501-664-0340,https://dolr.org/catholic-charities/immigration-services,,,"VAWA specialists",verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
-
 CA-RICH-CCEB,Catholic Charities East Bay - Richmond,legal_aid,"Legal | Immigration & Legal Aid","Immigration legal services; consultations","217 Harbour Way",Richmond,CA,94801,US,510-768-3100,https://cceb.org/,,,"Consultations require documentation",verified_web
-
 CA-CONCORD-CCEB,Catholic Charities East Bay - Concord,legal_aid,"Legal | Immigration Services","Immigration consultations","2320 Monument Blvd",Concord,CA,94520,US,510-768-3100,https://cceb.org/,,,"Shared phone system",verified_web
-
 CA-ALAMEDA-RESTORATIVE,Restorative Pathways,housing_shelter,"Shelter | Domestic Violence & Trafficking","Shelter; advocacy; support services","P.O. Box 21153",Oakland,CA,94620,US,888-339-7233,https://restorativepathways.org/,,,"Confidential shelter",verified_web
-
 CA-FREMONT-SAVE,Safe Alternatives to Violent Environments (SAVE),housing_shelter,"Shelter | Domestic Violence","Shelter; counseling; legal advocacy; hotline","1900 Mowry Ave, Suite 201",Fremont,CA,94538,US,510-794-6055,https://save-dv.org/,,,"24-hour crisis line available",verified_web
-
 CA-FAIRFIELD-SAFEQUEST,SafeQuest Solano,housing_shelter,"Shelter | DV & Sexual Assault","Crisis line; shelter; advocacy; court support","1900 Pennsylvania Ave",Fairfield,CA,94533,US,866-487-7233,https://safequestsolano.org/,,,"Multilingual services",verified_web
-
 CA-SANMATEO-CORA,CORA (Community Overcoming Relationship Abuse),housing_shelter,"Shelter | Domestic Violence","Shelter; counseling; prevention programs","2211 Palm Ave",San Mateo,CA,94403,US,800-300-1080,https://corasupport.org/,,,"Comprehensive DV services",verified_web
-
 CA-FAIRFIELD-LSNC,Legal Services of Northern California - Solano,legal_aid,"Legal | Civil Legal Aid","Free civil legal services","1810 Capitol St",Vallejo,CA,94590,US,707-643-0054,https://lsnc.net/,,,"Serves low-income clients",verified_web
-
 CA-SF-DA-VSD,San Francisco District Attorney - Victim Services,other,"Advocacy | Victim Services","Victim advocacy; compensation assistance","350 Rhode Island St, Suite 400N",San Francisco,CA,94103,US,628-652-4100,https://sfdistrictattorney.org/,,,"Marsy's Law support",verified_web
-
 CA-SF-LACASA,La Casa de las Madres,housing_shelter,"Shelter | Domestic Violence","24/7 hotline; shelter; advocacy","1663 Mission St, Suite 225",San Francisco,CA,94103,US,877-503-1850,https://lacasa.org/,,,"Shelter confidential",verified_web
-
 CA-SF-RILEY,Riley Center (St. Vincent de Paul),housing_shelter,"Shelter | Domestic Violence","Shelter; legal aid; case management","1175 Howard St",San Francisco,CA,94103,US,415-255-0165,https://svdp-sf.org/what-we-do/riley-center/,,,"Comprehensive services",verified_web
-
 CA-SF-WOMAN,W.O.M.A.N., Inc.,domestic_violence,"Counseling | DV Support","Hotline; counseling; support groups","26 Boardman Pl",San Francisco,CA,94103,US,877-384-3578,https://womaninc.org/,,,"Multilingual services",verified_web
-
 CA-CONTRA-STAND,STAND! For Families Free of Violence,housing_shelter,"Shelter | Domestic Violence","Shelter; prevention; intervention programs","1410 Danzig Plaza",Concord,CA,94520,US,888-215-5555,https://standffov.org/,,,"Full-spectrum DV services",verified_web
-
 CA-SF-AWS,Asian Women's Shelter,housing_shelter,"Shelter | DV & Human Trafficking","Shelter; advocacy; education","3543 18th St, #19",San Francisco,CA,94110,US,415-751-0880,https://sfaws.org/,,,"Serves all communities",verified_web
-
 CA-OAK-NARIKA,NARIKA,domestic_violence,"Advocacy | Culturally Specific DV Services","Helpline; advocacy; referrals","P.O. Box 14014",Berkeley,CA,94712,US,800-215-7308,https://narika.org/,,,"South Asian focus",verified_web
-
 CA-SANPABLO-CVS,Community Violence Solutions - San Pablo,sexual_assault,"Advocacy | Sexual Assault Services","Crisis services; prevention; treatment","2101 Van Ness St, Suite 302",San Pablo,CA,94806,US,800-670-7273,https://cvsolutions.org/,,,"Regional services",verified_web
-
 CA-SANRAFAEL-CVS,Community Violence Solutions - San Rafael,sexual_assault,"Advocacy | Sexual Assault Services","Crisis services; prevention; treatment","4340 Redwood Hwy, Suite F154",San Rafael,CA,94903,US,800-670-7273,https://cvsolutions.org/,,,"Multiple locations",verified_web
-
 CA-SF-SFWAR,San Francisco Women Against Rape,sexual_assault,"Advocacy | Sexual Assault Services","Advocacy; education; survivor support","3543 18th St, Suite 7",San Francisco,CA,94110,US,415-647-7273,https://sfwar.org/,,,"Community-based org",verified_web
-
 CA-OAK-ASAFE,A Safe Place,housing_shelter,"Shelter | Domestic Violence","Shelter; hotline; counseling; legal advocacy","P.O. Box 23006",Oakland,CA,94623,US,510-536-7233,https://asafeplace.org/,,,"Confidential shelter",verified_web
-
 CA-MARIN-FCLC,Family & Children's Law Center,legal_aid,"Legal | Family Law","Legal services for families and children","1401 Los Gamos Dr, Suite 200",San Rafael,CA,94903,US,415-492-9230,https://faclc.org/,,,"Low-cost legal help",verified_web
-
 CA-OAK-FVLC,Family Violence Law Center,legal_aid,"Legal | DV Legal Services","Crisis counseling; legal advocacy","470 27th St",Oakland,CA,94612,US,800-947-8301,https://fvlc.org/,,,"24-hour crisis line",verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
-
 CA-SF-CUAV,Community United Against Violence (CUAV),domestic_violence,"Advocacy | LGBTQ+ Services","Advocacy; counseling; violence prevention","427 S Van Ness Ave",San Francisco,CA,94103,US,415-333-4357,https://cuav.org/,,,"LGBTQ+ focused services",verified_web
-
 CA-OAK-SHALOM,Shalom Bayit,domestic_violence,"Advocacy | DV Prevention","Counseling; education; prevention","P.O. Box 32236",Oakland,CA,94604,US,866-742-5667,https://shalom-bayit.org/,,,"Jewish community focus",verified_web
-
 CA-OAK-HIGHLAND,Highland Hospital DV & Sexual Assault Center,mental_health,"Healthcare | DV/SA Services","Medical exams; counseling; advocacy","1411 E 31st St",Oakland,CA,94602,US,510-534-9290,https://www.alamedahealthsystem.org/,,,"Hospital-based program",verified_web
-
 CA-SF-JFCS,Jewish Family & Children Services,domestic_violence,"Housing | DV Support","Safe housing; counseling; support services","2150 Post St",San Francisco,CA,94115,US,415-449-1200,https://jfcs.org/,,,"Dream Program for DV survivors",verified_web
-
 CA-FREMONT-SECOND,Second Chance Inc.,domestic_violence,"Counseling | DV Recovery","Support services; recovery programs","6330 Thornton Ave",Newark,CA,94560,US,510-792-4357,,,"Women's recovery focus",verified_web
-
 CA-BERKELEY-TANG,Tang Center Social Services,mental_health,"Counseling | Student Services","Crisis counseling; DV/SA support","2222 Bancroft Way",Berkeley,CA,94720,US,510-642-6074,https://uhs.berkeley.edu/,,,"UC Berkeley students only",verified_web
-
 CA-OAK-IIBA,International Institute of the Bay Area - Oakland,legal_aid,"Legal | Immigration Legal Aid","VAWA; U-visa; asylum support","1900 Fruitvale Ave, Suite 2A",Oakland,CA,94601,US,510-451-2846,https://iibayarea.org/,,,"Multilingual services",verified_web
-
 CA-SF-IIBA,International Institute of the Bay Area - San Francisco,legal_aid,"Legal | Immigration Legal Aid","Immigration legal services","657 Mission St, Suite 201",San Francisco,CA,94105,US,415-538-8100,https://iibayarea.org/,,,"Multiple service areas",verified_web
-
 CA-OAK-DEAFHOPE,DeafHope,domestic_violence,"Advocacy | Deaf Community Services","DV/SA services; advocacy; education","470 27th St",Oakland,CA,94612,US,510-735-8553,https://deaf-hope.org/,,,"Serves Deaf survivors",verified_web
-
 CA-OAK-CCEB,Catholic Charities East Bay - Oakland,legal_aid,"Legal | Immigration & Legal Aid","Legal representation; immigration services","433 Jefferson St",Oakland,CA,94607,US,510-768-3100,https://cceb.org/,,,"Regional office",verified_web
-
 CA-SANLEANDRO-BF,Building Futures,housing_shelter,"Shelter | Domestic Violence","Shelter; hotline; counseling; advocacy","1840 Fairway Dr",San Leandro,CA,94577,US,866-292-9688,https://bfwc.org/,,,"24-hour hotline",verified_web
-
 CA-OAK-KCCEB,Korean Community Center East Bay,domestic_violence,"Advocacy | Immigrant Services","Counseling; benefits; referrals","101 Callan Ave, Suite 400",San Leandro,CA,94577,US,844-828-2254,https://kcceb.org/,,,"Korean community focus",verified_web
-
 CA-HAYWARD-ACS,Associated Counseling Services,other,"Counseling | Batterer Intervention","Certified batterer intervention program","27936 E 12th St, Suite 210",Hayward,CA,94544,US,510-357-0550,,,"State-certified program",verified_web
-
 CA-MARIN-CDP,Center for Domestic Peace,housing_shelter,"Shelter | Domestic Violence","Emergency shelter; transitional housing","734 A St",San Rafael,CA,94901,US,415-924-6616,https://centerfordomesticpeace.org/,,,"Marin County provider",verified_web
-
 CA-SANMATEO-AMDATC,Anger Management & DV Therapy Center,other,"Counseling | Batterer Intervention","Batterer intervention; anger management","1730 S Amphlett Blvd, Suite 120",San Mateo,CA,94402,US,650-375-0449,,,"State-certified program",verified_web
-
 CA-SF-APA,APA Family Support Services,domestic_violence,"Counseling | Family Support","Counseling; DV support groups","1255 Post St, Suite 500",San Francisco,CA,94109,US,415-617-0061,https://apafss.org/,,,"Asian/Pacific Islander focus",verified_web
-
 CA-SANRAFAEL-CANAL,Canal Alliance,domestic_violence,"Advocacy | Immigrant Services","Case management; referrals","91 Larkspur St",San Rafael,CA,94901,US,415-454-2640,https://canalalliance.org/,,,"Immigrant support",verified_web
-
 CA-SF-CYC,Community Youth Center SF,mental_health,"Counseling | Youth Services","Youth development; family services","1038 Post St",San Francisco,CA,94109,US,415-775-2636,https://cycsf.org/,,,"Youth-focused org",verified_web
-
 CA-PALOALTO-ACS,Adolescent Counseling Services,mental_health,"Counseling | Youth & Family","Teen counseling; family therapy","643 Bair Island Rd, Suite 403",Redwood City,CA,94063,US,650-424-0852,https://acs-teens.org/,,,"Teen-focused care",verified_web
-
 CA-SF-FELTON,Felton Institute,mental_health,"Counseling | Family Services","Mental health; youth services","1500 Franklin St",San Francisco,CA,94109,US,415-695-8300,https://felton.org/,,,"Wraparound services",verified_web
-
 CA-CONTRACOSTA-RCC,Rainbow Community Center,domestic_violence,"Advocacy | LGBTQ+ Services","Support programs; DV collaboration","2118 Willow Pass Rd, Suite 500",Concord,CA,94520,US,925-692-0090,https://rainbowcc.org/,,,"LGBTQ+ support",verified_web
-
 CA-CONCORD-CALLI,Calli House Youth Shelter,housing_shelter,"Shelter | Youth Services","Youth shelter; crisis services","P.O. Box 1273",Concord,CA,94522,US,925-313-7704,https://calli.house/,,,"Confidential youth shelter",verified_web
-
 CA-FREMONT-YFS,City of Fremont Youth & Family Services,mental_health,"Counseling | Youth Services","Family counseling; crisis support","39155 Liberty St, Suite E500",Fremont,CA,94538,US,510-574-2100,https://fremont.gov/,,,"City services",verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
-
 CA-SF-ICWC,Immigration Center for Women & Children - San Francisco,legal_aid,"Legal | Immigration Legal Aid","Immigration services for women & children","1254 Market St, 3rd Floor",San Francisco,CA,94102,US,415-861-1449,https://icwclaw.org/,,,"Focus on underserved women/children",verified_web
-
 CA-SF-APILO,Asian Pacific Islander Legal Outreach,legal_aid,"Legal | DV & Immigration","Family law; immigration; anti-trafficking","1121 Mission St",San Francisco,CA,94103,US,415-567-6255,https://apilegaloutreach.org/,,,"Multilingual services",verified_web
-
 CA-SF-CAMERON,Donaldina Cameron House,domestic_violence,"Advocacy | DV Services","Case management; counseling; advocacy","920 Sacramento St",San Francisco,CA,94108,US,415-781-0401,https://cameronhouse.org/,,,"Serves AAPI communities",verified_web
-
 CA-SANMATEO-VICTIM,San Mateo County Victim Center,other,"Advocacy | Victim Services","Crisis intervention; compensation help; referrals","400 County Center, 3rd Floor",Redwood City,CA,94063,US,650-363-4636,https://smcgov.org/da/victim-services,,,"County-operated center",verified_web
-
 CA-PACIFICA-PRC,Pacifica Resource Center / Tides Center,other,"Advocacy | Basic Needs","Food; financial aid; referrals","1809 Palmetto Ave",Pacifica,CA,94044,US,650-738-7470,https://pacresourcecenter.org/,,,"Community support org",verified_web
-
 CA-SANMATEO-RTS,Rape Trauma Services (San Mateo County),sexual_assault,"Advocacy | Sexual Assault Services","Counseling; advocacy; prevention","1528 S El Camino Real, Suite 102",San Mateo,CA,94402,US,650-692-7273,https://rapetraumaservices.org/,,,"Specialized SA services",verified_web
-
 CA-SF-NISA,North American Islamic Shelter for the Abused,housing_shelter,"Shelter | Domestic Violence","Shelter; counseling; financial assistance","P.O. Box 926174",Houston,TX,77292,US,888-275-6472,https://nisahelpline.com/,,,"Serves Bay Area; HQ mailing TX; confidential shelter",verified_web
-
 CA-FREMONT-IIBA,International Institute of the Bay Area - Fremont,legal_aid,"Legal | Immigration Legal Aid","VAWA; U-visa; asylum","39155 Liberty St, Suite A110",Fremont,CA,94538,US,510-894-3639,https://iibayarea.org/,,,"Multilingual services",verified_web
-
 CA-OAK-AFJC,Alameda County Family Justice Center,other,"Multi-Service | Family Violence Support","DV/SA services; legal; advocacy","470 27th St",Oakland,CA,94612,US,510-267-8800,https://acfjc.org/,,,"Multi-agency center",verified_web
-
 CA-OAK-BAYLEGAL,Bay Area Legal Aid,legal_aid,"Legal | Civil Legal Aid","Free legal services for DV survivors","1735 Telegraph Ave",Oakland,CA,94612,US,800-551-5554,https://baylegal.org/,,,"Regional provider",verified_web
-
 CA-CONCORD-CCFJC,Contra Costa Family Justice Center (Concord),other,"Multi-Service | Family Violence Support","DV/SA services; advocacy","2151 Salvio St, Suite 201",Concord,CA,94520,US,925-521-6366,https://cocofamilyjustice.org/,,,"Multiple locations",verified_web
-
 CA-RICHMOND-CCFJC,Contra Costa Family Justice Center (Richmond),other,"Multi-Service | Family Violence Support","DV/SA services; advocacy","256 24th St",Richmond,CA,94804,US,925-281-0970,https://cocofamilyjustice.org/,,,"Multiple locations",verified_web
-
 CA-HAYWARD-LAFAMILIA,La Familia Counseling Service,mental_health,"Counseling | Family Services","Mental health; family support","26081 Mocine Ave",Hayward,CA,94544,US,510-881-5921,https://lafamiliacounseling.org/,,,"Latino community focus",verified_web
-
 CA-SANMATEO-KELLER,Keller Center for Family Violence Intervention,mental_health,"Healthcare | DV/SA Services","Medical forensic exams; advocacy","222 W 39th Ave",San Mateo,CA,94403,US,650-573-2623,https://smchealth.org/,,,"Hospital-based services",verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 PA-MEDIA-DAPDC,Domestic Abuse Project of Delaware County Inc.,housing_shelter,"Shelter | Domestic Violence","Shelter; crisis intervention; case management; counseling; support groups; legal advocacy; court accompaniment; basic needs","P.O. Box 211","Media","PA","19063","USA","610-565-4590","https://dapdc.org",,,"Confidential shelter","verified_web"
 PA-PHL-LSHBDVP,Lutheran Settlement House Bilingual Domestic Violence Program,domestic_violence,"Counseling | Domestic Violence","Counseling; support groups; hotel placement; transitional housing; hotline collaboration","1340 Frankford Ave","Philadelphia","PA","19125","USA","215-426-8610","https://lutheransettlement.org",,,"Multilingual services","verified_web"
 PA-PHL-WAA,Women Against Abuse Inc.,housing_shelter,"Shelter | Domestic Violence","Hotline; shelter; transitional housing; legal services; advocacy; counseling","100 S Broad St","Philadelphia","PA","19110","USA","866-723-3014","https://www.womenagainstabuse.org",,,"Confidential shelter","verified_web"
@@ -284,7 +169,6 @@ NJ-SEWELL-SERV,SERV Gloucester County Inc.,housing_shelter,"Shelter | Domestic V
 PA-PHL-CONGRESO,Congreso De Latinos Unidos Latina DV Program,domestic_violence,"Counseling | Domestic Violence","Counseling; case management; support groups; interpretation","216 W Somerset St","Philadelphia","PA","19133","USA","215-763-8870","https://www.congreso.net",,,"Multilingual services","verified_web"
 DE-WILM-SOAR,Survivors of Abuse in Recovery Inc.,mental_health,"Counseling | Sexual Assault","Psychotherapy; counseling; advocacy; education","500 W 10th St","Wilmington","DE","19801","USA","302-655-3953","https://www.soar-de.org",,,"","verified_web"
 PA-WCH-LASPCHES,Legal Aid of Southeastern Pennsylvania - Chester County,legal_aid,"Legal | Domestic Violence","Protection from abuse; custody; divorce; housing; benefits","222 N Church St","West Chester","PA","19380","USA","610-436-4510","https://lasp.org",,,"","verified_web"
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 FL-JAX-HUBBARD,Hubbard House Inc.,housing_shelter,"Shelter | Domestic Violence","Emergency shelter; hotline; outreach center; advocacy; counseling","P.O. Box 4909","Jacksonville","FL","32201","USA","904-354-3114","https://www.hubbardhouse.org",,,"Confidential shelter","verified_web"
 FL-JAX-JALA,Jacksonville Area Legal Aid Inc.,legal_aid,"Legal | Domestic Violence","Civil legal aid; family law; housing; immigration; injunctions","126 W Adams St","Jacksonville","FL","32202","USA","904-356-8371","https://www.jaxlegalaid.org",,,"Multilingual services","verified_web"
 FL-GREENCOVE-QUIGLEY,Quigley House Inc.,housing_shelter,"Shelter | Domestic Violence","Emergency shelter; hotline; counseling; advocacy","P.O. Box 189","Green Cove Springs","FL","32043","USA","904-284-0061","https://www.quigleyhouse.org",,,"Confidential shelter","verified_web"
@@ -299,7 +183,6 @@ FL-HOMESTEAD-COFFO,COFFO Immigration Project,legal_aid,"Legal | Immigration Lega
 FL-MIAMI-MUJER,MUJER Inc.,sexual_assault,"Crisis Center | Sexual Assault","Counseling; support groups; therapy; advocacy","P.O. Box 350033","Miami","FL","33135","USA","305-763-2459","https://mujerfla.org",,,"Multilingual services; Confidential shelter","verified_web"
 FL-JAX-CVS,City of Jacksonville Crime Victim Services,other,"Multi-Service | Crime Victim Support","Financial assistance; advocacy; referrals","230 E Bay St","Jacksonville","FL","32202","USA","904-255-3388","https://www.coj.net",,,"","verified_web"
 FL-FERNANDINA-MICAH,Micah's Place Inc.,housing_shelter,"Shelter | Domestic Violence","Emergency shelter; hotline; counseling; legal advocacy; support groups","P.O. Box 572","Fernandina Beach","FL","32035","USA","904-225-9979","https://www.micahsplace.org",,,"Confidential shelter","verified_web"
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 HI-HONOLULU-CFS,Child & Family Service - O'ahu,housing_shelter,"Shelter | Domestic Violence","Emergency shelter; 90-day shelter; hotline; counseling; support groups","91-1841 Fort Weaver Rd","Ewa Beach","HI","96706","USA","808-841-0822","https://www.childandfamilyservice.org",,,"Confidential shelter","verified_web"
 HI-HONOLULU-DVAC,Domestic Violence Action Center,legal_aid,"Legal | Domestic Violence","Legal services; crisis support; advocacy","1001 Bishop St Ste 970","Honolulu","HI","96813","USA","808-531-3771","https://domesticviolenceactioncenter.org",,,"","verified_web"
 HI-HONOLULU-SATC,Sex Abuse Treatment Center,sexual_assault,"Crisis Center | Sexual Assault","24/7 crisis care; medical exams; counseling; legal support","1319 Punahou St Ste 1030","Honolulu","HI","96826","USA","808-524-7273","https://www.hawaiipacifichealth.org/satc",,,"","verified_web"
@@ -309,7 +192,6 @@ HI-HONOLULU-PACTFPC,Parents And Children Together Family Peace Center Oahu,domes
 HI-HONOLULU-PACTOHIA,Parents And Children Together Ohia Domestic Violence Shelter,housing_shelter,"Shelter | Domestic Violence","Emergency shelter; crisis response; safety planning; referrals","P.O. Box 561","Honolulu","HI","96808","USA","808-526-2200","https://pacthawaii.org",,,"Confidential shelter","verified_web"
 HI-KAILUA-KONA-LASH,Legal Aid Society of Hawaii Kona,legal_aid,"Legal | Domestic Violence","Legal advocacy; representation; immigration assistance","74-5599 Pawai Pl","Kailua-Kona","HI","96740","USA","808-536-4302","https://www.legalaidhawaii.org",,,"Serves low-income populations","verified_web"
 HI-KANEOHE-LASH,Legal Aid Society of Hawaii Oahu Windward,legal_aid,"Legal | Domestic Violence","Legal advocacy; representation; immigration assistance","45-350 Kamehameha Hwy","Kaneohe","HI","96744","USA","808-536-4302","https://www.legalaidhawaii.org",,,"Serves low-income populations","verified_web"
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 GA-ATL-SCARSOF,Scars of Survival Inc.,other,"Advocacy | Violence Prevention","Prevention education; awareness; survivor support","P.O. Box 921","Conyers","GA","30012","USA","470-887-0322","https://www.scarsofsurvival.org",,,"","verified_web"
 GA-CLARKSTON-NAP,New American Pathways Women's Empowerment Program,domestic_violence,"Multi-Service | Domestic Violence","Case management; counseling; advocacy","2300 Henderson Mill Rd NE Ste 110","Atlanta","GA","30345","USA","404-299-6099","https://newamericanpathways.org",,,"Serves immigrants; Multilingual services","verified_web"
 GA-MCDONOUGH-HAVEN,Haven House McDonough,housing_shelter,"Shelter | Domestic Violence","Emergency shelter; crisis counseling; support groups; legal advocacy; case management","P.O. Box 1207","McDonough","GA","30253","USA","770-954-9229","https://havenhousega.org",,,"Confidential shelter","verified_web"
@@ -338,13 +220,11 @@ GA-ATL-GAIN,Georgia Asylum & Immigration Network,legal_aid,"Legal | Immigration 
 GA-ATL-BRIDGES,BRIDGES Program,domestic_violence,"Advocacy | Domestic Violence","Advocacy; safety planning; deaf services","1525 E Park Pl Blvd Ste 100","Stone Mountain","GA","30087","USA","404-381-8282","https://gcadv.org",,,"Serves Deaf community","verified_web"
 GA-ATL-CHERITH,House of Cherith,housing_shelter,"Shelter | Domestic Violence","Residential recovery; counseling; trafficking support","P.O. Box 15096","Atlanta","GA","30333","USA","404-655-0024","https://houseofcherith.org",,,"Confidential shelter","verified_web"
 GA-ROSWELL-AWAKEN,Awaken Voices Domestic Violence Services Inc.,domestic_violence,"Multi-Service | Domestic Violence","Crisis support; counseling; legal advocacy; referrals; support groups","P.O. Box 768126","Roswell","GA","30076","USA","770-410-8667","https://awakenvoicesdv.org",,,"","verified_web"
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 ID-BOISE-WCA,Women's and Children's Alliance,housing_shelter,"Shelter | Domestic Violence","Emergency shelter; hotline; counseling; support groups; legal advocacy; safety planning","720 W Washington St","Boise","ID","83702","USA","208-345-7025","https://wcaboise.org",,,"Confidential shelter","verified_web"
 ID-BOISE-HAYS,Idaho Youth Ranch Hays Shelter Home,housing_shelter,"Shelter | Youth Services","Emergency youth shelter; counseling; crisis intervention; education support","4775 W Denton St","Boise","ID","83706","USA","208-322-6687","https://www.youthranch.org",,,"Serves youth","verified_web"
 ID-NAMPA-TRHS,Terry Reilly Health Services,mental_health,"Counseling | Sexual Assault","Trauma counseling; therapy; family services","308 E Florida Ave","Nampa","ID","83686","USA","208-658-9786","https://www.trhs.org",,,"","verified_web"
 ID-BOISE-ILAS,Idaho Legal Aid Services Boise,legal_aid,"Legal | Civil Legal Aid","Legal advocacy; civil legal services; education","1104 W Fort St","Boise","ID","83702","USA","208-746-7541","https://idaholegalaid.org",,,"","verified_web"
 ID-NAMPA-FJC,Nampa Family Justice Center,domestic_violence,"Multi-Service | Domestic Violence","Advocacy; case management; legal assistance; safety planning","1305 3rd St S","Nampa","ID","83651","USA","208-475-5700","https://www.nampapolice.org/family-justice-center",,,"Confidential services","verified_web"
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 IL-CHICAGO-PAA,Polish American Association Domestic Violence Program,domestic_violence,"Counseling | Domestic Violence","Counseling; advocacy; bilingual services","3834 N Cicero Ave","Chicago","IL","60641","USA","773-767-7773","https://polish.org",,,"Multilingual services","verified_web"
 IL-EVANSTON-YWCA,YWCA Evanston Northshore,housing_shelter,"Shelter | Domestic Violence","Shelter; advocacy; counseling; community services","1215 Church St","Evanston","IL","60201","USA","877-718-1868","https://www.ywca-ens.org",,,"Confidential shelter","verified_web"
 IL-TINLEY-CCSS,Crisis Center for South Suburbia,housing_shelter,"Shelter | Domestic Violence","Shelter; counseling; advocacy; intervention programs","P.O. Box 39","Tinley Park","IL","60477","USA","708-429-7233","https://crisisctr.org",,,"Confidential shelter","verified_web"
@@ -374,7 +254,6 @@ IL-CHICAGO-GCLC,Greater Chicago Legal Clinic,legal_aid,"Legal | Domestic Violenc
 IL-CHICAGO-LAC,Legal Aid Chicago,legal_aid,"Legal | Civil Legal Aid","Legal representation; domestic violence; immigration","120 S LaSalle St Ste 900","Chicago","IL","60603","USA","312-341-1070","https://legalaidchicago.org",,,"","verified_web"
 IL-CHICAGO-RVA,Rape Victim Advocates,sexual_assault,"Crisis Center | Sexual Assault","Crisis intervention; counseling; advocacy","180 N Michigan Ave Ste 600","Chicago","IL","60601","USA","888-293-2080","https://rapevictimadvocates.org",,,"","verified_web"
 IL-CHICAGO-APNA,Apna Ghar Inc.,housing_shelter,"Shelter | Domestic Violence","Shelter; counseling; advocacy","P.O. Box 250250","Chicago","IL","60625","USA","773-883-4663","https://apnaghar.org",,,"Confidential shelter; Multilingual services","verified_web"
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 IN-ANDERSON-ALT,Alternatives Incorporated,housing_shelter,"Shelter | Domestic Violence","Emergency shelter; transitional housing; advocacy; support services","P.O. Box 1303","Anderson","IN","46015","USA","765-643-0200","https://alternativesdv.org",,,"Confidential shelter","verified_web"
 IN-INDY-JULIAN,Julian Center Inc.,housing_shelter,"Shelter | Domestic Violence","Shelter; counseling; advocacy; hotline; case management","2011 N Meridian St","Indianapolis","IN","46202","USA","317-920-9320","https://www.juliancenter.org",,,"Confidential shelter","verified_web"
 IN-INDY-SALVATION,Salvation Army Social Services Women Center,housing_shelter,"Shelter | Domestic Violence","Shelter; housing; support services","540 N Alabama St","Indianapolis","IN","46204","USA","317-637-5551","https://centralusa.salvationarmy.org/indiana",,,"","verified_web"
@@ -388,25 +267,21 @@ IN-GREENWOOD-LRC,Life Recovery Center FIRST Program,other,"Intervention | Domest
 IN-INDY-LEGACY,Legacy House,mental_health,"Counseling | Violence Recovery","Counseling; support services","2505 N Arlington Ave","Indianapolis","IN","46218","USA","317-554-5272","https://legacy-house.org",,,"","verified_web"
 IN-INDY-LCADSV,Latino Coalition Against Domestic and Sexual Violence Inc.,domestic_violence,"Advocacy | Domestic Violence","Advocacy; community outreach; support services","2445 N Meridian St","Indianapolis","IN","46208","USA","317-926-4673","https://lcadv.org",,,"Multilingual services","verified_web"
 IN-INDY-COF,Constructing Our Future Inc.,housing_shelter,"Transitional Housing | Reentry Support","Transitional housing; reentry support","PO Box 441542","Indianapolis","IN","46244","USA","317-209-4624","https://cofindy.org",,,"Serves formerly incarcerated women","verified_web"
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 IA-DESMOINES-ILA,Iowa Legal Aid,legal_aid,"Legal | Domestic Violence","Legal representation; advocacy; civil legal services","1111 9th St Ste 230","Des Moines","IA","50314","USA","800-532-1275","https://www.iowalegalaid.org",,,"","verified_web"
 IA-OTTUMWA-CIAC,Crisis Intervention & Advocacy Center,domestic_violence,"Multi-Service | Domestic Violence","Crisis intervention; case management; transitional housing; support groups; legal advocacy; court accompaniment","P.O. Box 446","Ottumwa","IA","52501","USA","800-400-4884","https://www.ciacottumwa.org",,,"Multilingual services","verified_web"
 IA-DESMOINES-CFI,Children & Families of Iowa Domestic Violence Services,housing_shelter,"Shelter | Domestic Violence","Emergency shelter; outreach; transitional housing; community education","1111 University Ave","Des Moines","IA","50314","USA","515-243-6147","https://cfiowa.org",,,"Confidential shelter","verified_web"
 IA-DESMOINES-PCAS,Polk County Crisis and Advocacy Services,sexual_assault,"Crisis Center | Sexual Assault","Crisis intervention; legal advocacy; court accompaniment","2309 Euclid Ave","Des Moines","IA","50310","USA","515-286-3535","https://www.polkcountyiowa.gov",,,"Multilingual services","verified_web"
 IA-DESMOINES-LUNA,Latinas Unidas por un Nuevo Amanecer (LUNA),domestic_violence,"Advocacy | Domestic Violence","Hotline; court advocacy; support groups; safety planning; referrals","P.O. Box 65234","Des Moines","IA","50365","USA","866-256-7668","https://luna-ia.org",,,"Multilingual services; Serves Latino community","verified_web"
 IA-DESMOINES-MONSOON,Monsoon Asians and Pacific Islanders in Solidarity,domestic_violence,"Multi-Service | Domestic Violence","Advocacy; case management; trafficking support; community outreach","1200 University Ave Ste 105","Des Moines","IA","50314","USA","866-881-4641","https://monsooniowa.org",,,"Serves Asian & Pacific Islander communities","verified_web"
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 KS-WICHITA-WFCC,Wichita Family Crisis Center,housing_shelter,"Shelter | Domestic Violence","Emergency shelter; counseling; advocacy; support groups; parenting education; children's services","P.O. Box 47240","Wichita","KS","67201","USA","316-263-7501","https://wichitafamilycrisiscenter.org",,,"Confidential shelter","verified_web"
 KS-WICHITA-WASAC,Wichita Area Sexual Assault Center,sexual_assault,"Crisis Center | Sexual Assault","24-hour hotline; medical advocacy; legal advocacy; counseling; support groups","355 N Waco Ave Ste 100","Wichita","KS","67202","USA","316-263-3002","https://wichitasac.com",,,"Multilingual services","verified_web"
 KS-NWKS-SAFEHOPE,Safehope,housing_shelter,"Shelter | Domestic Violence","Crisis intervention; shelter; advocacy; support services","P.O. Box 456","Colby","KS","67701","USA","800-487-0510","https://safehopeks.org",,,"Confidential shelter","verified_web"
 KS-WICHITA-HARBOR,Catholic Charities Harbor House,housing_shelter,"Shelter | Domestic Violence","Emergency shelter; hotline; outreach; safety planning","437 N Topeka St","Wichita","KS","67202","USA","316-263-6000","https://catholiccharitieswichita.org/harbor-house",,,"Confidential shelter","verified_web"
 KS-WICHITA-STEPSTONE,StepStone,Inc.,housing_shelter,"Transitional Housing | Domestic Violence","Transitional housing; support services","132 N Market St","Wichita","KS","67202","USA","316-265-1611","https://stepstoneks.org",,,"","verified_web"
 KS-NEWTON-OVM,OVM Inc Batterers Intervention Program,other,"Intervention | Domestic Violence","Batterer intervention program; group sessions","1600 N Main St Ste 201","Newton","KS","67114","USA","316-283-2038","https://ovminc.org",,,"","verified_web"
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 KY-LOUISVILLE-CWF,Center for Women and Families Louisville,housing_shelter,"Shelter | Domestic Violence","24/7 hotline; emergency shelter; counseling; advocacy; case management; support groups","927 S 2nd St","Louisville","KY","40203","USA","844-237-2331","https://www.thecenteronline.org",,,"Confidential shelter","verified_web"
 IN-BEDFORD-HHPACT,Hoosier Hills PACT DV Shelter,housing_shelter,"Shelter | Domestic Violence","Emergency shelter; transitional housing; legal advocacy; support services","P.O. Box 416","Bedford","IN","47421","USA","812-723-2621","https://www.hh-pact.org",,,"Confidential shelter","verified_web"
 IN-NEWALBANY-ILS,Indiana Legal Services New Albany,legal_aid,"Legal | Civil Legal Aid","Legal assistance; civil law; advocacy","33 E Main St Ste 500","New Albany","IN","47150","USA","812-945-4123","https://www.indianalegalservices.org",,,"","verified_web"
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 LA-GRETNA-JPDA,Jefferson Parish District Attorney Office Victim Witness Program,other,"Advocacy | Crime Victim Support","Advocacy; court support; victim assistance","200 Derbigny St","Gretna","LA","70053","USA","504-361-2860","https://www.jpda.us",,,"","verified_web"
 LA-NEWORLEANS-MCP,Mary Claire's Place,housing_shelter,"Shelter | Domestic Violence","Crisis line; counseling; case management; child services","P.O. Box 56106","New Orleans","LA","70156","USA","504-866-9554","https://maryclairesplace.org",,,"Confidential shelter","verified_web"
 LA-NEWORLEANS-COVENANT,Covenant House New Orleans,housing_shelter,"Shelter | Youth Services","Youth shelter; housing; counseling; support services","611 N Rampart St","New Orleans","LA","70112","USA","504-327-9509","https://covenanthousenola.org",,,"Serves youth","verified_web"
@@ -417,11 +292,9 @@ LA-NEWORLEANS-SLLS,Southeast Louisiana Legal Services New Orleans,legal_aid,"Leg
 LA-GRETNA-SLLS,Southeast Louisiana Legal Services Gretna,legal_aid,"Legal | Civil Legal Aid","Civil legal aid; domestic violence representation","405 Gretna Blvd Ste 110","Gretna","LA","70053","USA","800-624-4771","https://www.slls.org",,,"","verified_web"
 LA-HAHNVILLE-SCPDA,St Charles Parish District Attorney Office Victim Witness Program,other,"Advocacy | Crime Victim Support","Advocacy; court support; victim services","15045 River Rd","Hahnville","LA","70057","USA","985-783-6263","https://stcharlesda.com",,,"","verified_web"
 LA-NEWORLEANS-OPDA,Orleans Parish District Attorney Office Victim Assistance,other,"Advocacy | Crime Victim Support","Crisis counseling; safety planning; court advocacy; emergency assistance","619 S White St","New Orleans","LA","70119","USA","504-822-2414","https://orleansda.com",,,"","verified_web"
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 ME-BIDDEFORD-TTD,Through These Doors,housing_shelter,"Shelter | Domestic Violence","Emergency shelter; transitional housing; support groups; legal advocacy; housing assistance","P.O. Box 635","Biddeford","ME","04005","USA","800-537-6066","https://www.throughthesedoors.org",,,"Confidential shelter","verified_web"
 ME-BRUNSWICK-SASSMM,Sexual Assault Support Services of Midcoast Maine,sexual_assault,"Crisis Center | Sexual Assault","Advocacy; counseling; prevention education; support services","P.O. Box 990","Brunswick","ME","04011","USA","800-871-7741","https://www.sassmm.org",,,"","verified_web"
 ME-PORTLAND-SARS,Sexual Assault Response Services of Southern Maine,sexual_assault,"Crisis Center | Sexual Assault","24-hour hotline; advocacy; counseling; hospital accompaniment; legal accompaniment","P.O. Box 1375","Portland","ME","04104","USA","207-828-1035","https://www.sarssm.org",,,"","verified_web"
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 MD-BALTIMORE-TURN,TurnAround Inc Baltimore,domestic_violence,"Multi-Service | Domestic Violence","Counseling; legal advocacy; support groups; prevention","401 Washington Ave Ste 300","Towson","MD","21204","USA","443-279-0379","https://turnaroundinc.org",,,"","verified_web"
 MD-TOWSON-TURN,TurnAround Inc Towson,domestic_violence,"Multi-Service | Domestic Violence","Case management; therapy; legal advocacy; employment support","401 Washington Ave Ste 300","Towson","MD","21204","USA","443-279-0379","https://turnaroundinc.org",,,"","verified_web"
 DC-DC-AYUDA,Ayuda,legal_aid,"Legal | Immigration Legal Aid","Legal services; case management; advocacy","6925B Willow St NW","Washington","DC","20012","USA","202-387-4848","https://ayuda.com",,,"Serves immigrants","verified_web"
@@ -446,7 +319,6 @@ MD-BALTIMORE-DVU,Domestic Violence Unit Baltimore,other,"Advocacy | Legal System
 MD-BALTIMORE-MUSLIMAT,Muslimat Al-Nissa,housing_shelter,"Shelter | Domestic Violence","Shelter; counseling; support services","P.O. Box 10546","Baltimore","MD","21209","USA","410-466-8686","https://muslimatalnissa.org",,,"Confidential shelter; Religious requirements","verified_web"
 MD-BALTIMORE-TAHIRIH,Tahirih Justice Center Baltimore,legal_aid,"Legal | Immigration Legal Aid","Immigration legal services; advocacy","P.O. Box 20156","Baltimore","MD","21284","USA","866-575-0071","https://tahirih.org",,,"Serves immigrants","verified_web"
 MD-BALTIMORE-OSE,Operation Safe Escape,other,"Advocacy | Domestic Violence","Advocacy; safety planning; rescue support","P.O. Box 12062","Baltimore","MD","21281","USA","866-997-7233","https://operationsafeescape.org",,,"","verified_web"
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 MA-BOSTON-ATASK,Asian Task Force Against Domestic Violence,housing_shelter,"Shelter | Domestic Violence","Shelter; advocacy; counseling; support services","P.O. Box 120108","Boston","MA","02112","USA","617-338-2355","https://atask.org",,,"Confidential shelter; Serves Asian communities","verified_web"
 MA-BOSTON-CASA,Casa Myrna Vazquez Inc.,housing_shelter,"Shelter | Domestic Violence","Shelter; hotline; counseling; advocacy","P.O. Box 120108","Boston","MA","02112","USA","877-785-2020","https://casamyrna.org",,,"Confidential shelter","verified_web"
 MA-SALEM-HAWC,Healing Abuse Working for Change,housing_shelter,"Shelter | Domestic Violence","Shelter; hotline; counseling; advocacy; prevention","P.O. Box 725","Salem","MA","01970","USA","800-547-1649","https://hawcdv.org",,,"Confidential shelter","verified_web"
@@ -484,7 +356,6 @@ MA-CAMBRIDGE-EMERGE,Emerge Counseling and Education,other,"Intervention | Domest
 MA-LAWRENCE-SUPPORTIVE,Supportive Care Inc.,mental_health,"Counseling | Domestic Violence","Counseling; support groups; home health","365 Essex St","Lawrence","MA","01840","USA","978-686-1300","https://supportivecareinc.org",,,"Multilingual services","verified_web"
 MA-SOMERVILLE-SCES,Somerville Cambridge Elder Services,other,"Advocacy | Elder Support","In-home services; financial assistance; elder support","61 Medford St","Somerville","MA","02143","USA","617-628-2601","https://eldercare.org",,,"Serves elderly","verified_web"
 MA-FRAMINGHAM-METROWEST,MetroWest Legal Services,legal_aid,"Legal | Civil Legal Aid","Legal advocacy; civil legal services","63 Fountain St Ste 304","Framingham","MA","01702","USA","800-696-1501","https://mwlegal.org",,,"","verified_web"
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 MI-DETROIT-YWCA,YWCA of Metropolitan Detroit Interim House,housing_shelter,"Shelter | Domestic Violence","Emergency shelter; temporary housing; childcare support; support groups; counseling; legal referrals; financial referrals; crisis line; parenting classes","P.O. Box 21904","Detroit","MI","48221","USA","313-861-5300","https://www.ywcadetroit.org/programs/ywca-interim-house/",,,"Confidential shelter","verified_web"
 MI-LINCOLNPARK-FIRSTSTEP,First Step,housing_shelter,"Shelter | Domestic Violence","24-hour helpline; emergency shelter; advocacy; children's counseling; PPO assistance; community education","1394 Cleophus Pkwy","Lincoln Park","MI","48146","USA","734-722-6800","https://www.firststep-mi.org",,,"Confidential shelter","verified_web"
 MI-MTCLEMENS-TURNINGPOINT,Turning Point Inc. - Macomb County,housing_shelter,"Shelter | Domestic Violence","24-hour hotline; emergency shelter; housing; trauma counseling; legal advocacy; PPO assistance; forensic nurse exams; prevention education","P.O. Box 1123","Mount Clemens","MI","48046","USA","586-463-6990","https://turningpointmacomb.org","",,"Confidential shelter","verified_web"
@@ -496,7 +367,6 @@ MI-DETROIT-LAVIDA,LA VIDA,domestic_violence,"Multi-Service | Domestic Violence",
 MI-LIVONIA-MAI,Mai Family Services,domestic_violence,"Counseling | Domestic Violence","Confidential counseling; case accompaniment; legal paperwork assistance; interpretation; transitional housing assistance","32401 W Eight Mile Rd","Livonia","MI","48152","USA","248-477-4985","https://maifs.org",,,"Serves South Asian survivors; Multilingual services","verified_web"
 MI-DETROIT-NLSM,Neighborhood Legal Services Michigan,legal_aid,"Legal | Domestic Violence","Legal aid; PPO paperwork; crime victim support; compensation claims; safety communications","7310 Woodward Ave Ste 301","Detroit","MI","48202","USA","313-964-1975","https://nlsmichigan.org",,,"","verified_web"
 MI-STCLAIRSHORES-WHEAT,WHEAT Inc.,other,"Multi-Service | Violence Recovery","Advocacy; trauma-informed support; homelessness support; trafficking support","24025 Greater Mack Ave Ste 203","St Clair Shores","MI","48080","USA","313-570-0638","https://wheatorganization.com",,,"","verified_web"
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 MN-MINNEAPOLIS-OUTFRONT,OutFront Minnesota,other,"Advocacy | LGBTQ+ Violence Support","Crisis intervention; advocacy; peer counseling; outreach; education","310 E 38th St Ste 209","Minneapolis","MN","55409","USA","612-822-0127","https://www.outfront.org",,,"Serves LGBTQ+ community","verified_web"
 MN-STPAUL-SPIP,St Paul Ramsey County Domestic Abuse Intervention Project,domestic_violence,"Advocacy | Domestic Violence","Crisis intervention; legal advocacy; support services","876 University Ave W","St Paul","MN","55104","USA","651-645-2824","https://www.stpaulintervention.org",,,"","verified_web"
 MN-BLAINE-ALEXANDRA,Alexandra House,housing_shelter,"Shelter | Domestic Violence","Emergency shelter; counseling; advocacy; children's services","P.O. Box 490309","Blaine","MN","55449","USA","763-780-2330","https://alexandrahouse.org",,,"Confidential shelter","verified_web"
@@ -534,7 +404,6 @@ MN-STPAUL-BRIDGES,Bridges to Safety,legal_aid,"Legal | Domestic Violence","Prote
 MN-STPAUL-TG,Transforming Generations,domestic_violence,"Multi-Service | Domestic Violence","Advocacy; counseling; support groups; legal assistance","1821 University Ave W Ste 256","St Paul","MN","55104","USA","651-756-1579","https://transforminggenerations.org",,,"Serves Hmong community; Multilingual","verified_web"
 MN-STPAUL-HAP,Hmong American Partnership,domestic_violence,"Advocacy | Domestic Violence","Advocacy; case management; support groups; referrals","1075 Arcade St","St Paul","MN","55106","USA","651-495-1557","https://hmong.org",,,"Serves Southeast Asian communities","verified_web"
 MN-BROOKLYNPARK-SEWA,SEWA-AIFW,domestic_violence,"Advocacy | Domestic Violence","Advocacy; counseling; healthcare support","7970 Brooklyn Blvd","Brooklyn Park","MN","55445","USA","763-205-9873","https://sewa-aifw.org",,,"Serves South Asian community","verified_web"
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 MS-JXN-MSCVP,MS Center for Violence Prevention,housing_shelter,Shelter | Domestic Violence,Shelter; human trafficking shelter; crisis support; hotline,120 N Congress St,Jackson,MS,39201,USA,800-266-4198,,32.2988,-90.1848,"Confidential shelter",verified_web
 MS-JXN-JSBF,Jackson Victim Services Shelter for Battered Families (Catholic Charities),housing_shelter,Shelter | Domestic Violence,Shelter; crisis support; services for children; advocacy,200 N Congress St,Jackson,MS,39201,USA,601-366-0750,,32.2995,-90.1847,"Confidential shelter",verified_web
 MO-KC-MOCSA,Metropolitan Organization Countering Sexual Assault,sexual_assault,Crisis Center | Sexual Assault,Advocacy; medical accompaniment; legal accompaniment; counseling,3100 Broadway Blvd Ste 400,Kansas City,MO,64111,USA,816-531-0233,https://www.mocsa.org,39.0705,-94.5899,,verified_web
@@ -554,10 +423,8 @@ MO-KC-MATTIERHODES,Mattie Rhodes Center Nuevo Dia,mental_health,Counseling | Men
 KS-OP-HOPEHARBOR,Associates at Hope Harbor,other,Intervention Program | Batterer Intervention,Batterer intervention program,8725 W 110th St Ste 500,Overland Park,KS,66210,USA,913-710-5744,,38.9250,-94.6870,,verified_web
 KS-OP-FULLCIRCLE,Full Circle Counseling,other,Intervention Program | Batterer Intervention,Batterer intervention program; counseling,8600 W 110th St Ste 210,Overland Park,KS,66210,USA,913-310-0101,,38.9245,-94.6845,,verified_web
 KS-OP-CHALLENGES,Challenges Inc.,other,Intervention Program | Batterer Intervention,Batterer intervention program; behavioral treatment services,10550 Barkley St Ste 400,Overland Park,KS,66212,USA,913-381-3585,,38.9352,-94.6488,,verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 MT-BIL-YWCA,YWCA Billings - Gateway Horizons,housing_shelter,Shelter | Domestic Violence,Shelter; 24-hour hotline; hospital accompaniment; case management; legal advocacy; transitional housing; rapid rehousing,909 Wyoming Ave,Billings,MT,59101,USA,406-245-4472,https://www.ywcabillings.org,45.7833,-108.5007,"Confidential shelter",verified_web
 MT-BIL-CITYATTYDV,Billings City Attorney's Office Domestic Violence Unit,legal_aid,Legal | Domestic Violence Legal Aid,Criminal justice assistance; protection orders; victim compensation assistance; referrals,210 N 27th St,Billings,MT,59101,USA,406-657-8205,https://ci.billings.mt.us,45.7830,-108.5050,,verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 NE-OMA-LAIDNE,Legal Aid of Nebraska - Statewide,legal_aid,Legal | Civil Legal Aid,Civil legal aid; legal representation; advocacy; referrals,209 S 19th St Ste 200,Omaha,NE,68102,USA,877-250-2016,https://www.legalaidofnebraska.org,41.2577,-95.9415,,verified_web
 NE-OMA-CCDVSHELTER,Catholic Charities Domestic Violence Shelter,housing_shelter,Shelter | Domestic Violence,Shelter; crisis housing; support services,PO Box 40168,Omaha,NE,68104,USA,402-558-5700,,41.2920,-95.9980,"Confidential shelter",verified_web
 NE-OMA-CCDVP,Catholic Charities Domestic Violence and Sexual Assault Program,housing_shelter,Shelter | Domestic Violence,Shelter; hotline; court advocacy; support groups; education; outreach,PO Box 40168,Omaha,NE,68104,USA,888-612-0266,https://www.ccomaha.org,41.2920,-95.9980,"Confidential shelter",verified_web
@@ -570,7 +437,6 @@ NV-LV-SHADETREE,The Shade Tree,housing_shelter,Shelter | Domestic Violence,Shelt
 NV-LV-LVMPDVS,Las Vegas Metropolitan Police Dept Victim Services Detail,other,Victim Services | General Crime Victims,Crisis intervention; court accompaniment; hospital accompaniment; advocacy; transportation support,400 S Martin L King Blvd,Las Vegas,NV,89106,USA,702-828-2955,,36.1670,-115.1630,"Multilingual services",verified_web
 NV-LV-CCSN,Catholic Charities of Southern Nevada,legal_aid,Legal | Immigration Legal Aid,VAWA assistance; legal support; referrals,1501 Las Vegas Blvd N,Las Vegas,NV,89101,USA,702-383-8387,https://www.catholiccharities.com,36.1875,-115.1310,,verified_web
 NV-HEN-SAFEHOUSE2,S.A.F.E. House Inc.,housing_shelter,Shelter | Domestic Violence,Shelter; hotline; advocacy; counseling; education,921 American Pacific Dr,Henderson,NV,89014,USA,702-451-4203,https://safehousenv.org,36.0677,-115.0460,"Confidential shelter",verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 NH-CON-THRIVE,Thrive Survivor Support Center,domestic_violence,Multi-Service | Family Violence Support,Advocacy; crisis support; shelter; support for domestic violence; sexual violence; trafficking; child abuse,PO Box 1344,Concord,NH,03302,USA,866-841-6229,https://www.thrivenv.org,43.2081,-71.5376,"Confidential shelter",verified_web
 NH-MAN-REACH,REACH Crisis Services,housing_shelter,Shelter | Domestic Violence,Shelter; hotline; advocacy; emotional support; crisis intervention,PO Box 277,Manchester,NH,03105,USA,603-668-2299,https://www.reachnh.org,42.9956,-71.4548,"Confidential shelter",verified_web
 NH-NAS-BRIDGES,Bridges Domestic & Sexual Violence Support Services,housing_shelter,Shelter | Domestic Violence,Shelter; hotline; court advocacy; support groups; referrals; crisis intervention,PO Box 326,Nashua,NH,03061,USA,603-883-3044,https://www.bridgesnh.org,42.7654,-71.4676,"Confidential shelter",verified_web
@@ -583,7 +449,6 @@ NH-MAN-CCNH,New Hampshire Catholic Charities,legal_aid,Legal | Immigration Legal
 MA-LAW-SUPPORTIVE,Supportive Care Inc.,mental_health,Counseling | Mental Health,Counseling; support groups; home health services; crisis support,360 Merrimack St Bldg 9,Lawrence,MA,01843,USA,978-686-1300,https://www.supportivecare.com,42.7010,-71.1542,"Multilingual services",verified_web
 NH-CON-NHLA,New Hampshire Legal Assistance - Concord,legal_aid,Legal | Civil Legal Aid,Civil legal aid; legal representation; advocacy,117 N State St,Concord,NH,03301,USA,800-921-1115,https://www.nhla.org,43.2084,-71.5370,,verified_web
 NH-MAN-NHLA,New Hampshire Legal Assistance - Manchester,legal_aid,Legal | Civil Legal Aid,Civil legal aid; legal representation; advocacy,33 N Main St Ste 200,Manchester,NH,03101,USA,603-668-2900,https://www.nhla.org,42.9952,-71.4636,,verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 NY-BRX-KHCC,Kingsbridge Heights Community Center,mental_health,Counseling | Trauma Recovery,Long-term therapy; counseling; support for sexual abuse survivors; support for non-offending family members,3101 Kingsbridge Ter,Bronx,NY,10463,USA,718-884-0700,https://www.khcc-nyc.org,,,,Serves survivors of sexual abuse and domestic violence,verified_web
 NY-BRK-SAFEHOMES,Safe Homes Project,domestic_violence,Multi-Service | Domestic Violence Support,Hotline; counseling; safety planning; shelter; training; education,PO Box 429 Van Brunt Station,Brooklyn,NY,11215,USA,718-499-2151,https://goodshepherds.org/program/safe-homes/,,,,Multilingual services; Serves LGBTQ+ survivors and youth,verified_web
 NY-JAM-ALLENWRC,Allen Women's Resource Center,housing_shelter,Shelter | Domestic Violence,Emergency shelter; counseling; legal assistance; housing assistance; child care support,PO Box 340316,Jamaica,NY,11434,USA,718-739-6200,,,,,"Confidential shelter; Shelter access limited to survivors with minor children",verified_web
@@ -604,7 +469,6 @@ NJ-NBR-WOMENAWARE,Women Aware Inc.,housing_shelter,Shelter | Domestic Violence,H
 NJ-BLO-PFWJ,Partners for Women and Justice,legal_aid,Legal | Domestic Violence Legal Aid,Legal advocacy; representation; court accompaniment; restraining order assistance,650 Bloomfield Ave Ste 209,Bloomfield,NJ,07003,USA,973-233-0111,https://partnersnj.org,,,,Multilingual services,verified_web
 NJ-CLI-WAFA,Wafa House Inc.,domestic_violence,Multi-Service | Culturally Specific Domestic Violence Support,Case management; mental health counseling; legal services; family law support; community education,PO Box 2102,Clifton,NJ,07015,USA,800-930-9232,https://www.wafahouse.org,,,,,"Serves Middle Eastern and South Asian communities; Multilingual services",verified_web
 NJ-MOR-JBWS,JBWS,housing_shelter,Shelter | Domestic Violence,24-hour helpline; safe house; transitional living; counseling; court accompaniment; children's services,PO Box 1437,Morristown,NJ,07962,USA,973-267-4763,https://jbws.org,,,,Confidential shelter,verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 NM-ALB-NMLA,New Mexico Legal Aid,legal_aid,Legal | Civil Legal Aid,Civil legal aid; legal representation; advocacy; statewide services,301 Gold Ave SW,Albuquerque,NM,87102,USA,877-974-3400,https://www.newmexicolegalaid.org,35.0844,-106.6504,,verified_web
 NM-RR-RRFHC,Rio Rancho Family Health Center,mental_health,Counseling | Mental Health,Medical care; mental health services; counseling; substance abuse treatment; anger management,1200 Unser Blvd SE,Rio Rancho,NM,87124,USA,505-896-0928,,35.2328,-106.6630,,verified_web
 NM-ALB-RCCNM,Rape Crisis Center of Central New Mexico,sexual_assault,Crisis Center | Sexual Assault,Hotline; counseling; advocacy; sexual assault support,9741 Candelaria Rd NE,Albuquerque,NM,87112,USA,505-266-7711,https://www.rapecrisiscnm.org,35.1095,-106.5292,,verified_web
@@ -616,7 +480,6 @@ NM-ALB-SAFEHOUSE,SAFE House,housing_shelter,Shelter | Domestic Violence,Shelter;
 NM-LCN-HAVEN,Haven House Inc.,housing_shelter,Shelter | Domestic Violence,Shelter; hotline; counseling; legal advocacy; support groups; crisis intervention,PO Box 311,Las Cruces,NM,88004,USA,800-526-7157,https://www.havenhousenm.org,32.3199,-106.7637,"Confidential shelter; Multilingual services",verified_web
 NM-ALB-NMAFC,New Mexico Asian Family Center,domestic_violence,Multi-Service | Culturally Specific Support,Advocacy; case management; community support; culturally specific services,128 Quincy St NE,Albuquerque,NM,87108,USA,505-717-2877,https://www.nmafc.org,35.0830,-106.5766,"Serves Asian and Pacific Islander communities; Multilingual services",verified_web
 NM-ALB-ENLACE,Enlace Comunitario,domestic_violence,Multi-Service | Domestic Violence Support,Crisis intervention; counseling; legal services; housing assistance; financial training; workforce development,626 Broadway Blvd SE,Albuquerque,NM,87102,USA,505-246-8972,https://www.enlacenm.org,35.0775,-106.6442,"Serves Latino and immigrant communities; Multilingual services",verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 NC-CON-LANC,Legal Aid of North Carolina - Concord,legal_aid,Legal | Civil Legal Aid,Civil legal aid; legal representation; advocacy; statewide services,77 Union St S,Concord,NC,28025,USA,866-219-5262,https://www.legalaidnc.org,35.4088,-80.5803,,verified_web
 NC-GAS-LANC,Legal Aid of North Carolina - Gastonia,legal_aid,Legal | Civil Legal Aid,Civil legal aid; legal representation; advocacy; statewide services,1508 S York Rd,Gastonia,NC,28052,USA,866-219-5262,https://www.legalaidnc.org,35.2460,-81.1873,,verified_web
 NC-CON-CVAN,CVAN (Cabarrus Victims Assistance Network),housing_shelter,Shelter | Domestic Violence,Shelter; advocacy; crisis support; services for children,PO Box 1747,Concord,NC,28026,USA,704-788-2826,https://www.cvan.org,35.4088,-80.5803,"Confidential shelter",verified_web
@@ -634,13 +497,11 @@ NC-CHA-IMPACT,IMPACT+ Abuse Prevention Services,other,Intervention Program | Bat
 SC-ROC-THREETREES,Three Tree's Center for Change,other,Intervention Program | Batterer Intervention,Court-mandated classes; cognitive behavioral intervention program,1304 Ebenezer Rd,Rock Hill,SC,29732,USA,803-207-0558,,34.9570,-81.0251,,verified_web
 NC-CON-GENESIS,Genesis A New Beginning,mental_health,Counseling | Mental Health,Counseling; substance abuse treatment; domestic violence counseling; family therapy,274 Copperfield Blvd NE,Concord,NC,28025,USA,704-720-7770,,35.4165,-80.6000,,verified_web
 NC-CHA-BAITUL,Penny Appeal USA Baitul Hemayah Shelter,housing_shelter,Shelter | Domestic Violence,Shelter; case management; counseling; support services,PO Box 220933,Charlotte,NC,28222,USA,980-498-0492,https://pennyappealusa.org,35.2271,-80.8431,"Confidential shelter",verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 ND-FAR-RACC,Rape and Abuse Crisis Center of Fargo-Moorhead,domestic_violence,Multi-Service | Family Violence Support,Crisis intervention; counseling; advocacy; education; supervised visitation; safe exchange services,317 8th St S,Fargo,ND,58103,USA,800-344-7273,https://www.raccfm.com,46.8721,-96.7898,,verified_web
 ND-FAR-YWCA,YWCA Cass Clay,housing_shelter,Shelter | Domestic Violence,Emergency shelter; transportation assistance; food pantry; employment programs; financial education,3000 S University Dr,Fargo,ND,58103,USA,701-232-3449,https://www.ywcacassclay.org,46.8345,-96.7980,"Confidential shelter",verified_web
 ND-FAR-CHSI,Community Health Service Inc. Victim Advocacy Program,domestic_violence,Multi-Service | Domestic Violence Support,Crisis intervention; safety planning; legal advocacy; housing assistance; referrals,1451 44th Ave S,Fargo,ND,58103,USA,800-556-9661,https://www.chsi.com,46.8153,-96.8024,,verified_web
 ND-FAR-YOUTHWORKS,Youthworks,mental_health,Counseling | Youth Services,Counseling; crisis shelter referrals; youth support; family counseling,510 4th St S,Fargo,ND,58103,USA,701-232-8558,https://www.youthworksnd.org,46.8712,-96.7845,,verified_web
 MN-MOO-LSNM,Legal Services of Northwest Minnesota,legal_aid,Legal | Civil Legal Aid,Legal representation; legal education; advocacy for low-income individuals,1015 7th Ave N,Moorhead,MN,56560,USA,218-233-8585,https://www.lsnmlaw.org,46.8800,-96.7678,,verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 OH-COL-CHOICES,LSS CHOICES for Victims of Domestic Violence,housing_shelter,Shelter | Domestic Violence,Shelter; crisis intervention; advocacy; support services,PO Box 06157,Columbus,OH,43206,USA,614-224-4663,https://lssnetworkofhope.org/choices,,,,Confidential shelter,verified_web
 OH-COL-AACS,Asian American Community Services,other,Multi-Service | Community Support,Social services; education; training; community support,700 Morse Rd Ste 101,Columbus,OH,43214,USA,614-220-4023,https://aacsohio.org,,,,Serves Asian Pacific Islander communities,verified_web
 OH-COL-BRAVO,Buckeye Region Anti-Violence Organization (BRAVO),domestic_violence,Multi-Service | LGBTQ Violence Support,Safety planning; advocacy; hate crime reporting; referrals; sexual assault support,PO Box 368,Columbus,OH,43216,USA,866-862-7286,https://www.bravo-ohio.org,,,,Serves LGBTQ+ survivors,verified_web
@@ -656,7 +517,6 @@ OK-OKC-COPE,Cope Inc.,other,Intervention Program | Batterer Intervention,Battere
 OK-OKC-LCDA,Latino Community Development Agency,other,Intervention Program | Batterer Intervention,Batterer intervention program; community services,420 SW 10th St,Oklahoma City,OK,73109,USA,405-236-0701,https://lcdaok.com,,,,Serves Latino community,verified_web
 OK-OKC-PALOMAR,Palomar OKC Family Justice Center,domestic_violence,Multi-Service | Family Violence Support,Case management; legal services; counseling; advocacy; crisis support,1010 N Hudson Ave,Oklahoma City,OK,73102,USA,405-552-1010,https://palomarokc.org,,,,,verified_web
 OK-ELR-ICAN,Intervention & Crisis Advocacy Network (ICAN!),domestic_violence,Multi-Service | Domestic Violence Support,Crisis intervention; advocacy; shelter services; referrals,PO Box 517,El Reno,OK,73036,USA,405-262-4455,https://icanok.org,,,,Confidential shelter,verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 OR-HIL-DVRC,Domestic Violence Resource Center,housing_shelter,Shelter | Domestic Violence,Shelter; counseling; advocacy; housing services,735 SW 158th Ave Ste 100,Hillsboro,OR,97123,USA,503-469-8620,https://www.dvrc-or.org,45.5163,-122.9890,"Confidential shelter",verified_web
 OR-ORE-CWS,Clackamas Women's Services,housing_shelter,Shelter | Domestic Violence,Hotline; shelter; transitional housing; counseling; youth programs; prevention,256 Warner Milne Rd,Oregon City,OR,97045,USA,503-654-2288,https://www.cwsor.org,45.3365,-122.5900,"Confidential shelter",verified_web
 OR-POR-CALL2SAFETY,Call to Safety,domestic_violence,Multi-Service | Crisis Support,24/7 hotline; safety planning; emotional support; shelter referrals,PO Box 42610,Portland,OR,97242,USA,503-235-5333,https://calltosafety.org,45.5152,-122.6784,,verified_web
@@ -680,7 +540,6 @@ WA-VAN-ABW,A Better Way Counseling Service,other,Intervention Program | Batterer
 WA-VAN-COWLITZ,Cowlitz Indian Tribe Pathways to Healing Program,domestic_violence,Multi-Service | Indigenous Support,Advocacy; counseling; community healing; education,1055 9th Ave,Longview,WA,98632,USA,360-397-8228,https://cowlitz.org,46.1382,-122.9382,"Serves Native American communities",verified_web
 OR-POR-GATEWAY,Gateway Center for Domestic and Sexual Violence Services,domestic_violence,Multi-Service | Family Violence Support,Advocacy; counseling; legal services; case management,9890 E Burnside St,Portland,OR,97216,USA,503-988-6400,https://gatewaycenterdv.org,45.5220,-122.5615,,verified_web
 OR-HIL-FJC,Family Justice Center of Washington County,domestic_violence,Multi-Service | Family Violence Support,Case management; legal services; counseling; advocacy; coordinated services,735 SW 158th Ave Ste 100,Hillsboro,OR,97123,USA,503-430-8300,https://fjcofwc.org,45.5163,-122.9890,,verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 PA-MED-DAPDC,Domestic Abuse Project of Delaware County,housing_shelter,Shelter | Domestic Violence,Shelter; crisis intervention; counseling; legal advocacy; case management; support groups,PO Box 421,Media,PA,19063,USA,610-565-4590,https://www.dapdc.org,39.9184,-75.3880,"Confidential shelter",verified_web
 PA-PHI-LSHBDVP,Lutheran Settlement House Bilingual Domestic Violence Program,domestic_violence,Multi-Service | Domestic Violence Support,Counseling; support groups; hotline; hotel placement; transitional housing,1340 Frankford Ave,Philadelphia,PA,19125,USA,215-426-8610,https://lutheransettlement.org,39.9690,-75.1319,"Multilingual services",verified_web
 PA-PHI-WAA,Women Against Abuse Inc.,housing_shelter,Shelter | Domestic Violence,Hotline; shelter; transitional housing; legal services; advocacy,PO Box 1376,Philadelphia,PA,19105,USA,866-723-3014,https://www.womenagainstabuse.org,39.9526,-75.1652,"Confidential shelter",verified_web
@@ -707,7 +566,6 @@ PA-JAM-NOVA,NOVA,sexual_assault,Crisis Center | Sexual Assault,Counseling; advoc
 PA-PHI-CONGRESO,Congreso de Latinos Unidos Domestic Violence Program,domestic_violence,Multi-Service | Domestic Violence Support,Counseling; advocacy; case management; support groups; interpretation,216 W Somerset St,Philadelphia,PA,19133,USA,215-763-8870,https://www.congreso.net,39.9962,-75.1346,"Multilingual services; Serves Latino community",verified_web
 DE-WIL-SOAR,Survivors of Abuse in Recovery Inc.,sexual_assault,Crisis Center | Sexual Assault,Counseling; referrals; education; survivor support,1901 N Market St,Wilmington,DE,19802,USA,302-655-3953,https://www.sair.org,39.7585,-75.5390,,verified_web
 PA-WCH-LASPCH,Legal Aid of Southeastern Pennsylvania - Chester County,legal_aid,Legal | Domestic Violence Legal Aid,Protection orders; custody; divorce; benefits; housing legal aid,222 N Walnut St Ste 101,West Chester,PA,19380,USA,610-436-4510,https://www.lasp.org,39.9626,-75.6057,,verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 RI-PWT-BVAC,Blackstone Valley Advocacy Center,housing_shelter,Shelter | Domestic Violence,Shelter; transitional housing; hotline; court advocacy; support groups; case management,PO Box 910,Pawtucket,RI,02862,USA,401-723-3057,https://www.bvacri.org,41.8787,-71.3826,"Confidential shelter; Multilingual services",verified_web
 RI-PRO-CROSSROADS,Domestic Violence Program of Crossroads,housing_shelter,Shelter | Domestic Violence,Shelter; support services; housing assistance,160 Broad St,Providence,RI,02903,USA,401-861-2760,https://www.crossroadsri.org,41.8207,-71.4145,"Confidential shelter",verified_web
 RI-NEW-WRC,Women's Resource Center (Newport),housing_shelter,Shelter | Domestic Violence,Hotline; shelter; advocacy; support services,PO Box 1785,Newport,RI,02840,USA,401-846-5263,https://www.wrcnbc.org,41.4901,-71.3128,"Confidential shelter",verified_web
@@ -731,7 +589,6 @@ RI-PRO-YOUTHPRIDE,Youth Pride Inc.,other,Support Services | LGBTQ Youth Support,
 RI-PRO-RIBIP,Rhode Island Batterer Intervention Program,other,Intervention Program | Batterer Intervention,Batterer intervention program; counseling,1 Regency Plaza Ste 302,Providence,RI,02903,USA,401-275-5030,,41.8219,-71.4240,,verified_web
 RI-WAR-VANTAGE,Vantage Point Inc.,other,Intervention Program | Batterer Intervention,Batterer intervention program; counseling,400 Bald Hill Rd,Warwick,RI,02886,USA,401-615-0648,,41.6990,-71.4910,,verified_web
 RI-PRO-NORAS,Nora's Haven,housing_shelter,Shelter | Domestic Violence,Shelter; housing; case management; basic needs support,PO Box 27435,Providence,RI,02907,USA,401-441-0011,https://www.norashaven.org,41.7897,-71.4147,"Confidential shelter; Multilingual services",verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 SC-CHA-MSH,My Sister's House Inc.,housing_shelter,Shelter | Domestic Violence,Shelter; hotline; counseling; legal advocacy; court advocacy; housing assistance; transportation,PO Box 1027,North Charleston,SC,29405,USA,800-273-4673,https://www.mysistershouse.org,32.8546,-79.9748,"Confidential shelter",verified_web
 SC-CHA-ORIGIN,Origin SC,domestic_violence,Multi-Service | Domestic Violence Support,Group counseling; court advocacy; trauma-informed services,1801 Reynolds Ave,North Charleston,SC,29405,USA,843-628-3000,https://originsc.org,32.8542,-79.9740,,verified_web
 SC-CHA-SPEAKS,Tri-County S.P.E.A.K.S.,sexual_assault,Crisis Center | Sexual Assault,Advocacy; counseling; support services,1847 Reynolds Ave,North Charleston,SC,29405,USA,843-745-0144,https://tricountyspeaks.org,32.8539,-79.9735,,verified_web
@@ -740,7 +597,6 @@ SD-SXF-CHS,Children's Home Shelter for Family Safety,housing_shelter,Shelter | D
 SD-SXF-COMPASS,The Compass Center,domestic_violence,Multi-Service | Domestic Violence Support,Crisis intervention; counseling; support groups; advocacy; batterer intervention,500 N Western Ave,Sioux Falls,SD,57104,USA,605-339-0116,https://www.thecompasscenter.org,43.5495,-96.7311,,verified_web
 SD-SXF-ERLS,East River Legal Services,legal_aid,Legal | Civil Legal Aid,Legal representation; advocacy; services for low-income individuals,335 N Main Ave Ste 200,Sioux Falls,SD,57104,USA,605-336-9230,https://erlservices.org,43.5486,-96.7316,,verified_web
 SD-SXF-LSS,Lutheran Social Services of South Dakota Refugee & Immigration Programs,legal_aid,Legal | Immigration Legal Aid,Immigration services; refugee support; VAWA; trafficking support,705 E 41st St Ste 200,Sioux Falls,SD,57105,USA,605-731-2000,https://lsssd.org,43.5149,-96.7170,"Multilingual services",verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 TN-MUR-DVSA,Domestic Violence & Sexual Assault Center (DVSA),housing_shelter,Shelter | Domestic Violence,Shelter; crisis intervention; counseling; legal advocacy; support services,PO Box 3311,Murfreesboro,TN,37133,USA,615-896-2012,https://dvsacenter.org,35.8456,-86.3903,"Confidential shelter",verified_web
 TN-GAL-HOMESAFE,HomeSafe Inc.,housing_shelter,Shelter | Domestic Violence,Shelter; hotline; counseling; court accompaniment; support groups,PO Box 2296,Gallatin,TN,37066,USA,615-452-4315,https://homesafeinc.org,36.3884,-86.4467,"Confidential shelter",verified_web
 TN-NAS-YWCA,YWCA Nashville & Middle Tennessee,housing_shelter,Shelter | Domestic Violence,Shelter; hotline; counseling; pet shelter; advocacy; support services,1608 Woodmont Blvd,Nashville,TN,37215,USA,800-334-4628,https://www.ywc Nashville.org,36.1106,-86.8070,"Confidential shelter; Pet-friendly shelter",verified_web
@@ -753,7 +609,6 @@ TN-NAS-CROSSROADS,Crossroads Counseling Associates LLC,other,Intervention Progra
 TN-NAS-NPD,Nashville Police Domestic Violence Division,other,Victim Services | Domestic Violence Support,Counseling; advocacy; case management; transportation assistance; support groups,800 2nd Ave S,Nashville,TN,37210,USA,615-862-7773,https://www.nashville.gov,36.1600,-86.7680,,verified_web
 TN-NAS-DA,Metro Nashville DA Victim Witness Coordinator,other,Victim Services | General Crime Victims,Victim advocacy; court support; case assistance,222 2nd Ave N,Nashville,TN,37201,USA,615-862-5500,https://da.nashville.gov,36.1656,-86.7828,,verified_web
 TN-NAS-MARYPARRISH,The Mary Parrish Center,housing_shelter,Shelter | Domestic Violence,Transitional housing; supportive housing; case management; counseling,PO Box 331191,Nashville,TN,37203,USA,866-475-1684,https://maryparrish.org,36.1627,-86.7816,"Confidential shelter",verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 TX-PAS-BRIDGE,The Bridge Over Troubled Waters Inc.,housing_shelter,Shelter | Domestic Violence,Shelter; crisis intervention; counseling; legal advocacy; court accompaniment; support groups; basic needs,PO Box 2636,Pasadena,TX,77501,USA,713-472-0753,https://www.thebridgeovertroubledwaters.org,29.6911,-95.2091,"Confidential shelter; Multilingual services",verified_web
 TX-RIC-FBWC,Fort Bend Women's Center,housing_shelter,Shelter | Domestic Violence,Shelter; transitional housing; counseling; legal advocacy; crisis intervention; support groups,PO Box 183,Rosenberg,TX,77471,USA,281-342-4357,https://www.fbwc.org,29.5572,-95.8086,"Confidential shelter; Multilingual services",verified_web
 TX-HUM-FAMILYTIME,FamilyTime Crisis and Counseling Center,housing_shelter,Shelter | Domestic Violence,Shelter; hotline; counseling; case management; legal advocacy; hospital accompaniment,PO Box 182,Humble,TX,77347,USA,281-446-2615,https://www.familytimeccc.org,29.9988,-95.2622,"Confidential shelter",verified_web
@@ -775,7 +630,6 @@ TX-ALV-WCBC,Women's Center of Brazoria County,housing_shelter,Shelter | Domestic
 TX-HOU-BPSOS,Boat People SOS Houston,legal_aid,Legal | Immigration Legal Aid,Case management; legal representation; protective orders; immigration services,11360 Bellaire Blvd Ste 910,Houston,TX,77072,USA,281-530-6888,https://bpsos.org,29.7055,-95.5720,"Multilingual services",verified_web
 TX-HOU-LSLA,Lone Star Legal Aid Houston,legal_aid,Legal | Civil Legal Aid,Legal representation; family law; immigration; housing; benefits,1415 Fannin St,Houston,TX,77002,USA,713-652-0077,https://www.lonestarlegal.org,29.7516,-95.3645,,verified_web
 TX-HOU-SHIFA,Shifa Women's Center,housing_shelter,Shelter | Domestic Violence,Shelter; counseling; case management; support groups; basic needs,PO Box 92122,Houston,TX,77272,USA,832-808-2255,https://shifaservices.org,29.7604,-95.3698,"Confidential shelter; Multilingual services",verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 UT-PAR-PEACEHOUSE,Peace House Community Campus,housing_shelter,Shelter | Domestic Violence,Shelter; counseling; advocacy; prevention education; housing support,700 Round Valley Dr,Park City,UT,84060,USA,800-647-9161,https://peacehouse.org,40.6461,-111.4979,"Confidential shelter",verified_web
 UT-SLC-CORNERSTONE,Cornerstone Counseling Center VOA,mental_health,Counseling | Domestic Violence Treatment,Individual therapy; group therapy; domestic violence treatment,447 W Bearcat Dr,Salt Lake City,UT,84115,USA,801-355-2846,https://www.voaut.org,40.7075,-111.9000,,verified_web
 UT-SLC-YWCA,YWCA Utah,housing_shelter,Shelter | Domestic Violence,Shelter; transitional housing; counseling; education; advocacy,322 E 300 S,Salt Lake City,UT,84111,USA,801-537-8600,https://www.ywcautah.org,40.7625,-111.8836,"Confidential shelter",verified_web
@@ -800,7 +654,6 @@ UT-MUR-NEFA,No Excuse For Abuse (NEFA),other,Intervention Program | Batterer Int
 UT-SLC-VBH,Valley Behavioral Health Forensic,other,Intervention Program | Batterer Intervention,Batterer intervention program; counseling,4460 S 900 E,Salt Lake City,UT,84124,USA,888-949-4864,https://valleycares.com,40.6750,-111.8650,,verified_web
 UT-AFO-ALLIANCE,Alliance Clinical Services,other,Intervention Program | Batterer Intervention,Batterer intervention; counseling; case management,147 N 400 E,American Fork,UT,84003,USA,801-763-7775,https://allianceclinicalservices.com,40.3805,-111.7920,,verified_web
 UT-MON-RAW,Restoring Ancestral Winds Native Helpline,domestic_violence,Multi-Service | Indigenous Support,Crisis intervention; safety planning; referrals; advocacy; education,PO Box 156,Montezuma Creek,UT,84534,USA,435-356-6161,https://www.rawhelpline.org,37.2667,-109.2667,"Serves Indigenous communities",verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 VT-BUR-STEPS,Steps to End Domestic Violence Inc.,housing_shelter,Shelter | Domestic Violence,Shelter; hotline; transitional housing; support groups; youth programs; legal advocacy; housing assistance,PO Box 1535,Burlington,VT,05402,USA,802-658-1996,https://www.stepsvt.org,44.4759,-73.2121,"Confidential shelter",verified_web
 NY-PLA-PACT,PACT,other,Intervention Program | Batterer Intervention,Batterer intervention program; education based on Duluth Model,16 Court St Ste 201,Plattsburgh,NY,12901,USA,518-563-8293,,44.6995,-73.4529,,verified_web
 VT-STAL-VOICES,Voices Against Violence (Laurie's House),housing_shelter,Shelter | Domestic Violence,Shelter; advocacy; crisis support; education; prevention,PO Box 72,St Albans,VT,05478,USA,802-524-6575,https://www.voicesagainstviolence.org,44.8106,-73.0830,"Confidential shelter",verified_web
@@ -809,7 +662,6 @@ VT-BUR-SPECTRUM,Spectrum Youth and Family Services,mental_health,Counseling | Yo
 NY-PLA-STOP,STOP Domestic and Sexual Violence (BHSN),housing_shelter,Shelter | Domestic Violence,Shelter; crisis intervention; legal advocacy; support groups; case management,22 US Oval,Plattsburgh,NY,12903,USA,518-563-6904,https://www.bhsn.org,44.6942,-73.4557,"Confidential shelter",verified_web
 VT-BUR-SAFESPACE,SafeSpace Anti-Violence Program,domestic_violence,Multi-Service | LGBTQ Violence Support,Advocacy; referrals; crisis support; community education,255 S Champlain St,Burlington,VT,05401,USA,802-860-7812,https://www.pridecentervt.org,44.4722,-73.2136,"Serves LGBTQ+ community",verified_web
 VT-RAN-CLARAMARTIN,The Clara Martin Center,other,Intervention Program | Batterer Intervention,Batterer intervention program; counseling,11 N Main St,Randolph,VT,05060,USA,800-639-6360,https://www.claramartin.org,43.9237,-72.6651,,verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 VA-VAB-SAMARITAN,Samaritan House,housing_shelter,Shelter | Domestic Violence,Shelter; crisis intervention; counseling; housing assistance; trafficking support,PO Box 2400,Virginia Beach,VA,23450,USA,757-430-2120,https://samaritanhouseva.org,36.8529,-75.9780,"Confidential shelter",verified_web
 VA-HAM-TRANSITIONS,Transitions Family Violence Services,housing_shelter,Shelter | Domestic Violence,Shelter; crisis intervention; rapid rehousing; counseling; legal advocacy; support groups,PO Box 5466,Hampton,VA,23605,USA,757-723-7774,https://transitionsfvs.org,37.0299,-76.3452,"Confidential shelter; Multilingual services",verified_web
 VA-NOR-YWCA,YWCA South Hampton Roads,housing_shelter,Shelter | Domestic Violence,Shelter; counseling; legal advocacy; crisis intervention; support groups,500 E Plume St Ste 700,Norfolk,VA,23510,USA,757-251-0144,https://www.ywcashr.org,36.8485,-76.2910,"Confidential shelter",verified_web
@@ -818,7 +670,6 @@ VA-NOR-NCA,Norfolk Commonwealth's Attorney Victim/Witness Assistance Program,oth
 VA-NNW-NNVU,Newport News Victim Services Unit,other,Victim Services | General Crime Victims,Victim advocacy; crisis support; court assistance; referrals,2501 Washington Ave,Newport News,VA,23607,USA,757-926-7443,https://www.nnva.gov,37.0179,-76.4460,,verified_web
 VA-VAB-VWD,Virginia Beach Victim Witness Division,other,Victim Services | General Crime Victims,Victim advocacy; court accompaniment; case support; legal guidance,2425 Nimmo Pkwy,Virginia Beach,VA,23456,USA,757-385-8301,https://www.vbgov.com,36.7682,-76.0135,,verified_web
 VA-CHE-CVWAP,Chesapeake Victim/Witness Assistance Program,legal_aid,Legal | Victim Advocacy,Legal advocacy; court accompaniment; victim support,307 Albemarle Dr,Chesapeake,VA,23322,USA,757-382-6417,https://www.cityofchesapeake.net,36.6872,-76.2486,,verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 WA-BRE-ALIVE,YWCA ALIVE Shelter (Kitsap County),housing_shelter,Shelter | Domestic Violence,Shelter; counseling; support groups; housing advocacy; employment assistance; basic needs,PO Box 559,Bremerton,WA,98337,USA,800-500-5513,https://ywcakitsap.org,47.5673,-122.6326,"Confidential shelter",verified_web
 WA-EVE-DVS,Domestic Violence Services of Snohomish County,housing_shelter,Shelter | Domestic Violence,Shelter; crisis intervention; counseling; advocacy; support services,PO Box 1661,Everett,WA,98206,USA,425-252-2873,https://dvs-snoco.org,47.9780,-122.2021,"Confidential shelter",verified_web
 WA-BEL-LIFEWIRE,LifeWire,domestic_violence,Multi-Service | Domestic Violence Support,Advocacy; counseling; prevention education; community outreach,PO Box 6398,Bellevue,WA,98008,USA,425-562-8840,https://www.lifewire.org,47.6101,-122.2015,,verified_web
@@ -840,7 +691,6 @@ WA-SEA-JFS,Jewish Family Service Project DVORA,domestic_violence,Multi-Service |
 WA-SEA-YWCAAV,YWCA Anita Vista,housing_shelter,Shelter | Domestic Violence,Transitional housing; counseling; legal advocacy; case management,1118 5th Ave,Seattle,WA,98101,USA,877-757-8297,https://www.ywcaworks.org,47.6067,-122.3325,"Confidential shelter",verified_web
 WA-SEA-NWIRP,Northwest Immigrant Rights Project,legal_aid,Legal | Immigration Legal Aid,Immigration legal services; VAWA; U-visa; T-visa; advocacy,615 2nd Ave Ste 400,Seattle,WA,98104,USA,800-445-5771,https://www.nwirp.org,47.6028,-122.3320,,verified_web
 WA-SEA-NWFL,Northwest Family Life Learning and Counseling Center,domestic_violence,Multi-Service | Domestic Violence Support,Counseling; support groups; advocacy,12360 Lake City Way NE,Seattle,WA,98125,USA,206-363-9601,https://nwfamilylife.org,47.7176,-122.2960,"Confidential shelter",verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 WV-CHA-FCC,Family Counseling Connection,mental_health,Counseling | Mental Health,Counseling; therapy; family counseling; sexual abuse support,1021 Quarrier St Ste 414,Charleston,WV,25301,USA,304-340-3676,,38.3498,-81.6326,,verified_web
 WV-CHA-YWCA,YWCA Charleston Resolve Family Abuse Program,housing_shelter,Shelter | Domestic Violence,Shelter; hotline; counseling; legal advocacy; case management; pet shelter; housing assistance,PO Box 1472,Charleston,WV,25325,USA,800-681-8663,https://www.ywcacharleston.org,38.3498,-81.6326,"Confidential shelter; Pet-friendly shelter",verified_web
 WV-HUN-BRANCHES,Branches Putnam County Outreach,domestic_violence,Multi-Service | Domestic Violence Support,Crisis intervention; advocacy; case management,816 Madison Ave,Huntington,WV,25704,USA,304-529-2382,,38.4192,-82.4452,,verified_web
@@ -862,9 +712,7 @@ WI-MIL-CENTRO,Centro Legal,legal_aid,Legal | Family Law Legal Aid,Legal represen
 WI-MIL-VA,VA Medical Center IPV Program,other,Victim Services | Domestic Violence Support,Counseling; IPV support; advocacy,5000 W National Ave,Milwaukee,WI,53295,USA,414-384-2000,https://www.va.gov,43.0160,-87.9790,,verified_web
 WI-MIL-AURORA,Aurora Healing & Advocacy Services,sexual_assault,Crisis Center | Sexual Assault,Forensic nursing; counseling; advocacy; case management; hotline,945 N 12th St,Milwaukee,WI,53233,USA,414-219-5938,https://www.aurorahealthcare.org,43.0415,-87.9257,,verified_web
 WI-MIL-PATH,Pathfinders,housing_shelter,Shelter | Youth Shelter,Youth shelter; housing; mental health; advocacy; outreach,4200 N Holton St,Milwaukee,WI,53212,USA,414-964-2565,https://www.pathfindersmke.org,43.0920,-87.9063,,verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 WY-CHE-SAFEHOUSE,Safehouse Services Inc.,housing_shelter,Shelter | Domestic Violence,Shelter; safety planning; legal advocacy; court accompaniment; housing assistance; protection order assistance,PO Box 2310,Cheyenne,WY,82003,USA,307-637-7233,https://www.safehousecheyenne.org,41.1400,-104.8202,"Confidential shelter",verified_web
-resource_id,name,category,subcategory,services,address,city,state,postal_code,country,phone,website,latitude,longitude,notes,source
 VA-VIE-WOMENCTR1,The Women's Center (Vienna),mental_health,Counseling | Mental Health,Counseling; education; support services,133 Park St NE,Vienna,VA,22180,USA,571-595-6448,https://thewomenscenter.org,38.9012,-77.2653,,verified_web
 VA-VIE-WOMENCTR2,The Women's Center (Vienna Main),mental_health,Counseling | Mental Health,Counseling; education; advocacy; support services,133 Park St NE,Vienna,VA,22180,USA,703-281-2657,https://thewomenscenter.org,38.9012,-77.2653,,verified_web
 MD-ROC-ELDERSAFE,ElderSAFE Center,housing_shelter,Shelter | Domestic Violence,Shelter; case management; referrals; elder abuse support,600 Jefferson Plaza Ste 500,Rockville,MD,20852,USA,301-816-5099,https://www.eldersafecenter.org,39.0604,-77.1211,"Confidential shelter",verified_web
