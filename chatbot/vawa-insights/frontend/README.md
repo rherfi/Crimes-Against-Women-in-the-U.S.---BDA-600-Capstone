@@ -1,6 +1,6 @@
 # VAWA Insights Bot (Frontend) — React
 
-This is the **V1 prototype** chat UI.
+This is the chat UI for the VAWA Insights Bot.
 
 ## Run locally
 

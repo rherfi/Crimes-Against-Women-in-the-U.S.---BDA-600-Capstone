@@ -1,37 +1,42 @@
 """
-FastAPI entrypoint for the VAWA Insights Bot (V1 prototype).
+FastAPI entrypoint for the VAWA Insights Bot.
 
-Design goals for V1:
+Design goals:
 - Keep dependencies minimal (no vector DB, no heavy LLM framework)
 - Never hallucinate numeric values: numbers come only from structured tools
 - Always return citations
-- Keep code modular so we can swap in stronger RAG later
+- Keep code modular so we can upgrade retrieval later
 """
 
 import asyncio
 import json
+import os
 from functools import partial
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 
-from app.schemas import ChatRequest, ChatResponse
-from app.logic import answer_chat
+from app.schemas import ChatRequest, ChatResponse, ResourceSearchRequest, ResourceSearchResponse
+from app.logic import answer_chat, find_victim_resources
 
 
 app = FastAPI(title="VAWA Insights Bot API", version="0.1.0")
 
-# Local dev convenience: allow the React dev server to call the API.
-# For production, lock this down.
+# CORS: local dev origins + optional production origins from CORS_ORIGINS (comma-separated).
+# Example: CORS_ORIGINS=https://your-frontend.vercel.app
+_cors_extra = [o.strip() for o in (os.environ.get("CORS_ORIGINS") or "").split(",") if o.strip()]
+_cors_origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    *_cors_extra,
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-    ],
+    allow_origins=_cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -46,6 +51,42 @@ def health():
 @app.post("/api/chat", response_model=ChatResponse)
 def chat(req: ChatRequest):
     return answer_chat(req)
+
+
+@app.post("/api/resources/search", response_model=ResourceSearchResponse)
+def resources_search(req: ResourceSearchRequest):
+    out = find_victim_resources(
+        query=req.query,
+        location=req.location,
+        latitude=req.latitude,
+        longitude=req.longitude,
+        radius_miles=req.radius_miles,
+        limit=req.limit,
+        categories=list(req.categories or []),
+    )
+    if not out.get("ok"):
+        return ResourceSearchResponse(
+            ok=False,
+            error=str(out.get("error") or "Search failed."),
+            resolved_location=req.location or "",
+            latitude=req.latitude,
+            longitude=req.longitude,
+            radius_miles=float(req.radius_miles or 0.0),
+            results=[],
+            citations=[{"citation_type": "structured_data", "source_table": "resources.csv"}],
+        )
+
+    data = out.get("data") or {}
+    return ResourceSearchResponse(
+        ok=True,
+        error="",
+        resolved_location=str(data.get("resolved_location") or ""),
+        latitude=data.get("latitude"),
+        longitude=data.get("longitude"),
+        radius_miles=float(data.get("radius_miles") or 0.0),
+        results=data.get("results") or [],
+        citations=out.get("citations") or [],
+    )
 
 
 def _sse_data(obj: dict) -> str:

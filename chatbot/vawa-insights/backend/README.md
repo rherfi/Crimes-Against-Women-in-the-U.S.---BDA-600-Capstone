@@ -1,12 +1,13 @@
 # VAWA Insights Bot (Backend) — FastAPI
 
-This is a **local prototype** backend for the first “VAWA Insights Bot”.
+This folder contains the backend API for the VAWA Insights Bot.
 
-## What it does (V1)
+## What it does
 - Accepts chat questions at `POST /api/chat`
 - Routes intent to:
   - **structured data tools** (for exact numbers), and/or
   - **document retrieval** (for policy + methodology context)
+- Provides victim resources search at `POST /api/resources/search` and via chat phrases like “find a shelter near …”
 - Returns a structured JSON answer with **citations** and **debug info**
 
 ## Run locally
@@ -26,4 +27,9 @@ Then test:
 ```bash
 curl -s http://127.0.0.1:8000/health
 ```
+
+## Victim resources data
+- The victim resources dataset lives at `backend/app/data/resources.csv`.
+- Add rows for shelters, clinics, legal aid, etc. Include `latitude`/`longitude` when possible for best “near me” accuracy.
+- If coordinates are missing, the API can still return national resources; location-based ranking requires coordinates.
 

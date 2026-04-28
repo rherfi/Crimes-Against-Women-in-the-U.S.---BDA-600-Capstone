@@ -1,5 +1,5 @@
 """
-VAWA Insights Bot — non-API logic in one module (V1).
+VAWA Insights Bot — non-API logic in one module.
 
 Split into multiple files later only when this file grows hard to navigate.
 """
@@ -11,11 +11,13 @@ import json
 import os
 import ast
 import re
+import math
+import time
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Literal, Optional, Tuple
 
-from app.schemas import ChatRequest, ChatResponse
+from app.schemas import ChatRequest, ChatResponse, MapEmbedPayload
 
 # ---------------------------------------------------------------------------
 # Data loader (CSV under app/data/)
@@ -23,8 +25,101 @@ from app.schemas import ChatRequest, ChatResponse
 
 DATA_DIR = Path(__file__).resolve().parent / "data"
 
-METRICS_FILE = DATA_DIR / "metrics_sample.csv"
-RISK_COMPONENTS_FILE = DATA_DIR / "risk_components_sample.csv"
+# Public ArcGIS Dashboard (override with ARCGIS_DASHBOARD_URL for staging/production).
+DEFAULT_ARCGIS_DASHBOARD_URL = (
+    "https://sdsugeo.maps.arcgis.com/apps/dashboards/7fa98d321eb94e9baaffc43fe65b973e"
+)
+
+_ARCGIS_TAB_WEBMAP_IDS: Dict[str, str] = {
+    # Derived from the dashboard configuration (mapWidget itemIds).
+    "Master": "e5e41a3c32084b33958bce654395327f",
+    "Sexual Assault": "a0b8ad4cf3094db285b4733ce3f6c8b7",
+    "Violent Crimes": "b4c812bc8b894c09977cd77fe2a18072",
+    "Tribal": "58e315d44c1e422c99dd0f1044645c9f",
+    "Domestic Violence": "21e1d8d284ff49758fe767aa6cfe0a57",
+    "Firearm": "7f647a063be04721bf95603e31b6a26c",
+    "Shelter Locations": "c7557b6ffa9049938605cba6c8d28b14",
+    "Rural Locations": "5c2eda65c42242d9a2c31fa78ef967f2",
+    "College": "45148dd88ee740f8b5cad9a2b12709c7",
+    "Race": "b71d1048a8b84ad0b9b441471f1b85dc",
+}
+
+_METRIC_LABELS: Dict[str, str] = {
+    "dv_rate": "Domestic violence rate",
+    "sexual_assault_rate": "Sexual assault rate",
+    "firearm_share": "Firearm involvement share",
+    "dating_partner_share": "Dating partner share",
+    "minority_victim_share": "Minority victim share",
+    "native_american_victim_share": "Native American victim share",
+    "reporting_proxy": "Reporting proxy",
+    "risk_index": "Risk index",
+}
+
+_METRIC_DEFINITIONS: Dict[str, str] = {
+    "dv_rate": "Project-defined domestic violence rate for the selected geography and period.",
+    "sexual_assault_rate": "Project-defined sexual assault rate for the selected geography and period.",
+    "firearm_share": "The share of incidents involving a firearm (a proportion from 0 to 1).",
+    "dating_partner_share": "The share of incidents involving a dating/nonmarried partner (a proportion from 0 to 1).",
+    "minority_victim_share": "The share of victims identified as a racial/ethnic minority (a proportion from 0 to 1).",
+    "native_american_victim_share": "The share of victims identified as Native American (a proportion from 0 to 1).",
+    "reporting_proxy": "A project-defined proxy indicating reporting/coverage intensity; interpret cautiously.",
+    "risk_index": "A composite index summarizing multiple risk-related components (project-defined).",
+}
+
+_METRIC_UNITS: Dict[str, str] = {
+    "dv_rate": "rate per 100,000 female population",
+    "sexual_assault_rate": "rate per 100,000 female population",
+    "firearm_share": "proportion (0–1)",
+    "dating_partner_share": "proportion (0–1)",
+    "minority_victim_share": "proportion (0–1)",
+    "native_american_victim_share": "proportion (0–1)",
+    "reporting_proxy": "rate per 100,000 female population (proxy)",
+    "risk_index": "standardized index (unitless; higher means higher relative risk)",
+}
+
+
+def _metric_definition(metric: Optional[str]) -> str:
+    m = (metric or "").strip()
+    if not m:
+        return ""
+    return _METRIC_DEFINITIONS.get(m, "")
+
+
+def _metric_units(metric: Optional[str]) -> str:
+    m = (metric or "").strip()
+    if not m:
+        return ""
+    return _METRIC_UNITS.get(m, "")
+
+
+def _metric_explain_sentence(metric: Optional[str]) -> str:
+    """
+    Short suffix used in direct answers whenever we display numbers.
+    """
+    m = (metric or "").strip()
+    if not m:
+        return ""
+    units = _metric_units(m)
+    definition = _metric_definition(m)
+    bits: List[str] = []
+    if units:
+        bits.append(f"Units are {units}.")
+    if definition:
+        bits.append(definition)
+    if not bits:
+        return ""
+    return " " + " ".join(bits)
+
+
+def _metric_display_name(metric: Optional[str]) -> str:
+    m = (metric or "").strip()
+    if not m:
+        return ""
+    return _METRIC_LABELS.get(m, m.replace("_", " "))
+
+METRICS_FILE = DATA_DIR / "metrics.csv"
+RISK_COMPONENTS_FILE = DATA_DIR / "risk_components.csv"
+RESOURCES_FILE = DATA_DIR / "resources.csv"
 
 # EDA outputs (kept outside chatbot to keep backend small).
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -67,6 +162,26 @@ class RiskComponentRow:
     component: str
     value: float
     note: str
+
+
+@dataclass(frozen=True)
+class ResourceRow:
+    resource_id: str
+    name: str
+    category: str
+    subcategory: str
+    services: str
+    address: str
+    city: str
+    state: str
+    postal_code: str
+    country: str
+    phone: str
+    website: str
+    latitude: Optional[float]
+    longitude: Optional[float]
+    notes: str
+    source: str
 
 
 _CACHE: Dict[str, Any] = {}
@@ -142,6 +257,291 @@ def load_risk_components_rows() -> List[RiskComponentRow]:
 
     _CACHE["risk_rows"] = rows
     return rows
+
+
+def _to_float_or_none2(x: str) -> Optional[float]:
+    x = (x or "").strip()
+    if x == "" or x.lower() in {"na", "nan", "none"}:
+        return None
+    try:
+        return float(x)
+    except Exception:
+        return None
+
+
+def load_resource_rows() -> List[ResourceRow]:
+    if "resource_rows" in _CACHE:
+        return _CACHE["resource_rows"]
+
+    if not RESOURCES_FILE.exists():
+        _CACHE["resource_rows"] = []
+        return []
+
+    raw = _read_csv(RESOURCES_FILE)
+    rows: List[ResourceRow] = []
+    for r in raw:
+        rows.append(
+            ResourceRow(
+                resource_id=(r.get("resource_id") or "").strip(),
+                name=(r.get("name") or "").strip(),
+                category=(r.get("category") or "").strip(),
+                subcategory=(r.get("subcategory") or "").strip(),
+                services=(r.get("services") or "").strip(),
+                address=(r.get("address") or "").strip(),
+                city=(r.get("city") or "").strip(),
+                state=(r.get("state") or "").strip(),
+                postal_code=(r.get("postal_code") or "").strip(),
+                country=(r.get("country") or "").strip(),
+                phone=(r.get("phone") or "").strip(),
+                website=(r.get("website") or "").strip(),
+                latitude=_to_float_or_none2(r.get("latitude", "")),
+                longitude=_to_float_or_none2(r.get("longitude", "")),
+                notes=(r.get("notes") or "").strip(),
+                source=(r.get("source") or "").strip(),
+            )
+        )
+
+    _CACHE["resource_rows"] = rows
+    return rows
+
+
+# ---------------------------------------------------------------------------
+# Victim resources lookup (geocoding + distance search)
+# ---------------------------------------------------------------------------
+
+
+def _haversine_miles(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    r = 3958.7613  # Earth radius in miles
+    p1 = math.radians(lat1)
+    p2 = math.radians(lat2)
+    dp = math.radians(lat2 - lat1)
+    dl = math.radians(lon2 - lon1)
+    a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    return r * c
+
+
+def _extract_lat_lon(text: str) -> Tuple[Optional[float], Optional[float]]:
+    """
+    Extract a (lat, lon) pair from text like:
+    - "32.7157, -117.1611"
+    - "lat 32.7157 lon -117.1611"
+    """
+    t = (text or "").strip()
+    m = re.search(r"(-?\d{1,2}\.\d+)\s*,\s*(-?\d{1,3}\.\d+)", t)
+    if m:
+        try:
+            return float(m.group(1)), float(m.group(2))
+        except Exception:
+            return None, None
+    m = re.search(r"\blat(?:itude)?\s*[:=]?\s*(-?\d{1,2}\.\d+)\b.*\blon(?:gitude)?\s*[:=]?\s*(-?\d{1,3}\.\d+)\b", t, re.I)
+    if m:
+        try:
+            return float(m.group(1)), float(m.group(2))
+        except Exception:
+            return None, None
+    return None, None
+
+
+def _extract_location_phrase(message: str) -> str:
+    """
+    Best-effort extraction of a location phrase from a natural-language query.
+    """
+    t = (message or "").strip()
+    if not t:
+        return ""
+
+    m = re.search(r"\bnear\s+(.+)$", t, re.I)
+    if m:
+        loc = m.group(1).strip()
+        loc = re.split(r"[?.!]", loc)[0].strip()
+        return loc
+
+    m = re.search(r"\bin\s+([A-Za-z][^?.!]+)$", t, re.I)
+    if m and len(m.group(1).strip()) <= 80:
+        loc = m.group(1).strip()
+        loc = re.split(r"[?.!]", loc)[0].strip()
+        return loc
+
+    return ""
+
+
+def _geocode_location(location: str) -> Dict[str, Any]:
+    """
+    Free geocoding via OpenStreetMap Nominatim.
+    - Respects a tiny in-memory cache.
+    - Requires network access at runtime.
+    """
+    loc = (location or "").strip()
+    if not loc:
+        return {"ok": False, "error": "Missing location.", "data": None}
+
+    cache_key = f"geocode::{loc.lower()}"
+    if cache_key in _CACHE:
+        return _CACHE[cache_key]
+
+    try:
+        import requests  # type: ignore
+
+        # Small throttle to avoid accidental rapid-fire calls during dev refresh loops.
+        now = time.time()
+        last = float(_CACHE.get("_geocode_last_ts", 0.0) or 0.0)
+        if now - last < 1.0:
+            time.sleep(1.0 - (now - last))
+
+        url = "https://nominatim.openstreetmap.org/search"
+        params = {"q": loc, "format": "json", "limit": 1, "addressdetails": 1}
+        headers = {"User-Agent": "vawa-insights-bot/0.1 (educational project)"}
+        resp = requests.get(url, params=params, headers=headers, timeout=10)
+        _CACHE["_geocode_last_ts"] = time.time()
+        if resp.status_code != 200:
+            out = {"ok": False, "error": f"Geocoding failed (status {resp.status_code}).", "data": None}
+            _CACHE[cache_key] = out
+            return out
+
+        data = resp.json()
+        if not isinstance(data, list) or not data:
+            out = {"ok": False, "error": "No geocoding results found for that location.", "data": None}
+            _CACHE[cache_key] = out
+            return out
+
+        hit = data[0]
+        lat = _to_float_or_none2(str(hit.get("lat", "")))
+        lon = _to_float_or_none2(str(hit.get("lon", "")))
+        disp = str(hit.get("display_name") or loc).strip()
+        if lat is None or lon is None:
+            out = {"ok": False, "error": "Geocoding returned no usable coordinates.", "data": None}
+            _CACHE[cache_key] = out
+            return out
+
+        out = {"ok": True, "data": {"display_name": disp, "latitude": lat, "longitude": lon}, "citation": {"citation_type": "geocoding", "provider": "OpenStreetMap Nominatim", "query": loc}}
+        _CACHE[cache_key] = out
+        return out
+    except Exception:
+        out = {"ok": False, "error": "Geocoding request failed.", "data": None}
+        _CACHE[cache_key] = out
+        return out
+
+
+def find_victim_resources(
+    *,
+    query: str = "",
+    location: str = "",
+    latitude: Optional[float] = None,
+    longitude: Optional[float] = None,
+    radius_miles: float = 25.0,
+    limit: int = 8,
+    categories: Optional[List[str]] = None,
+) -> Dict[str, Any]:
+    rows = load_resource_rows()
+    if not rows:
+        return {"ok": False, "error": f"No resources dataset found at {RESOURCES_FILE.name}.", "data": None}
+
+    radius_miles = float(radius_miles or 25.0)
+    radius_miles = max(1.0, min(radius_miles, 250.0))
+    limit = int(limit or 8)
+    limit = max(1, min(limit, 25))
+
+    q = (query or "").lower()
+    cats = [c.strip().lower() for c in (categories or []) if c and c.strip()]
+
+    # Resolve coordinates
+    resolved_location = (location or "").strip()
+    lat = latitude
+    lon = longitude
+    citations: List[Dict[str, Any]] = [
+        {"citation_type": "structured_data", "source_table": RESOURCES_FILE.name}
+    ]
+
+    if lat is None or lon is None:
+        # Try to pull coords directly from free text
+        lat2, lon2 = _extract_lat_lon(location or query or "")
+        lat = lat if lat is not None else lat2
+        lon = lon if lon is not None else lon2
+
+    if (lat is None or lon is None) and resolved_location:
+        geo = _geocode_location(resolved_location)
+        if geo.get("ok"):
+            lat = geo["data"]["latitude"]
+            lon = geo["data"]["longitude"]
+            resolved_location = geo["data"]["display_name"]
+            if geo.get("citation"):
+                citations.append(geo["citation"])
+        else:
+            # Still allow "national-only" results even if geocoding fails
+            citations.append({"citation_type": "geocoding", "provider": "OpenStreetMap Nominatim", "query": resolved_location, "error": geo.get("error")})
+
+    def row_matches_text(r: ResourceRow) -> bool:
+        if not q:
+            return True
+        blob = " ".join([r.name, r.category, r.subcategory, r.services, r.city, r.state, r.notes]).lower()
+        toks = [t for t in re.findall(r"[a-z0-9]+", q) if t not in {"find", "a", "an", "the", "near", "in", "for", "me", "please"}]
+        if not toks:
+            return True
+        return any(tok in blob for tok in toks)
+
+    def row_matches_category(r: ResourceRow) -> bool:
+        if not cats:
+            return True
+        return (r.category or "").strip().lower() in cats
+
+    out_rows: List[Dict[str, Any]] = []
+    for r in rows:
+        if not r.resource_id or not r.name:
+            continue
+        if not row_matches_category(r):
+            continue
+        if not row_matches_text(r):
+            continue
+
+        dist = None
+        if lat is not None and lon is not None and r.latitude is not None and r.longitude is not None:
+            dist = _haversine_miles(lat, lon, r.latitude, r.longitude)
+            if dist > radius_miles:
+                continue
+        elif lat is not None and lon is not None:
+            # If the user gave a "near X" style query (coords resolved),
+            # skip rows that can't be distance-checked unless they look national.
+            if (r.city or r.state or r.address or r.postal_code) and not (r.category or "").lower().endswith("hotline"):
+                continue
+
+        out_rows.append(
+            {
+                "resource_id": r.resource_id,
+                "name": r.name,
+                "category": r.category,
+                "subcategory": r.subcategory,
+                "services": r.services,
+                "address": r.address,
+                "city": r.city,
+                "state": r.state,
+                "postal_code": r.postal_code,
+                "phone": r.phone,
+                "website": r.website,
+                "distance_miles": (round(dist, 2) if dist is not None else None),
+                "notes": r.notes,
+            }
+        )
+
+    if lat is not None and lon is not None:
+        out_rows.sort(key=lambda x: (x["distance_miles"] is None, x["distance_miles"] or 9e9))
+    else:
+        # Without coordinates: show hotline-like/national resources first
+        out_rows.sort(key=lambda x: (x.get("state") != "", x.get("city") != "", x.get("name", "")))
+
+    out_rows = out_rows[:limit]
+
+    return {
+        "ok": True,
+        "data": {
+            "resolved_location": resolved_location,
+            "latitude": lat,
+            "longitude": lon,
+            "radius_miles": radius_miles,
+            "results": out_rows,
+        },
+        "citations": citations,
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -446,7 +846,7 @@ def get_metric_timeseries(geo: Dict[str, str], metric: str, frequency: Frequency
     first = rows[0]
     citation = {
         "citation_type": "structured_data",
-        "source_table": "metrics_sample.csv",
+        "source_table": "metrics.csv",
         "geo_id": first.geo_id,
         "geo_name": first.geo_name,
         "geo_type": first.geo_type,
@@ -472,7 +872,7 @@ def compare_geos(
         start_year = int(start_period)
         end_year = int(end_period)
     except ValueError:
-        return {"ok": False, "error": "V1 compare_geos supports year periods like '2021'..'2024'.", "data": None}
+        return {"ok": False, "error": "compare_geos supports year periods like '2021'..'2024'.", "data": None}
 
     rows = load_metrics_rows()
     a_rows = [r for r in _filter_rows_by_geo(rows, geo_a) if start_year <= r.year <= end_year and r.metrics.get(metric) is not None]
@@ -494,7 +894,7 @@ def compare_geos(
     b0 = b_rows[0]
     citation = {
         "citation_type": "structured_data",
-        "source_table": "metrics_sample.csv",
+        "source_table": "metrics.csv",
         "metric": metric,
         "start_year": start_year,
         "end_year": end_year,
@@ -545,7 +945,7 @@ def rank_geos(metric: str, year: int, geo_level: GeoLevel, top_n: int, sort_dire
 
     citation = {
         "citation_type": "structured_data",
-        "source_table": "metrics_sample.csv",
+        "source_table": "metrics.csv",
         "metric": metric,
         "year": year,
         "geo_level": geo_level,
@@ -572,7 +972,7 @@ def get_risk_profile(geo: Dict[str, str], year: int) -> Dict[str, Any]:
     citations = [
         {
             "citation_type": "structured_data",
-            "source_table": "metrics_sample.csv",
+            "source_table": "metrics.csv",
             "geo_id": r0.geo_id,
             "geo_name": r0.geo_name,
             "geo_type": r0.geo_type,
@@ -581,7 +981,7 @@ def get_risk_profile(geo: Dict[str, str], year: int) -> Dict[str, Any]:
         },
         {
             "citation_type": "structured_data",
-            "source_table": "risk_components_sample.csv",
+            "source_table": "risk_components.csv",
             "geo_id": r0.geo_id,
             "geo_name": r0.geo_name,
             "year": year,
@@ -665,6 +1065,157 @@ def _chunk_markdown(body: str) -> List[str]:
     return chunks
 
 
+def _kb_strip_inline_markdown(s: str) -> str:
+    s = re.sub(r"\*\*([^*]+)\*\*", r"\1", s)
+    s = s.replace("**", "")
+    s = s.replace("`", "")
+    s = re.sub(r"\s+", " ", s)
+    return s.strip()
+
+
+def _kb_chunk_to_prose(text: str, *, max_chars: int = 1600) -> str:
+    """
+    Turn a KB markdown excerpt into plain, speakable sentences (no ## / --- / bullet markup).
+    """
+    t = (text or "").strip()
+    if not t:
+        return ""
+    parts: List[str] = []
+
+    for block in re.split(r"\n\s*\n+", t):
+        lines_in = [
+            ln.strip()
+            for ln in block.splitlines()
+            if ln.strip() and ln.strip() != "---" and not ln.strip().startswith("---")
+        ]
+        bullets: List[str] = []
+
+        def flush_bullets() -> None:
+            nonlocal bullets
+            if not bullets:
+                return
+            clause = "; ".join(b.rstrip(".") for b in bullets if b)
+            if clause:
+                if not clause[0].isupper():
+                    clause = clause[0].upper() + clause[1:] if len(clause) > 1 else clause.upper()
+                parts.append(clause + ".")
+            bullets = []
+
+        for ln in lines_in:
+            if ln.startswith("#"):
+                flush_bullets()
+                s = _kb_strip_inline_markdown(re.sub(r"^#+\s*", "", ln).strip())
+                # Drop short section labels that read oddly as standalone “sentences.”
+                if s and len(s) <= 48 and not re.search(r"\bvawa\b|\breauthorization\b|\bfederal\b|\bgrant\b", s, re.I):
+                    low = s.lower().rstrip(".")
+                    if low in {
+                        "summary",
+                        "source",
+                        "purpose",
+                        "overview",
+                        "interpretation notes",
+                        "related documents",
+                        "key updates in 2022",
+                        "core areas covered",
+                    }:
+                        s = ""
+                if s:
+                    parts.append(s if s.endswith((".", "?", "!")) else s + ".")
+            elif re.match(r"^[\*\-]\s+", ln):
+                bullets.append(_kb_strip_inline_markdown(re.sub(r"^[\*\-]\s+", "", ln).strip()))
+            else:
+                flush_bullets()
+                if ln:
+                    ln2 = _kb_strip_inline_markdown(ln)
+                    parts.append(ln2 if ln2.endswith((".", "?", "!")) else ln2 + ".")
+        flush_bullets()
+
+    out = " ".join(parts)
+    out = re.sub(r"\s+", " ", out).strip()
+    out = re.sub(r":\s*\.\s*", ": ", out)
+    out = re.sub(r"\s+\.\s+", ". ", out)
+    if len(out) > max_chars:
+        cut = out[: max_chars - 1]
+        out = cut.rsplit(" ", 1)[0].rstrip(",;") + "…"
+    return out
+
+
+def _kb_chunk_para_index(ch: RetrievedChunk) -> int:
+    m = re.search(r"::p(\d+)$", ch.chunk_id or "")
+    return int(m.group(1)) if m else 999
+
+
+def _synthesize_docs_answer(message: str, chunks: List[RetrievedChunk]) -> Tuple[str, List[str]]:
+    """
+    One main-bubble answer in natural language plus optional evidence lines (titles + short quotes).
+    """
+    if not chunks:
+        return "", []
+    ql = (message or "").lower()
+    ordered = list(chunks)
+
+    if "reauthorization" in ql or ("vawa" in ql and "2022" in ql and any(w in ql for w in ["what did", "what does", "reauthorize", "reauthorization"])):
+        policy = [
+            c
+            for c in ordered
+            if "vawa_2022_reauthorization" in str(c.metadata.get("source_file", "")).lower()
+        ]
+        if policy:
+            ordered = sorted(policy, key=_kb_chunk_para_index)
+
+    prose_bits: List[str] = []
+    deferred_caveats: List[str] = []
+    evidence: List[str] = []
+    used_ids: set[str] = set()
+
+    for ch in ordered[:5]:
+        if ch.chunk_id in used_ids:
+            continue
+        raw = ch.text or ""
+        lead_raw, main_raw = "", raw.strip()
+        if "## Summary" in raw:
+            lead_raw, sep, rest = raw.partition("## Summary")
+            main_raw = (sep + rest).strip() if sep else raw.strip()
+
+        main_p = _kb_chunk_to_prose(main_raw, max_chars=900) if main_raw else ""
+        if lead_raw.strip():
+            lead_p = _kb_chunk_to_prose(lead_raw.strip(), max_chars=420)
+            if len(lead_p) > 30:
+                deferred_caveats.append(lead_p)
+
+        p = main_p
+        if len(p) < 40:
+            continue
+        title = str(ch.metadata.get("title") or ch.metadata.get("source_file") or "Source").strip()
+        used_ids.add(ch.chunk_id)
+        prose_bits.append(p)
+        evidence.append(f"{title} ({ch.chunk_id}): {p[:320]}{'…' if len(p) > 320 else ''}")
+
+    body = " ".join(prose_bits).strip()
+    if ("reauthorization" in ql or ("vawa" in ql and "2022" in ql)) and len(body) > 1180:
+        cut = body[:1179]
+        if "." in cut:
+            body = cut.rsplit(".", 1)[0].rstrip() + "."
+        else:
+            body = cut.rstrip() + "…"
+    if deferred_caveats:
+        tail = " ".join(deferred_caveats).strip()
+        body = (body + " " + tail).strip() if body else tail
+
+    if len(body) > 1700:
+        body = body[:1699].rsplit(" ", 1)[0].rstrip(",;") + "…"
+
+    if not body:
+        return "", evidence
+
+    if "reauthorization" in ql or ("vawa" in ql and "2022" in ql):
+        lead = "According to the project’s VAWA 2022 overview document:"
+    else:
+        lead = "In plain language, based on the closest matching knowledge-base excerpts:"
+
+    return f"{lead} {body}", evidence
+
+
 def retrieve(query: str, top_k: int = 4) -> List[RetrievedChunk]:
     """
     Retrieve KB chunks for a query.
@@ -709,6 +1260,7 @@ def _retrieve_keyword(query: str, top_k: int = 4) -> List[RetrievedChunk]:
     if not q_tokens:
         return []
 
+    ql = (query or "").lower()
     results: List[RetrievedChunk] = []
     for ch in _kb_all_chunks():
         c_tokens = set(_tokenize(ch.text))
@@ -721,6 +1273,12 @@ def _retrieve_keyword(query: str, top_k: int = 4) -> List[RetrievedChunk]:
             for t in tags:
                 if str(t).lower() in q_tokens:
                     bonus += 0.25
+        sf = str(ch.metadata.get("source_file", "")).lower()
+        # Prefer the dedicated policy doc when users ask about the 2022 reauthorization (limits_scope also mentions VAWA).
+        if "reauthorization" in ql and "vawa_2022_reauthorization" in sf:
+            bonus += 12.0
+        if "reauthorization" in ql and "limitations_scope" in sf:
+            bonus -= 5.0
         score = float(len(overlap)) + bonus
         results.append(RetrievedChunk(chunk_id=ch.chunk_id, text=ch.text, score=score, metadata=ch.metadata))
 
@@ -737,7 +1295,7 @@ def _embed_texts_openai(texts: List[str], *, api_key: str, model: str = "text-em
 
 
 def _retrieve_semantic(query: str, top_k: int, api_key: str) -> List[RetrievedChunk]:
-    import numpy as np
+    import numpy as np  # type: ignore
 
     cache_key = "kb_semantic_index_v1"
     index = _CACHE.get(cache_key)
@@ -778,7 +1336,7 @@ def _retrieve_semantic(query: str, top_k: int, api_key: str) -> List[RetrievedCh
 # Intent
 # ---------------------------------------------------------------------------
 
-Intent = Literal["data_only", "docs_only", "data_and_docs"]
+Intent = Literal["data_only", "docs_only", "data_and_docs", "resources"]
 
 _METRIC_HINTS = {
     "dv_rate",
@@ -817,6 +1375,28 @@ _DOCS_HINTS = {
 
 def classify_intent(message: str) -> Intent:
     text = (message or "").lower()
+    if any(
+        k in text
+        for k in [
+            "find a shelter",
+            "shelter near",
+            "shelters near",
+            "resources near",
+            "domestic violence shelter",
+            "dv shelter",
+            "mental health near",
+            "counseling near",
+            "therapy near",
+            "legal aid near",
+            "legal help near",
+            "immigration legal aid near",
+            "lawyer near",
+            "attorney near",
+            "hotline",
+            "crisis line",
+        ]
+    ):
+        return "resources"
     has_metric = any(h in text for h in _METRIC_HINTS)
     has_docs = any(h in text for h in _DOCS_HINTS)
 
@@ -831,6 +1411,99 @@ def classify_intent(message: str) -> Intent:
         return "docs_only"
 
     return "docs_only"
+
+
+def _arcgis_dashboard_url() -> str:
+    u = (os.environ.get("ARCGIS_DASHBOARD_URL") or "").strip()
+    return u or DEFAULT_ARCGIS_DASHBOARD_URL
+
+
+def _arcgis_embed_url_for_webmap(webmap_id: str) -> str:
+    # ArcGIS "Embed" app for web maps (simple iframe-friendly viewer).
+    return f"https://www.arcgis.com/apps/Embed/index.html?webmap={webmap_id}"
+
+
+def _arcgis_pick_tab(message: str, metric: Optional[str]) -> str:
+    t = (message or "").lower()
+    m = (metric or "").strip().lower()
+
+    if "shelter" in t:
+        return "Shelter Locations"
+    if "rural" in t:
+        return "Rural Locations"
+    if "college" in t or "campus" in t:
+        return "College"
+    if "tribal" in t:
+        return "Tribal"
+    if "race" in t or "minority" in t or "native" in t:
+        return "Race"
+    if "violent" in t:
+        return "Violent Crimes"
+
+    if m == "sexual_assault_rate" or "sexual assault" in t:
+        return "Sexual Assault"
+    if m == "dv_rate" or "domestic violence" in t:
+        return "Domestic Violence"
+    if m == "firearm_share" or "firearm" in t or "gun" in t:
+        return "Firearm"
+
+    return "Master"
+
+
+def _should_attach_arcgis_map(
+    message: str,
+    metric: Optional[str],
+    geo_names: List[str],
+    tools_used: List[Dict[str, Any]],
+) -> bool:
+    t = (message or "").lower()
+    if re.search(r"\bmap\b|\bgis\b|\bgeographic\b|\bchoropleth\b", t):
+        return True
+    tool_names = {x.get("tool") for x in tools_used if isinstance(x, dict)}
+    geo_tools = {
+        "compare_geos",
+        "rank_geos",
+        "get_metric_timeseries",
+        "get_risk_profile",
+        "rank_states_by_policy_change",
+        "get_policy_variable_summary",
+    }
+    if tool_names & geo_tools:
+        return True
+    if len(geo_names) >= 2 and metric is not None and "compare" in t:
+        return True
+    return False
+
+
+def _build_map_embed(
+    message: str,
+    metric: Optional[str],
+    geo_names: List[str],
+    tools_used: List[Dict[str, Any]],
+) -> Optional[MapEmbedPayload]:
+    if not _should_attach_arcgis_map(message, metric, geo_names, tools_used):
+        return None
+    dashboard_url = _arcgis_dashboard_url()
+    tab = _arcgis_pick_tab(message, metric)
+    embed_url = dashboard_url
+    states = geo_names[:8]
+    m_label = _METRIC_LABELS.get(metric or "", None) or (metric.replace("_", " ") if metric else None)
+    bits: List[str] = []
+    bits.append(f"In the dashboard, open the “{tab}” tab to see the relevant layer.")
+    if states:
+        bits.append(f"Your question references: {', '.join(states)}.")
+    if m_label and tab == "Master":
+        bits.append(f"Suggested layer: {m_label}.")
+    return MapEmbedPayload(
+        show=True,
+        title="Related ArcGIS dashboard",
+        embed_url=embed_url,
+        open_url=dashboard_url,
+        caption=" ".join(bits),
+        states=states,
+        metric=metric,
+        metric_label=m_label,
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -870,6 +1543,7 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
     caveats: List[str] = []
     interpretation = ""
     direct_answer = ""
+    skip_default_interpretation = False
 
     descriptive_caveat = "These are descriptive patterns from observed data and do not, by themselves, establish causation."
     policy_caveat = "Pre/post-2022 comparisons are descriptive; changes may reflect reporting/coverage shifts and do not, by themselves, establish policy effects."
@@ -891,6 +1565,109 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
             "pre/post",
         ]
     )
+
+    # -------------------------------------------------------------------
+    # Victim resources intent (location-based)
+    # -------------------------------------------------------------------
+    if intent == "resources":
+        loc_phrase = _extract_location_phrase(message)
+        lat0, lon0 = _extract_lat_lon(message)
+        if not loc_phrase and (lat0 is None or lon0 is None):
+            direct_answer = "Tell me a location to search near (e.g., “near Sacramento, CA” or “32.7157, -117.1611”)."
+            citations.append({"citation_type": "structured_data", "source_table": RESOURCES_FILE.name})
+            return ChatResponse(
+                answer={
+                    "direct_answer": direct_answer,
+                    "evidence": evidence_lines,
+                    "interpretation": "",
+                    "caveats": ["If you are in immediate danger, call 911."],
+                    "citations": citations,
+                    "map_embed": None,
+                },
+                debug={"intent": intent, "tools_used": tools_used, "docs_retrieved": docs_retrieved, "llm": llm_debug},
+            )
+
+        # Heuristics: “shelter” implies housing_shelter unless user asks broader.
+        cats: List[str] = []
+        tl = message.lower()
+        query_hint = ""
+        if "shelter" in tl:
+            cats.append("housing_shelter")
+            query_hint = "shelter"
+        if any(x in tl for x in ["therapy", "counsel", "mental health", "psychiat", "988"]):
+            cats.append("mental_health")
+            query_hint = query_hint or "mental health"
+        if any(x in tl for x in ["legal", "lawyer", "restraining order", "protective order"]):
+            cats.append("legal_aid")
+            query_hint = query_hint or "legal aid"
+        if any(x in tl for x in ["hotline", "crisis line"]):
+            cats.append("hotline")
+            query_hint = query_hint or "hotline"
+        if any(x in tl for x in ["domestic violence", "intimate partner"]):
+            cats.append("domestic_violence")
+            query_hint = query_hint or "domestic violence"
+        if any(x in tl for x in ["sexual assault", "rape"]):
+            cats.append("sexual_assault")
+            query_hint = query_hint or "sexual assault"
+        cats = sorted({c for c in cats if c})
+
+        tool_out = find_victim_resources(
+            query=query_hint or "",
+            location=loc_phrase,
+            latitude=lat0,
+            longitude=lon0,
+            radius_miles=25.0,
+            limit=8,
+            categories=cats,
+        )
+        tools_used.append(
+            {
+                "tool": "find_victim_resources",
+                "args": {"query": message, "location": loc_phrase, "latitude": lat0, "longitude": lon0, "radius_miles": 25.0, "limit": 8, "categories": cats},
+                "ok": tool_out.get("ok"),
+            }
+        )
+
+        if not tool_out.get("ok"):
+            direct_answer = f"I couldn’t search resources right now. ({tool_out.get('error')})"
+            citations.append({"citation_type": "structured_data", "source_table": RESOURCES_FILE.name})
+        else:
+            d = tool_out["data"]
+            results = d.get("results", [])
+            citations.extend(tool_out.get("citations", []))
+            resolved = (d.get("resolved_location") or loc_phrase or "").strip()
+            if results:
+                lines: List[str] = []
+                lines.append(f"Here are {len(results)} resource(s) near {resolved or 'your location'}:")
+                for r in results:
+                    bits = [r.get("name", "")]
+                    if r.get("city") or r.get("state"):
+                        bits.append(", ".join([x for x in [r.get("city"), r.get("state")] if x]))
+                    if r.get("distance_miles") is not None:
+                        bits.append(f"{r['distance_miles']} miles")
+                    if r.get("phone"):
+                        bits.append(f"phone {r['phone']}")
+                    if r.get("website"):
+                        bits.append(f"website {r['website']}")
+                    bullet = "- " + " — ".join([b for b in bits if b])
+                    evidence_lines.append(bullet)
+                    lines.append(bullet)
+                direct_answer = "\n".join(lines).strip()
+            else:
+                direct_answer = f"I didn’t find any entries within {d.get('radius_miles')} miles of {resolved or 'that location'} in the current resources dataset."
+
+        caveats.append("If you are in immediate danger, call 911. If you can’t safely call, consider texting a trusted person or using a safe device.")
+        return ChatResponse(
+            answer={
+                "direct_answer": direct_answer,
+                "evidence": evidence_lines,
+                "interpretation": "",
+                "caveats": caveats,
+                "citations": citations,
+                "map_embed": None,
+            },
+            debug={"intent": intent, "tools_used": tools_used, "docs_retrieved": docs_retrieved, "llm": llm_debug},
+        )
 
     if intent in {"data_only", "data_and_docs"}:
         policy_handled = False
@@ -958,7 +1735,10 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
                 tools_used.append({"tool": "get_risk_profile", "args": {"geo": geo, "year": yr}, "ok": tool_out.get("ok")})
                 if tool_out.get("ok"):
                     data = tool_out["data"]
-                    direct_answer = f"Risk profile for {data['geo_name']} ({yr}): risk_index = {data['risk_index']:.2f}."
+                    direct_answer = (
+                        f"Risk profile for {data['geo_name']} ({yr}): risk_index = {data['risk_index']:.2f}."
+                        + _metric_explain_sentence("risk_index")
+                    )
                     evidence_lines.append(f"risk_index ({yr}): {data['risk_index']:.2f} (data_quality_flag={data['data_quality_flag']})")
                     if data.get("components"):
                         evidence_lines.append("Component breakdown:")
@@ -978,7 +1758,12 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
                 tools_used.append({"tool": "rank_geos", "args": {"metric": metric, "year": yr, "geo_level": "state", "top_n": 5, "sort_direction": "desc"}, "ok": tool_out.get("ok")})
                 if tool_out.get("ok"):
                     ranked = tool_out["data"]["ranked"]
-                    direct_answer = f"Top states for {metric} in {yr} (sample data): " + ", ".join([f"{r['geo_name']} ({r['value']:.2f})" for r in ranked])
+                    mname = _metric_display_name(metric)
+                    direct_answer = (
+                        f"Top states for {mname} in {yr}: "
+                        + ", ".join([f"{r['geo_name']} ({r['value']:.2f})" for r in ranked])
+                        + _metric_explain_sentence(metric)
+                    )
                     evidence_lines.append(f"Ranking: {metric} in {yr} (top {len(ranked)} states).")
                     for r in ranked:
                         evidence_lines.append(f"- #{r['rank']} {r['geo_name']}: {r['value']:.2f} (flag={r['data_quality_flag']})")
@@ -998,12 +1783,17 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
                 d = tool_out["data"]
                 a = d["geo_a"]
                 b = d["geo_b"]
+                a_disp = round(float(a["avg_value"]), 2)
+                b_disp = round(float(b["avg_value"]), 2)
+                diff_disp = round(a_disp - b_disp, 2)
+                mname = _metric_display_name(metric)
                 direct_answer = (
-                    f"From {d['start_year']}–{d['end_year']}, {a['geo_name']} averaged {a['avg_value']:.2f} for {metric}, "
-                    f"vs {b['geo_name']} at {b['avg_value']:.2f} (difference {d['difference']:.2f})."
+                    f"From {d['start_year']}–{d['end_year']}, {a['geo_name']} averaged {a_disp:.2f} for {mname}, "
+                    f"vs {b['geo_name']} at {b_disp:.2f} (difference {diff_disp:.2f})."
+                    + _metric_explain_sentence(metric)
                 )
-                evidence_lines.append(f"{a['geo_name']} average ({d['start_year']}–{d['end_year']}): {a['avg_value']:.2f}")
-                evidence_lines.append(f"{b['geo_name']} average ({d['start_year']}–{d['end_year']}): {b['avg_value']:.2f}")
+                evidence_lines.append(f"{a['geo_name']} average ({d['start_year']}–{d['end_year']}): {float(a['avg_value']):.4f}")
+                evidence_lines.append(f"{b['geo_name']} average ({d['start_year']}–{d['end_year']}): {float(b['avg_value']):.4f}")
                 citations.append(tool_out["citation"])
                 caveats.append(descriptive_caveat)
             else:
@@ -1015,7 +1805,33 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
             tools_used.append({"tool": "get_metric_timeseries", "args": {"geo": geo, "metric": metric, "frequency": "year"}, "ok": tool_out.get("ok")})
             if tool_out.get("ok"):
                 pts = tool_out["data"]["points"]
-                direct_answer = f"{metric} over time for {tool_out['data']['geo']['geo_name']} (sample data)."
+                mname = _metric_display_name(metric)
+                # Put the key numbers in the main answer (not only in evidence_lines).
+                series: Dict[int, float] = {}
+                for p in pts:
+                    try:
+                        yr = int(str(p.get("period", "")).strip())
+                    except ValueError:
+                        continue
+                    val = p.get("value")
+                    if val is None:
+                        continue
+                    series[yr] = float(val)
+
+                geo_nm = tool_out["data"]["geo"]["geo_name"]
+                if series:
+                    yrs_sorted = sorted(series.keys())
+                    parts = [f"{y}: {series[y]:.2f}" for y in yrs_sorted]
+                    lo_y, hi_y = min(series, key=lambda y: series[y]), max(series, key=lambda y: series[y])
+                    summary = (
+                        f"{mname} over time for {geo_nm}: "
+                        + "; ".join(parts)
+                        + f". Lowest in {lo_y} ({series[lo_y]:.2f}); highest in {hi_y} ({series[hi_y]:.2f})."
+                    )
+                else:
+                    summary = f"{mname} over time for {geo_nm}: no numeric points were available for the requested years."
+
+                direct_answer = summary + _metric_explain_sentence(metric)
                 evidence_lines.extend([f"- {p['period']}: {p['value']:.2f} (flag={p['data_quality_flag']})" for p in pts])
                 citations.append(tool_out["citation"])
                 caveats.append(descriptive_caveat)
@@ -1040,37 +1856,44 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
             citations.append(_doc_citation_from_chunk(ch))
 
         if chunks:
-            if direct_answer == "":
-                direct_answer = "Here’s what the knowledge base says (V1 prototype):"
-            interpretation_bits = []
-            for ch in chunks[:2]:
-                snippet = ch.text.strip().replace("\n", " ")
-                if len(snippet) > 280:
-                    snippet = snippet[:280].rstrip() + "…"
-                interpretation_bits.append(f"- {snippet}")
-            interpretation = "\n".join(interpretation_bits)
+            da_stripped = (direct_answer or "").strip()
+            kb_is_primary = da_stripped == "" or da_stripped.startswith("I couldn’t identify")
+            if kb_is_primary:
+                synthesized, kb_evidence = _synthesize_docs_answer(message, chunks)
+                if synthesized:
+                    direct_answer = synthesized
+                    evidence_lines.extend(kb_evidence)
+                    interpretation = ""
+                    skip_default_interpretation = True
+                else:
+                    direct_answer = "I don’t have enough on-point knowledge-base excerpts to summarize that yet."
+                    interpretation = ""
+                    skip_default_interpretation = True
+            else:
+                # Already answered with structured data; keep the main bubble clean (no raw KB markdown).
+                interpretation = ""
         else:
             if intent == "docs_only":
-                direct_answer = "I don’t have enough knowledge-base content to answer that yet (V1)."
-            caveats.append("Knowledge base retrieval returned no matching documents for this query in V1.")
+                direct_answer = "I don’t have enough knowledge-base content to answer that yet."
+            caveats.append("Knowledge base retrieval returned no matching documents for this query.")
 
     if any(w in message.lower() for w in ["cause", "caused", "because", "led to", "impact", "effect"]):
-        caveats.append("This bot can describe trends/associations in the available data, but V1 does not establish causal effects.")
+        caveats.append("This bot can describe trends/associations in the available data, but it does not establish causal effects.")
 
     if not citations:
         citations.append(
             {
                 "citation_type": "system",
-                "citation_id": "V1-NO-SOURCE",
+                "citation_id": "NO-SOURCE",
                 "title": "No matching structured rows or KB chunks found",
             }
         )
 
-    if interpretation == "":
-        interpretation = "Interpretation is limited in V1. If you want, ask for caveats/definitions and I’ll pull from the methodology documents."
+    if interpretation == "" and not skip_default_interpretation:
+        interpretation = "Interpretation is limited. If you want, ask for caveats/definitions and I’ll pull from the methodology documents."
 
     # ---- Optional LLM writer step (minimal integration) ----
-    # If OPENAI_API_KEY is not set, we keep deterministic V1 behavior.
+    # If OPENAI_API_KEY is not set, we keep deterministic behavior.
     api_key = (os.environ.get("OPENAI_API_KEY") or "").strip()
     if api_key:
         try:
@@ -1115,7 +1938,7 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
             }
 
             system = (
-                "You are a careful analyst writing a short, grounded response for a VAWA insights prototype. "
+                "You are a careful analyst writing a short, grounded response for a VAWA insights system. "
                 "You must follow the constraints exactly."
             )
 
@@ -1150,8 +1973,10 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
                     interpretation = interp.strip()
                     llm_debug["used"] = True
         except Exception:
-            # Fail closed: keep deterministic V1 output if the LLM step fails.
+            # Fail closed: keep deterministic output if the LLM step fails.
             llm_debug = {"enabled": True, "model": "gpt-4o-mini", "used": False, "error": "llm_call_failed"}
+
+    map_embed = _build_map_embed(message, metric, geo_names, tools_used)
 
     return ChatResponse(
         answer={
@@ -1160,6 +1985,7 @@ def answer_chat(req: ChatRequest) -> ChatResponse:
             "interpretation": interpretation,
             "caveats": caveats,
             "citations": citations,
+            "map_embed": map_embed,
         },
         debug={
             "intent": intent,

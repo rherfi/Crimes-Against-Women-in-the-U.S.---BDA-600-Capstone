@@ -289,7 +289,10 @@ body {
 
 .input {
   flex: 1;
-  padding: 12px 12px;
+  font: inherit;
+  font-size: 14px;
+  padding: 14px 14px;
+  min-height: 48px;
   border-radius: 12px;
   border: 1px solid var(--border);
   background: #ffffff;
@@ -389,4 +392,50 @@ body {
 
 .small {
   font-size: 12px;
+}
+
+.mapEmbed {
+  margin-top: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  background: var(--card2);
+}
+
+.mapEmbedTitle {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.mapEmbedCaption {
+  margin: 0 0 10px 0;
+  line-height: 1.45;
+}
+
+.mapEmbedFrameWrap {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #e2e8f0;
+}
+
+.mapEmbedIframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.mapEmbedOpen {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
 }

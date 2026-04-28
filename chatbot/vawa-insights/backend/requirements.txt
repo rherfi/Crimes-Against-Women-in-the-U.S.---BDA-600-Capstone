@@ -7,3 +7,6 @@ openai>=1.0.0
 # Optional: used for semantic retrieval scoring (small + fast)
 numpy>=1.26
 
+# Optional: used for basic geocoding (Nominatim) for victim resources lookup
+requests>=2.31
+

@@ -69,4 +69,4 @@ Narrative context may still appear in policy overview documents; see also `limit
 
 - **Statistical significance** does not prove **policy effectiveness**; **non-significance** does not prove absence of real-world change.
 - **Multiple channels** (reporting, classification, coverage) can move the same metric; see `nibrs_limitations.md` and (when populated) `methodology.md`.
-- For **definitions of NIBRS fields**, use `glossary.md`. For **tool-facing metric names** in the chat prototype, align with the structured dataset column names and `metric_definitions.md` when present.
+- For **definitions of NIBRS fields**, use `glossary.md`. For **tool-facing metric names**, align with the structured dataset column names and `metric_definitions.md` when present.
